@@ -74,7 +74,7 @@ describe('scoreHighRisk', () => {
 });
 
 describe('scoreProcedure', () => {
-  it('gives the trap bonus for flagging a trap — the highest-value action', () => {
+  it('gives the trap bonus for flagging a trap, the highest-value action', () => {
     const trap = scenario.procedures[1];
     const r = scoreProcedure(trap, { matched: [], flaggedTrap: true });
     expect(r.isTrap).toBe(true);

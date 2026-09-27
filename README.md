@@ -1,7 +1,7 @@
 # Assertio
 
 An audit training game for professional auditors. For each financial statement line item, judge which
-assertions are relevant, which are high risk given the client's context — and spot the **trap procedure**:
+assertions are relevant, which are high risk given the client's context, and spot the **trap procedure**:
 a procedure that looks perfectly reasonable but tests the wrong assertion for the risk at hand.
 
 Static, front-end only. No backend, no database, no API keys. Works fully offline once loaded.
@@ -21,7 +21,7 @@ Open the URL Vite prints (http://localhost:5173).
 npm run build
 ```
 
-Produces a static site in `dist/` (TypeScript-checked first — the build fails on any type error).
+Produces a static site in `dist/` (TypeScript-checked first, the build fails on any type error).
 
 Preview the production build:
 
@@ -40,7 +40,7 @@ Covers the scoring logic (`src/scoring.ts`) and the data validator (`src/data/va
 
 ## Deploy
 
-The build is a plain static site — no server config needed.
+The build is a plain static site, no server config needed.
 
 ### GitHub Pages
 
@@ -55,7 +55,7 @@ The build is a plain static site — no server config needed.
 ### Netlify
 
 1. `npm run build`
-2. Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop — or connect the repo with:
+2. Drag-and-drop the `dist/` folder onto https://app.netlify.com/drop, or connect the repo with:
    - Build command: `npm run build`
    - Publish directory: `dist`
 
@@ -63,7 +63,7 @@ No redirects file or special headers are required.
 
 ## Swapping in updated scenario data
 
-All game content lives in **`src/data/scenarios.json`** — the only content file. Replace it with an updated
+All game content lives in **`src/data/scenarios.json`**, the only content file. Replace it with an updated
 version (same schema) and rebuild:
 
 - `meta.assertion_taxonomy` defines the assertion vocabulary (transactions / balances groups).
@@ -73,16 +73,16 @@ version (same schema) and rebuild:
 
 The app validates this file at load time and shows a **visible error screen naming every failed check**
 (duplicate ids, taxonomy violations, high-risk keys outside the relevant set, traps without explanations,
-missing fields) instead of starting with unfair data. If you see that screen, the data — not the app — needs
+missing fields) instead of starting with unfair data. If you see that screen, the data, not the app, needs
 fixing.
 
 ## How to play
 
-- **Phase 1 — Relevant assertions.** Check the assertions relevant to the line item. Partial credit; extras
+- **Phase 1, Relevant assertions.** Check the assertions relevant to the line item. Partial credit; extras
   lose points.
-- **Phase 2 — High-risk assertions.** From the relevant set, check the ones the engagement brief makes
+- **Phase 2, High-risk assertions.** From the relevant set, check the ones the engagement brief makes
   risky. Feedback shows the risk reasons.
-- **Phase 3 — Procedures.** For each (shuffled) procedure, match the assertion(s) it tests — or flag it as a
+- **Phase 3, Procedures.** For each (shuffled) procedure, match the assertion(s) it tests, or flag it as a
   trap. Correctly flagging a trap is the highest-value action in the game; matching a trap to an assertion
   scores zero and reveals the trap explanation.
 
@@ -91,11 +91,11 @@ A scenario is **mastered** when every phase scores ≥ 80%. Progress and career 
 
 ## Keyboard
 
-- `1`–`9`, `0` — toggle assertions / match assertions
-- `↑`/`↓` — move between procedures (Phase 3)
-- `T` — flag a trap
-- `Enter` — submit / continue
-- `Esc` — leave review mode
+- `1`–`9`, `0`, toggle assertions / match assertions
+- `↑`/`↓`, move between procedures (Phase 3)
+- `T`, flag a trap
+- `Enter`, submit / continue
+- `Esc`, leave review mode
 
 ## Project layout
 

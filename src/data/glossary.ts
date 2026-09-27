@@ -17,7 +17,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'expected credit loss': {
     label: 'Expected credit loss (ECL)',
-    body: 'The forward-looking impairment model: a probability-weighted estimate of credit losses. Stage 1 (12-month ECL), Stage 2 (lifetime ECL after significant increase in risk), Stage 3 (credit-impaired). Estimation-heavy — a valuation-risk magnet.',
+    body: 'The forward-looking impairment model: a probability-weighted estimate of credit losses. Stage 1 (12-month ECL), Stage 2 (lifetime ECL after significant increase in risk), Stage 3 (credit-impaired). Estimation-heavy; a valuation-risk magnet.',
     ref: 'IFRS 9',
   },
   ecl: {
@@ -27,7 +27,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'fair value': {
     label: 'Fair value',
-    body: 'The price to sell an asset or transfer a liability in an orderly transaction between market participants. Falls back on observable prices; where none exist, models and assumptions drive it — the deeper into the fair value hierarchy (Levels 1→3), the higher the estimation risk.',
+    body: 'The price to sell an asset or transfer a liability in an orderly transaction between market participants. Falls back on observable prices; where none exist, models and assumptions drive it; the deeper into the fair value hierarchy (Levels 1→3), the higher the estimation risk.',
     ref: 'IFRS 13',
   },
   impairment: {
@@ -57,7 +57,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'carrying amount': {
     label: 'Carrying amount',
-    body: 'The amount at which an asset or liability is recognised in the balance sheet — cost or revalued amount, less accumulated depreciation and impairment. The "wrong number here" is a valuation assertion failure.',
+    body: 'The amount at which an asset or liability is recognised in the balance sheet; cost or revalued amount, less accumulated depreciation and impairment. The "wrong number here" is a valuation assertion failure.',
     ref: 'IAS 16 / IFRS 13',
   },
   goodwill: {
@@ -67,7 +67,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   cgu: {
     label: 'CGU (cash-generating unit)',
-    body: 'The smallest group of assets generating largely independent cash inflows. Goodwill and intangibles are tested for impairment at this level — how the CGU is defined materially changes the impairment result.',
+    body: 'The smallest group of assets generating largely independent cash inflows. Goodwill and intangibles are tested for impairment at this level; how the CGU is defined materially changes the impairment result.',
     ref: 'IAS 36',
   },
   'deferred tax': {
@@ -77,27 +77,27 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   derivative: {
     label: 'Derivative',
-    body: 'A contract whose value changes with an underlying (rate, price, index). Usually at fair value through profit or loss, mostly Level 2/3 — model-driven and estimation-risk heavy.',
+    body: 'A contract whose value changes with an underlying (rate, price, index). Usually at fair value through profit or loss, mostly Level 2/3; model-driven and estimation-risk heavy.',
     ref: 'IFRS 9',
   },
   hedge: {
     label: 'Hedge accounting',
-    body: 'Adjusting the recognition of hedging instrument and hedged item so gains/losses align in the same period. Requires formal designation, effectiveness testing and documentation — lots of disclosure, lots of traps.',
+    body: 'Adjusting the recognition of hedging instrument and hedged item so gains/losses align in the same period. Requires formal designation, effectiveness testing and documentation; lots of disclosure, lots of traps.',
     ref: 'IFRS 9',
   },
   swap: {
     label: 'Swap',
-    body: 'A derivative exchanging cash flow streams — most commonly fixed-for-floating interest rate swap. Treasury departments use them to manage rate exposure; valuation and hedge-designation are the audit issues.',
+    body: 'A derivative exchanging cash flow streams; most commonly fixed-for-floating interest rate swap. Treasury departments use them to manage rate exposure; valuation and hedge-designation are the audit issues.',
     ref: 'IFRS 9',
   },
   'forward contract': {
     label: 'Forward contract',
-    body: 'An OTC agreement to buy/sell an asset at a set price on a future date. Unlike exchange-traded futures, no daily margining — valuation is model-based and counterparty risk sits in the fair value.',
+    body: 'An OTC agreement to buy/sell an asset at a set price on a future date. Unlike exchange-traded futures, no daily margining; valuation is model-based and counterparty risk sits in the fair value.',
     ref: 'IFRS 9 / IFRS 13',
   },
   'net asset value': {
     label: 'Net asset value (NAV)',
-    body: 'Assets minus liabilities, typically per share/unit for funds. Fund NAVs price daily investor dealing — a wrong NAV means real cash errors to investors, so valuation and allocation risks dominate.',
+    body: 'Assets minus liabilities, typically per share/unit for funds. Fund NAVs price daily investor dealing; a wrong NAV means real cash errors to investors, so valuation and allocation risks dominate.',
     ref: 'IFRS as applied to funds',
   },
   nav: {
@@ -106,7 +106,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   actuarial: {
     label: 'Actuarial valuation',
-    body: 'Estimating obligations and costs of insurance/pension liabilities using demographic and financial assumptions (mortality, discount rates, lapse). The deepest estimation zone in accounting — small assumption shifts swing the numbers by millions.',
+    body: 'Estimating obligations and costs of insurance/pension liabilities using demographic and financial assumptions (mortality, discount rates, lapse). The deepest estimation zone in accounting; small assumption shifts swing the numbers by millions.',
     ref: 'IFRS 17 / IAS 19',
   },
   reinsurance: {
@@ -116,17 +116,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   underwriting: {
     label: 'Underwriting',
-    body: 'Assessing and pricing risk before accepting it (insurance/lending). Underwriting quality drives the loss assumptions inside ECL, IBNR and actuarial estimates — a root cause of valuation risk.',
+    body: 'Assessing and pricing risk before accepting it (insurance/lending). Underwriting quality drives the loss assumptions inside ECL, IBNR and actuarial estimates; a root cause of valuation risk.',
     ref: 'IFRS 17 / IFRS 9',
   },
   custodian: {
     label: 'Custodian',
-    body: 'An institution holding clients\u2019 securities for safekeeping. Fund auditors confirm holdings directly with custodians — a core existence/rights test for investment assets.',
-    ref: 'ISA 502',
+    body: 'An institution holding clients\u2019 securities for safekeeping. Fund auditors confirm holdings directly with custodians; a core existence/rights test for investment assets.',
+    ref: 'ISA 505',
   },
   confirmation: {
     label: 'Confirmation',
-    body: 'Direct written response from a third party (bank, customer, lender, custodian, lawyer) verifying a balance or condition. High reliability because it is external — but it tests existence/accuracy, NOT completeness.',
+    body: 'Direct written response from a third party (bank, customer, lender, custodian, lawyer) verifying a balance or condition. High reliability because it is external; but it tests existence/accuracy, NOT completeness.',
     ref: 'ISA 505',
   },
   vouching: {
@@ -151,7 +151,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'cut-off': {
     label: 'Cut-off',
-    body: 'Transactions recorded in the correct accounting period. Year-end testing centres on the last and first weeks of the period — goods-in-transit, invoices held back, December costs booked in January.',
+    body: 'Transactions recorded in the correct accounting period. Year-end testing centres on the last and first weeks of the period; goods-in-transit, invoices held back, December costs booked in January.',
     ref: 'ISA 315 assertion vocabulary',
   },
   'going concern': {
@@ -166,17 +166,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'related party': {
     label: 'Related party',
-    body: 'Entities/people with control, joint control or significant influence over the entity. Transactions with them may not be at arm\u2019s length; completeness of identification and disclosure is the audit challenge — the parties are often deliberately opaque.',
+    body: 'Entities/people with control, joint control or significant influence over the entity. Transactions with them may not be at arm\u2019s length; completeness of identification and disclosure is the audit challenge; the parties are often deliberately opaque.',
     ref: 'IAS 24 / ISA 550',
   },
   'deferred income': {
     label: 'Deferred income',
-    body: 'Cash received before the related good/service is delivered — a liability until earned. Contract balances and remaining-performance-obligations drive it; cut-off and completeness risks dominate.',
+    body: 'Cash received before the related good/service is delivered; a liability until earned. Contract balances and remaining-performance-obligations drive it; cut-off and completeness risks dominate.',
     ref: 'IFRS 15',
   },
   'revenue recognition': {
     label: 'Revenue recognition',
-    body: 'Recognising revenue when (or as) performance obligations are satisfied, at the transaction price. Five-step model. Presumed fraud risk under ISA 240 — the classic battle-ground assertion is occurrence and cut-off.',
+    body: 'Recognising revenue when (or as) performance obligations are satisfied, at the transaction price. Five-step model. Presumed fraud risk under ISA 240; the classic battle-ground assertion is occurrence and cut-off.',
     ref: 'IFRS 15 / ISA 240',
   },
   'percentage of completion': {
@@ -201,12 +201,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'borrowing costs': {
     label: 'Borrowing costs',
-    body: 'Interest and similar costs directly attributable to qualifying asset construction. Must be capitalised during construction, not expensed — timing and scope are cut-off/classification issues.',
+    body: 'Interest and similar costs directly attributable to qualifying asset construction. Must be capitalised during construction, not expensed; timing and scope are cut-off/classification issues.',
     ref: 'IAS 23',
   },
   'useful life': {
     label: 'Useful life',
-    body: 'The period over which an asset is depreciated or amortised. An estimate — stretching it protects profit, shrinking it accelerates expense. Valuation assertion territory.',
+    body: 'The period over which an asset is depreciated or amortised. An estimate; stretching it protects profit, shrinking it accelerates expense. Valuation assertion territory.',
     ref: 'IAS 16 / IAS 38',
   },
   'inventory count': {
@@ -216,17 +216,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   consignment: {
     label: 'Consignment stock',
-    body: 'Inventory held by one party but owned by another (the consignor) until sold. Rights-and-obligations risk: the stock is physically present but not the client\u2019s — a classic trap in inventory counts.',
+    body: 'Inventory held by one party but owned by another (the consignor) until sold. Rights-and-obligations risk: the stock is physically present but not the client\u2019s; a classic trap in inventory counts.',
     ref: 'IFRS 15 / IFRS 16 concepts',
   },
   'work in progress': {
     label: 'Work in progress (WIP)',
-    body: 'Partially-completed goods or contracts at period end. Valuation relies on percentage-complete estimates; existence relies on the physical state of the work — both fail together when cost-to-complete forecasts are wrong.',
+    body: 'Partially-completed goods or contracts at period end. Valuation relies on percentage-complete estimates; existence relies on the physical state of the work; both fail together when cost-to-complete forecasts are wrong.',
     ref: 'IAS 2 / IFRS 15',
   },
   factoring: {
     label: 'Factoring',
-    body: 'Selling receivables to a factor at a discount for immediate cash. Recourse terms determine whether the receivable is truly derecognised or is really a disguised borrowing — substance over form.',
+    body: 'Selling receivables to a factor at a discount for immediate cash. Recourse terms determine whether the receivable is truly derecognised or is really a disguised borrowing; substance over form.',
     ref: 'IFRS 9 derecognition',
   },
   'allowance': {
@@ -251,17 +251,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   intercompany: {
     label: 'Intercompany balances',
-    body: 'Receivables/payables between group entities. Eliminated on consolidation, but only if identified — completeness and elimination-cut-off are the risks; balances with related parties need disclosure too.',
+    body: 'Receivables/payables between group entities. Eliminated on consolidation, but only if identified; completeness and elimination-cut-off are the risks; balances with related parties need disclosure too.',
     ref: 'IFRS 10 / IAS 24',
   },
   'transfer pricing': {
     label: 'Transfer pricing',
-    body: 'Pricing of transactions between related entities in different tax jurisdictions. Arm\u2019s-length benchmarking and documentation requirements; mispricing shifts profit between tax regimes — classification and disclosure risk.',
+    body: 'Pricing of transactions between related entities in different tax jurisdictions. Arm\u2019s-length benchmarking and documentation requirements; mispricing shifts profit between tax regimes; classification and disclosure risk.',
     ref: 'IAS 24 / OECD guidelines',
   },
   consolidation: {
     label: 'Consolidation',
-    body: 'Combining parent and controlled subsidiaries into one economic entity. Control assessment (risk vs reward, SPVs) determines the perimeter — a wrong perimeter is a presentation-level misstatement of everything.',
+    body: 'Combining parent and controlled subsidiaries into one economic entity. Control assessment (risk vs reward, SPVs) determines the perimeter; a wrong perimeter is a presentation-level misstatement of everything.',
     ref: 'IFRS 10',
   },
   milestone: {
@@ -271,22 +271,22 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'prepayment': {
     label: 'Prepayment',
-    body: 'Cash paid before the related expense is incurred — an asset until the benefit is consumed. Cut-off risk at both ends of the period; ageing prepayments that should have been expensed are a classic find.',
+    body: 'Cash paid before the related expense is incurred; an asset until the benefit is consumed. Cut-off risk at both ends of the period; ageing prepayments that should have been expensed are a classic find.',
     ref: 'IAS 1',
   },
   'unearned premium': {
     label: 'Unearned premium',
-    body: 'The portion of insurance premium relating to the unexpired period of cover. Earned over the coverage period — a timing (cut-off) estimate, calculated pro-rata or by actuarial method.',
+    body: 'The portion of insurance premium relating to the unexpired period of cover. Earned over the coverage period; a timing (cut-off) estimate, calculated pro-rata or by actuarial method.',
     ref: 'IFRS 17',
   },
   crypto: {
     label: 'Crypto-assets',
-    body: 'Digitally-recorded assets (tokens, stablecoins) without a single accounting home — held-for-sale, intangible or inventory depending on the business model. Valuation evidence and custody are the dominant risks.',
+    body: 'Digitally-recorded assets (tokens, stablecoins) without a single accounting home; held-for-sale, intangible or inventory depending on the business model. Valuation evidence and custody are the dominant risks.',
     ref: 'IAS 38 / IFRS interpretations',
   },
   token: {
     label: 'Token',
-    body: 'A digital unit recorded on a blockchain, representing anything from a currency claim to a utility right. Accounting classification (asset? liability? equity?) is unsettled — judgement and disclosure risk.',
+    body: 'A digital unit recorded on a blockchain, representing anything from a currency claim to a utility right. Accounting classification (asset? liability? equity?) is unsettled; judgement and disclosure risk.',
     ref: 'IAS 38',
   },
   'loan-to-value': {
@@ -296,17 +296,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'discount rate': {
     label: 'Discount rate',
-    body: 'The rate used to convert future cash flows to present value. Small changes have enormous effects on lease liabilities, provisions, impairments and pensions — the single most sensitive estimate input.',
+    body: 'The rate used to convert future cash flows to present value. Small changes have enormous effects on lease liabilities, provisions, impairments and pensions; the single most sensitive estimate input.',
     ref: 'IAS 19 / IAS 36 / IFRS 16',
   },
   'present value': {
     label: 'Present value',
-    body: 'The current worth of future cash flows, discounted at an appropriate rate. Ubiquitous in liabilities, impairment tests and lease accounting — and always assumption-dependent.',
+    body: 'The current worth of future cash flows, discounted at an appropriate rate. Ubiquitous in liabilities, impairment tests and lease accounting; and always assumption-dependent.',
     ref: 'Conceptual Framework',
   },
   'functional currency': {
     label: 'Functional currency',
-    body: 'The currency of the primary economic environment in which the entity operates. Determines what is "monetary" vs "non-monetary" for translation — wrong classification creates FX gains/losses in the wrong places.',
+    body: 'The currency of the primary economic environment in which the entity operates. Determines what is "monetary" vs "non-monetary" for translation; wrong classification creates FX gains/losses in the wrong places.',
     ref: 'IAS 21',
   },
   'subsequent events': {
@@ -316,7 +316,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'analytical review': {
     label: 'Analytical review',
-    body: 'Studying relationships between financial and non-financial data — ratios, trends, expectations — to spot inconsistencies. Powerful for risk assessment, weaker as a stand-alone substantive test.',
+    body: 'Studying relationships between financial and non-financial data; ratios, trends, expectations; to spot inconsistencies. Powerful for risk assessment, weaker as a stand-alone substantive test.',
     ref: 'ISA 520',
   },
   'materiality': {
@@ -331,27 +331,27 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'aged receivable': {
     label: 'Aged receivables analysis',
-    body: 'Receivables bucketed by how long outstanding. Feeds the ECL/allowance estimate and exposes collection problems — analytical review gold.',
+    body: 'Receivables bucketed by how long outstanding. Feeds the ECL/allowance estimate and exposes collection problems; analytical review gold.',
     ref: 'IFRS 9 / ISA 520',
   },
   nrv: {
     label: 'Net realisable value (NRV)',
-    body: 'Estimated selling price minus costs to complete and sell. Inventory is carried at the lower of cost and NRV — where selling prices fall or stock ages, NRV write-downs are the valuation risk.',
+    body: 'Estimated selling price minus costs to complete and sell. Inventory is carried at the lower of cost and NRV; where selling prices fall or stock ages, NRV write-downs are the valuation risk.',
     ref: 'IAS 2',
   },
   obsolescence: {
     label: 'Obsolescence',
-    body: 'The decline in an asset\'s or inventory\'s usefulness or saleability through age, technology or demand shifts. Drives impairment of fixed assets and NRV write-downs of stock — an estimate that management tends to postpone.',
+    body: 'The decline in an asset\'s or inventory\'s usefulness or saleability through age, technology or demand shifts. Drives impairment of fixed assets and NRV write-downs of stock; an estimate that management tends to postpone.',
     ref: 'IAS 2 / IAS 36',
   },
   'slow-moving': {
     label: 'Slow-moving stock',
-    body: 'Inventory with little or no movement over extended periods — a leading indicator of obsolescence and NRV write-down needs. Ageing analysis is the standard evidence.',
+    body: 'Inventory with little or no movement over extended periods; a leading indicator of obsolescence and NRV write-down needs. Ageing analysis is the standard evidence.',
     ref: 'IAS 2',
   },
   fifo: {
     label: 'FIFO (first-in, first-out)',
-    body: 'Cost flow assumption that the oldest goods are sold first. In rising price environments it leaves newer (higher) costs in closing inventory; in falling environments the reverse — the method choice directly moves both cost of sales and inventory values.',
+    body: 'Cost flow assumption that the oldest goods are sold first. In rising price environments it leaves newer (higher) costs in closing inventory; in falling environments the reverse; the method choice directly moves both cost of sales and inventory values.',
     ref: 'IAS 2',
   },
   'weighted average': {
@@ -361,12 +361,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'standard cost': {
     label: 'Standard costing',
-    body: 'Predetermined unit costs used to value inventory and measure variances. The audit question is whether standards reasonably approximate actual cost at period end — unrealistic standards misstate both inventory and cost of sales.',
+    body: 'Predetermined unit costs used to value inventory and measure variances. The audit question is whether standards reasonably approximate actual cost at period end; unrealistic standards misstate both inventory and cost of sales.',
     ref: 'IAS 2',
   },
   wip: {
     label: 'WIP (work in progress)',
-    body: 'See Work in progress. Partially complete production or contracts at period end — the valuation of which depends on completion-percentage estimates.',
+    body: 'See Work in progress. Partially complete production or contracts at period end; the valuation of which depends on completion-percentage estimates.',
     ref: 'IAS 2 / IFRS 15',
   },
   'finished goods': {
@@ -376,7 +376,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   lcm: {
     label: 'Lower of cost and NRV',
-    body: 'The IAS 2 measurement rule: inventory is carried at whichever is lower, cost or net realisable value. The comparison must happen at least annually — and NRV falls are frequently recognised late.',
+    body: 'The IAS 2 measurement rule: inventory is carried at whichever is lower, cost or net realisable value. The comparison must happen at least annually; and NRV falls are frequently recognised late.',
     ref: 'IAS 2',
   },
   'cash count': {
@@ -396,7 +396,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   imprest: {
     label: 'Imprest system',
-    body: 'A fixed-balance arrangement (petty cash, dividends accounts): the balance stays constant and is only restored by documented reimbursement. Makes shortages obvious — a strong completeness/existence control.',
+    body: 'A fixed-balance arrangement (petty cash, dividends accounts): the balance stays constant and is only restored by documented reimbursement. Makes shortages obvious; a strong completeness/existence control.',
     ref: 'Internal control concept',
   },
   'cut-off testing': {
@@ -416,7 +416,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'bill and hold': {
     label: 'Bill-and-hold',
-    body: 'Revenue recognised while goods remain with the seller under customer instruction. Legitimate only under strict criteria (customer controls the goods, segregation, no resale) — otherwise it is premature recognition.',
+    body: 'Revenue recognised while goods remain with the seller under customer instruction. Legitimate only under strict criteria (customer controls the goods, segregation, no resale); otherwise it is premature recognition.',
     ref: 'IFRS 15',
   },
   'channel stuffing': {
@@ -426,7 +426,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'side agreement': {
     label: 'Side agreement',
-    body: 'A separate, undisclosed contract modifying the apparent terms of a sale (return rights, price protection). Evidence that the recorded revenue does not reflect the real arrangement — occurrence risk.',
+    body: 'A separate, undisclosed contract modifying the apparent terms of a sale (return rights, price protection). Evidence that the recorded revenue does not reflect the real arrangement; occurrence risk.',
     ref: 'IFRS 15 / ISA 240',
   },
   derecognition: {
@@ -436,17 +436,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   recourse: {
     label: 'Recourse',
-    body: 'The transferor\'s obligation to repurchase or compensate for transferred assets (e.g. factored receivables that default). Recourse means risks have not truly transferred — usually blocking derecognition.',
+    body: 'The transferor\'s obligation to repurchase or compensate for transferred assets (e.g. factored receivables that default). Recourse means risks have not truly transferred; usually blocking derecognition.',
     ref: 'IFRS 9',
   },
   'expected loss': {
     label: 'Expected loss model',
-    body: 'Impairment approach (ECL) recognising losses before they occur, based on probability weighting. Contrasts with incurred-loss models — the judgement moved from "has it happened" to "how likely is it".',
+    body: 'Impairment approach (ECL) recognising losses before they occur, based on probability weighting. Contrasts with incurred-loss models; the judgement moved from "has it happened" to "how likely is it".',
     ref: 'IFRS 9',
   },
   'credit-impaired': {
     label: 'Credit-impaired (Stage 3)',
-    body: 'A financial asset where a credit event has already occurred (default, bankruptcy). Interest is accrued on net carrying amount and lifetime ECL applies — the deepest level of impairment recognition.',
+    body: 'A financial asset where a credit event has already occurred (default, bankruptcy). Interest is accrued on net carrying amount and lifetime ECL applies; the deepest level of impairment recognition.',
     ref: 'IFRS 9',
   },
   'significant increase in credit risk': {
@@ -461,22 +461,22 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'forbearance': {
     label: 'Forbearance',
-    body: 'Concessions granted to a borrower in difficulty (extended terms, waived covenants, reduced rates). Modifies the loan\'s contractual cash flows — ECL and staging must reflect the new reality, and disclosure is required.',
+    body: 'Concessions granted to a borrower in difficulty (extended terms, waived covenants, reduced rates). Modifies the loan\'s contractual cash flows; ECL and staging must reflect the new reality, and disclosure is required.',
     ref: 'IFRS 9 / IFRS 7',
   },
   'probability-weighted': {
     label: 'Probability-weighted outcome',
-    body: 'An estimate computed across multiple scenarios and their likelihoods — the core mechanism of ECL. The audit question is whether the scenario set is complete and unbiased.',
+    body: 'An estimate computed across multiple scenarios and their likelihoods; the core mechanism of ECL. The audit question is whether the scenario set is complete and unbiased.',
     ref: 'IFRS 9',
   },
   'forward-looking': {
     label: 'Forward-looking information',
-    body: 'Macroeconomic and entity-specific forecasts used in ECL and impairment models. The judgement zone: which indicators, over what horizon, with what sensitivity — small input changes swing provisions.',
+    body: 'Macroeconomic and entity-specific forecasts used in ECL and impairment models. The judgement zone: which indicators, over what horizon, with what sensitivity; small input changes swing provisions.',
     ref: 'IFRS 9',
   },
   pd: {
     label: 'PD (probability of default)',
-    body: 'The likelihood a borrower defaults within a given horizon — a core ECL input, derived from internal ratings, external scores or market data. Model governance is the audit focus.',
+    body: 'The likelihood a borrower defaults within a given horizon; a core ECL input, derived from internal ratings, external scores or market data. Model governance is the audit focus.',
     ref: 'IFRS 9',
   },
   lgd: {
@@ -491,7 +491,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   ibnr: {
     label: 'IBNR (incurred but not reported)',
-    body: 'Insurance claims that have happened but not yet been reported to the insurer at the reporting date. Estimated actuarially — the classic insurance completeness and valuation risk.',
+    body: 'Insurance claims that have happened but not yet been reported to the insurer at the reporting date. Estimated actuarially; the classic insurance completeness and valuation risk.',
     ref: 'IFRS 17',
   },
   'claims reserve': {
@@ -501,7 +501,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'risk adjustment': {
     label: 'Risk adjustment (IFRS 17)',
-    body: 'The compensation the entity requires for bearing uncertainty about future cash flows — a non-financial-risk margin in insurance contract liabilities. Highly judgemental; disclosure of the method is mandatory.',
+    body: 'The compensation the entity requires for bearing uncertainty about future cash flows; a non-financial-risk margin in insurance contract liabilities. Highly judgemental; disclosure of the method is mandatory.',
     ref: 'IFRS 17',
   },
   'discount rate (unlocking)': {
@@ -511,12 +511,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'reinsurance recoverable': {
     label: 'Reinsurance recoverable',
-    body: 'The insurer\'s asset for amounts recoverable from reinsurers. A valuation estimate dependent on reinsurer credit quality and claim development — and a classic place for optimistic provisioning.',
+    body: 'The insurer\'s asset for amounts recoverable from reinsurers. A valuation estimate dependent on reinsurer credit quality and claim development; and a classic place for optimistic provisioning.',
     ref: 'IFRS 17',
   },
   lapse: {
     label: 'Lapse rate',
-    body: 'The proportion of insurance policies that terminate early through non-payment or surrender. A core actuarial assumption in life insurance — directly affecting liability measurement and unearned premium release.',
+    body: 'The proportion of insurance policies that terminate early through non-payment or surrender. A core actuarial assumption in life insurance; directly affecting liability measurement and unearned premium release.',
     ref: 'IFRS 17',
   },
   'unit trust': {
@@ -532,11 +532,11 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   'prime broker': {
     label: 'Prime broker',
     body: 'A bank providing bundled services (custody, financing, clearing) to institutional clients. The audit issue: confirming balances and collateral with the prime broker and understanding rehypothecation rights.',
-    ref: 'ISA 502 / IFRS 9',
+    ref: 'ISA 505 / IFRS 9',
   },
   rehypothecation: {
     label: 'Rehypothecation',
-    body: 'A custodian\'s reuse of client collateral for its own purposes. Creates rights-and-obligations and disclosure complexity — the client\'s assets may be encumbered without appearing so.',
+    body: 'A custodian\'s reuse of client collateral for its own purposes. Creates rights-and-obligations and disclosure complexity; the client\'s assets may be encumbered without appearing so.',
     ref: 'IFRS 7 / IFRS 9',
   },
   'netting agreement': {
@@ -551,12 +551,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'margin call': {
     label: 'Margin call',
-    body: 'Demand for additional collateral when exposure moves against a counterparty. Unmet margin calls crystallise counterparty risk — a subsequent-events and going-concern input.',
+    body: 'Demand for additional collateral when exposure moves against a counterparty. Unmet margin calls crystallise counterparty risk; a subsequent-events and going-concern input.',
     ref: 'Market practice / IFRS 7',
   },
   'netting and offsetting': {
     label: 'Netting and offsetting',
-    body: 'Presentation of assets and liabilities at a single net amount. Requires a legal right of set-off and intention to settle net — otherwise gross presentation is mandatory.',
+    body: 'Presentation of assets and liabilities at a single net amount. Requires a legal right of set-off and intention to settle net; otherwise gross presentation is mandatory.',
     ref: 'IAS 32',
   },
   'related-party transaction': {
@@ -566,17 +566,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'events after the reporting period': {
     label: 'Events after the reporting period',
-    body: 'See Subsequent events. Adjusting evidence for the year-end balances arrives after the period end but before the audit report — the review window.',
+    body: 'See Subsequent events. Adjusting evidence for the year-end balances arrives after the period end but before the audit report; the review window.',
     ref: 'IAS 10 / ISA 560',
   },
   'management representations': {
     label: 'Management representations',
-    body: 'Written statements from management the auditor obtains near report date. Necessary audit evidence, but never a substitute for other evidence — and not sufficient on their own for material items.',
+    body: 'Written statements from management the auditor obtains near report date. Necessary audit evidence, but never a substitute for other evidence; and not sufficient on their own for material items.',
     ref: 'ISA 580',
   },
   'management override': {
     label: 'Management override of controls',
-    body: 'The ability of management to bypass controls (journal entries, estimates, unusual transactions). A presumed fraud risk on every audit — the reason journals and estimates get tested on every engagement.',
+    body: 'The ability of management to bypass controls (journal entries, estimates, unusual transactions). A presumed fraud risk on every audit; the reason journals and estimates get tested on every engagement.',
     ref: 'ISA 240',
   },
   'journal entry testing': {
@@ -586,7 +586,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'test of details': {
     label: 'Tests of details',
-    body: 'Substantive procedures on individual items (vouching, confirmation, inspection, recalculation) as opposed to analytical procedures. Required when risk is high — analytic evidence alone is not enough.',
+    body: 'Substantive procedures on individual items (vouching, confirmation, inspection, recalculation) as opposed to analytical procedures. Required when risk is high; analytic evidence alone is not enough.',
     ref: 'ISA 330',
   },
   'test of controls': {
@@ -606,12 +606,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'sampling risk': {
     label: 'Sampling risk',
-    body: 'The risk the sample conclusion differs from the population truth. Reduced by larger samples and better selection methods; never zero — which is why high-risk assertions get bigger samples.',
+    body: 'The risk the sample conclusion differs from the population truth. Reduced by larger samples and better selection methods; never zero; which is why high-risk assertions get bigger samples.',
     ref: 'ISA 530',
   },
   'stratified sampling': {
     label: 'Stratification',
-    body: 'Splitting a population into sub-populations (e.g. by value) and sampling each separately. Big-ticket items get 100% testing; the remainder is sampled — more efficient and more precise.',
+    body: 'Splitting a population into sub-populations (e.g. by value) and sampling each separately. Big-ticket items get 100% testing; the remainder is sampled; more efficient and more precise.',
     ref: 'ISA 530',
   },
   'monetary unit sampling': {
@@ -621,7 +621,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'haphazard selection': {
     label: 'Haphazard selection',
-    body: 'Non-structured, judgmental sample selection. Acceptable for small populations, but not a random method — statistical inference requires structured selection.',
+    body: 'Non-structured, judgmental sample selection. Acceptable for small populations, but not a random method; statistical inference requires structured selection.',
     ref: 'ISA 530',
   },
   'dual-purpose test': {
@@ -636,7 +636,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'negative confirmation': {
     label: 'Negative confirmation',
-    body: 'A confirmation where no reply is treated as agreement. Weaker evidence than positive confirmation — only acceptable with low risk and strong controls.',
+    body: 'A confirmation where no reply is treated as agreement. Weaker evidence than positive confirmation; only acceptable with low risk and strong controls.',
     ref: 'ISA 505',
   },
   'exception': {
@@ -656,12 +656,12 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'written audit report': {
     label: 'Audit report',
-    body: 'The auditor\'s opinion on whether the statements are materially misstated. The only part of the audit file most users ever see — the opinion paragraph, KAMs and emphasis-of-matter matter most.',
+    body: 'The auditor\'s opinion on whether the statements are materially misstated. The only part of the audit file most users ever see; the opinion paragraph, KAMs and emphasis-of-matter matter most.',
     ref: 'ISA 700 / ISA 701',
   },
   'key audit matter': {
     label: 'Key audit matters (KAM)',
-    body: 'The most significant matters discussed with those charged with governance, disclosed in the audit report. High-judgement areas (impairment, revenue recognition) — the issues this game trains you to spot.',
+    body: 'The most significant matters discussed with those charged with governance, disclosed in the audit report. High-judgement areas (impairment, revenue recognition); the issues this game trains you to spot.',
     ref: 'ISA 701',
   },
   'emphasis of matter': {
@@ -681,7 +681,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'management expert': {
     label: 'Management\'s expert',
-    body: 'A specialist (actuary, valuer, engineer) whose work the entity uses in preparing the statements. The auditor must evaluate their competence, objectivity and assumptions — not just accept the output.',
+    body: 'A specialist (actuary, valuer, engineer) whose work the entity uses in preparing the statements. The auditor must evaluate their competence, objectivity and assumptions; not just accept the output.',
     ref: 'ISA 500 / ISA 540',
   },
   'auditor expert': {
@@ -691,17 +691,17 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   backlog: {
     label: 'Order backlog',
-    body: 'Contracted but unfulfilled customer orders. A demand indicator used in impairment forecasts and revenue cut-off — and a place where optimistic backlog inflates forecasts.',
+    body: 'Contracted but unfulfilled customer orders. A demand indicator used in impairment forecasts and revenue cut-off; and a place where optimistic backlog inflates forecasts.',
     ref: 'ISA 540 context',
   },
   'breakage': {
     label: 'Breakage',
-    body: 'The expected portion of deferred income (gift cards, loyalty points) that will never be redeemed. Recognising breakage as revenue requires a reliable historical pattern — otherwise it stays a liability.',
+    body: 'The expected portion of deferred income (gift cards, loyalty points) that will never be redeemed. Recognising breakage as revenue requires a reliable historical pattern; otherwise it stays a liability.',
     ref: 'IFRS 15',
   },
   'variable consideration': {
     label: 'Variable consideration',
-    body: 'Parts of the transaction price that vary (rebates, penalties, bonuses, refunds). Constrained to amounts highly probable not to reverse — estimate-heavy and a favourite place for revenue misstatement.',
+    body: 'Parts of the transaction price that vary (rebates, penalties, bonuses, refunds). Constrained to amounts highly probable not to reverse; estimate-heavy and a favourite place for revenue misstatement.',
     ref: 'IFRS 15',
   },
   'performance obligation': {
@@ -711,7 +711,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   'transaction price': {
     label: 'Transaction price',
-    body: 'The consideration the entity expects to be entitled to, adjusted for variable consideration, financing, consideration payable to the customer — the "how much" of the five-step model.',
+    body: 'The consideration the entity expects to be entitled to, adjusted for variable consideration, financing, consideration payable to the customer; the "how much" of the five-step model.',
     ref: 'IFRS 15',
   },
   'contract asset': {
