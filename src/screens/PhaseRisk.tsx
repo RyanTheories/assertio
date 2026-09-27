@@ -3,6 +3,7 @@ import type { AssertionId, Scenario } from '../types';
 import { scoreHighRisk } from '../scoring';
 import { ASSERTION_LABELS } from '../ui';
 import { statementLabel } from '../data/validate';
+import { ConceptText } from '../components/ConceptText';
 
 interface Props {
   scenario: Scenario;
@@ -64,7 +65,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
 
       <div className="brief-context recap">
         <p className="eyebrow">Engagement brief</p>
-        <p>{scenario.client_context}</p>
+        <p><ConceptText>{scenario.client_context}</ConceptText></p>
       </div>
 
       <div className="assertion-groups risk-groups">
@@ -119,7 +120,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
           <div className="risk-reasons">
             {(Object.entries(scenario.assertions_high_risk) as [AssertionId, string][]).map(([id, reason]) => (
               <p key={id} className={`risk-reason ${selected.has(id) ? 'rr-caught' : 'rr-missed'}`}>
-                <strong>{ASSERTION_LABELS[id]}:</strong> {reason}
+                <strong>{ASSERTION_LABELS[id]}:</strong> <ConceptText>{reason}</ConceptText>
               </p>
             ))}
           </div>

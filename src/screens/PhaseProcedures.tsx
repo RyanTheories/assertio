@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import type { AssertionId, Procedure, Scenario } from '../types';
 import { scoreProcedures, type Phase3Score, type ProcedureAnswer } from '../scoring';
 import { ASSERTION_LABELS, TAXONOMY_ORDER } from '../ui';
+import { ConceptText } from '../components/ConceptText';
 
 interface ShuffledProc {
   proc: Procedure;
@@ -111,7 +112,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
             >
               <div className="proc-top">
                 <span className="a-key">{i === 9 ? '0' : String(i + 1)}</span>
-                <p className="proc-text">{sp.proc.procedure}</p>
+                <p className="proc-text"><ConceptText>{sp.proc.procedure}</ConceptText></p>
                 {sp.proc.isa_ref && <span className="badge badge-isa">{sp.proc.isa_ref}</span>}
               </div>
 
@@ -147,13 +148,13 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
                     fb.caught ? (
                       <div className="trap-callout trap-caught">
                         <p className="trap-title">🎯 Trap caught!</p>
-                        <p>{sp.proc.trap_explanation}</p>
+                        <p><ConceptText>{sp.proc.trap_explanation}</ConceptText></p>
                         <p className="trap-pts">+{fb.points} pts — highest-value action</p>
                       </div>
                     ) : (
                       <div className="trap-callout trap-missed">
                         <p className="trap-title">⚠ This one was a trap</p>
-                        <p>{sp.proc.trap_explanation}</p>
+                        <p><ConceptText>{sp.proc.trap_explanation}</ConceptText></p>
                         <p className="trap-pts">{fb.points} pts</p>
                     </div>
                     )
