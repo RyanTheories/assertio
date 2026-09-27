@@ -4,6 +4,7 @@ import type { AssertionId, Scenario } from './types';
 import type { ProcedureAnswer, RoundScore } from './scoring';
 import { scoreRound } from './scoring';
 import { Home } from './screens/Home';
+import { AssertionsGuide } from './screens/AssertionsGuide';
 import { Round } from './screens/Round';
 import { RoundSummary } from './screens/RoundSummary';
 import { SessionSummary } from './screens/SessionSummary';
@@ -11,6 +12,7 @@ import { recordSession, type SessionRecord } from './storage';
 
 type Screen =
   | { kind: 'home' }
+  | { kind: 'guide' }
   | { kind: 'round' }
   | { kind: 'roundSummary' }
   | { kind: 'sessionSummary' };
@@ -126,7 +128,11 @@ export default function App() {
         <Home
           scenarios={data.scenarios}
           onStart={startSession}
+          onOpenGuide={() => setScreen({ kind: 'guide' })}
         />
+      )}
+      {screen.kind === 'guide' && (
+        <AssertionsGuide onHome={() => setScreen({ kind: 'home' })} />
       )}
       {screen.kind === 'round' && sessionScenarios.length > 0 && (
         <Round
