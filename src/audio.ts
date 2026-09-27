@@ -63,16 +63,8 @@ export function isAmbiencePlaying() {
   return playing;
 }
 
-export function toggleAmbience(): boolean {
-  if (playing) {
-    if (timer !== null) window.clearInterval(timer);
-    timer = null;
-    if (master && ctx) {
-      master.gain.setTargetAtTime(0, ctx.currentTime, 0.2);
-    }
-    playing = false;
-    return false;
-  }
+function startInternal(): boolean {
+  if (playing) return true;
   if (!ctx) {
     ctx = new AudioContext();
     master = ctx.createGain();
@@ -90,4 +82,23 @@ export function toggleAmbience(): boolean {
   timer = window.setInterval(schedule, 1400);
   playing = true;
   return true;
+}
+
+export function startAmbience(): boolean {
+  return startInternal();
+}
+
+export function stopAmbience(): boolean {
+  if (!playing) return false;
+  if (timer !== null) window.clearInterval(timer);
+  timer = null;
+  if (master && ctx) {
+    master.gain.setTargetAtTime(0, ctx.currentTime, 0.2);
+  }
+  playing = false;
+  return false;
+}
+
+export function toggleAmbience(): boolean {
+  return playing ? stopAmbience() : startInternal();
 }
