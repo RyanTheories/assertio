@@ -39,7 +39,7 @@ export function Home({ scenarios, onStart }: Props) {
     <div className="screen home">
       <header className="hero">
         <p className="eyebrow">Audit training</p>
-        <h1>Assertion Arena</h1>
+        <h1>Assertio</h1>
         <p className="tagline">
           Judge which assertions matter for each line item, which are high risk in context — and spot the
           procedure that looks right but tests the wrong thing.
