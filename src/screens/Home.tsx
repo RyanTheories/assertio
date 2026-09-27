@@ -51,6 +51,20 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
           procedure that looks right but tests the wrong thing.
         </p>
       </header>
+      <section className="card mission">
+        <h2>Why this game exists</h2>
+        <p>
+          Everyone says AI will replace audit. But an audit was never about ticking boxes — it is professional
+          scepticism: knowing <em>where</em> the numbers can lie, <em>why</em> someone might want them to, and
+          <em>which</em> question, asked of which evidence, actually settles the matter.
+        </p>
+        <p>
+          Every scenario here is that judgement, distilled. A machine can reconcile a ledger in seconds — but
+          deciding that a December invoice smells wrong because the bonus targets depend on it, and knowing the
+          exact confirmation that will prove it? That is the profession. Assertio exists to show what that
+          work really feels like — and to train it.
+        </p>
+      </section>
 
       <section className="card setup">
         <h2>New session</h2>

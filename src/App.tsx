@@ -1,10 +1,10 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { getGameData, loadGameData, type ValidationIssue } from './data/validate';
 import type { AssertionId, Scenario } from './types';
 import type { ProcedureAnswer, RoundScore } from './scoring';
 import { scoreRound } from './scoring';
 import { sectorFor } from './sectors';
-import { toggleAmbience } from './audio';
+import { startAmbience, toggleAmbience } from './audio';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
 import { Round } from './screens/Round';
@@ -60,6 +60,23 @@ export default function App() {
   const validation = useMemo(() => loadGameData(), []);
   const [screen, setScreen] = useState<Screen>({ kind: 'home' });
   const [musicOn, setMusicOn] = useState(false);
+  const userMuted = useRef(false);
+
+  useEffect(() => {
+    const startOnGesture = (e: Event) => {
+      if (userMuted.current) return;
+      if (e.target instanceof Element && e.target.closest('.music-toggle')) return;
+      setMusicOn(startAmbience());
+      window.removeEventListener('pointerdown', startOnGesture);
+      window.removeEventListener('keydown', startOnGesture);
+    };
+    window.addEventListener('pointerdown', startOnGesture, { once: false });
+    window.addEventListener('keydown', startOnGesture, { once: false });
+    return () => {
+      window.removeEventListener('pointerdown', startOnGesture);
+      window.removeEventListener('keydown', startOnGesture);
+    };
+  }, []);
   const [sessionScenarios, setSessionScenarios] = useState<Scenario[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [rounds, setRounds] = useState<RoundRecord[]>([]);
@@ -128,7 +145,11 @@ export default function App() {
     <>
       <button
         className={`btn btn-small music-toggle ${musicOn ? 'btn-primary' : 'btn-ghost'}`}
-        onClick={() => setMusicOn(toggleAmbience())}
+        onClick={() => {
+          const next = toggleAmbience();
+          userMuted.current = !next;
+          setMusicOn(next);
+        }}
         aria-pressed={musicOn}
         title={musicOn ? 'Mute Roman ambience' : 'Play Roman ambience'}
       >
