@@ -3,6 +3,7 @@ import { getGameData, loadGameData, type ValidationIssue } from './data/validate
 import type { AssertionId, Scenario } from './types';
 import type { ProcedureAnswer, RoundScore } from './scoring';
 import { scoreRound } from './scoring';
+import { sectorFor } from './sectors';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
 import { Round } from './screens/Round';
@@ -44,8 +45,7 @@ export function pickSessionScenarios(all: Scenario[], cfg: SessionConfig): Scena
   let pool = all;
   if (cfg.difficulty !== 'mixed') pool = pool.filter((s) => s.difficulty === cfg.difficulty);
   if (cfg.industry) {
-    const lower = cfg.industry.toLowerCase();
-    pool = pool.filter((s) => s.industry.toLowerCase() === lower);
+    pool = pool.filter((s) => sectorFor(s.industry) === cfg.industry);
   }
   if (cfg.statement !== 'all') {
     const groupOf = (s: Scenario) =>
