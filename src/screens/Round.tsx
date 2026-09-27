@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react';
+import { toRoman } from '../sectors';
 import type { AssertionId, Scenario } from '../types';
 import type { ProcedureAnswer } from '../scoring';
 import { PhaseBrief } from './PhaseBrief';
@@ -38,7 +39,7 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
       <header className="hud">
         <div className="hud-left">
           <span className="hud-title">Assertio</span>
-          <span className="muted">Scenario {index + 1} / {total}</span>
+          <span className="muted">Scenario {toRoman(index + 1)} / {toRoman(total)}</span>
         </div>
         <div className="hud-right">
           {streak > 0 && <span className="streak" title="Consecutive mastered scenarios">🔥 {streak}</span>}

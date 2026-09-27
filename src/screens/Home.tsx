@@ -3,6 +3,7 @@ import type { Scenario } from '../types';
 import type { SessionConfig } from '../App';
 import { loadState } from '../storage';
 import { statementGroup } from '../data/validate';
+import { sectorFor, SECTOR_ORDER } from '../sectors';
 
 interface Props {
   scenarios: Scenario[];
@@ -14,31 +15,35 @@ const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate',
 
 export function Home({ scenarios, onStart, onOpenGuide }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
-  const [industry, setIndustry] = useState<string | null>(null);
+  const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
   const [showHowTo, setShowHowTo] = useState(false);
 
-  const industries = useMemo(() => {
-    const seen = new Map<string, string>();
+  const sectors = useMemo(() => {
+    const counts = new Map<string, number>();
     for (const s of scenarios) {
-      const key = s.industry.toLowerCase();
-      if (!seen.has(key)) seen.set(key, s.industry);
+      const sec = sectorFor(s.industry);
+      counts.set(sec, (counts.get(sec) ?? 0) + 1);
     }
-    return [...seen.values()].sort((a, b) => a.localeCompare(b));
+    return SECTOR_ORDER.filter((sec) => counts.has(sec)).map((sec) => ({ sector: sec, count: counts.get(sec)! }));
   }, [scenarios]);
 
   const stats = useMemo(() => loadState(), []);
   const availableCount = useMemo(() => {
     let pool = scenarios;
     if (difficulty !== 'mixed') pool = pool.filter((s) => s.difficulty === difficulty);
-    if (industry) pool = pool.filter((s) => s.industry.toLowerCase() === industry.toLowerCase());
+    if (sector) pool = pool.filter((s) => sectorFor(s.industry) === sector);
     if (statement !== 'all') pool = pool.filter((s) => statementGroup(s.statement) === statement);
     return pool.length;
-  }, [scenarios, difficulty, industry, statement]);
+  }, [scenarios, difficulty, sector, statement]);
 
   return (
     <div className="screen home">
       <header className="hero">
+        <svg className="laurel" viewBox="0 0 100 40" aria-hidden="true">
+          <path d="M30 4 Q10 10 6 30 Q18 22 26 26 Q18 16 22 6 Q26 14 32 20 Z" />
+          <path d="M70 4 Q90 10 94 30 Q82 22 74 26 Q82 16 78 6 Q74 14 68 20 Z" />
+        </svg>
         <p className="eyebrow">Audit training</p>
         <h1>Assertio</h1>
         <p className="tagline">
@@ -66,11 +71,11 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
         <div className="field">
           <label>Industry</label>
           <div className="select-row">
-            <select value={industry ?? ''} onChange={(e) => setIndustry(e.target.value || null)}>
-              <option value="">All industries</option>
-              {industries.map((ind) => (
-                <option key={ind} value={ind}>
-                  {ind}
+            <select value={sector ?? ''} onChange={(e) => setSector(e.target.value || null)}>
+              <option value="">All sectors</option>
+              {sectors.map(({ sector: sec, count }) => (
+                <option key={sec} value={sec}>
+                  {sec} ({count})
                 </option>
               ))}
             </select>
@@ -93,7 +98,7 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
         <button
           className="btn btn-primary btn-start"
           disabled={availableCount === 0}
-          onClick={() => onStart({ difficulty, industry, statement })}
+          onClick={() => onStart({ difficulty, industry: sector, statement })}
         >
           {availableCount === 0 ? 'No scenarios match' : `Start session (${availableCount} scenarios)`}
         </button>

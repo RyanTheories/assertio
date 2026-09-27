@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { toRoman } from '../sectors';
 import type { RoundRecord } from '../App';
 import { ASSERTION_LABELS } from '../ui';
 
@@ -28,7 +29,7 @@ export function RoundSummary({ round, index, total, isLast, onNext, onEnd }: Pro
     <div className="screen round-summary">
       <header className="hud">
         <div className="hud-left">
-          <span className="hud-title">Round {index + 1} / {total}</span>
+          <span className="hud-title">Round {toRoman(index + 1)} / {toRoman(total)}</span>
           <span className="muted">{scenario.line_item} · {scenario.industry}</span>
         </div>
       </header>
