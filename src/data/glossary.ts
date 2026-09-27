@@ -729,6 +729,564 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     body: 'An audit opinion other than unmodified: qualified, adverse or disclaimer. Triggered by material misstatements or inability to obtain evidence.',
     ref: 'ISA 705',
   },
+  arrears: {
+    label: 'Arrears',
+    body: 'Amounts that fell due and remain unpaid, typically loan or rent instalments past their due date. Arrears trigger default classification, impairment staging and covenant breaches, so the accuracy and completeness of the arrears position drive both ECL and going concern.',
+    ref: 'IFRS 9 / ISA 540 (Revised)',
+  },
+  collateral: {
+    label: 'Collateral',
+    body: 'Assets pledged by a borrower to secure a loan, which the lender can claim on default. The audit issues are the existence and valuation of the pledged assets, the enforceability of the security, and whether encumbrances are properly disclosed.',
+    ref: 'IFRS 7 / IFRS 9',
+  },
+  'working capital': {
+    label: 'Working capital',
+    body: 'Current assets minus current liabilities: the cushion funding day-to-day operations. Working capital swings move operating cash flow, and overstated inventory or receivables inflate it; a going concern assessment starts here.',
+    ref: 'IAS 1 / ISA 570',
+  },
+  'credit facility': {
+    label: 'Credit facility',
+    body: 'An agreed borrowing arrangement with a lender: term loans, revolvers or overdrafts. The audit issues are completeness of drawn and undrawn amounts, covenant compliance, and classification between current and non-current.',
+    ref: 'IFRS 9 / IAS 1',
+  },
+  'revolving credit facility': {
+    label: 'Revolving credit facility',
+    body: 'A borrowing facility that can be drawn and repaid repeatedly up to a limit. Classification depends on whether the entity has an unconditional right to defer settlement at least twelve months; breaches that suspend redraw are a going concern signal.',
+    ref: 'IFRS 9 / IAS 1',
+  },
+  'letter of credit': {
+    label: 'Letter of credit',
+    body: 'A bank\u2019s undertaking to pay a seller on presentation of specified documents, guaranteeing the buyer\u2019s obligation. The audit issues are whether it is a guarantee, a commitment or a financial liability, and whether the contingency is disclosed.',
+    ref: 'IAS 37 / IFRS 9',
+  },
+  headroom: {
+    label: 'Headroom',
+    body: 'The margin by which a covenant test passes, or capacity left under a borrowing limit. Thin or shrinking headroom signals default risk and management pressure to reclassify or adjust the measure the covenant references.',
+    ref: 'IFRS 7 / ISA 570',
+  },
+  waiver: {
+    label: 'Covenant waiver',
+    body: 'A lender\u2019s agreement not to enforce a breached covenant, usually temporary and often fee-bearing. The audit issues are the period the waiver covers, its conditions, disclosure of the breach, and the going concern assessment while it stands.',
+    ref: 'IAS 1 / IFRS 7 / ISA 570',
+  },
+  'amortization schedule': {
+    label: 'Amortization schedule',
+    body: 'The contractual table of interest and principal repayments over a loan\u2019s life. Auditors recompute it to test the accuracy of interest expense and the current/non-current split; renegotiations change it prospectively.',
+    ref: 'IFRS 9',
+  },
+  'balloon payment': {
+    label: 'Balloon payment',
+    body: 'A disproportionately large final repayment at the end of a loan. Refinancing risk concentrates at maturity, so the entity\u2019s ability to refinance becomes a going concern question.',
+    ref: 'IFRS 9 / ISA 570',
+  },
+  overdraft: {
+    label: 'Overdraft',
+    body: 'A bank borrowing facility repayable on demand. Classically a current liability; the going concern question arises when the bank can withdraw the facility and refinancing is uncertain.',
+    ref: 'IAS 1 / ISA 570',
+  },
+  'loan note': {
+    label: 'Loan note',
+    body: 'A debt instrument acknowledging a borrowing, usually with fixed interest and maturity terms. The audit issues are completeness of notes issued, accuracy of accreting interest, and classification between debt and equity when convertible.',
+    ref: 'IFRS 9 / IAS 32',
+  },
+  'shareholder loan': {
+    label: 'Shareholder loan',
+    body: 'Lending from an owner to the entity, often subordinated and informal. The audit issues are whether it is genuinely debt rather than disguised equity, its terms, and whether repayment expectations interact with going concern.',
+    ref: 'IAS 32 / ISA 570',
+  },
+  'intercompany loan': {
+    label: 'Intercompany loan',
+    body: 'Borrowing between group entities, eliminated on consolidation only if correctly identified and measured. Terms at variance with market rates shift profit between tax jurisdictions; interest accrual and elimination are recurring audit issues.',
+    ref: 'IAS 24 / IFRS 10',
+  },
+  'probability of default': {
+    label: 'Probability of default (PD)',
+    body: 'The likelihood a borrower defaults within a given horizon. A direct ECL input, derived from internal or external models; the audit issue is whether the model\u2019s data and assumptions reflect current conditions.',
+    ref: 'IFRS 9 / ISA 540 (Revised)',
+  },
+  'credit risk': {
+    label: 'Credit risk',
+    body: 'The risk a counterparty fails to meet its obligations. It drives ECL provisioning, concentration disclosures and collateral demands; the audit issues are whether exposures, staging and concentration are completely captured.',
+    ref: 'IFRS 9 / IFRS 7',
+  },
+  'counterparty risk': {
+    label: 'Counterparty risk',
+    body: 'The risk the other side of a transaction defaults before settlement. Most acute in derivatives and repos; the audit issues are netting enforceability, collateral held and the fair value of the exposure.',
+    ref: 'IFRS 9 / IFRS 13',
+  },
+  'effective interest rate': {
+    label: 'Effective interest rate (EIR)',
+    body: 'The rate exactly discounting contractual cash flows to the instrument\u2019s carrying amount. The engine of amortized cost accounting: fees, discounts and estimates of future losses all accrete through it. Recomputation is the standard accuracy test.',
+    ref: 'IFRS 9',
+  },
+  'yield curve': {
+    label: 'Yield curve',
+    body: 'The set of interest rates across maturities. Auditors use it to test the discount rates inside valuations and ECL models; a curve that moves after year end can be a subsequent event but rarely adjusts the numbers.',
+    ref: 'IFRS 13 / IFRS 9',
+  },
+  'interest coverage': {
+    label: 'Interest coverage',
+    body: 'Earnings before interest and tax divided by interest expense; a covenant measuring ability to service debt. The definition in the facility agreement governs, and adjustments to EBITDA are where manipulation shows.',
+    ref: 'IFRS 7 / ISA 570',
+  },
+  ebitda: {
+    label: 'EBITDA',
+    body: 'Earnings before interest, tax, depreciation and amortization; a rough proxy for operating cash generation. Not an IFRS measure, so its definition varies; covenant EBITDA is defined in the facility agreement and often adjusted, which is where the audit attention falls.',
+    ref: 'IAS 1 (non-IFRS measure)',
+  },
+  'refinancing risk': {
+    label: 'Refinancing risk',
+    body: 'The risk that borrowings cannot be rolled over at maturity on acceptable terms. It feeds the going concern assessment; auditors look for committed facilities and lender appetite, not management optimism.',
+    ref: 'ISA 570',
+  },
+  'debt restructuring': {
+    label: 'Debt restructuring',
+    body: 'Renegotiation of borrowing terms: rate cuts, extensions, conversions. The accounting questions are whether old debt is extinguished and new issued, whether the gain or loss is measured correctly, and whether terms changed substance or just schedule.',
+    ref: 'IFRS 9',
+  },
+  'money market fund': {
+    label: 'Money market fund',
+    body: 'A fund investing in short-term, high-quality debt instruments. The audit issues are fair value (amortized cost versus mark-to-market), redemption gates in stress, and existence of holdings confirmed with the administrator.',
+    ref: 'IFRS 9 / IFRS 10',
+  },
+  deposit: {
+    label: 'Deposit',
+    body: 'Cash placed with a bank, typically interest-bearing and repayable per contract. The audit issues are existence (direct bank confirmation), completeness (unrecorded deposits) and classification (notice periods affecting current status).',
+    ref: 'IAS 1 / ISA 505',
+  },
+  'certificate of deposit': {
+    label: 'Certificate of deposit (CD)',
+    body: 'A negotiable bank deposit with fixed maturity and interest. CDs are held at amortized cost or fair value depending on the business model; existence is confirmed with the issuing bank, and negotiability affects liquidity classification.',
+    ref: 'IFRS 9',
+  },
+  'repurchase agreement': {
+    label: 'Repurchase agreement (repo)',
+    body: 'Selling securities with a commitment to repurchase, economically a secured loan. The accounting question is whether the securities stay on the balance sheet; the transfer fails derecognition when the repurchase obligation remains.',
+    ref: 'IFRS 9 / IFRS 10',
+  },
+  'fund administrator': {
+    label: 'Fund administrator',
+    body: 'The agent computing NAV and maintaining the register. Administrators are a service organisation: the auditor assesses their controls and often obtains a service organisation report before relying on their valuations.',
+    ref: 'ISA 402',
+  },
+  'investment property': {
+    label: 'Investment property',
+    body: 'Property held to earn rentals or for capital appreciation rather than use. Fair value or cost model is a policy choice with full disclosure; valuation relies on appraisers whose work the auditor evaluates.',
+    ref: 'IAS 40',
+  },
+  'fair value hierarchy': {
+    label: 'Fair value hierarchy',
+    body: 'Level 1: quoted prices in active markets. Level 2: observable inputs. Level 3: unobservable, model-driven inputs. The deeper the level, the higher the estimation risk and the more audit attention the valuation needs.',
+    ref: 'IFRS 13',
+  },
+  'valuation technique': {
+    label: 'Valuation technique',
+    body: 'The model producing a fair value: market, cost or income approach. The auditor evaluates whether the technique suits the asset, whether inputs are observable, and whether management\u2019s model reflects how market participants would price it.',
+    ref: 'IFRS 13 / ISA 540 (Revised)',
+  },
+  'market approach': {
+    label: 'Market approach',
+    body: 'Valuing using prices from market transactions in comparable assets. Preferred when data exists; the audit issue is whether the comparables genuinely match, especially in thin markets.',
+    ref: 'IFRS 13',
+  },
+  'income approach': {
+    label: 'Income approach',
+    body: 'Valuing by discounting expected cash flows. The assumptions (growth, discount rate, terminal value) are where management bias lives; auditors test the support for each input rather than the arithmetic.',
+    ref: 'IFRS 13 / ISA 540 (Revised)',
+  },
+  'held-to-maturity': {
+    label: 'Held-to-maturity (HTM)',
+    body: 'A business model aiming to collect contractual cash flows, measured at amortized cost. Selling HTM assets casts doubt on the whole model; interest accretion via EIR and impairment via ECL are the audit issues.',
+    ref: 'IFRS 9',
+  },
+  'debt security': {
+    label: 'Debt security',
+    body: 'A tradable borrowing instrument such as a bond or note. The audit issues are the business model classification, fair value versus amortized cost, and existence confirmed with custodians or registers.',
+    ref: 'IFRS 9',
+  },
+  'credit spread': {
+    label: 'Credit spread',
+    body: 'The extra yield over the risk-free rate compensating for default risk. Spreads widen in stress and are an observable input to fair value and ECL discounting; the audit issue is the source and freshness of spread data.',
+    ref: 'IFRS 13 / IFRS 9',
+  },
+  'interest rate risk': {
+    label: 'Interest rate risk',
+    body: 'Exposure to rate changes, felt in fair values, cash costs and hedge effectiveness. Disclosures require sensitivity analysis; the audit tests the data and assumptions behind it.',
+    ref: 'IFRS 7',
+  },
+  'currency risk': {
+    label: 'Currency risk',
+    body: 'Exposure to exchange rate moves on monetary assets and liabilities. Monetary items re-translate at closing rate with gains and losses in profit; hedge relationships must be designated and documented, and disclosure requires sensitivity analysis.',
+    ref: 'IAS 21 / IFRS 7',
+  },
+  'monetary item': {
+    label: 'Monetary item',
+    body: 'An asset or liability to receive or pay a fixed currency amount. Monetary items re-translate at closing rate with gains and losses in profit; misclassifying monetary versus non-monetary puts FX effects in the wrong place.',
+    ref: 'IAS 21',
+  },
+  'closing rate': {
+    label: 'Closing rate',
+    body: 'The exchange rate at the reporting date, used to re-translate monetary items and foreign operations. The spot rate at close of business governs; the source and time of the rate are accuracy issues.',
+    ref: 'IAS 21',
+  },
+  'presentation currency': {
+    label: 'Presentation currency',
+    body: 'The currency the statements are presented in, which can differ from the functional currency. Translation of the functional results into presentation currency is mechanical, but the closing rate applied to equity items draws audit attention.',
+    ref: 'IAS 21',
+  },
+  'operating cycle': {
+    label: 'Operating cycle',
+    body: 'The time from acquiring inputs to collecting cash from customers. Items expected to be realised within the cycle count as current; cycle assumptions affect inventory and receivable classification.',
+    ref: 'IAS 1',
+  },
+  'liquidity risk': {
+    label: 'Liquidity risk',
+    body: 'The risk an entity cannot meet obligations as they fall due. Disclosures require maturity analysis; the audit checks completeness of the maturity data and the going concern link when facilities are concentrated.',
+    ref: 'IFRS 7 / ISA 570',
+  },
+  'concentration risk': {
+    label: 'Concentration risk',
+    body: 'Exposure to a single counterparty, sector or region large enough to change the risk profile. Hidden concentrations distort risk disclosure; the audit tests whether the exposure data feeding the disclosure is complete.',
+    ref: 'IFRS 7 / IFRS 9',
+  },
+  'other comprehensive income': {
+    label: 'Other comprehensive income (OCI)',
+    body: 'Income and expense recognised outside profit or loss: revaluation surplus, FX translation, cash flow hedges, FVOCI movements. What sits in OCI versus profit shapes the performance story; classification and recycling are the audit issues.',
+    ref: 'IAS 1 / IFRS 9',
+  },
+  'revaluation surplus': {
+    label: 'Revaluation surplus',
+    body: 'The uplift from carrying a class of assets at fair value, recognised in OCI. It inflates equity without cash backing; the audit issues are the valuation evidence and the consistency of the revaluation model within the class.',
+    ref: 'IAS 16 / IAS 38',
+  },
+  'impairment loss': {
+    label: 'Impairment loss',
+    body: 'The write-down when carrying amount exceeds recoverable amount. Timing and measurement are judgement-heavy; for goodwill it is allocated to cash-generating units, and the audit focuses on forecasts and discount rates.',
+    ref: 'IAS 36 / IFRS 9',
+  },
+  'recoverable amount': {
+    label: 'Recoverable amount',
+    body: 'The higher of fair value less costs of disposal and value in use. The impairment benchmark; value in use rests on cash flow forecasts, which is where management bias enters and audit attention concentrates.',
+    ref: 'IAS 36',
+  },
+  'value in use': {
+    label: 'Value in use',
+    body: 'Present value of the cash flows an asset is expected to generate. Discount rate and growth assumptions dominate the result; the auditor tests support for the forecasts, not just the arithmetic.',
+    ref: 'IAS 36 / ISA 540 (Revised)',
+  },
+  'corporate asset': {
+    label: 'Corporate assets',
+    body: 'Assets like head-office buildings that serve multiple cash-generating units. They are allocated to CGUs on a reasonable and consistent basis for impairment testing; allocation changes can mask impairment.',
+    ref: 'IAS 36',
+  },
+  'capitalised development cost': {
+    label: 'Capitalised development costs',
+    body: 'Development expenditure meeting strict criteria and recognised as an intangible. Criteria assessment (technical feasibility, intention, resources) is judgement-heavy and a classic place to park costs that should be expensed.',
+    ref: 'IAS 38',
+  },
+  'internally generated goodwill': {
+    label: 'Internally generated goodwill',
+    body: 'Value a business builds up organically, which accounting prohibits recognising. Any balance purporting to be it must be expensed; its appearance in statements is a presentation failure.',
+    ref: 'IAS 38',
+  },
+  'residual value': {
+    label: 'Residual value',
+    body: 'The amount an entity expects to obtain from an asset at the end of its useful life. Depreciation stops at residual value; optimistic residuals understate expense and overstate assets.',
+    ref: 'IAS 16',
+  },
+  'component accounting': {
+    label: 'Component accounting',
+    body: 'Depreciating significant parts of an asset separately because they have different lives or patterns. Replacing a major component is derecognition plus addition; missing the split misstates both expense and carrying amount.',
+    ref: 'IAS 16',
+  },
+  'decommissioning provision': {
+    label: 'Decommissioning provision',
+    body: 'The obligation to dismantle an asset or restore a site, recognised at the same time as the asset. Initial measurement discounts expected costs; the audit issues are the estimate, the rate and the unwinding of the discount.',
+    ref: 'IAS 37 / IAS 16',
+  },
+  'onerous contract': {
+    label: 'Onerous contract',
+    body: 'A contract where unavoidable costs exceed economic benefits, requiring a present provision. Completeness is the hardest part: onerous leases and purchase commitments surface only when someone goes looking.',
+    ref: 'IAS 37',
+  },
+  'restructuring provision': {
+    label: 'Restructuring provision',
+    body: 'A provision for a formal, detailed restructuring plan. Only costs arising from the obligation qualify; generous versions smooth profit and fail the recognition criteria, and timing drives whether it belongs in this period.',
+    ref: 'IAS 37',
+  },
+  'legal claim': {
+    label: 'Legal claim',
+    body: 'An asserted right against the entity, typically litigation. Whether it is a provision (probable, estimable) or a contingency (disclosed) is the judgement; evidence comes from lawyers\u2019 letters, not the ledger.',
+    ref: 'IAS 37 / ISA 501',
+  },
+  'legal letter': {
+    label: 'Letter of audit inquiry to lawyers',
+    body: 'The auditor\u2019s direct written request to the entity\u2019s lawyers for litigation and claims status. Primary evidence for completeness of provisions and contingencies; the preparation date and response completeness draw audit attention.',
+    ref: 'ISA 501',
+  },
+  'insurance contract': {
+    label: 'Insurance contract',
+    body: 'A contract transferring significant insurance risk. IFRS 17 measures fulfilment cash flows plus a risk adjustment and contractual service margin; the audit issues are the assumptions in the projections and the release of the margin.',
+    ref: 'IFRS 17',
+  },
+  'actuarial valuation': {
+    label: 'Actuarial valuation',
+    body: 'The computation of insurance and pension obligations from demographic and financial assumptions. Small assumption shifts swing the numbers by millions; the auditor tests the assumptions and the data, not just the model arithmetic.',
+    ref: 'IAS 19 / IFRS 17 / ISA 540 (Revised)',
+  },
+  'plan assets': {
+    label: 'Plan assets',
+    body: 'Assets held in a funded pension plan, deducted from the defined benefit obligation. Measured at fair value; the audit issues are valuation of unquoted holdings and the asset ceiling limiting recognition.',
+    ref: 'IAS 19',
+  },
+  'defined benefit obligation': {
+    label: 'Defined benefit obligation (DBO)',
+    body: 'The present value of promised pension benefits, driven by mortality, salary growth and discount rate assumptions. The audit focuses on the actuary\u2019s assumptions and data; the discount rate must follow high-quality corporate bond yields.',
+    ref: 'IAS 19',
+  },
+  'share-based payment': {
+    label: 'Share-based payment',
+    body: 'Settling employees with equity instruments rather than cash. The grant date fair value vests over the service period; modifications, forfeitures and the choice of valuation model are the audit issues.',
+    ref: 'IFRS 2',
+  },
+  clawback: {
+    label: 'Clawback',
+    body: 'A contractual right to reclaim paid remuneration, typically on restatement or misconduct. The audit issues are whether a present obligation exists to reverse the accrual and the completeness of contingent disclosure.',
+    ref: 'IAS 37 / IFRS 2',
+  },
+  'bonus provision': {
+    label: 'Bonus provision',
+    body: 'The accrued liability for performance-related pay. The estimate tracks the scheme\u2019s terms and the results it references; understating the bonus understates expense and overstates profit in the same period the results were inflated.',
+    ref: 'IAS 37 / ISA 540 (Revised)',
+  },
+  'equity instrument': {
+    label: 'Equity instrument',
+    body: 'A contract evidencing residual interest in assets after deducting liabilities. The debt-versus-equity classification decides whether returns are interest or dividends; compound instruments must be split.',
+    ref: 'IAS 32',
+  },
+  'compound instrument': {
+    label: 'Compound instrument',
+    body: 'An instrument with both liability and equity features, such as a convertible bond. The split at initial recognition is an accounting construct; conversion triggers reclassification with no gain or loss.',
+    ref: 'IAS 32',
+  },
+  'share premium': {
+    label: 'Share premium',
+    body: 'The excess of issue proceeds over nominal share value, a non-distributable reserve. The audit verifies proceeds and the split between nominal and premium from share issue documentation.',
+    ref: 'IAS 32 / IAS 1',
+  },
+  'treasury share': {
+    label: 'Treasury share',
+    body: 'The entity\u2019s own shares held in treasury, deducted from equity. The audit issues are existence (register verification), the transaction price and the disclosure of the holding.',
+    ref: 'IAS 32',
+  },
+  'dividend payable': {
+    label: 'Dividend payable',
+    body: 'A dividend declared but unpaid at period end, a current liability. Cut-off between declaration and payment dates decides recognition; the audit matches board minutes and payment runs.',
+    ref: 'IAS 1 / IAS 32',
+  },
+  'retained earnings': {
+    label: 'Retained earnings',
+    body: 'Cumulative profit less distributions and transfers to reserves. The statement of changes in equity must reconcile it; unexplained movements are a classic completeness failure.',
+    ref: 'IAS 1',
+  },
+  'statement of changes in equity': {
+    label: 'Statement of changes in equity',
+    body: 'The statement reconciling opening and closing equity through profit, other comprehensive income, distributions and share transactions. It is where unexplained equity movements surface.',
+    ref: 'IAS 1',
+  },
+  'remittance advice': {
+    label: 'Remittance advice',
+    body: 'The document accompanying a payment, listing the invoices it settles. Used in cut-off testing to allocate cash received to the right period and invoices; mismatches reveal disputed or misapplied items.',
+    ref: 'ISA 505 / cut-off concept',
+  },
+  'aged payables': {
+    label: 'Aged payables analysis',
+    body: 'Payables bucketed by age. Feeds completeness testing of unrecorded liabilities and the search for unrecorded invoices; sudden clearing of old items near year end draws audit attention.',
+    ref: 'IAS 1 / ISA 530',
+  },
+  'fixed asset register': {
+    label: 'Fixed asset register',
+    body: 'The listing of owned assets with cost, accumulated depreciation and location. Reconciling it to the ledger and physically verifying samples tests existence; disposals missing from it overstate assets.',
+    ref: 'IAS 16 / ISA 500',
+  },
+  'deferred tax asset': {
+    label: 'Deferred tax asset',
+    body: 'Future tax relief arising from deductible temporary differences and unused losses. Recognition requires probable future profits; that judgement makes it a valuation risk and a tool for smoothing.',
+    ref: 'IAS 12',
+  },
+  'deferred tax liability': {
+    label: 'Deferred tax liability',
+    body: 'Future tax payable arising from taxable temporary differences, such as accelerated depreciation. The calculation follows the temporary difference; completeness of differences is the audit issue.',
+    ref: 'IAS 12',
+  },
+  'tax provision': {
+    label: 'Tax provision',
+    body: 'The current and deferred tax charge for the period. The audit recomputes it from the tax computation, tests the effective tax rate against statutory rates, and examines the treatment of uncertain positions.',
+    ref: 'IAS 12 / IFRIC 23',
+  },
+  'cash flow forecast': {
+    label: 'Cash flow forecast',
+    body: 'Management\u2019s projection of future cash generation and needs. Central to going concern and impairment testing; the auditor challenges the assumptions behind it rather than accepting the spreadsheet.',
+    ref: 'ISA 570 / IAS 36',
+  },
+  'management accounts': {
+    label: 'Management accounts',
+    body: 'Internal financial reports prepared for running the business, not for external users. Unreconciled gaps between management and statutory accounts are a classic indicator of misstatement.',
+    ref: 'ISA 315 (Revised 2019) / ISA 520',
+  },
+
+  facility: {
+    label: 'Credit facility',
+    body: 'An agreed borrowing arrangement with a lender: term loans, revolvers or overdrafts. The audit issues are completeness of drawn and undrawn amounts, covenant compliance, and classification between current and non-current.',
+    ref: 'IFRS 9 / IAS 1',
+  },
+  invoice: {
+    label: 'Invoice',
+    body: 'The document demanding payment for goods or services supplied. Cut-off testing revolves around invoice dates versus delivery dates; fictitious invoices are the simplest form of revenue fraud.',
+    ref: 'IAS 1 / cut-off concept',
+  },
+  receivable: {
+    label: 'Receivable',
+    body: 'A contractual right to consideration from a customer. The audit issues are existence (confirmation), valuation (allowance for expected credit losses) and cut-off between sale and settlement.',
+    ref: 'IFRS 9 / IFRS 15',
+  },
+  'trade payable': {
+    label: 'Trade payable',
+    body: 'An obligation to suppliers for goods or services received. Completeness of unrecorded payables is the classic risk: goods received without an invoice leave the liability invisible.',
+    ref: 'IAS 1 / ISA 315 (Revised 2019)',
+  },
+  ledger: {
+    label: 'Ledger',
+    body: 'The accounting records where transactions are posted by account. Testing direction matters: vouching from ledger to evidence tests occurrence; tracing from evidence to ledger tests completeness.',
+    ref: 'ISA 500 / direction of testing',
+  },
+  'audit evidence': {
+    label: 'Audit evidence',
+    body: 'The information the auditor uses to support conclusions: documents, confirmations, observations and re-performance. Sufficiency is about quantity, appropriateness about relevance and reliability; external evidence outranks internal.',
+    ref: 'ISA 500',
+  },
+  interest: {
+    label: 'Interest',
+    body: 'The cost of borrowing over time, allocated to periods as they pass. Accrual and cut-off dominate: accrued interest, prepaid interest and the effective interest rate all shift expense between periods.',
+    ref: 'IFRS 9 / IAS 23',
+  },
+  dividend: {
+    label: 'Dividend',
+    body: 'A distribution of profit to shareholders. Recognised when declared, not when paid or proposed; the cut-off between declaration dates drives both the liability and equity movements.',
+    ref: 'IAS 1 / IAS 32',
+  },
+  guarantee: {
+    label: 'Guarantee',
+    body: 'A promise to satisfy another party\u2019s obligation if they default. A present obligation when probable, otherwise a disclosed contingency; completeness is the risk because guarantees rarely appear in the ledger.',
+    ref: 'IAS 37 / IFRS 9',
+  },
+  litigation: {
+    label: 'Litigation',
+    body: 'Pending legal action against or by the entity. Provision when a loss is probable and estimable, disclosure otherwise; the auditor\u2019s evidence is the lawyer\u2019s response, not management\u2019s optimism.',
+    ref: 'IAS 37 / ISA 501',
+  },
+  insolvency: {
+    label: 'Insolvency',
+    body: 'The state of being unable to meet debts as they fall due. For a customer it drives ECL staging and write-offs; for the client itself it is the ultimate going concern question.',
+    ref: 'IFRS 9 / ISA 570',
+  },
+  payroll: {
+    label: 'Payroll',
+    body: 'The system paying wages and salaries. Ghost employees, leavers left on the run and overtime without approval are the classic frauds; completeness of the accrual and cut-off of the final run are the assertions.',
+    ref: 'ISA 315 (Revised 2019) / IAS 19',
+  },
+  royalty: {
+    label: 'Royalty',
+    body: 'A payment for the use of intellectual property, production or sales. Accrual depends on reported usage, so understated sales understate the royalty; completeness and accuracy follow the underlying data.',
+    ref: 'IFRS 15 / IFRS 16',
+  },
+  'unbilled revenue': {
+    label: 'Unbilled revenue',
+    body: 'Performance satisfied before the invoice is raised. A contract asset: the right to consideration exists without the paperwork; completeness of the accrual and cut-off of the billing are the audit issues.',
+    ref: 'IFRS 15',
+  },
+  forecast: {
+    label: 'Forecast',
+    body: 'Management\u2019s projection of future results. Evidence for going concern, impairment and ECL staging; the auditor challenges the assumptions rather than the arithmetic, and compares forecasts against what later happened.',
+    ref: 'ISA 570 / ISA 540 (Revised)',
+  },
+  treasury: {
+    label: 'Treasury function',
+    body: 'The department managing cash, borrowings and financial risk. Segregation of duties matters: initiation, approval and reconciliation in one pair of hands is the classic misappropriation setup.',
+    ref: 'ISA 315 (Revised 2019)',
+  },
+  redemption: {
+    label: 'Redemption',
+    body: 'Repayment or buyback of a financial instrument, or a fund investor cashing out. For investments, redemption terms drive liquidity classification; for borrowings, the cash outflow and derecognition mechanics are the audit issues.',
+    ref: 'IFRS 9 / IFRS 10',
+  },
+  segment: {
+    label: 'Segment reporting',
+    body: 'Breaking the results into the components management uses to run the business. The audit issues are completeness of segments and the allocation basis of shared items; burying a problem area in \u2018other\u2019 hides it from users.',
+    ref: 'IFRS 8',
+  },
+  subsidiary: {
+    label: 'Subsidiary',
+    body: 'An entity controlled by the parent, consolidated in group statements. Control assessment decides the perimeter; a wrong perimeter misstates everything, and intra-group balances must be eliminated completely.',
+    ref: 'IFRS 10',
+  },
+  loan: {
+    label: 'Loan',
+    body: 'A borrowing repayable with interest. The audit issues are existence and completeness of balances, accuracy of interest accrual, classification between current and non-current, and covenant compliance.',
+    ref: 'IFRS 9',
+  },
+  bond: {
+    label: 'Bond',
+    body: 'A tradable long-term debt instrument. The audit issues are the business model classification (amortized cost or fair value), the valuation of unquoted issues, and the completeness of issued debt.',
+    ref: 'IFRS 9 / IFRS 13',
+  },
+  'suspense account': {
+    label: 'Suspense account',
+    body: 'A temporary holding account for unallocated items. Aged suspense balances are a classic symptom: entries parked instead of resolved, hiding misstatements that belong in the right line items.',
+    ref: 'ISA 315 (Revised 2019) / IAS 1',
+  },
+  'cash flow': {
+    label: 'Cash flow',
+    body: 'Cash moving in and out, summarised in the cash flow statement. Profit can be engineered with accruals but cash reconciles to the bank; weak cash against reported profit is the classic red flag.',
+    ref: 'IAS 7',
+  },
+  'purchase order': {
+    label: 'Purchase order',
+    body: 'The document committing the buyer to purchase. Part of the three-way match with the goods received note and the invoice; the audit tests the completeness of commitments and cut-off of receipt.',
+    ref: 'ISA 315 (Revised 2019) / three-way match',
+  },
+  timesheet: {
+    label: 'Timesheet',
+    body: 'The record of hours worked, driving payroll and project costs. Recalculation and approval testing are the procedures; unbilled or capitalised time relies on its completeness and accuracy.',
+    ref: 'ISA 500 / IFRS 15',
+  },
+  refund: {
+    label: 'Refund',
+    body: 'Repayment to a customer for returned goods or cancelled services. A reduction of revenue rather than an expense; completeness of the returns provision is a valuation risk tied to sales volume.',
+    ref: 'IFRS 15',
+  },
+  'point of sale': {
+    label: 'Point of sale',
+    body: 'The moment and place a sale is made. Cash counts and till data anchor the completeness of takings; skimming before recording is the classic fraud that only physical procedures can catch.',
+    ref: 'ISA 315 (Revised 2019) / IFRS 15',
+  },
+  takings: {
+    label: 'Takings',
+    body: 'Cash received from sales, common in retail. Completeness is the assertion at risk: unrecorded takings never enter the ledger, so the auditor reconciles till records to deposits and observes counts.',
+    ref: 'ISA 500 / completeness concept',
+  },
+
+  'collateral-light': {
+    label: 'Collateral-light lending',
+    body: 'Lending secured against little or no specific collateral, relying instead on covenants and the borrower\u2019s cash flows. Recovery expectations rest on unsecured projections, which makes loss-given-default estimates more judgement-heavy and the covenant terms more important to audit.',
+    ref: 'IFRS 9',
+  },
+  'security interest': {
+    label: 'Security interest',
+    body: 'A legal claim over assets securing an obligation. The audit issues are the existence and enforceability of the interest, the completeness of encumbrance disclosures, and priority between creditors.',
+    ref: 'IFRS 7 / IFRS 9',
+  },
+
 };
 
 export const GLOSSARY_KEYS = Object.keys(GLOSSARY).sort((a, b) => b.length - a.length);
