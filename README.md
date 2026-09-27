@@ -1,4 +1,4 @@
-# Assertion Arena
+# Assertio
 
 An audit training game for professional auditors. For each financial statement line item, judge which
 assertions are relevant, which are high risk given the client's context — and spot the **trap procedure**:
