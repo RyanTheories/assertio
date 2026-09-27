@@ -7,11 +7,12 @@ import { statementGroup } from '../data/validate';
 interface Props {
   scenarios: Scenario[];
   onStart: (cfg: SessionConfig) => void;
+  onOpenGuide: () => void;
 }
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
 
-export function Home({ scenarios, onStart }: Props) {
+export function Home({ scenarios, onStart, onOpenGuide }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [industry, setIndustry] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
@@ -99,6 +100,9 @@ export function Home({ scenarios, onStart }: Props) {
       </section>
 
       <section className="card howto">
+        <button className="howto-toggle" onClick={onOpenGuide}>
+          <span>▸ What are assertions? Learn the vocabulary and standards</span>
+        </button>
         <button className="howto-toggle" onClick={() => setShowHowTo((v) => !v)}>
           <span>{showHowTo ? '▾' : '▸'} How to play</span>
         </button>

@@ -33,7 +33,7 @@ describe('render smoke', () => {
 
   it('renders Home with derived industries and stats', () => {
     const data = getGameData();
-    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} />);
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} />);
     expect(html).toContain('New session');
     expect(html).toContain('How to play');
   });
