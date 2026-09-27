@@ -65,7 +65,7 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props)
         <p className="eyebrow">Phase 1 of 3</p>
         <h2>Which assertions are relevant to this line item?</h2>
         <p className="muted">
-          {scenario.line_item} · {statementLabel(scenario.statement)} — check every relevant assertion. Extras lose points.
+          {scenario.line_item} · {statementLabel(scenario.statement)}. Check every relevant assertion. Extras lose points.
         </p>
       </div>
 
@@ -125,11 +125,11 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props)
             {feedback.ratio === 1
               ? 'All relevant assertions identified.'
               : `Correct: ${feedback.correct} · Missed: ${feedback.missing} · Extra: ${feedback.extra}`}
-            {' '}— {Math.max(0, feedback.points)}/{feedback.maxPoints} pts
+            {' '}· {Math.max(0, feedback.points)}/{feedback.maxPoints} pts
           </p>
           {feedback.missing > 0 && (
             <p className="muted small">
-              A one-line reminder: relevant assertions are those the line item's nature makes auditable — the
+              A one-line reminder: relevant assertions are those the line item's nature makes auditable; the
               data's set is now shown on the cards above.
             </p>
           )}

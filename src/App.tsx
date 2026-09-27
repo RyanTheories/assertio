@@ -7,6 +7,8 @@ import { sectorFor } from './sectors';
 import { startAmbience, toggleAmbience } from './audio';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
+import { FinancialStatements } from './screens/FinancialStatements';
+import { IsasReference } from './screens/IsasReference';
 import { Round } from './screens/Round';
 import { RoundSummary } from './screens/RoundSummary';
 import { SessionSummary } from './screens/SessionSummary';
@@ -15,6 +17,8 @@ import { recordSession, type SessionRecord } from './storage';
 type Screen =
   | { kind: 'home' }
   | { kind: 'guide' }
+  | { kind: 'financialStatements' }
+  | { kind: 'isas' }
   | { kind: 'round' }
   | { kind: 'roundSummary' }
   | { kind: 'sessionSummary' };
@@ -153,17 +157,25 @@ export default function App() {
         aria-pressed={musicOn}
         title={musicOn ? 'Mute Roman ambience' : 'Play Roman ambience'}
       >
-        {musicOn ? '♫ Playing — mute' : '♫ Roman Ambience'}
+        {musicOn ? '♫ Playing · mute' : '♫ Roman Ambience'}
       </button>
       {screen.kind === 'home' && (
         <Home
           scenarios={data.scenarios}
           onStart={startSession}
           onOpenGuide={() => setScreen({ kind: 'guide' })}
+          onOpenStatements={() => setScreen({ kind: 'financialStatements' })}
+          onOpenIsas={() => setScreen({ kind: 'isas' })}
         />
       )}
       {screen.kind === 'guide' && (
         <AssertionsGuide onHome={() => setScreen({ kind: 'home' })} />
+      )}
+      {screen.kind === 'financialStatements' && (
+        <FinancialStatements onHome={() => setScreen({ kind: 'home' })} />
+      )}
+      {screen.kind === 'isas' && (
+        <IsasReference onHome={() => setScreen({ kind: 'home' })} />
       )}
       {screen.kind === 'round' && sessionScenarios.length > 0 && (
         <Round
@@ -210,7 +222,7 @@ function ErrorScreen({ issues }: { issues: ValidationIssue[] }) {
       <h1>⚠️ Data validation failed</h1>
       <p>
         The game cannot start because <code>src/data/scenarios.json</code> failed validation.
-        The game's fairness depends on clean data — fix the issues below and reload.
+        The game's fairness depends on clean data. Fix the issues below and reload.
       </p>
       <ul>
         {issues.map((iss, i) => (

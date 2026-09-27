@@ -218,7 +218,7 @@ select {
 .guide-wcgw .guide-example-label, .guide-why .guide-example-label { color: var(--ink); }
 .guide-std-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
 .guide-std-list li { padding-left: 18px; position: relative; }
-.guide-std-list li::before { content: '—'; position: absolute; left: 0; color: var(--muted); }
+.guide-std-list li::before { content: '•'; position: absolute; left: 0; color: var(--muted); }
 .guide-std-note { font-size: 13px; color: var(--muted); margin: 8px 0 0; }
 
 /* ---------- HUD ---------- */

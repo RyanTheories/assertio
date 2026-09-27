@@ -63,7 +63,7 @@ function saveState(state: StoredState): void {
   try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   } catch {
-    /* storage unavailable or full — progress simply won't persist */
+    /* storage unavailable or full, progress simply won't persist */
   }
 }
 

@@ -66,7 +66,7 @@ export function RoundSummary({ round, index, total, isLast, onNext, onEnd }: Pro
       </section>
 
       <section className="card audit-note">
-        <h3>Audit note — key risks</h3>
+        <h3>Audit note, key risks</h3>
         <ul>
           {(Object.entries(scenario.assertions_high_risk) as [string, string][]).map(([id, reason]) => (
             <li key={id}>

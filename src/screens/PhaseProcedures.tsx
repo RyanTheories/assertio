@@ -93,7 +93,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
     <div className="phase phase-procedures">
       <div className="phase-head">
         <p className="eyebrow">Phase 3 of 3</p>
-        <h2>Match each procedure to the assertion(s) it tests — or flag the trap</h2>
+        <h2>Match each procedure to the assertion(s) it tests, or flag the trap</h2>
         <p className="muted">
           Some procedures look perfectly reasonable but don't validly test the risk at hand. Flag those as traps.
           Correctly flagging a trap is the highest-value action in the game.
@@ -149,7 +149,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
                       <div className="trap-callout trap-caught">
                         <p className="trap-title">🎯 Trap caught!</p>
                         <p><ConceptText>{sp.proc.trap_explanation}</ConceptText></p>
-                        <p className="trap-pts">+{fb.points} pts — highest-value action</p>
+                        <p className="trap-pts">+{fb.points} pts, highest-value action</p>
                       </div>
                     ) : (
                       <div className="trap-callout trap-missed">
@@ -164,10 +164,10 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
                         {fb && fb.points >= fb.maxPoints
                           ? 'Correctly matched.'
                           : `Matched ${fb?.matchedCorrect ?? 0} of ${(fb?.expected ?? []).length} · wrong: ${fb?.matchedWrong ?? 0}`}
-                        {' '}— {fb?.points ?? 0} pts
+                        {' '}· {fb?.points ?? 0} pts
                       </p>
                       <p className="muted small">
-                        Tests: {(fb?.expected ?? []).map((a) => ASSERTION_LABELS[a]).join(', ') || '—'}
+                        Tests: {(fb?.expected ?? []).map((a) => ASSERTION_LABELS[a]).join(', ') || '·'}
                         {fb?.missed ? ` · missed: ${fb.expected.filter((a) => !ans.matched.includes(a)).map((a) => ASSERTION_LABELS[a]).join(', ')}` : ''}
                         {ans.flaggedTrap ? ' · you flagged this as a trap, but it is a valid procedure' : ''}
                       </p>

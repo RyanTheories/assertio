@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { renderToString } from 'react-dom/server';
 import App from '../App';
 import { Home } from '../screens/Home';
+import { FinancialStatements } from '../screens/FinancialStatements';
+import { IsasReference } from '../screens/IsasReference';
 import { PhaseBrief } from '../screens/PhaseBrief';
 import { PhaseRelevant } from '../screens/PhaseRelevant';
 import { PhaseRisk } from '../screens/PhaseRisk';
@@ -33,11 +35,23 @@ describe('render smoke', () => {
 
   it('renders Home with derived industries and stats', () => {
     const data = getGameData();
-    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} />);
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} />);
     expect(html).toContain('New session');
     expect(html).toContain('How to play');
   });
 
+  it('renders the financial statements reference', () => {
+    const html = renderIgnoringConsole(<FinancialStatements onHome={() => undefined} />);
+    expect(html).toContain('What are financial statements?');
+    expect(html).toContain('The balance sheet');
+    expect(html).toContain('The notes');
+  });
+  it('renders the ISA reference', () => {
+    const html = renderIgnoringConsole(<IsasReference onHome={() => undefined} />);
+    expect(html).toContain('The ISAs, explained');
+    expect(html).toContain('ISA 315 (Revised 2019)');
+    expect(html).toContain('ISA 505');
+  });
   it('renders all round phases and summaries for a real scenario', () => {
     const data = getGameData();
     const sc = data.scenarios[0];

@@ -59,7 +59,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
         <p className="eyebrow">Phase 2 of 3</p>
         <h2>Which relevant assertions are high risk for this client?</h2>
         <p className="muted">
-          {scenario.line_item} · {statementLabel(scenario.statement)} — judge from the engagement brief. Partial credit.
+          {scenario.line_item} · {statementLabel(scenario.statement)}, judge from the engagement brief. Partial credit.
         </p>
       </div>
 
@@ -115,7 +115,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
             {feedback.ratio === 1
               ? 'All high-risk assertions identified.'
               : `Correct: ${feedback.correct} · Missed: ${feedback.missing} · Extra: ${feedback.extra}`}
-            {' '}— {Math.max(0, feedback.points)}/{feedback.maxPoints} pts
+            {' '}· {Math.max(0, feedback.points)}/{feedback.maxPoints} pts
           </p>
           <div className="risk-reasons">
             {(Object.entries(scenario.assertions_high_risk) as [AssertionId, string][]).map(([id, reason]) => (

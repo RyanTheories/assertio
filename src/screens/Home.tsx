@@ -9,11 +9,13 @@ interface Props {
   scenarios: Scenario[];
   onStart: (cfg: SessionConfig) => void;
   onOpenGuide: () => void;
+  onOpenStatements: () => void;
+  onOpenIsas: () => void;
 }
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
 
-export function Home({ scenarios, onStart, onOpenGuide }: Props) {
+export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
@@ -47,22 +49,18 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
         <p className="eyebrow">Audit training</p>
         <h1>Assertio</h1>
         <p className="tagline">
-          Judge which assertions matter for each line item, which are high risk in context — and spot the
+          Judge which assertions matter for each line item, which are high risk in context, and spot the
           procedure that looks right but tests the wrong thing.
         </p>
       </header>
       <section className="card mission">
         <h2>Why this game exists</h2>
         <p>
-          Everyone says AI will replace audit. But an audit was never about ticking boxes — it is professional
-          scepticism: knowing <em>where</em> the numbers can lie, <em>why</em> someone might want them to, and
-          <em>which</em> question, asked of which evidence, actually settles the matter.
-        </p>
-        <p>
-          Every scenario here is that judgement, distilled. A machine can reconcile a ledger in seconds — but
-          deciding that a December invoice smells wrong because the bonus targets depend on it, and knowing the
-          exact confirmation that will prove it? That is the profession. Assertio exists to show what that
-          work really feels like — and to train it.
+          The future of audit is often framed as a contest between humans and automation. In practice, the
+          value of the auditor lies in what automation cannot do: professional skepticism. Automated tools
+          can reconcile ledgers in seconds, but they cannot judge where the numbers may be misleading, why
+          incentives might encourage that, or which question, asked of which evidence, settles the matter.
+          Every scenario in this game is that judgment, distilled.
         </p>
       </section>
 
@@ -122,6 +120,12 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
         <button className="howto-toggle" onClick={onOpenGuide}>
           <span>▸ What are assertions? Learn the vocabulary and standards</span>
         </button>
+        <button className="howto-toggle" onClick={onOpenStatements}>
+          <span>▸ What are financial statements? The documents behind the numbers</span>
+        </button>
+        <button className="howto-toggle" onClick={onOpenIsas}>
+          <span>▸ The ISAs, explained: what each standard is for</span>
+        </button>
         <button className="howto-toggle" onClick={() => setShowHowTo((v) => !v)}>
           <span>{showHowTo ? '▾' : '▸'} How to play</span>
         </button>
@@ -132,15 +136,15 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
             </p>
             <ol>
               <li>
-                <strong>Relevant assertions</strong> — check the assertions that are relevant to the line item.
+                <strong>Relevant assertions</strong>, check the assertions that are relevant to the line item.
                 Partial credit; extras lose points.
               </li>
               <li>
-                <strong>High-risk assertions</strong> — from the relevant set, check the ones the client context
+                <strong>High-risk assertions</strong>, from the relevant set, check the ones the client context
                 makes risky. Feedback shows the data's risk reasons.
               </li>
               <li>
-                <strong>Procedures</strong> — for each procedure, match the assertion(s) it tests — or flag it as
+                <strong>Procedures</strong>, for each procedure, match the assertion(s) it tests, or flag it as
                 a <em>trap</em>: a plausible-looking procedure that tests the wrong assertion for the risk at
                 hand. Catching a trap is the highest-value action in the game.
               </li>
@@ -159,7 +163,7 @@ export function Home({ scenarios, onStart, onOpenGuide }: Props) {
       <section className="card stats">
         <h2>Career stats</h2>
         {stats.career.gamesPlayed === 0 ? (
-          <p className="muted">No sessions played yet — your progress is saved in this browser.</p>
+          <p className="muted">No sessions played yet, your progress is saved in this browser.</p>
         ) : (
           <dl className="stats-grid">
             <div><dt>Games played</dt><dd>{stats.career.gamesPlayed}</dd></div>
