@@ -1,5 +1,6 @@
 import type { Scenario } from '../types';
 import { statementLabel } from '../data/validate';
+import { ConceptText } from '../components/ConceptText';
 
 export function PhaseBrief({ scenario, onContinue }: { scenario: Scenario; onContinue: () => void }) {
   return (
@@ -14,7 +15,7 @@ export function PhaseBrief({ scenario, onContinue }: { scenario: Scenario; onCon
         <h2 className="brief-line-item">{scenario.line_item}</h2>
         <div className="brief-context">
           <p className="eyebrow">Engagement brief</p>
-          <p>{scenario.client_context}</p>
+          <p><ConceptText>{scenario.client_context}</ConceptText></p>
         </div>
         <p className="muted small">
           Three phases: relevant assertions → high-risk assertions → procedures. Watch for procedures that look
