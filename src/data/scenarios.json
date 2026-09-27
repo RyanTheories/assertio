@@ -1,6 +1,6 @@
 {
   "meta": {
-    "name": "Assertion Radar ÃÂ¢ÃÂÃÂ line-item scenarios",
+    "name": "Assertion Radar — line-item scenarios",
     "description": "Assertion-based audit training scenarios: identify relevant and risky assertions per line item, then match procedures. For the 'Audit Trail' training game suite.",
     "version": "1.1",
     "assertion_taxonomy": {
@@ -120,7 +120,7 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "accuracy": "Percentage-of-completion depends on reliable cost estimates and total project cost forecasts ÃÂ¢ÃÂÃÂ a high-judgment estimate.",
+        "accuracy": "Percentage-of-completion depends on reliable cost estimates and total project cost forecasts — a high-judgment estimate.",
         "occurrence": "Recognizing revenue ahead of actual progress inflates current-year results.",
         "completeness": "Costs incurred but not yet invoiced or recorded must be captured in the stage-of-completion measure."
       },
@@ -191,9 +191,9 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "accuracy": "Ratable recognition requires a reliable contract-start and term data pipeline ÃÂ¢ÃÂÃÂ fast growth may outpace the billing system's controls.",
+        "accuracy": "Ratable recognition requires a reliable contract-start and term data pipeline — fast growth may outpace the billing system's controls.",
         "occurrence": "Upfront billing creates incentive to book renewals or extensions early.",
-        "classification": "Upfront billing must sit in contract liabilities, not revenue ÃÂ¢ÃÂÃÂ misclassification risk is high."
+        "classification": "Upfront billing must sit in contract liabilities, not revenue — misclassification risk is high."
       },
       "procedures": [
         {
@@ -253,7 +253,7 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "classification": "A tripling suggests items may be misclassified ÃÂ¢ÃÂÃÂ operating items could be hidden here or gains parked outside core revenue.",
+        "classification": "A tripling suggests items may be misclassified — operating items could be hidden here or gains parked outside core revenue.",
         "occurrence": "One-off disposal gains can be overstated or fictitious.",
         "accuracy": "Grant recognition timing depends on conditions attached."
       },
@@ -291,7 +291,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The machine is sold ÃÂ¢ÃÂÃÂ physical inspection is impossible and irrelevant; the disposal documentation is the evidence.",
+          "trap_explanation": "The machine is sold — physical inspection is impossible and irrelevant; the disposal documentation is the evidence.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -314,7 +314,7 @@
         "cut_off"
       ],
       "assertions_high_risk": {
-        "accuracy": "Falling input prices make the costing method's application critical ÃÂ¢ÃÂÃÂ weighted average must be computed on the correct layers.",
+        "accuracy": "Falling input prices make the costing method's application critical — weighted average must be computed on the correct layers.",
         "cut_off": "Goods received near year-end must hit both inventory and cost of sales in the correct period."
       },
       "procedures": [
@@ -433,7 +433,7 @@
         "cut_off"
       ],
       "assertions_high_risk": {
-        "accuracy": "The change in useful life is a change in estimate applied prospectively ÃÂ¢ÃÂÃÂ prospective application and arithmetic must be verified.",
+        "accuracy": "The change in useful life is a change in estimate applied prospectively — prospective application and arithmetic must be verified.",
         "completeness": "New trucks must be depreciated from the in-service date, not the purchase order date."
       },
       "procedures": [
@@ -553,7 +553,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "existence": "Cash is the most deferrable asset ÃÂ¢ÃÂÃÂ weekly counts by shift leads (not independent) increase misappropriation risk.",
+        "existence": "Cash is the most deferrable asset — weekly counts by shift leads (not independent) increase misappropriation risk.",
         "completeness": "A recently opened account could be omitted from the general ledger mapping or the reconciliation process."
       },
       "procedures": [
@@ -625,7 +625,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "valuation_and_allocation": "A pooled age-based allowance may not reflect the specific 120-day overdue customer ÃÂ¢ÃÂÃÂ ECL must reflect individual evidence.",
+        "valuation_and_allocation": "A pooled age-based allowance may not reflect the specific 120-day overdue customer — ECL must reflect individual evidence.",
         "existence": "Concentration plus possible fictitious balances to mask misappropriation."
       },
       "procedures": [
@@ -671,7 +671,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Receivables are not physical assets ÃÂ¢ÃÂÃÂ a ledger printout is a document, not the balance itself; existence is tested via confirmation and subsequent receipt.",
+          "trap_explanation": "Receivables are not physical assets — a ledger printout is a document, not the balance itself; existence is tested via confirmation and subsequent receipt.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -696,8 +696,8 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "existence": "3PL warehouses mean the client's staff did not perform the count ÃÂ¢ÃÂÃÂ auditor attendance or alternative evidence is needed.",
-        "valuation_and_allocation": "Electronics obsolesce fast ÃÂ¢ÃÂÃÂ NRV testing and slow-moving analysis is critical.",
+        "existence": "3PL warehouses mean the client's staff did not perform the count — auditor attendance or alternative evidence is needed.",
+        "valuation_and_allocation": "Electronics obsolesce fast — NRV testing and slow-moving analysis is critical.",
         "completeness": "Late count instructions raise the risk of uncounted goods in transit and consignment stock."
       },
       "procedures": [
@@ -771,7 +771,7 @@
       ],
       "assertions_high_risk": {
         "existence": "Disease outbreak creates risk that animals recorded have died or been culled without the register being updated.",
-        "valuation_and_allocation": "Fair value of livestock is volatile and outbreak-affected ÃÂ¢ÃÂÃÂ expert evidence needed."
+        "valuation_and_allocation": "Fair value of livestock is volatile and outbreak-affected — expert evidence needed."
       },
       "procedures": [
         {
@@ -1628,7 +1628,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "'Indexation' is not a deferred tax concept ÃÂ¢ÃÂÃÂ deferred tax is calculated on temporary differences at the enacted tax rate. The procedure is pseudo-technical and tests nothing real.",
+          "trap_explanation": "'Indexation' is not a deferred tax concept — deferred tax is calculated on temporary differences at the enacted tax rate. The procedure is pseudo-technical and tests nothing real.",
           "isa_ref": "IAS 12"
         }
       ],
@@ -1756,7 +1756,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Dividends received from a subsidiary are group income, not relevant to dividends paid by the parent ÃÂ¢ÃÂÃÂ and in any case it tests income recognition, not the classification/cut-off risk in the item under audit.",
+          "trap_explanation": "Dividends received from a subsidiary are group income, not relevant to dividends paid by the parent — and in any case it tests income recognition, not the classification/cut-off risk in the item under audit.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -1913,7 +1913,7 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "valuation_and_allocation": "An unsecured, interest-free, long-overdue family receivable may be irrecoverable ÃÂ¢ÃÂÃÂ impairment assessment is required.",
+        "valuation_and_allocation": "An unsecured, interest-free, long-overdue family receivable may be irrecoverable — impairment assessment is required.",
         "presentation_and_disclosure": "Related party balances and terms require disclosure under IAS 24; hiding it inside trade receivables is misleading.",
         "classification": "This is not a trade receivable arising from operations."
       },
@@ -1972,7 +1972,7 @@
         "occurrence"
       ],
       "assertions_high_risk": {
-        "completeness": "A probable but unmeasurable outflow is still a contingent liability requiring disclosure ÃÂ¢ÃÂÃÂ omission leaves the accounts incomplete.",
+        "completeness": "A probable but unmeasurable outflow is still a contingent liability requiring disclosure — omission leaves the accounts incomplete.",
         "presentation_and_disclosure": "Disclosing a dismissed claim is a false disclosure; contingencies must reflect the current legal position."
       },
       "procedures": [
@@ -2006,7 +2006,7 @@
           "procedure": "Accrue the maximum possible fine amount as a provision in the current year",
           "tests": [],
           "trap": true,
-          "trap_explanation": "This is not even a valid audit procedure ÃÂ¢ÃÂÃÂ it is preparing the client's books. It also applies the wrong accounting: a remote or unmeasurable amount is disclosed, not provisioned at a made-up maximum.",
+          "trap_explanation": "This is not even a valid audit procedure — it is preparing the client's books. It also applies the wrong accounting: a remote or unmeasurable amount is disclosed, not provisioned at a made-up maximum.",
           "isa_ref": "IAS 37"
         }
       ],
@@ -2031,7 +2031,7 @@
         "rights_and_obligations"
       ],
       "assertions_high_risk": {
-        "existence": "Balances at an unregulated exchange may not exist at all ÃÂ¢ÃÂÃÂ the client may only have an unsecured claim.",
+        "existence": "Balances at an unregulated exchange may not exist at all — the client may only have an unsecured claim.",
         "classification": "A suspended MMF no longer meets the definition of cash equivalents and must be reclassified.",
         "presentation_and_disclosure": "Concentration and restriction on access require disclosure."
       },
@@ -2243,7 +2243,7 @@
         "cut_off"
       ],
       "assertions_high_risk": {
-        "accuracy": "The estimate of progress and forecast costs directly drives the recognized amount ÃÂ¢ÃÂÃÂ a management bias hotspot.",
+        "accuracy": "The estimate of progress and forecast costs directly drives the recognized amount — a management bias hotspot.",
         "valuation_and_allocation": "Unpriced variations recognized at management's preferred value may overstate the contract asset."
       },
       "procedures": [
@@ -2429,7 +2429,7 @@
         "valuation_and_allocation"
       ],
       "assertions_high_risk": {
-        "existence": "Stock recorded from operator emails may no longer be physically present ÃÂ¢ÃÂÃÂ especially with a distressed operator.",
+        "existence": "Stock recorded from operator emails may no longer be physically present — especially with a distressed operator.",
         "rights_and_obligations": "Operators may have pledged or sold the consigned goods; title may be contested.",
         "valuation_and_allocation": "Slow-moving stock at a distressed site likely needs write-down."
       },
@@ -2498,7 +2498,7 @@
         "occurrence"
       ],
       "assertions_high_risk": {
-        "valuation_and_allocation": "The customer's bankruptcy provides evidence about the year-end recoverability of the receivable ÃÂ¢ÃÂÃÂ an adjusting event requiring an allowance.",
+        "valuation_and_allocation": "The customer's bankruptcy provides evidence about the year-end recoverability of the receivable — an adjusting event requiring an allowance.",
         "presentation_and_disclosure": "The eruption is a non-adjusting event, but its financial effect must still be disclosed."
       },
       "procedures": [
@@ -2534,7 +2534,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Confirmation at year-end provides no evidence about the customer's post-year-end insolvency. The bankruptcy filing is the relevant evidence ÃÂ¢ÃÂÃÂ the adjusting-event issue is about conditions arising after year-end, which confirmation cannot address.",
+          "trap_explanation": "Confirmation at year-end provides no evidence about the customer's post-year-end insolvency. The bankruptcy filing is the relevant evidence — the adjusting-event issue is about conditions arising after year-end, which confirmation cannot address.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -2740,7 +2740,7 @@
         "cut_off"
       ],
       "assertions_high_risk": {
-        "accuracy": "Late hedge documentation means hedge accounting cannot be applied from inception ÃÂ¢ÃÂÃÂ swap movements may be misclassified as interest.",
+        "accuracy": "Late hedge documentation means hedge accounting cannot be applied from inception — swap movements may be misclassified as interest.",
         "classification": "Expensing arrangement fees immediately misclassifies them as interest instead of amortizing over the facility term.",
         "cut_off": "Interest capitalization stop dates depend on project completion milestones."
       },
@@ -2837,7 +2837,7 @@
           "procedure": "Inspect the CFO's memo and file it as audit evidence that no impairment exists",
           "tests": [],
           "trap": true,
-          "trap_explanation": "Management's memo is a representation, not evidence ÃÂ¢ÃÂÃÂ accepting it as audit evidence forgoes testing and creates self-review and bias risk. The impairment test must be independently evaluated.",
+          "trap_explanation": "Management's memo is a representation, not evidence — accepting it as audit evidence forgoes testing and creates self-review and bias risk. The impairment test must be independently evaluated.",
           "isa_ref": "ISA 580 / ISA 540"
         }
       ],
@@ -2965,7 +2965,7 @@
         "valuation_and_allocation"
       ],
       "assertions_high_risk": {
-        "existence": "Count sheets without control numbers can be lost or altered ÃÂ¢ÃÂÃÂ recorded inventory may not exist.",
+        "existence": "Count sheets without control numbers can be lost or altered — recorded inventory may not exist.",
         "valuation_and_allocation": "Damaged goods counted at full price overstate inventory; they need NRV write-down."
       },
       "procedures": [
@@ -3210,7 +3210,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Cash receipt is already evidenced by the bank statement ÃÂ¢ÃÂÃÂ the risky assertions are recognition timing (deferred income) and the attached conditions, which a bank confirmation cannot address.",
+          "trap_explanation": "Cash receipt is already evidenced by the bank statement — the risky assertions are recognition timing (deferred income) and the attached conditions, which a bank confirmation cannot address.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -3279,7 +3279,7 @@
       "line_item": "Investment property",
       "statement": "balance_sheet",
       "industry": "Real estate holding",
-      "client_context": "The client owns an office tower measured under the fair value model. The valuation is performed by the client's head of asset management ÃÂ¢ÃÂÃÂ a qualified surveyor ÃÂ¢ÃÂÃÂ using a capitalization of net rental income. A major anchor tenant announced departure after year-end (known at authorization date), and the service charge income includes a one-off retro-billing.",
+      "client_context": "The client owns an office tower measured under the fair value model. The valuation is performed by the client's head of asset management — a qualified surveyor — using a capitalization of net rental income. A major anchor tenant announced departure after year-end (known at authorization date), and the service charge income includes a one-off retro-billing.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "existence",
@@ -3473,7 +3473,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "occurrence": "Legacy bug fixes and general IT time are expenses, not qualifying development costs ÃÂ¢ÃÂÃÂ capitalization includes non-eligible items.",
+        "occurrence": "Legacy bug fixes and general IT time are expenses, not qualifying development costs — capitalization includes non-eligible items.",
         "valuation_and_allocation": "Impairment indicators (delays, rising costs) and the completion assessment are judgemental."
       },
       "procedures": [
@@ -3509,7 +3509,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Budget approval shows the project was authorized, but provides no evidence about whether individual capitalized costs qualify for capitalization under IAS 38 ÃÂ¢ÃÂÃÂ the assertion actually at risk.",
+          "trap_explanation": "Budget approval shows the project was authorized, but provides no evidence about whether individual capitalized costs qualify for capitalization under IAS 38 — the assertion actually at risk.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -3749,7 +3749,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Segregation of duties testing is a controls matter ÃÂ¢ÃÂÃÂ it doesn't, by itself, verify that the recorded escrow balances exist and are complete. The trap is mistaking control testing for substantive evidence on the balance.",
+          "trap_explanation": "Segregation of duties testing is a controls matter — it doesn't, by itself, verify that the recorded escrow balances exist and are complete. The trap is mistaking control testing for substantive evidence on the balance.",
           "isa_ref": "ISA 330"
         }
       ],
@@ -3955,7 +3955,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "accuracy": "The vesting-period modification accelerates expense recognition ÃÂ¢ÃÂÃÂ the incremental fair value must be recognized.",
+        "accuracy": "The vesting-period modification accelerates expense recognition — the incremental fair value must be recognized.",
         "valuation_and_allocation": "A poorly chosen volatility input makes grant-date fair values unreliable."
       },
       "procedures": [
@@ -4008,7 +4008,7 @@
       "line_item": "Residential mortgage portfolio",
       "statement": "balance_sheet",
       "industry": "Mortgage lender",
-      "client_context": "The lender grew its mortgage book 40% in one year by relaxing income verification for self-employed borrowers ÃÂ¢ÃÂÃÂ stated income instead of tax returns. Property revaluations for loan-to-value ratios are desktop valuations by an internal team, and early-payment defaults on last year's vintage are already running above tolerance.",
+      "client_context": "The lender grew its mortgage book 40% in one year by relaxing income verification for self-employed borrowers — stated income instead of tax returns. Property revaluations for loan-to-value ratios are desktop valuations by an internal team, and early-payment defaults on last year's vintage are already running above tolerance.",
       "assertions_relevant": [
         "existence",
         "valuation_and_allocation",
@@ -4019,7 +4019,7 @@
       "assertions_high_risk": {
         "valuation_and_allocation": "Stated-income lending plus internal desktop valuations is a classic combination that understates ECL; the rising default rate confirms it.",
         "existence": "Rapid growth can mask fraudulent applications; recorded loans may not represent genuine creditworthy borrowers.",
-        "rights_and_obligations": "Mortgage security must be registered ÃÂ¢ÃÂÃÂ some registrations may be pending or defective."
+        "rights_and_obligations": "Mortgage security must be registered — some registrations may be pending or defective."
       },
       "procedures": [
         {
@@ -4079,7 +4079,7 @@
         "rights_and_obligations"
       ],
       "assertions_high_risk": {
-        "presentation_and_disclosure": "The liquidity facility, profit share and retained junior tranche indicate the bank retains substantially all the risks ÃÂ¢ÃÂÃÂ consolidation (IFRS 10) or at least extensive derecognition and disclosure analysis (IFRS 9/IFRS 7) is required.",
+        "presentation_and_disclosure": "The liquidity facility, profit share and retained junior tranche indicate the bank retains substantially all the risks — consolidation (IFRS 10) or at least extensive derecognition and disclosure analysis (IFRS 9/IFRS 7) is required.",
         "completeness": "Template-based vehicles may never have been through the bank's structured products approval process."
       },
       "procedures": [
@@ -4117,7 +4117,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Pricing the retained tranche is secondary ÃÂ¢ÃÂÃÂ the primary question is whether the vehicles should be consolidated at all. A precise valuation of one tranche is meaningless if the whole structure is off-balance-sheet when it shouldn't be.",
+          "trap_explanation": "Pricing the retained tranche is secondary — the primary question is whether the vehicles should be consolidated at all. A precise valuation of one tranche is meaningless if the whole structure is off-balance-sheet when it shouldn't be.",
           "isa_ref": "ISA 540"
         }
       ],
@@ -4133,7 +4133,7 @@
       "line_item": "Repo and reverse repo transactions",
       "statement": "balance_sheet",
       "industry": "Bank (treasury)",
-      "client_context": "The treasury desk uses repos for short-term funding. Around quarter-ends, several repos are recorded as outright sales of the bonds with a forward to repurchase ÃÂ¢ÃÂÃÂ removing them from the balance sheet for a few days. Some counterparties are affiliated funds, and the collateral haircut schedules were not updated after market volatility spiked.",
+      "client_context": "The treasury desk uses repos for short-term funding. Around quarter-ends, several repos are recorded as outright sales of the bonds with a forward to repurchase — removing them from the balance sheet for a few days. Some counterparties are affiliated funds, and the collateral haircut schedules were not updated after market volatility spiked.",
       "assertions_relevant": [
         "existence",
         "occurrence",
@@ -4142,7 +4142,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "presentation_and_disclosure": "Quarter-end 'sales' with repurchase agreements are balance-sheet window dressing ÃÂ¢ÃÂÃÂ repos must stay on balance sheet under IFRS 9 unless risks genuinely transfer.",
+        "presentation_and_disclosure": "Quarter-end 'sales' with repurchase agreements are balance-sheet window dressing — repos must stay on balance sheet under IFRS 9 unless risks genuinely transfer.",
         "valuation_and_allocation": "Stale haircut schedules understate collateral calls in a volatile market.",
         "occurrence": "Affiliated counterparties raise questions about whether transactions have commercial substance."
       },
@@ -4207,7 +4207,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "accuracy": "Failed corporate-action batches make NAVs wrong ÃÂ¢ÃÂÃÂ investors traded at incorrect prices.",
+        "accuracy": "Failed corporate-action batches make NAVs wrong — investors traded at incorrect prices.",
         "valuation_and_allocation": "The performance fee is computed from possibly erroneous NAVs, directly transferring value to the manager.",
         "completeness": "Migration-period transactions may be lost between old and new platforms."
       },
@@ -4335,7 +4335,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "accuracy": "Revenue at inception with expenses over time front-loads profit ÃÂ¢ÃÂÃÂ a direct breach of IFRS 17's coverage-units model.",
+        "accuracy": "Revenue at inception with expenses over time front-loads profit — a direct breach of IFRS 17's coverage-units model.",
         "completeness": "Inconsistent commission capitalization is a transition trap; the standard requires a consistent approach.",
         "cut_off": "Annual policies spanning the year-end need allocation of premiums over coverage periods."
       },
@@ -4376,7 +4376,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming premiums received tests that the policy exists and was paid ÃÂ¢ÃÂÃÂ but the actual risk here is the timing and pattern of recognition under IFRS 17, not whether the cash arrived. The procedure looks substantive but misses the real assertion.",
+          "trap_explanation": "Confirming premiums received tests that the policy exists and was paid — but the actual risk here is the timing and pattern of recognition under IFRS 17, not whether the cash arrived. The procedure looks substantive but misses the real assertion.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -4521,7 +4521,7 @@
       "line_item": "Payment float and customer balances (payment institution)",
       "statement": "balance_sheet",
       "industry": "Fintech (payment services)",
-      "client_context": "The payment institution holds customer funds in safeguarded accounts. Customer balances are tracked in a separate ledger reconciled to the safeguarding account quarterly. Between reconciliations, incoming payments are matched to customers by reference, but 5% of inflows have no reference and sit in a suspense account ÃÂ¢ÃÂÃÂ some for over a year. The institution is close to breaching its safeguarding balance requirement.",
+      "client_context": "The payment institution holds customer funds in safeguarded accounts. Customer balances are tracked in a separate ledger reconciled to the safeguarding account quarterly. Between reconciliations, incoming payments are matched to customers by reference, but 5% of inflows have no reference and sit in a suspense account — some for over a year. The institution is close to breaching its safeguarding balance requirement.",
       "assertions_relevant": [
         "completeness",
         "existence",
@@ -4586,7 +4586,7 @@
       "line_item": "Merchant lending book (buy-now-pay-later)",
       "statement": "balance_sheet",
       "industry": "Fintech (BNPL)",
-      "client_context": "The BNPL provider records installment receivables and an ECL provision using default curves from its first two years of data. It launched in a new country mid-year with a different consumer profile, but the same curves are applied. Receivables are often repaid early, and the revenue model records merchant fees and late fees ÃÂ¢ÃÂÃÂ the late fee income has tripled while complaints about misleading checkout disclosure pile up.",
+      "client_context": "The BNPL provider records installment receivables and an ECL provision using default curves from its first two years of data. It launched in a new country mid-year with a different consumer profile, but the same curves are applied. Receivables are often repaid early, and the revenue model records merchant fees and late fees — the late fee income has tripled while complaints about misleading checkout disclosure pile up.",
       "assertions_relevant": [
         "existence",
         "valuation_and_allocation",
@@ -4596,7 +4596,7 @@
       ],
       "assertions_high_risk": {
         "valuation_and_allocation": "Default curves from a different market and early repayments make ECL and interest income projections unreliable.",
-        "occurrence": "Tripled late fee income amid complaints raises the question of whether fees are valid and enforceable ÃÂ¢ÃÂÃÂ and ISA 250 regulatory risk."
+        "occurrence": "Tripled late fee income amid complaints raises the question of whether fees are valid and enforceable — and ISA 250 regulatory risk."
       },
       "procedures": [
         {
@@ -4658,7 +4658,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "existence": "Duplicated holdings mean records exceed what actually exists ÃÂ¢ÃÂÃÂ the opposite of the usual direction.",
+        "existence": "Duplicated holdings mean records exceed what actually exists — the opposite of the usual direction.",
         "rights_and_obligations": "Lending client securities to an affiliated desk may breach custody rules; clients may not have validly consented.",
         "completeness": "Omnibus accounts can conceal that client assets are insufficient to cover client entitlements."
       },
@@ -4714,7 +4714,7 @@
       "line_item": "Derivative positions (commodity hedges by an airline)",
       "statement": "balance_sheet",
       "industry": "Airline treasury",
-      "client_context": "The airline hedges jet fuel with oil swaps and options, designating them as cash flow hedges. The hedge documentation for a new tranche references 'fuel cost exposure' but the derivatives are written on crude oil ÃÂ¢ÃÂÃÂ with no documented assessment of the crude-to-jet fuel correlation. During the year the airline stopped hedging for six months while keeping the derivatives open, and the deferred hedge reserve is large.",
+      "client_context": "The airline hedges jet fuel with oil swaps and options, designating them as cash flow hedges. The hedge documentation for a new tranche references 'fuel cost exposure' but the derivatives are written on crude oil — with no documented assessment of the crude-to-jet fuel correlation. During the year the airline stopped hedging for six months while keeping the derivatives open, and the deferred hedge reserve is large.",
       "assertions_relevant": [
         "existence",
         "valuation_and_allocation",
@@ -4723,7 +4723,7 @@
         "completeness"
       ],
       "assertions_high_risk": {
-        "existence": "Basis risk between crude oil derivatives and jet fuel exposure means hedge accounting may not qualify ÃÂ¢ÃÂÃÂ the reserve should flow to P&L.",
+        "existence": "Basis risk between crude oil derivatives and jet fuel exposure means hedge accounting may not qualify — the reserve should flow to P&L.",
         "valuation_and_allocation": "The large deferred reserve parked in equity may conceal losses that belong in income.",
         "completeness": "All open derivatives including the de-designated period must be captured in the hedge records."
       },
@@ -4787,7 +4787,7 @@
         "occurrence"
       ],
       "assertions_high_risk": {
-        "valuation_and_allocation": "Forbearance without a genuine viability assessment masks credit deterioration ÃÂ¢ÃÂÃÂ Stage 1 staging understates ECL.",
+        "valuation_and_allocation": "Forbearance without a genuine viability assessment masks credit deterioration — Stage 1 staging understates ECL.",
         "accuracy": "Spreadsheet overrides bypassing the system's staging engine create both error and override risk."
       },
       "procedures": [
@@ -4852,7 +4852,7 @@
       "assertions_high_risk": {
         "valuation_and_allocation": "A stale price on a suspended fund no longer reflects an exit-price fair value and the level classification is wrong.",
         "cut_off": "Late-December contributions must be recognized as scheme assets and liabilities in the right period.",
-        "existence": "Units in a suspended vehicle may not be realizable ÃÂ¢ÃÂÃÂ the 'asset' is effectively a claim in a queue."
+        "existence": "Units in a suspended vehicle may not be realizable — the 'asset' is effectively a claim in a queue."
       },
       "procedures": [
         {
@@ -4915,9 +4915,9 @@
         "valuation_and_allocation"
       ],
       "assertions_high_risk": {
-        "cut_off": "Cash-collected premiums recorded on remittance lag the collection date ÃÂ¢ÃÂÃÂ income is recorded too late.",
+        "cut_off": "Cash-collected premiums recorded on remittance lag the collection date — income is recorded too late.",
         "valuation_and_allocation": "A 1/12 unearned pattern is wrong for single-premium multi-year products; the reserve is understated.",
-        "completeness": "Unremitted agent cash may never reach head office ÃÂ¢ÃÂÃÂ a classic misappropriation window."
+        "completeness": "Unremitted agent cash may never reach head office — a classic misappropriation window."
       },
       "procedures": [
         {
@@ -4972,7 +4972,7 @@
       "line_item": "Provision for regulatory fines and remediation (conduct costs)",
       "statement": "balance_sheet",
       "industry": "Bank (retail)",
-      "client_context": "The regulator is investigating the bank's sales practices for a fee-charging packaged account. The bank's own review, completed in November, found systematic mis-selling to 40,000 customers. No provision has been recognized ÃÂ¢ÃÂÃÂ the CFO argues the regulator has not yet set the fine amount. Remediation project costs are capitalized as 'intangible - customer relationship restoration'. Prior-year comparatives show similar conduct issues that were resolved at 5x the initial estimate.",
+      "client_context": "The regulator is investigating the bank's sales practices for a fee-charging packaged account. The bank's own review, completed in November, found systematic mis-selling to 40,000 customers. No provision has been recognized — the CFO argues the regulator has not yet set the fine amount. Remediation project costs are capitalized as 'intangible - customer relationship restoration'. Prior-year comparatives show similar conduct issues that were resolved at 5x the initial estimate.",
       "assertions_relevant": [
         "completeness",
         "valuation_and_allocation",
@@ -4980,9 +4980,9 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "completeness": "A constructive obligation to remediate 40,000 customers exists regardless of the regulator's decision ÃÂ¢ÃÂÃÂ no provision is a completeness failure.",
+        "completeness": "A constructive obligation to remediate 40,000 customers exists regardless of the regulator's decision — no provision is a completeness failure.",
         "valuation_and_allocation": "Prior conduct history at 5x initial estimates is strong evidence the outflow estimate needs careful challenge.",
-        "classification": "Capitalizing remediation costs as intangibles is wrong ÃÂ¢ÃÂÃÂ they are expenses."
+        "classification": "Capitalizing remediation costs as intangibles is wrong — they are expenses."
       },
       "procedures": [
         {
@@ -5226,7 +5226,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Testing refunds addresses whether recorded revenue was reversed appropriately ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ an occurrence-side concern for recorded sales ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but the flagged risk is cash skimming before recording (completeness); refund testing cannot detect sales that never entered the ledger.",
+          "trap_explanation": "Testing refunds addresses whether recorded revenue was reversed appropriately — an occurrence-side concern for recorded sales — but the flagged risk is cash skimming before recording (completeness); refund testing cannot detect sales that never entered the ledger.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -5284,7 +5284,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Direct confirmation is fine for recorded balances, but the stated risk is that no December invoice exists yet; confirming what the supplier has billed only captures items the supplier managed to invoice and may miss usage unbilled due to the system changeover. It also tests the wrong direction if used alone ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the accrual must be built from usage data, not from invoices.",
+          "trap_explanation": "Direct confirmation is fine for recorded balances, but the stated risk is that no December invoice exists yet; confirming what the supplier has billed only captures items the supplier managed to invoice and may miss usage unbilled due to the system changeover. It also tests the wrong direction if used alone — the accrual must be built from usage data, not from invoices.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -5374,7 +5374,7 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "completeness": "Payables are recorded from supplier invoices, not receipts, and invoices are only matched on demand ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ goods received before year-end without invoices will be omitted."
+        "completeness": "Payables are recorded from supplier invoices, not receipts, and invoices are only matched on demand — goods received before year-end without invoices will be omitted."
       },
       "procedures": [
         {
@@ -5553,7 +5553,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Inspection may support existence of land, but the flagged risks are valuation and disclosure of measurement basis; walking boundaries is a low-value procedure when title deeds already establish existence ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the risk direction is measurement, not physical presence.",
+          "trap_explanation": "Inspection may support existence of land, but the flagged risks are valuation and disclosure of measurement basis; walking boundaries is a low-value procedure when title deeds already establish existence — the risk direction is measurement, not physical presence.",
           "isa_ref": "ISA 501"
         }
       ],
@@ -5778,7 +5778,7 @@
       ],
       "assertions_high_risk": {
         "presentation_and_disclosure": "Distributable versus non-distributable reserves may be mixed, so disclosed amounts available for dividends could be overstated.",
-        "valuation_and_allocation": "The spreadsheet-based single control account raises the risk that movements in the year ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ transfer, appropriation, revaluation ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ are posted incorrectly or to the wrong reserve."
+        "valuation_and_allocation": "The spreadsheet-based single control account raises the risk that movements in the year — transfer, appropriation, revaluation — are posted incorrectly or to the wrong reserve."
       },
       "procedures": [
         {
@@ -5899,7 +5899,7 @@
     },
     {
       "id": "subs-001",
-      "line_item": "Business combination ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ subsidiary acquisition",
+      "line_item": "Business combination — subsidiary acquisition",
       "statement": "balance_sheet",
       "industry": "retail group (fashion and home)",
       "client_context": "The group acquired 80% of a homeware chain nine months before year-end. The purchase price was a multiple of the target's EBITDA, which the seller computed. The acquisition-date fair values were produced by the group's own finance team in a spreadsheet; the finance director was previously the target's CFO. Goodwill of EUR 40m arose.",
@@ -5923,7 +5923,7 @@
           "isa_ref": "ISA 540"
         },
         {
-          "procedure": "Compare the PPA schedule to the sale agreement to confirm all components ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ consideration, assumed liabilities, contingent payments ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ are captured",
+          "procedure": "Compare the PPA schedule to the sale agreement to confirm all components — consideration, assumed liabilities, contingent payments — are captured",
           "tests": [
             "completeness"
           ],
@@ -6218,7 +6218,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Agency confirmation of recorded balances does not detect omitted accruals for services delivered but not yet invoiced ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged risk; confirmations cover what is already on the ledger, the wrong direction for a completeness concern.",
+          "trap_explanation": "Agency confirmation of recorded balances does not detect omitted accruals for services delivered but not yet invoiced — the flagged risk; confirmations cover what is already on the ledger, the wrong direction for a completeness concern.",
           "isa_ref": "ISA 505"
         },
         {
@@ -6293,7 +6293,7 @@
             "rights_and_obligations"
           ],
           "trap": true,
-          "trap_explanation": "Confirming consignment stock with the retailer addresses whether that stock belongs in inventory; the flagged risks are NRV write-downs on the company's own stock and expired items ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement and existence of own holdings, not third-party title.",
+          "trap_explanation": "Confirming consignment stock with the retailer addresses whether that stock belongs in inventory; the flagged risks are NRV write-downs on the company's own stock and expired items — measurement and existence of own holdings, not third-party title.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -6361,7 +6361,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Monthly margin analysis is indirect and confounded by volume and production variances; the direct risk ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ non-arm's-length pricing set by the founder ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ is tested by benchmarking prices, not by margins.",
+          "trap_explanation": "Monthly margin analysis is indirect and confounded by volume and production variances; the direct risk — non-arm's-length pricing set by the founder — is tested by benchmarking prices, not by margins.",
           "isa_ref": "ISA 520"
         }
       ],
@@ -6428,7 +6428,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Footfall observation addresses completeness of gate revenue for daily admissions; the flagged risks concern the deferred income balance ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ existence of remaining obligations and allocation of promotional pricing ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which turnstile counts do not address.",
+          "trap_explanation": "Footfall observation addresses completeness of gate revenue for daily admissions; the flagged risks concern the deferred income balance — existence of remaining obligations and allocation of promotional pricing — which turnstile counts do not address.",
           "isa_ref": "ISA 501"
         }
       ],
@@ -6444,7 +6444,7 @@
       "line_item": "Grant income (milestone-based R&D)",
       "statement": "income_statement",
       "industry": "pharmaceutical R&D",
-      "client_context": "A government innovation agency funds a drug-discovery programme with milestone payments as candidate selection criteria are met. The company recognized the full awarded amount at year-end, claiming the milestones were 'virtually certain'. One milestone ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ candidate selection ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ is still pending, and the lead scientist on the milestone committee is the same person who reports grant progress to the agency.",
+      "client_context": "A government innovation agency funds a drug-discovery programme with milestone payments as candidate selection criteria are met. The company recognized the full awarded amount at year-end, claiming the milestones were 'virtually certain'. One milestone — candidate selection — is still pending, and the lead scientist on the milestone committee is the same person who reports grant progress to the agency.",
       "assertions_relevant": [
         "occurrence",
         "accuracy",
@@ -6593,7 +6593,7 @@
       },
       "procedures": [
         {
-          "procedure": "Evaluate the provision measurement model ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ cost estimates, inflation, discount rate ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against current market evidence including the rival operator's outturn costs",
+          "procedure": "Evaluate the provision measurement model — cost estimates, inflation, discount rate — against current market evidence including the rival operator's outturn costs",
           "tests": [
             "valuation_and_allocation"
           ],
@@ -6831,7 +6831,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Registrar confirmation of share counts addresses the completeness of issued capital; the flagged risks are the cost classification split and undocumented reversal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement and classification issues the registrar cannot speak to.",
+          "trap_explanation": "Registrar confirmation of share counts addresses the completeness of issued capital; the flagged risks are the cost classification split and undocumented reversal — measurement and classification issues the registrar cannot speak to.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -6996,7 +6996,7 @@
       },
       "procedures": [
         {
-          "procedure": "Analyse the governance terms of the three excluded vehicles ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ decision rights, veto rights, exposure to variability ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against control criteria",
+          "procedure": "Analyse the governance terms of the three excluded vehicles — decision rights, veto rights, exposure to variability — against control criteria",
           "tests": [
             "completeness"
           ],
@@ -7051,7 +7051,7 @@
       "line_item": "Segment disclosures",
       "statement": "balance_sheet",
       "industry": "conglomerate",
-      "client_context": "The group reports two segments ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 'Products' and 'Services' ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but internal monthly management reports used by the executive committee show five operating units. Two loss-making units in the Products segment were aggregated this year after the segment measure was changed to exclude 'non-core' central costs. The new measure is not reconciled in the segment note.",
+      "client_context": "The group reports two segments — 'Products' and 'Services' — but internal monthly management reports used by the executive committee show five operating units. Two loss-making units in the Products segment were aggregated this year after the segment measure was changed to exclude 'non-core' central costs. The new measure is not reconciled in the segment note.",
       "assertions_relevant": [
         "presentation_and_disclosure",
         "valuation_and_allocation",
@@ -7240,7 +7240,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Authority confirmations address recorded liabilities' existence; the flagged risks are an unsubstantiated royalty affecting the charge and an obscured reconciliation ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement and disclosure issues that balances confirmation cannot detect.",
+          "trap_explanation": "Authority confirmations address recorded liabilities' existence; the flagged risks are an unsubstantiated royalty affecting the charge and an obscured reconciliation — measurement and disclosure issues that balances confirmation cannot detect.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -7339,7 +7339,7 @@
       },
       "procedures": [
         {
-          "procedure": "Vouch a sample of AI-drafted upgrade invoices above EUR 10k to customer acceptance evidence ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ orders, accepted change orders or written confirmation",
+          "procedure": "Vouch a sample of AI-drafted upgrade invoices above EUR 10k to customer acceptance evidence — orders, accepted change orders or written confirmation",
           "tests": [
             "occurrence"
           ],
@@ -7379,7 +7379,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Customer confirmation of tier status is weak evidence for the flagged risks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ wrong-tier pricing and unagreed upgrades ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ because customers confirm what they believe they are in, which is exactly what the mispriced invoice also claims; testing the tool's logic and acceptance evidence is the direct route.",
+          "trap_explanation": "Customer confirmation of tier status is weak evidence for the flagged risks — wrong-tier pricing and unagreed upgrades — because customers confirm what they believe they are in, which is exactly what the mispriced invoice also claims; testing the tool's logic and acceptance evidence is the direct route.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -7542,7 +7542,7 @@
       ],
       "assertions_high_risk": {
         "valuation_and_allocation": "Spreadsheet mapping of new balance-sheet components to tax bases, prepared by the same consultant who built the system, creates bias and error risk in the deferred tax amounts.",
-        "completeness": "Different transition approaches across subsidiaries raise the risk that some temporary differences ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ for example loss components ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ were never mapped to the computation.",
+        "completeness": "Different transition approaches across subsidiaries raise the risk that some temporary differences — for example loss components — were never mapped to the computation.",
         "presentation_and_disclosure": "Deferred tax on items recognized outside profit or loss must be traced to the same equity component; transition adjustments in opening equity need clear disclosure."
       },
       "procedures": [
@@ -7597,7 +7597,7 @@
     },
     {
       "id": "act-001",
-      "line_item": "Defined benefit obligation ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ assumption change",
+      "line_item": "Defined benefit obligation — assumption change",
       "statement": "balance_sheet",
       "industry": "chemicals (multi-employer scheme)",
       "client_context": "The trustee moved to a new actuarial firm this year. The new actuary lowered the discount rate by 30 basis points while the company's own investment committee was simultaneously negotiating a buy-in for part of the scheme. The previous firm had flagged longevity improvements among production staff that the new report does not mention. The CFO approved the actuarial report in one day.",
@@ -7629,7 +7629,7 @@
           "isa_ref": "ISA 540"
         },
         {
-          "procedure": "Evaluate the buy-in's accounting effect ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ asset classification, income recognition and disclosure of the transaction",
+          "procedure": "Evaluate the buy-in's accounting effect — asset classification, income recognition and disclosure of the transaction",
           "tests": [
             "completeness",
             "presentation_and_disclosure"
@@ -7638,7 +7638,7 @@
           "isa_ref": "ISA 500"
         },
         {
-          "procedure": "Trace the key population data ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ active members, pensioners, salaries ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ to the scheme administrator's records",
+          "procedure": "Trace the key population data — active members, pensioners, salaries — to the scheme administrator's records",
           "tests": [
             "completeness"
           ],
@@ -7750,7 +7750,7 @@
       },
       "procedures": [
         {
-          "procedure": "Evaluate the held-for-sale criteria ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ board approval, active marketing, buyer interest, expected completion ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ at year-end given no buyer after months",
+          "procedure": "Evaluate the held-for-sale criteria — board approval, active marketing, buyer interest, expected completion — at year-end given no buyer after months",
           "tests": [
             "classification"
           ],
@@ -7788,7 +7788,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Site observation evidences the mine exists and its state of activity, but the flagged risks are measurement of the disposal group and validity of the held-for-sale classification ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ presentation and measurement questions a site visit cannot address.",
+          "trap_explanation": "Site observation evidences the mine exists and its state of activity, but the flagged risks are measurement of the disposal group and validity of the held-for-sale classification — presentation and measurement questions a site visit cannot address.",
           "isa_ref": "ISA 501"
         }
       ],
@@ -7813,7 +7813,7 @@
       ],
       "assertions_high_risk": {
         "presentation_and_disclosure": "The breach and its circumstances require disclosure, and whether it existed at year-end determines its classification in the accounts.",
-        "classification": "If the breach arose from conditions present at year-end ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the December insolvency ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the borrowings should be presented as current, not non-current.",
+        "classification": "If the breach arose from conditions present at year-end — the December insolvency — the borrowings should be presented as current, not non-current.",
         "valuation_and_allocation": "Expected renegotiation fees, penalty interest and onerous-condition effects need to be reflected in the measurement of the liability."
       },
       "procedures": [
@@ -7870,7 +7870,7 @@
     },
     {
       "id": "gc-002",
-      "line_item": "Going concern ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ single-asset dependence",
+      "line_item": "Going concern — single-asset dependence",
       "statement": "balance_sheet",
       "industry": "mining (junior explorer)",
       "client_context": "The company has one advanced exploration project, eighteen months of cash left, and its funding plan relies on a strategic investor whose term sheet expired unsigned in November. The directors state the going concern basis is appropriate because the investor 'remains interested'. Management's cash-flow model assumes project construction spending continues despite the funding gap, and the model's downside scenario shows cash exhaustion in eight months. No alternative financing has been sought.",
@@ -7880,13 +7880,13 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "presentation_and_disclosure": "A material uncertainty that is not properly disclosed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ supported only by an expired term sheet ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ would make the accounts misleading.",
+        "presentation_and_disclosure": "A material uncertainty that is not properly disclosed — supported only by an expired term sheet — would make the accounts misleading.",
         "valuation_and_allocation": "If the going concern basis is inappropriate, assets measured on a going concern basis, including capitalizable exploration costs, may be overstated.",
         "classification": "Uncertainty about funding the next twelve months affects the current versus non-current classification of all balance sheet items."
       },
       "procedures": [
         {
-          "procedure": "Evaluate the cash-flow forecast's assumptions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ funding sources, construction spending, and timeline ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against corroborated evidence including the expired term sheet",
+          "procedure": "Evaluate the cash-flow forecast's assumptions — funding sources, construction spending, and timeline — against corroborated evidence including the expired term sheet",
           "tests": [
             "valuation_and_allocation"
           ],
@@ -8029,7 +8029,7 @@
           "isa_ref": "ISA 540"
         },
         {
-          "procedure": "Evaluate the loan's substance ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ subordination, expected conversion or forgiveness ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and whether quasi-equity presentation is more appropriate",
+          "procedure": "Evaluate the loan's substance — subordination, expected conversion or forgiveness — and whether quasi-equity presentation is more appropriate",
           "tests": [
             "classification"
           ],
@@ -8209,7 +8209,7 @@
     },
     {
       "id": "hedge-001",
-      "line_item": "Hedge accounting ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ commodity hedges",
+      "line_item": "Hedge accounting — commodity hedges",
       "statement": "balance_sheet",
       "industry": "food processing",
       "client_context": "The company hedges cocoa purchases with futures. A sharp price drop made the hedge deeply in-the-money relative to physical purchase commitments, and management re-balanced the hedge ratio in October, doubling the volume of futures designated. Hedge documentation was updated retrospectively to describe the doubled ratio as the 'intended' ratio from inception. The treasury manager earns a bonus on hedging gains, and effectiveness testing is performed manually in a spreadsheet with a lookup-table error identified by internal audit in one column.",
@@ -8331,7 +8331,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Invoice vouching tests whether recorded purchases occurred, but the flagged risks are classification and disclosure of the financing structure; the physical goods flow was never in question ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the financing arrangement is.",
+          "trap_explanation": "Invoice vouching tests whether recorded purchases occurred, but the flagged risks are classification and disclosure of the financing structure; the physical goods flow was never in question — the financing arrangement is.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -8348,7 +8348,7 @@
       "line_item": "Contingent consideration (earn-out)",
       "statement": "balance_sheet",
       "industry": "pharmaceutical",
-      "client_context": "An acquisition three years ago included an earn-out based on the acquired unit's cumulative sales over four years. With nine months to run, the unit's sales have been boosted by a launch in a new territory ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a launch explicitly excluded from the earn-out definition in the purchase agreement, but included by management in the fair value estimate this year. The earn-out is a cash payment, and the counterparty is the unit's former owners, who remain as senior executives of the unit making the sales forecasts.",
+      "client_context": "An acquisition three years ago included an earn-out based on the acquired unit's cumulative sales over four years. With nine months to run, the unit's sales have been boosted by a launch in a new territory — a launch explicitly excluded from the earn-out definition in the purchase agreement, but included by management in the fair value estimate this year. The earn-out is a cash payment, and the counterparty is the unit's former owners, who remain as senior executives of the unit making the sales forecasts.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "occurrence",
@@ -8378,7 +8378,7 @@
           "isa_ref": "ISA 550"
         },
         {
-          "procedure": "Assess whether the forecast prepared by the payees is corroborated by independent evidence ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ market data, pipeline, prescriptions",
+          "procedure": "Assess whether the forecast prepared by the payees is corroborated by independent evidence — market data, pipeline, prescriptions",
           "tests": [
             "valuation_and_allocation"
           ],
@@ -8875,8 +8875,8 @@
       "id": "prepay-003",
       "line_item": "Prepaid rent (break clause)",
       "statement": "balance_sheet",
-      "industry": "hospitality (cafÃÂÃÂÃÂÃÂ© chain)",
-      "client_context": "The chain prepaid 18 months of rent on its flagship cafÃÂÃÂÃÂÃÂ© to secure a discount. In month 11, the landlord was put into administration and the lease contains a break clause allowing the landlord to terminate on 3 months' notice. The company keeps amortizing the prepayment evenly and has made no adjustment.",
+      "industry": "hospitality (café chain)",
+      "client_context": "The chain prepaid 18 months of rent on its flagship café to secure a discount. In month 11, the landlord was put into administration and the lease contains a break clause allowing the landlord to terminate on 3 months' notice. The company keeps amortizing the prepayment evenly and has made no adjustment.",
       "assertions_relevant": [
         "existence",
         "valuation_and_allocation",
@@ -8926,7 +8926,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The administrator's agent can confirm receipt of the payment but cannot confirm the company's entitlement to future occupancy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged valuation risk; confirmations address a fact that is not in dispute.",
+          "trap_explanation": "The administrator's agent can confirm receipt of the payment but cannot confirm the company's entitlement to future occupancy — the flagged valuation risk; confirmations address a fact that is not in dispute.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -8991,7 +8991,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Client confirmations of balances do not test whether billing followed the contract terms or whether timesheet hours were real work ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged risks are accuracy and occurrence of the fee build-up, not the receivable's existence.",
+          "trap_explanation": "Client confirmations of balances do not test whether billing followed the contract terms or whether timesheet hours were real work — the flagged risks are accuracy and occurrence of the fee build-up, not the receivable's existence.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -9124,7 +9124,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Balance confirmations verify principal amounts, not whether interest income was recorded at the right rates and periods ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged risks are accuracy and completeness of the income accrual.",
+          "trap_explanation": "Balance confirmations verify principal amounts, not whether interest income was recorded at the right rates and periods — the flagged risks are accuracy and completeness of the income accrual.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -9190,7 +9190,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Provider confirmation evidences the amount owed, but the flagged risks are the internal split and classification between operator expense and tenant recovery ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ facts the provider cannot speak to.",
+          "trap_explanation": "Provider confirmation evidences the amount owed, but the flagged risks are the internal split and classification between operator expense and tenant recovery — facts the provider cannot speak to.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -9205,7 +9205,7 @@
       "line_item": "Trade receivables (year-end credit notes)",
       "statement": "income_statement",
       "industry": "auto parts wholesale",
-      "client_context": "The sales director can raise credit notes without approval up to EUR 2,500. In the last week of December, 130 credit notes were raised against November sales ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ three times the weekly average ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and the customers were rebilled in mid-January. The sales director's team missed its Q4 volume target by a small margin.",
+      "client_context": "The sales director can raise credit notes without approval up to EUR 2,500. In the last week of December, 130 credit notes were raised against November sales — three times the weekly average — and the customers were rebilled in mid-January. The sales director's team missed its Q4 volume target by a small margin.",
       "assertions_relevant": [
         "occurrence",
         "accuracy",
@@ -9323,7 +9323,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The authority's records reflect what was filed; confirming them cannot detect undeclared counter sales ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ precisely the completeness risk ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and would wrongly corroborate the understated balance.",
+          "trap_explanation": "The authority's records reflect what was filed; confirming them cannot detect undeclared counter sales — precisely the completeness risk — and would wrongly corroborate the understated balance.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -9399,7 +9399,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Balance confirmations with advertisers address receivables existence; the flagged risks are the classification and measurement of contra revenue and whether booked ads ran ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which a balance confirmation resolves.",
+          "trap_explanation": "Balance confirmations with advertisers address receivables existence; the flagged risks are the classification and measurement of contra revenue and whether booked ads ran — none of which a balance confirmation resolves.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -9666,7 +9666,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Completion date confirms the transaction timing, but the flagged risks are the biased brand valuation and a missed impairment indicator ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement issues for which a legal date is irrelevant.",
+          "trap_explanation": "Completion date confirms the transaction timing, but the flagged risks are the biased brand valuation and a missed impairment indicator — measurement issues for which a legal date is irrelevant.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -9683,7 +9683,7 @@
       "line_item": "Capitalized development costs (agile programme)",
       "statement": "balance_sheet",
       "industry": "fintech (payments)",
-      "client_context": "The group capitalizes internal development using a rule of thumb: engineers' logged time tagged 'dev' is capitalized, everything else expensed. The mobile app rebuild runs in agile sprints mixing research, design and coding; the head of engineering tags whole teams' time to 'dev' during high-pressure quarters, and amortization begins 'on product launch' ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but the app launched incrementally to 5%, then 50% of users months apart.",
+      "client_context": "The group capitalizes internal development using a rule of thumb: engineers' logged time tagged 'dev' is capitalized, everything else expensed. The mobile app rebuild runs in agile sprints mixing research, design and coding; the head of engineering tags whole teams' time to 'dev' during high-pressure quarters, and amortization begins 'on product launch' — but the app launched incrementally to 5%, then 50% of users months apart.",
       "assertions_relevant": [
         "existence",
         "valuation_and_allocation",
@@ -9877,7 +9877,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Landlord confirmation of the agreed schedule evidences the deal exists, but the flagged risks are the remeasurement mechanics ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ discount rate and modification classification ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which are accounting judgements the landlord cannot confirm.",
+          "trap_explanation": "Landlord confirmation of the agreed schedule evidences the deal exists, but the flagged risks are the remeasurement mechanics — discount rate and modification classification — which are accounting judgements the landlord cannot confirm.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -10000,7 +10000,7 @@
           "isa_ref": "ISA 500"
         },
         {
-          "procedure": "Review the terms for features ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ resets, puts, contingent conversion ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ that affect the split analysis",
+          "procedure": "Review the terms for features — resets, puts, contingent conversion — that affect the split analysis",
           "tests": [
             "classification"
           ],
@@ -10046,7 +10046,7 @@
       "line_item": "Deferred tax asset (loss-making subsidiary)",
       "statement": "balance_sheet",
       "industry": "manufacturing group",
-      "client_context": "A wholly-owned subsidiary has accumulated losses of EUR 40m and recognizes a DTA in full, supported by a group cash-flow forecast showing the subsidiary returning to profit ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a forecast the group CFO signs, and which assumes a new contract with the group's largest customer that has not yet been tendered. The subsidiary has no history of profits and its market is shrinking.",
+      "client_context": "A wholly-owned subsidiary has accumulated losses of EUR 40m and recognizes a DTA in full, supported by a group cash-flow forecast showing the subsidiary returning to profit — a forecast the group CFO signs, and which assumes a new contract with the group's largest customer that has not yet been tendered. The subsidiary has no history of profits and its market is shrinking.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "presentation_and_disclosure"
@@ -10057,7 +10057,7 @@
       },
       "procedures": [
         {
-          "procedure": "Evaluate the forecast's assumptions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ contract win probability, market size, margins ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against external market data and tender status",
+          "procedure": "Evaluate the forecast's assumptions — contract win probability, market size, margins — against external market data and tender status",
           "tests": [
             "valuation_and_allocation"
           ],
@@ -10184,7 +10184,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "valuation_and_allocation": "A one-year-loss size for five-year unavoidable leases understates the provision, and ignoring sublease income overstates it in the opposite direction ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the build must capture both.",
+        "valuation_and_allocation": "A one-year-loss size for five-year unavoidable leases understates the provision, and ignoring sublease income overstates it in the opposite direction — the build must capture both.",
         "completeness": "Stores on the closure list but not yet loss-making may still meet the onerous test; the population may be incomplete."
       },
       "procedures": [
@@ -10325,7 +10325,7 @@
       ],
       "assertions_high_risk": {
         "accuracy": "The migration mapping error means contributions for mis-mapped employees are calculated and routed wrongly.",
-        "completeness": "Growing provider suspense balances indicate deductions that never reached employees' pots ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ amounts deducted but not allocated."
+        "completeness": "Growing provider suspense balances indicate deductions that never reached employees' pots — amounts deducted but not allocated."
       },
       "procedures": [
         {
@@ -10451,7 +10451,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Brokers are the parties who benefit from the accrual; their confirmation of their own commission cannot test splitting abuse or un-reversed cancellations ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged risks.",
+          "trap_explanation": "Brokers are the parties who benefit from the accrual; their confirmation of their own commission cannot test splitting abuse or un-reversed cancellations — the flagged risks.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -10518,7 +10518,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The loan's existence is agreed between parent and subsidiary; the flagged risks are hedge designation validity and the routing of translation differences ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ accounting judgements a bank cannot confirm.",
+          "trap_explanation": "The loan's existence is agreed between parent and subsidiary; the flagged risks are hedge designation validity and the routing of translation differences — accounting judgements a bank cannot confirm.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -10543,7 +10543,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "occurrence": "Recognizing subsidy income for buses whose conditions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ operating data, route restrictions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ are not yet met books income before the qualifying events occur.",
+        "occurrence": "Recognizing subsidy income for buses whose conditions — operating data, route restrictions — are not yet met books income before the qualifying events occur.",
         "accuracy": "The amounts for reassigned buses may need to be repaid; the recognized income may be overstated."
       },
       "procedures": [
@@ -10594,7 +10594,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Seeing the buses confirms delivery ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ an agreed fact ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but the flagged risks are unmet operating conditions and route breaches; a physical count cannot test compliance conditions.",
+          "trap_explanation": "Seeing the buses confirms delivery — an agreed fact — but the flagged risks are unmet operating conditions and route breaches; a physical count cannot test compliance conditions.",
           "isa_ref": "ISA 501"
         }
       ],
@@ -10825,7 +10825,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Watching service proves meals are served ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ an undisputed fact ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ while the flagged risks are the recognition timing and measurement of unredeemed vouchers; observation is irrelevant to the accounting build-up.",
+          "trap_explanation": "Watching service proves meals are served — an undisputed fact — while the flagged risks are the recognition timing and measurement of unredeemed vouchers; observation is irrelevant to the accounting build-up.",
           "isa_ref": "ISA 501"
         }
       ],
@@ -11026,7 +11026,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Custodian confirmations verify holdings (existence) but a custodian does not independently attest to fair values, and certainly not to the staleness of broker quotes or bonus-related bias ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the actual valuation and accuracy risks.",
+          "trap_explanation": "Custodian confirmations verify holdings (existence) but a custodian does not independently attest to fair values, and certainly not to the staleness of broker quotes or bonus-related bias — the actual valuation and accuracy risks.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11096,7 +11096,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Confirming principal outstanding verifies the debt balance but does not address the identified risks: bifurcation of the FX derivative, the unsupported volatility assumption, or model accuracy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the derivative's valuation and classification are untouched.",
+          "trap_explanation": "Confirming principal outstanding verifies the debt balance but does not address the identified risks: bifurcation of the FX derivative, the unsupported volatility assumption, or model accuracy — the derivative's valuation and classification are untouched.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11165,7 +11165,7 @@
             "presentation_and_disclosure"
           ],
           "trap": true,
-          "trap_explanation": "Verifying policy counts confirms scale of the portfolio but does not test the loss component's measurement, the completeness of affected cohorts, or the disclosure of the pricing error and changed development pattern ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the identified risks.",
+          "trap_explanation": "Verifying policy counts confirms scale of the portfolio but does not test the loss component's measurement, the completeness of affected cohorts, or the disclosure of the pricing error and changed development pattern — the identified risks.",
           "isa_ref": "ISA 540"
         }
       ],
@@ -11234,7 +11234,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "LP confirmations verify capital balances and commitments but not whether carried interest should have been recognized on unrealized revaluations or whether the deal partner's multiples are supportable ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged occurrence and valuation risks are untested.",
+          "trap_explanation": "LP confirmations verify capital balances and commitments but not whether carried interest should have been recognized on unrealized revaluations or whether the deal partner's multiples are supportable — the flagged occurrence and valuation risks are untested.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11303,7 +11303,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming the SPV's loan balances verifies assets the group may not even own; the flagged risks are whether derecognition/consolidation is appropriate and whether retained-interest valuation is supportable ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ balance confirmations do not address control analysis or fair value.",
+          "trap_explanation": "Confirming the SPV's loan balances verifies assets the group may not even own; the flagged risks are whether derecognition/consolidation is appropriate and whether retained-interest valuation is supportable — balance confirmations do not address control analysis or fair value.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11370,7 +11370,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Physical inspection confirms the properties exist and their state, but the flagged risks concern biased valuations, incomplete legal title, and disclosure of the post-year-end scheme ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which presence at the site resolves.",
+          "trap_explanation": "Physical inspection confirms the properties exist and their state, but the flagged risks concern biased valuations, incomplete legal title, and disclosure of the post-year-end scheme — none of which presence at the site resolves.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -11440,7 +11440,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Swap confirmations verify contractual terms but not the flagged risks: post-disposal hedge accounting qualification, the patched valuation curve, or the propriety of OCI reallocations ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ confirmations cannot test classification and measurement judgements.",
+          "trap_explanation": "Swap confirmations verify contractual terms but not the flagged risks: post-disposal hedge accounting qualification, the patched valuation curve, or the propriety of OCI reallocations — confirmations cannot test classification and measurement judgements.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11510,7 +11510,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "A management representation is not audit evidence of the computation itself; the flagged risks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ omitted jurisdictions, spreadsheet errors, untested safe-harbour data, and incomplete disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ require substantive testing, not assurance from the responsible manager.",
+          "trap_explanation": "A management representation is not audit evidence of the computation itself; the flagged risks — omitted jurisdictions, spreadsheet errors, untested safe-harbour data, and incomplete disclosure — require substantive testing, not assurance from the responsible manager.",
           "isa_ref": "ISA 580"
         }
       ],
@@ -11579,7 +11579,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Reconciling cash movements to the pension ledger verifies historical contributions but not the flagged risks: whether the recognized net asset respects the asset ceiling and whether the post-year-end agreement removes refund access ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement and disclosure judgements that cash testing cannot reach.",
+          "trap_explanation": "Reconciling cash movements to the pension ledger verifies historical contributions but not the flagged risks: whether the recognized net asset respects the asset ceiling and whether the post-year-end agreement removes refund access — measurement and disclosure judgements that cash testing cannot reach.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -11603,7 +11603,7 @@
         "accuracy"
       ],
       "assertions_high_risk": {
-        "existence": "Whether inventory recognized at year end physically existed ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the fire shows the warehouse's stock may have been misstated even at 31 December if counts or cut-off were misapplied.",
+        "existence": "Whether inventory recognized at year end physically existed — the fire shows the warehouse's stock may have been misstated even at 31 December if counts or cut-off were misapplied.",
         "valuation_and_allocation": "Inventory loss allowance may need to reflect conditions existing at year end, including NRV and insurance-recovery measurement.",
         "presentation_and_disclosure": "The non-adjusting event disclosure omits the insurance shortfall and financial effect."
       },
@@ -11648,7 +11648,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Counting other warehouses tests stock elsewhere, but the flagged risks concern the destroyed warehouse's year-end balance, its valuation, and the incomplete disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ extending testing at unaffected sites does not respond to them.",
+          "trap_explanation": "Counting other warehouses tests stock elsewhere, but the flagged risks concern the destroyed warehouse's year-end balance, its valuation, and the incomplete disclosure — extending testing at unaffected sites does not respond to them.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -11715,7 +11715,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Vouching capex invoices verifies investing outflows exist, but the flagged risks are the interest classification, undisclosed policy change, and covenant interaction ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ verifying vessel purchases does not address where interest paid belongs.",
+          "trap_explanation": "Vouching capex invoices verifies investing outflows exist, but the flagged risks are the interest classification, undisclosed policy change, and covenant interaction — verifying vessel purchases does not address where interest paid belongs.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -11787,7 +11787,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Customer confirmations address receivables existence, but the flagged risks are derecognition under full recourse, the understated recourse obligation, and completeness of true-ups ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ debts that were sold and may not even belong to the client; confirmation cannot resolve transfer-of-rights or measurement issues.",
+          "trap_explanation": "Customer confirmations address receivables existence, but the flagged risks are derecognition under full recourse, the understated recourse obligation, and completeness of true-ups — debts that were sold and may not even belong to the client; confirmation cannot resolve transfer-of-rights or measurement issues.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11857,7 +11857,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Board approval of the budget evidences internal sign-off but not the fairness of the EUR 85/MWh long-term price, the completeness of obligations to the minority shareholder, or model accuracy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the identified valuation risks remain untested.",
+          "trap_explanation": "Board approval of the budget evidences internal sign-off but not the fairness of the EUR 85/MWh long-term price, the completeness of obligations to the minority shareholder, or model accuracy — the identified valuation risks remain untested.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -11914,7 +11914,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Receivable confirmations address whether debts exist, but the flagged risks are whether closed tickets represent work actually performed and whether closure cut-off is correct ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ balance confirmation does not evidence ticket-level work or timing.",
+          "trap_explanation": "Receivable confirmations address whether debts exist, but the flagged risks are whether closed tickets represent work actually performed and whether closure cut-off is correct — balance confirmation does not evidence ticket-level work or timing.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -11973,7 +11973,7 @@
             "cut_off"
           ],
           "trap": true,
-          "trap_explanation": "Reviewing January deposits tests the timing of subsequent receipts, but the flagged risks are whether year-end sweep records are complete and unmanipulated ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ later deposits do not evidence whether the December sweeps were edited or missing.",
+          "trap_explanation": "Reviewing January deposits tests the timing of subsequent receipts, but the flagged risks are whether year-end sweep records are complete and unmanipulated — later deposits do not evidence whether the December sweeps were edited or missing.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12033,7 +12033,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Vouching subsequent payments tests whether recorded payables existed (existence direction), but the flagged risk is understatement ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ invoices received and goods delivered before year end that never entered the ledger ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which payment testing cannot detect because unpaid unrecorded liabilities leave no payment trail.",
+          "trap_explanation": "Vouching subsequent payments tests whether recorded payables existed (existence direction), but the flagged risk is understatement — invoices received and goods delivered before year end that never entered the ledger — which payment testing cannot detect because unpaid unrecorded liabilities leave no payment trail.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12148,7 +12148,7 @@
             "cut_off"
           ],
           "trap": true,
-          "trap_explanation": "Inspecting post-year-end invoices tests revenue cut-off, but the flagged risks are the adequacy of the provision for the distressed customer and whether aged balances exist ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ next-year invoicing says nothing about either.",
+          "trap_explanation": "Inspecting post-year-end invoices tests revenue cut-off, but the flagged risks are the adequacy of the provision for the distressed customer and whether aged balances exist — next-year invoicing says nothing about either.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12207,7 +12207,7 @@
             "valuation_and_allocation"
           ],
           "trap": true,
-          "trap_explanation": "Reviewing depreciation rates tests the ongoing depreciation charge, but the flagged risks are fictitious or misclassified additions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ whether engine rebuilds were capitalized as new vehicles ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which the depreciation rate setting does not address.",
+          "trap_explanation": "Reviewing depreciation rates tests the ongoing depreciation charge, but the flagged risks are fictitious or misclassified additions — whether engine rebuilds were capitalized as new vehicles — which the depreciation rate setting does not address.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12265,7 +12265,7 @@
             "rights_and_obligations"
           ],
           "trap": true,
-          "trap_explanation": "Insurance cover confirms the client can insure its goods but provides no evidence that recorded quantities exist or that adjustment journals are accurate ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged shrinkage and manipulation risks are untouched.",
+          "trap_explanation": "Insurance cover confirms the client can insure its goods but provides no evidence that recorded quantities exist or that adjustment journals are accurate — the flagged shrinkage and manipulation risks are untouched.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12381,7 +12381,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Vouching year payments confirms cash paid for utilities, but the flagged risks are whether the year-end accrual is complete and measured correctly ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ historical payments do not measure consumption between the last invoice and year end.",
+          "trap_explanation": "Vouching year payments confirms cash paid for utilities, but the flagged risks are whether the year-end accrual is complete and measured correctly — historical payments do not measure consumption between the last invoice and year end.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12439,7 +12439,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Counting unsold cards tests card stock, not revenue: the flagged risks are the broken redemption import and the breakage estimate ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ neither unsold cards nor their physical presence evidences redemptions or the estimate's accuracy.",
+          "trap_explanation": "Counting unsold cards tests card stock, not revenue: the flagged risks are the broken redemption import and the breakage estimate — neither unsold cards nor their physical presence evidences redemptions or the estimate's accuracy.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12499,7 +12499,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Verifying the cash payment shows the dividend was paid, but the flagged risks are completeness and classification in equity ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ whether the SOCIE captures both dividends and whether the distribution was properly charged to reserves ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ neither of which the bank record resolves.",
+          "trap_explanation": "Verifying the cash payment shows the dividend was paid, but the flagged risks are completeness and classification in equity — whether the SOCIE captures both dividends and whether the distribution was properly charged to reserves — neither of which the bank record resolves.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12558,7 +12558,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Asking about filing timeliness addresses compliance deadlines, not whether the returns' figures are complete and accurate under a stale mapping ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the flagged misstatement risks are about the content of the returns, not their punctuality.",
+          "trap_explanation": "Asking about filing timeliness addresses compliance deadlines, not whether the returns' figures are complete and accurate under a stale mapping — the flagged misstatement risks are about the content of the returns, not their punctuality.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12619,7 +12619,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The policy's float limits are a rule, not evidence; the flagged risks are missing cash and undocumented handovers, which only physical counts and record inspection can address ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ policy limits do not verify any balance.",
+          "trap_explanation": "The policy's float limits are a rule, not evidence; the flagged risks are missing cash and undocumented handovers, which only physical counts and record inspection can address — policy limits do not verify any balance.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12677,7 +12677,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Board approval of the rebranding budget shows the group sanctioned its own project, but the flagged risk is whether member firms received any service for the recharged costs ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ approval of the group's spending is not evidence of a valid recharge.",
+          "trap_explanation": "Board approval of the rebranding budget shows the group sanctioned its own project, but the flagged risk is whether member firms received any service for the recharged costs — approval of the group's spending is not evidence of a valid recharge.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12737,7 +12737,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Budget-to-actual analysis shows spending patterns but does not verify which period the media ran in or whether all December services are recorded ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the cut-off and completeness risks need flight reports and invoice tracing, not variance review.",
+          "trap_explanation": "Budget-to-actual analysis shows spending patterns but does not verify which period the media ran in or whether all December services are recorded — the cut-off and completeness risks need flight reports and invoice tracing, not variance review.",
           "isa_ref": "ISA 520"
         }
       ],
@@ -12794,7 +12794,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Inspecting laptops confirms the assets exist, but the flagged risks are computational accuracy and the classification of disposal losses ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ whether a laptop is on a desk says nothing about how its depreciation was calculated or presented.",
+          "trap_explanation": "Inspecting laptops confirms the assets exist, but the flagged risks are computational accuracy and the classification of disposal losses — whether a laptop is on a desk says nothing about how its depreciation was calculated or presented.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12818,7 +12818,7 @@
         "classification"
       ],
       "assertions_high_risk": {
-        "occurrence": "Revenue may have been recognized without control transferring ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ segregated but not separately identified goods with unproven customer acceptance may not be a genuine sale.",
+        "occurrence": "Revenue may have been recognized without control transferring — segregated but not separately identified goods with unproven customer acceptance may not be a genuine sale.",
         "cut_off": "Recognition in December for goods delivered in Q1 risks misstating the period of revenue.",
         "accuracy": "Storage fees charged to the customer in the arrangement may be misapplied in the transaction price."
       },
@@ -12862,7 +12862,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "A receivable confirmation shows the customer acknowledges a debt, but the flagged risks are whether control of the goods transferred in December and whether recognition was premature ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ customers confirming balances do not validate bill-and-hold criteria, and the sales director's bonus incentive makes management assertion insufficient.",
+          "trap_explanation": "A receivable confirmation shows the customer acknowledges a debt, but the flagged risks are whether control of the goods transferred in December and whether recognition was premature — customers confirming balances do not validate bill-and-hold criteria, and the sales director's bonus incentive makes management assertion insufficient.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -12876,7 +12876,7 @@
     },
     {
       "id": "rev-020",
-      "line_item": "Marketplace commission revenue ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ principal vs agent",
+      "line_item": "Marketplace commission revenue — principal vs agent",
       "statement": "income_statement",
       "industry": "e-commerce (home goods marketplace)",
       "client_context": "The marketplace lists third-party sellers' goods, takes a 15% commission, and recognizes total selling price as revenue with the sellers' share as cost of sales. The platform holds inventory in its own fulfilment centres, handles returns and refunds, and its terms state the customer's contract for defective goods is with the seller. Total GMV grew to EUR 300 million this year.",
@@ -12931,7 +12931,7 @@
             "classification"
           ],
           "trap": true,
-          "trap_explanation": "Management's rationale explains the policy choice but is not evidence it is correct; the flagged risk is misclassification driven by the platform's own exposure to returns and inventory ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ that requires evaluation of contract terms and control indicators, not the CFO's justification.",
+          "trap_explanation": "Management's rationale explains the policy choice but is not evidence it is correct; the flagged risk is misclassification driven by the platform's own exposure to returns and inventory — that requires evaluation of contract terms and control indicators, not the CFO's justification.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -12947,7 +12947,7 @@
       "line_item": "Standard costing variances in cost of sales",
       "statement": "income_statement",
       "industry": "furniture manufacturing",
-      "client_context": "Finished-goods cost of sales is relieved at standard cost, with purchase-price, usage and volume variances swept to P&L quarterly. Timber prices rose 35% during the year but the standard was only updated in October, and EUR 2.8 million of unfavourable purchase-price variances sits in the variance account with a EUR 1.9 million favourable volume variance netted against it ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ awaiting the plant manager's sign-off, whose bonus depends on plant margin over standard.",
+      "client_context": "Finished-goods cost of sales is relieved at standard cost, with purchase-price, usage and volume variances swept to P&L quarterly. Timber prices rose 35% during the year but the standard was only updated in October, and EUR 2.8 million of unfavourable purchase-price variances sits in the variance account with a EUR 1.9 million favourable volume variance netted against it — awaiting the plant manager's sign-off, whose bonus depends on plant margin over standard.",
       "assertions_relevant": [
         "accuracy",
         "occurrence",
@@ -12999,7 +12999,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Counting timber verifies inventory quantities, but the flagged risks concern variance computation, allocation between P&L and inventory, and classification ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ physical counts do not address how variances were calculated or where they were swept.",
+          "trap_explanation": "Counting timber verifies inventory quantities, but the flagged risks concern variance computation, allocation between P&L and inventory, and classification — physical counts do not address how variances were calculated or where they were swept.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13075,7 +13075,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Production volumes show what was filled, not what remains at customer sites; the flagged risks are existence of uncounted kegs and title having passed on tapped stock ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ neither is addressed by reviewing brewery output.",
+          "trap_explanation": "Production volumes show what was filled, not what remains at customer sites; the flagged risks are existence of uncounted kegs and title having passed on tapped stock — neither is addressed by reviewing brewery output.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13144,7 +13144,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Feed confirmations verify purchase volumes, but the flagged risks are the fair value of live birds under a stale growth model, whether flock numbers are real after disease losses, and price-based disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ feed tonnage does not measure any of these.",
+          "trap_explanation": "Feed confirmations verify purchase volumes, but the flagged risks are the fair value of live birds under a stale growth model, whether flock numbers are real after disease losses, and price-based disclosure — feed tonnage does not measure any of these.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -13215,7 +13215,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Visiting stores confirms the leases are real, but the flagged risks concern measurement ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the discount rate, rent-free periods, and improvements ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and completeness of the tracker; a store being open says nothing about whether its RoU asset was measured correctly.",
+          "trap_explanation": "Visiting stores confirms the leases are real, but the flagged risks concern measurement — the discount rate, rent-free periods, and improvements — and completeness of the tracker; a store being open says nothing about whether its RoU asset was measured correctly.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13285,7 +13285,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Inspecting operating expense invoices is unrelated to the flagged risks: understated tenant turnover, forecast-based variable income, and impairment of income streams ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which is addressed by verifying property opex.",
+          "trap_explanation": "Inspecting operating expense invoices is unrelated to the flagged risks: understated tenant turnover, forecast-based variable income, and impairment of income streams — none of which is addressed by verifying property opex.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13309,7 +13309,7 @@
         "cut_off"
       ],
       "assertions_high_risk": {
-        "occurrence": "Migrated legacy records and unreviewed casual additions create a ghost-employee risk ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ payroll expense for people who perform no shifts.",
+        "occurrence": "Migrated legacy records and unreviewed casual additions create a ghost-employee risk — payroll expense for people who perform no shifts.",
         "accuracy": "The unexplained 2% ledger reconciliation difference suggests processing errors across the migrated data.",
         "completeness": "The unexplained difference could also indicate payroll costs omitted from the ledger."
       },
@@ -13361,7 +13361,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "The payroll manager's opinion is a management assertion, not evidence; the flagged risks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ghost employees, an unexplained 2% difference, and unreviewed casual additions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ require substantive testing of master data, shift logs, and the reconciliation, especially as the tip-off implies management-level involvement.",
+          "trap_explanation": "The payroll manager's opinion is a management assertion, not evidence; the flagged risks — ghost employees, an unexplained 2% difference, and unreviewed casual additions — require substantive testing of master data, shift logs, and the reconciliation, especially as the tip-off implies management-level involvement.",
           "isa_ref": "ISA 580"
         }
       ],
@@ -13402,7 +13402,7 @@
           "isa_ref": "ISA 500"
         },
         {
-          "procedure": "Evaluate the model's inputs ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ volatility, expected life, and the effect of the two repricings ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against current market evidence for comparable listed SaaS companies",
+          "procedure": "Evaluate the model's inputs — volatility, expected life, and the effect of the two repricings — against current market evidence for comparable listed SaaS companies",
           "tests": [
             "accuracy"
           ],
@@ -13441,7 +13441,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "The registrar confirms issued shares, but the flagged risks are the expense computation ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ stale volatility, repricing effects, ill-defined performance conditions ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and completeness of awards in the model; the share register says nothing about expense measurement.",
+          "trap_explanation": "The registrar confirms issued shares, but the flagged risks are the expense computation — stale volatility, repricing effects, ill-defined performance conditions — and completeness of awards in the model; the share register says nothing about expense measurement.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -13511,7 +13511,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming billings with customers verifies amounts invoiced, but the flagged risks are the internal release pattern ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ 18-month contracts on a 12-month basis ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and the completeness of the schedule; customer confirmations cannot test how the client amortizes what it billed.",
+          "trap_explanation": "Confirming billings with customers verifies amounts invoiced, but the flagged risks are the internal release pattern — 18-month contracts on a 12-month basis — and the completeness of the schedule; customer confirmations cannot test how the client amortizes what it billed.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -13552,7 +13552,7 @@
           "isa_ref": "ISA 550"
         },
         {
-          "procedure": "Evaluate the classification of the write-off ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ impairment, related-party credit loss, or constructive distribution ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and its accounting treatment",
+          "procedure": "Evaluate the classification of the write-off — impairment, related-party credit loss, or constructive distribution — and its accounting treatment",
           "tests": [
             "classification"
           ],
@@ -13581,7 +13581,7 @@
             "presentation_and_disclosure"
           ],
           "trap": true,
-          "trap_explanation": "A representation about related-party completeness is insufficient on its own where the founder alone approved the write-off and controls the information environment; the flagged risks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ valuation of the loans and full disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ require substantive inspection of agreements and independent identification of family entities, not assurance from the interested party's representative.",
+          "trap_explanation": "A representation about related-party completeness is insufficient on its own where the founder alone approved the write-off and controls the information environment; the flagged risks — valuation of the loans and full disclosure — require substantive inspection of agreements and independent identification of family entities, not assurance from the interested party's representative.",
           "isa_ref": "ISA 550"
         }
       ],
@@ -13650,7 +13650,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Customer balance confirmations verify receivables exist, but the flagged risks are inside the ERP ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ mapping errors, duplicated converted orders, and an undocumented report query ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which is addressed by customers agreeing their statements.",
+          "trap_explanation": "Customer balance confirmations verify receivables exist, but the flagged risks are inside the ERP — mapping errors, duplicated converted orders, and an undocumented report query — none of which is addressed by customers agreeing their statements.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -13720,7 +13720,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "The provider's marketing claims are not audit evidence; the flagged risks ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ billing accuracy through the uncovered rate-change period and the existence of rapidly onboarded merchant balances ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ require substantive testing and the SOC 1 evaluation, not vendor assurances about its own service.",
+          "trap_explanation": "The provider's marketing claims are not audit evidence; the flagged risks — billing accuracy through the uncovered rate-change period and the existence of rapidly onboarded merchant balances — require substantive testing and the SOC 1 evaluation, not vendor assurances about its own service.",
           "isa_ref": "ISA 402"
         }
       ],
@@ -13790,7 +13790,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "JV minutes may reveal project context, but the flagged risks are the client's own liability recognition, its measurement, and disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ legal conclusions about the guarantee documents and the lender's demand probability are not addressed by reading the JV's meeting minutes.",
+          "trap_explanation": "JV minutes may reveal project context, but the flagged risks are the client's own liability recognition, its measurement, and disclosure — legal conclusions about the guarantee documents and the lender's demand probability are not addressed by reading the JV's meeting minutes.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13807,7 +13807,7 @@
       "line_item": "Expected credit loss overlays on lease receivables",
       "statement": "balance_sheet",
       "industry": "equipment leasing",
-      "client_context": "The lessor's ECL model for its EUR 200 million lease book uses PD curves by asset class with a single macroeconomic scenario (base case). The credit committee applies quarterly management overlays 'for rounding' without documentation; this year overlays totalled EUR 4.2 million releases, mostly reversing earlier overlays. Two sectors in the book ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ construction and haulage ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ deteriorated sharply in H2, but the model's PD curves were last refreshed two years ago.",
+      "client_context": "The lessor's ECL model for its EUR 200 million lease book uses PD curves by asset class with a single macroeconomic scenario (base case). The credit committee applies quarterly management overlays 'for rounding' without documentation; this year overlays totalled EUR 4.2 million releases, mostly reversing earlier overlays. Two sectors in the book — construction and haulage — deteriorated sharply in H2, but the model's PD curves were last refreshed two years ago.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "accuracy",
@@ -13859,7 +13859,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Lessee confirmations verify recorded receivable balances exist, but the flagged risks are measurement of expected losses ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ stale curves, undocumented overlay releases ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and disclosure; agreeing balances with lessees does not test the loss model.",
+          "trap_explanation": "Lessee confirmations verify recorded receivable balances exist, but the flagged risks are measurement of expected losses — stale curves, undocumented overlay releases — and disclosure; agreeing balances with lessees does not test the loss model.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -13931,7 +13931,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Factory quality records show production-line defect controls, but the flagged risks are in the claims classification ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ rejected complaints and stale training data ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ and the resulting provision measurement; production QC inspection does not test whether warranty claims were correctly classified or provided for.",
+          "trap_explanation": "Factory quality records show production-line defect controls, but the flagged risks are in the claims classification — rejected complaints and stale training data — and the resulting provision measurement; production QC inspection does not test whether warranty claims were correctly classified or provided for.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -13999,7 +13999,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming the store is empty verifies the facts of the exit, but the flagged risks are the provision's measurement ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ optimistic headline rents and omitted restoration costs ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which a site visit cannot test.",
+          "trap_explanation": "Confirming the store is empty verifies the facts of the exit, but the flagged risks are the provision's measurement — optimistic headline rents and omitted restoration costs — which a site visit cannot test.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -14069,7 +14069,7 @@
             "completeness"
           ],
           "trap": true,
-          "trap_explanation": "Confirming intercompany balances verifies what each side recorded, but the flagged risks are the royalty rate's arm's-length support, classification consistency, and whether charges reflect actual patent usage ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which balance confirmation resolves.",
+          "trap_explanation": "Confirming intercompany balances verifies what each side recorded, but the flagged risks are the royalty rate's arm's-length support, classification consistency, and whether charges reflect actual patent usage — none of which balance confirmation resolves.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14086,7 +14086,7 @@
       "line_item": "Internally developed brand capitalization",
       "statement": "balance_sheet",
       "industry": "beverages (craft brewing)",
-      "client_context": "The company capitalized EUR 3.8 million of costs for 'building the brand': agency fees, a festival sponsorship, and an in-house creative team's salaries, alongside genuine packaging design costs. The finance team has no project-by-project ledger, so capitalized amounts are tracked in a spreadsheet reconciled only annually, and the marketing director ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ whose budget is praised for capitalization reducing opex ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ approves what is capitalized.",
+      "client_context": "The company capitalized EUR 3.8 million of costs for 'building the brand': agency fees, a festival sponsorship, and an in-house creative team's salaries, alongside genuine packaging design costs. The finance team has no project-by-project ledger, so capitalized amounts are tracked in a spreadsheet reconciled only annually, and the marketing director — whose budget is praised for capitalization reducing opex — approves what is capitalized.",
       "assertions_relevant": [
         "occurrence",
         "valuation_and_allocation",
@@ -14101,7 +14101,7 @@
       },
       "procedures": [
         {
-          "procedure": "Evaluate the accounting framework's criteria for brand capitalization and test each capitalized cost type ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ agency fees, sponsorship, salaries, packaging design ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against those criteria",
+          "procedure": "Evaluate the accounting framework's criteria for brand capitalization and test each capitalized cost type — agency fees, sponsorship, salaries, packaging design — against those criteria",
           "tests": [
             "classification"
           ],
@@ -14148,7 +14148,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming the sponsorship was genuinely paid verifies a payment occurred, but the flagged risks are whether that payment qualifies for capitalization at all and the accuracy of the spreadsheet tracking it ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a payment confirmation does not make promotion spend an intangible asset.",
+          "trap_explanation": "Confirming the sponsorship was genuinely paid verifies a payment occurred, but the flagged risks are whether that payment qualifies for capitalization at all and the accuracy of the spreadsheet tracking it — a payment confirmation does not make promotion spend an intangible asset.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14230,7 +14230,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Bank-verified payroll totals confirm what staff cost, but the flagged risks are whether the claimed furlough hours were genuine and whether the claims qualify ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ cash paid to rostered staff proves nothing about which hours were subsidized.",
+          "trap_explanation": "Bank-verified payroll totals confirm what staff cost, but the flagged risks are whether the claimed furlough hours were genuine and whether the claims qualify — cash paid to rostered staff proves nothing about which hours were subsidized.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -14247,7 +14247,7 @@
       "line_item": "Unbilled revenue in professional-services WIP",
       "statement": "income_statement",
       "industry": "law firm",
-      "client_context": "Fee earners log time to WIP daily; unbilled amounts transfer to revenue only on invoice. Year-end unbilled WIP is EUR 12 million, up 40%, concentrated in a litigation practice where the fee arrangement is 'no win, no fee' for a major case set for trial next year. Partners review their own WIP for recoverability, and the firm's profitability metric ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ reported to the bank covenant ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ includes unbilled revenue growth.",
+      "client_context": "Fee earners log time to WIP daily; unbilled amounts transfer to revenue only on invoice. Year-end unbilled WIP is EUR 12 million, up 40%, concentrated in a litigation practice where the fee arrangement is 'no win, no fee' for a major case set for trial next year. Partners review their own WIP for recoverability, and the firm's profitability metric — reported to the bank covenant — includes unbilled revenue growth.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "completeness",
@@ -14373,7 +14373,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Trees being visible verifies planting occurred, but the flagged risks are the credits' registry status, value, and ownership rights ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a suspended project's standing forest may still hold impaired or non-transferable credits.",
+          "trap_explanation": "Trees being visible verifies planting occurred, but the flagged risks are the credits' registry status, value, and ownership rights — a suspended project's standing forest may still hold impaired or non-transferable credits.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -14415,7 +14415,7 @@
           "isa_ref": "ISA 505"
         },
         {
-          "procedure": "Evaluate the accounting policy for custody assets and liabilities ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ measurement basis, segregation, and gross-up ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ against the framework",
+          "procedure": "Evaluate the accounting policy for custody assets and liabilities — measurement basis, segregation, and gross-up — against the framework",
           "tests": [
             "valuation_and_allocation",
             "rights_and_obligations"
@@ -14454,7 +14454,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Bank confirmations verify segregated fiat, but the flagged risks concern token holdings on-chain, the measurement of crypto assets in a 55% price fall, and ownership rights over customers' digital assets ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ fiat balances say nothing about whether the tokens exist or how they are accounted for.",
+          "trap_explanation": "Bank confirmations verify segregated fiat, but the flagged risks concern token holdings on-chain, the measurement of crypto assets in a 55% price fall, and ownership rights over customers' digital assets — fiat balances say nothing about whether the tokens exist or how they are accounted for.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14532,7 +14532,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Borrower confirmations verify principal balances exist, but the flagged risks are the loss model ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ stale parameters, an undocumented release, and restructures treated as performing ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ none of which balance confirmation addresses.",
+          "trap_explanation": "Borrower confirmations verify principal balances exist, but the flagged risks are the loss model — stale parameters, an undocumented release, and restructures treated as performing — none of which balance confirmation addresses.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14605,7 +14605,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Supplier confirmations verify invoices exist, but the flagged risks are disclosure of the programme's terms, classification of the payables, and liquidity consequences of the bank's withdrawal ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ which confirming balances with suppliers does not address.",
+          "trap_explanation": "Supplier confirmations verify invoices exist, but the flagged risks are disclosure of the programme's terms, classification of the payables, and liquidity consequences of the bank's withdrawal — which confirming balances with suppliers does not address.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14619,10 +14619,10 @@
     },
     {
       "id": "act-002",
-      "line_item": "Workers' compensation claims reserves ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ inflation assumption",
+      "line_item": "Workers' compensation claims reserves — inflation assumption",
       "statement": "balance_sheet",
       "industry": "workers' compensation insurance",
-      "client_context": "The insurer's claims reserves apply a claims-inflation factor of 4% per annum, unchanged for three years while wage inflation ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the indexation basis for compensation payments ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ ran at 7-9%. The reserving actuary joined the company six months ago and has not yet performed a full reserve review; a portfolio of legacy claims from a construction book shows court awards trending above the factor, and the reserve note still describes the factor as 'consistent with recent experience'.",
+      "client_context": "The insurer's claims reserves apply a claims-inflation factor of 4% per annum, unchanged for three years while wage inflation — the indexation basis for compensation payments — ran at 7-9%. The reserving actuary joined the company six months ago and has not yet performed a full reserve review; a portfolio of legacy claims from a construction book shows court awards trending above the factor, and the reserve note still describes the factor as 'consistent with recent experience'.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "accuracy",
@@ -14681,7 +14681,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Reinsurer confirmations verify recoverable balances exist, but the flagged risks are the understated gross reserves from a stale inflation factor and the misleading disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ recoverables are a separate balance and do not address the reserve measurement.",
+          "trap_explanation": "Reinsurer confirmations verify recoverable balances exist, but the flagged risks are the understated gross reserves from a stale inflation factor and the misleading disclosure — recoverables are a separate balance and do not address the reserve measurement.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14753,7 +14753,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Bank confirmations verify the division's cash and borrowings exist, but the flagged risks are whether held-for-sale classification survives the clearance and financing conditions and whether the impairment is properly measured ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ balance confirmations cannot address classification or impairment.",
+          "trap_explanation": "Bank confirmations verify the division's cash and borrowings exist, but the flagged risks are whether held-for-sale classification survives the clearance and financing conditions and whether the impairment is properly measured — balance confirmations cannot address classification or impairment.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14833,7 +14833,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Vouching premium payments shows the treaties were paid for, but the flagged risks are the recoverable's recoverability from a downgraded, disputing counterparty and the depleted collateral ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ past premium transfers do not evidence future claim payments.",
+          "trap_explanation": "Vouching premium payments shows the treaties were paid for, but the flagged risks are the recoverable's recoverability from a downgraded, disputing counterparty and the depleted collateral — past premium transfers do not evidence future claim payments.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -14850,7 +14850,7 @@
       "line_item": "Recycling of foreign-currency translation gains from OCI on disposal",
       "statement": "balance_sheet",
       "industry": "pharmaceuticals",
-      "client_context": "The group sold its Latin American generics subsidiary, releasing EUR 120 million of accumulated FX translation losses from the translation reserve through P&L on recycling. Half the subsidiary's operations were transferred to the retained regional services entity before sale, whose functional currency the group also reassessed from USD to the parent's euro this year ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ moving EUR 40 million between reserves. The reserve movements are computed by group finance in a spreadsheet with no independent review, and the P&L release flatters EPS against the LTIP hurdle that would otherwise be missed.",
+      "client_context": "The group sold its Latin American generics subsidiary, releasing EUR 120 million of accumulated FX translation losses from the translation reserve through P&L on recycling. Half the subsidiary's operations were transferred to the retained regional services entity before sale, whose functional currency the group also reassessed from USD to the parent's euro this year — moving EUR 40 million between reserves. The reserve movements are computed by group finance in a spreadsheet with no independent review, and the P&L release flatters EPS against the LTIP hurdle that would otherwise be missed.",
       "assertions_relevant": [
         "accuracy",
         "classification",
@@ -14912,7 +14912,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming sale proceeds verifies the disposal's cash, but the flagged risks are how the EUR 120 million was split on recycling, the functional-currency reassessment, and spreadsheet accuracy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the amount received says nothing about the reserve mechanics.",
+          "trap_explanation": "Confirming sale proceeds verifies the disposal's cash, but the flagged risks are how the EUR 120 million was split on recycling, the functional-currency reassessment, and spreadsheet accuracy — the amount received says nothing about the reserve mechanics.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -14930,7 +14930,7 @@
       "line_item": "Lease modification: fixed payments renegotiated to variable",
       "statement": "balance_sheet",
       "industry": "cinema exhibition",
-      "client_context": "Post-pandemic footfall left the group renegotiating all 60 of its leases. Two flagship leases were modified mid-year from fixed rent to base rent plus 5% of box-office takings ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ previously variable payments were negligible. The group treated the modifications as separate leases under the 'adding a right' logic because the landlord also granted signage rights, and continued the old measurement without remeasuring the lease liabilities. Box office is running 30% below the attendance assumptions used in the old liability measurement, and the landlord confirmed in writing the renegotiation 'replaces the existing rent structure entirely'.",
+      "client_context": "Post-pandemic footfall left the group renegotiating all 60 of its leases. Two flagship leases were modified mid-year from fixed rent to base rent plus 5% of box-office takings — previously variable payments were negligible. The group treated the modifications as separate leases under the 'adding a right' logic because the landlord also granted signage rights, and continued the old measurement without remeasuring the lease liabilities. Box office is running 30% below the attendance assumptions used in the old liability measurement, and the landlord confirmed in writing the renegotiation 'replaces the existing rent structure entirely'.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "classification",
@@ -14938,7 +14938,7 @@
         "presentation_and_disclosure"
       ],
       "assertions_high_risk": {
-        "classification": "Whether the modifications add a separate right (signage) or modify existing leases determines whether remeasurement is required ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the 'replaces entirely' wording suggests a modification requiring liability remeasurement, not a new lease.",
+        "classification": "Whether the modifications add a separate right (signage) or modify existing leases determines whether remeasurement is required — the 'replaces entirely' wording suggests a modification requiring liability remeasurement, not a new lease.",
         "valuation_and_allocation": "If remeasurement applies, the discount rate and the new fixed-plus-variable structure must be re-measured; retaining stale attendance-based payments overstates or misstates the liability.",
         "accuracy": "Remeasurement computations across 60 renegotiated leases are error-prone."
       },
@@ -14991,7 +14991,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Confirming rent paid verifies cash amounts, but the flagged risks are the classification of the modifications and the lease liabilities' remeasurement ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ a year's rent payment does not test whether the liability should have been remeasured under a new structure.",
+          "trap_explanation": "Confirming rent paid verifies cash amounts, but the flagged risks are the classification of the modifications and the lease liabilities' remeasurement — a year's rent payment does not test whether the liability should have been remeasured under a new structure.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15022,7 +15022,7 @@
       },
       "procedures": [
         {
-          "procedure": "Evaluate the staging assessment against objective default indicators ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ rating actions, IMF downgrade, and market prices ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ independent of the desk's view",
+          "procedure": "Evaluate the staging assessment against objective default indicators — rating actions, IMF downgrade, and market prices — independent of the desk's view",
           "tests": [
             "classification",
             "valuation_and_allocation"
@@ -15068,7 +15068,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "CSD confirmation verifies the bonds are held, but the flagged risks are staging classification and ECL measurement amid default-likelihood evidence ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ confirming custody says nothing about whether the loss allowance is adequate.",
+          "trap_explanation": "CSD confirmation verifies the bonds are held, but the flagged risks are staging classification and ECL measurement amid default-likelihood evidence — confirming custody says nothing about whether the loss allowance is adequate.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15096,7 +15096,7 @@
       "assertions_high_risk": {
         "valuation_and_allocation": "The budget-based Q4 roll-forward with known below-plan performance may overstate share of profit and the carrying value; impairment indicators were not documented despite the investment's dominance of the group's market cap.",
         "accuracy": "The roll-forward mechanics (last year capturing 70% of actuals) suggest systematic estimation error in the group's share.",
-        "cut_off": "Q4 events at the JV ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ commissioning and delays ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ must be reflected in the group's year-end accounts."
+        "cut_off": "Q4 events at the JV — commissioning and delays — must be reflected in the group's year-end accounts."
       },
       "procedures": [
         {
@@ -15148,7 +15148,7 @@
             "rights_and_obligations"
           ],
           "trap": true,
-          "trap_explanation": "The registry confirms the 40% holding exists, but the flagged risks are the Q4 roll-forward's accuracy, share-of-profit estimation, and impairment ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ the ownership percentage was never in doubt, so confirmation adds nothing to the flagged risks.",
+          "trap_explanation": "The registry confirms the 40% holding exists, but the flagged risks are the Q4 roll-forward's accuracy, share-of-profit estimation, and impairment — the ownership percentage was never in doubt, so confirmation adds nothing to the flagged risks.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15165,7 +15165,7 @@
       "line_item": "Provision for a historical operational risk event",
       "statement": "balance_sheet",
       "industry": "universal bank",
-      "client_context": "In the prior year the bank's payment-processing platform misapplied FX spreads to 2 million retail transactions. Litigation is ongoing in two jurisdictions; the bank recognized EUR 15 million in the prior year and added nothing this year despite the lead regulator's draft decision in November quantifying redress at EUR 28-40 million, the class action expanding to business customers, and external counsel ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ engaged on a capped-fee basis ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ advising 'defensible but uncertain'. The CFO told the board that provision increases 'prejudge the litigation'.",
+      "client_context": "In the prior year the bank's payment-processing platform misapplied FX spreads to 2 million retail transactions. Litigation is ongoing in two jurisdictions; the bank recognized EUR 15 million in the prior year and added nothing this year despite the lead regulator's draft decision in November quantifying redress at EUR 28-40 million, the class action expanding to business customers, and external counsel — engaged on a capped-fee basis — advising 'defensible but uncertain'. The CFO told the board that provision increases 'prejudge the litigation'.",
       "assertions_relevant": [
         "valuation_and_allocation",
         "completeness",
@@ -15225,7 +15225,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Counsel confirmations verify fee balances, but the flagged risks are the redress provision's measurement against the regulator's range and the completeness of the expanded claimant population ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ legal fee accounting is immaterial to whether the EUR 15 million is adequate.",
+          "trap_explanation": "Counsel confirmations verify fee balances, but the flagged risks are the redress provision's measurement against the regulator's range and the completeness of the expanded claimant population — legal fee accounting is immaterial to whether the EUR 15 million is adequate.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15306,7 +15306,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Customer volume confirmations verify sailings occurred, but the flagged risks are the modification accounting treatment and the gross-versus-net presentation of service credits ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ volumes shipped do not resolve how a renegotiated contract should be accounted for.",
+          "trap_explanation": "Customer volume confirmations verify sailings occurred, but the flagged risks are the modification accounting treatment and the gross-versus-net presentation of service credits — volumes shipped do not resolve how a renegotiated contract should be accounted for.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15387,7 +15387,7 @@
             "existence"
           ],
           "trap": true,
-          "trap_explanation": "Institutional receivable confirmations verify trading debts owed to the firm, but the flagged risks are client money's segregation, completeness of reconciliations, and the trust breach ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ receivable balances are the firm's own assets and say nothing about client money custody.",
+          "trap_explanation": "Institutional receivable confirmations verify trading debts owed to the firm, but the flagged risks are client money's segregation, completeness of reconciliations, and the trust breach — receivable balances are the firm's own assets and say nothing about client money custody.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15405,7 +15405,7 @@
       "line_item": "Dividend received from a hyperinflationary subsidiary",
       "statement": "balance_sheet",
       "industry": "consumer goods (emerging markets group)",
-      "client_context": "The group's Turkish subsidiary declared a dividend equivalent to EUR 60 million, recognized as investment income in December. TÃÂÃÂÃÂÃÂ¼rkiye is designated hyperinflationary, so the subsidiary's results are restated using the index and translated at closing rate ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ but the dividend was measured using the transaction-date spot rate applied to un-indexed local amounts. Currency controls mean dividends can only be paid into a blocked-currency account, two tranches are pending central-bank approval, and the group's income statement benefit offsets the hyperinflation restatement loss that would otherwise breach a net-interest covenant.",
+      "client_context": "The group's Turkish subsidiary declared a dividend equivalent to EUR 60 million, recognized as investment income in December. Türkiye is designated hyperinflationary, so the subsidiary's results are restated using the index and translated at closing rate — but the dividend was measured using the transaction-date spot rate applied to un-indexed local amounts. Currency controls mean dividends can only be paid into a blocked-currency account, two tranches are pending central-bank approval, and the group's income statement benefit offsets the hyperinflation restatement loss that would otherwise breach a net-interest covenant.",
       "assertions_relevant": [
         "accuracy",
         "occurrence",
@@ -15415,7 +15415,7 @@
       ],
       "assertions_high_risk": {
         "accuracy": "Using spot-at-transaction on un-indexed amounts in a hyperinflationary economy misstates the dividend's translated amount.",
-        "occurrence": "The pending central-bank approval means part of the dividend may not be receivable ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ income for dividends that may never be distributable.",
+        "occurrence": "The pending central-bank approval means part of the dividend may not be receivable — income for dividends that may never be distributable.",
         "presentation_and_disclosure": "The currency-control restrictions, blocked funds, and covenant interplay require disclosure."
       },
       "procedures": [
@@ -15468,7 +15468,7 @@
             "accuracy"
           ],
           "trap": true,
-          "trap_explanation": "Reviewing prior-year statutory accounts shows historical performance, but the flagged risks are the dividend's translation under hyperinflationary rules, pending central-bank approvals, and the covenant effect ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ last year's local accounts do not address any of them.",
+          "trap_explanation": "Reviewing prior-year statutory accounts shows historical performance, but the flagged risks are the dividend's translation under hyperinflationary rules, pending central-bank approvals, and the covenant effect — last year's local accounts do not address any of them.",
           "isa_ref": "ISA 500"
         }
       ],
@@ -15546,7 +15546,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Confirming deliveries verifies contract activity, but the flagged risks are the future loss on the unavoidable minimums, the completeness of onerous-contract screening, and disclosure ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ past deliveries do not measure the six remaining loss-making years.",
+          "trap_explanation": "Confirming deliveries verifies contract activity, but the flagged risks are the future loss on the unavoidable minimums, the completeness of onerous-contract screening, and disclosure — past deliveries do not measure the six remaining loss-making years.",
           "isa_ref": "ISA 505"
         }
       ],
@@ -15624,7 +15624,7 @@
             "occurrence"
           ],
           "trap": true,
-          "trap_explanation": "Customer revenue confirmations verify sales occurred, but the flagged risks are the segment structure reported, the reconciliation's unexplained differences, and disclosure quality ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ confirming external sales says nothing about which segment they belong to or how measures are defined.",
+          "trap_explanation": "Customer revenue confirmations verify sales occurred, but the flagged risks are the segment structure reported, the reconciliation's unexplained differences, and disclosure quality — confirming external sales says nothing about which segment they belong to or how measures are defined.",
           "isa_ref": "ISA 505"
         }
       ],

@@ -121,7 +121,7 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
   },
   custodian: {
     label: 'Custodian',
-    body: 'A institution holding clients\u2019 securities for safekeeping. Fund auditors confirm holdings directly with custodians — a core existence/rights test for investment assets.',
+    body: 'An institution holding clients\u2019 securities for safekeeping. Fund auditors confirm holdings directly with custodians — a core existence/rights test for investment assets.',
     ref: 'ISA 502',
   },
   confirmation: {
@@ -333,6 +333,401 @@ export const GLOSSARY: Record<string, GlossaryTerm> = {
     label: 'Aged receivables analysis',
     body: 'Receivables bucketed by how long outstanding. Feeds the ECL/allowance estimate and exposes collection problems — analytical review gold.',
     ref: 'IFRS 9 / ISA 520',
+  },
+  nrv: {
+    label: 'Net realisable value (NRV)',
+    body: 'Estimated selling price minus costs to complete and sell. Inventory is carried at the lower of cost and NRV — where selling prices fall or stock ages, NRV write-downs are the valuation risk.',
+    ref: 'IAS 2',
+  },
+  obsolescence: {
+    label: 'Obsolescence',
+    body: 'The decline in an asset\'s or inventory\'s usefulness or saleability through age, technology or demand shifts. Drives impairment of fixed assets and NRV write-downs of stock — an estimate that management tends to postpone.',
+    ref: 'IAS 2 / IAS 36',
+  },
+  'slow-moving': {
+    label: 'Slow-moving stock',
+    body: 'Inventory with little or no movement over extended periods — a leading indicator of obsolescence and NRV write-down needs. Ageing analysis is the standard evidence.',
+    ref: 'IAS 2',
+  },
+  fifo: {
+    label: 'FIFO (first-in, first-out)',
+    body: 'Cost flow assumption that the oldest goods are sold first. In rising price environments it leaves newer (higher) costs in closing inventory; in falling environments the reverse — the method choice directly moves both cost of sales and inventory values.',
+    ref: 'IAS 2',
+  },
+  'weighted average': {
+    label: 'Weighted average cost',
+    body: 'Inventory costing method that smooths purchase prices into a single average cost per unit. Less sensitive to purchase timing than FIFO, but the averaging calculation itself must be tested for accuracy.',
+    ref: 'IAS 2',
+  },
+  'standard cost': {
+    label: 'Standard costing',
+    body: 'Predetermined unit costs used to value inventory and measure variances. The audit question is whether standards reasonably approximate actual cost at period end — unrealistic standards misstate both inventory and cost of sales.',
+    ref: 'IAS 2',
+  },
+  wip: {
+    label: 'WIP (work in progress)',
+    body: 'See Work in progress. Partially complete production or contracts at period end — the valuation of which depends on completion-percentage estimates.',
+    ref: 'IAS 2 / IFRS 15',
+  },
+  'finished goods': {
+    label: 'Finished goods',
+    body: 'Completed inventory ready for sale, carried at cost or NRV. Cut-off between WIP and finished goods, and NRV of unsold units, are the recurring audit issues.',
+    ref: 'IAS 2',
+  },
+  lcm: {
+    label: 'Lower of cost and NRV',
+    body: 'The IAS 2 measurement rule: inventory is carried at whichever is lower, cost or net realisable value. The comparison must happen at least annually — and NRV falls are frequently recognised late.',
+    ref: 'IAS 2',
+  },
+  'cash count': {
+    label: 'Cash count',
+    body: 'Physical counting of cash on hand at a moment in time, performed simultaneously by client and auditor. Tests existence; surprise counts also deter misappropriation.',
+    ref: 'ISA 501',
+  },
+  'float': {
+    label: 'Cash float',
+    body: 'A small amount of cash kept available for day-to-day payments (tills, petty cash). Small in value but high in mishandling risk; counts and imprest reconciliation are the controls.',
+    ref: 'ISA 501',
+  },
+  'petty cash': {
+    label: 'Petty cash',
+    body: 'Small cash reserve for minor expenses, usually run on an imprest system (fixed balance restored by reimbursement). The audit interest is control, not materiality.',
+    ref: 'Internal control concept',
+  },
+  imprest: {
+    label: 'Imprest system',
+    body: 'A fixed-balance arrangement (petty cash, dividends accounts): the balance stays constant and is only restored by documented reimbursement. Makes shortages obvious — a strong completeness/existence control.',
+    ref: 'Internal control concept',
+  },
+  'cut-off testing': {
+    label: 'Cut-off testing',
+    body: 'Procedures specifically targeting period-allocation: sampling transactions in the last and first weeks of the period and tracing them across the boundary. The evidence lives in dispatch/receipt documentation, not in the ledger.',
+    ref: 'ISA 315 assertion vocabulary',
+  },
+  'goods received note': {
+    label: 'Goods received note (GRN)',
+    body: 'Document recording receipt of goods, matched to purchase order and invoice before payment (the three-way match). GRNs near year-end are the raw material of cut-off and completeness testing.',
+    ref: 'ISA 315 / ISA 500',
+  },
+  'dispatch document': {
+    label: 'Dispatch documentation',
+    body: 'Evidence that goods left the premises (delivery notes, shipping documents, bills of lading). Key to revenue occurrence and cut-off: no dispatch, no sale.',
+    ref: 'ISA 500',
+  },
+  'bill and hold': {
+    label: 'Bill-and-hold',
+    body: 'Revenue recognised while goods remain with the seller under customer instruction. Legitimate only under strict criteria (customer controls the goods, segregation, no resale) — otherwise it is premature recognition.',
+    ref: 'IFRS 15',
+  },
+  'channel stuffing': {
+    label: 'Channel stuffing',
+    body: 'Pushing more product into distribution than the market demands near period end to inflate revenue. Detected via distributor inventory levels, returns history and credit terms loosening.',
+    ref: 'IFRS 15 / ISA 240',
+  },
+  'side agreement': {
+    label: 'Side agreement',
+    body: 'A separate, undisclosed contract modifying the apparent terms of a sale (return rights, price protection). Evidence that the recorded revenue does not reflect the real arrangement — occurrence risk.',
+    ref: 'IFRS 15 / ISA 240',
+  },
+  derecognition: {
+    label: 'Derecognition',
+    body: 'Removal of an asset or liability from the balance sheet when the rights, or the obligation, have expired or been transferred. The risk is premature derecognition (factoring with recourse, repo-style sales).',
+    ref: 'IFRS 9',
+  },
+  recourse: {
+    label: 'Recourse',
+    body: 'The transferor\'s obligation to repurchase or compensate for transferred assets (e.g. factored receivables that default). Recourse means risks have not truly transferred — usually blocking derecognition.',
+    ref: 'IFRS 9',
+  },
+  'expected loss': {
+    label: 'Expected loss model',
+    body: 'Impairment approach (ECL) recognising losses before they occur, based on probability weighting. Contrasts with incurred-loss models — the judgement moved from "has it happened" to "how likely is it".',
+    ref: 'IFRS 9',
+  },
+  'credit-impaired': {
+    label: 'Credit-impaired (Stage 3)',
+    body: 'A financial asset where a credit event has already occurred (default, bankruptcy). Interest is accrued on net carrying amount and lifetime ECL applies — the deepest level of impairment recognition.',
+    ref: 'IFRS 9',
+  },
+  'significant increase in credit risk': {
+    label: 'Significant increase in credit risk (Stage 2)',
+    body: 'The trigger for lifetime ECL under IFRS 9: quantitative (30 days past due presumption) or qualitative deterioration. Staging decisions are estimates with direct P&L effect.',
+    ref: 'IFRS 9',
+  },
+  'days past due': {
+    label: 'Days past due',
+    body: 'Days elapsed since contractual payment date. Over 30 days past due triggers a presumption of Stage 2 under IFRS 9; ageing data is the primary ECL input.',
+    ref: 'IFRS 9',
+  },
+  'forbearance': {
+    label: 'Forbearance',
+    body: 'Concessions granted to a borrower in difficulty (extended terms, waived covenants, reduced rates). Modifies the loan\'s contractual cash flows — ECL and staging must reflect the new reality, and disclosure is required.',
+    ref: 'IFRS 9 / IFRS 7',
+  },
+  'probability-weighted': {
+    label: 'Probability-weighted outcome',
+    body: 'An estimate computed across multiple scenarios and their likelihoods — the core mechanism of ECL. The audit question is whether the scenario set is complete and unbiased.',
+    ref: 'IFRS 9',
+  },
+  'forward-looking': {
+    label: 'Forward-looking information',
+    body: 'Macroeconomic and entity-specific forecasts used in ECL and impairment models. The judgement zone: which indicators, over what horizon, with what sensitivity — small input changes swing provisions.',
+    ref: 'IFRS 9',
+  },
+  pd: {
+    label: 'PD (probability of default)',
+    body: 'The likelihood a borrower defaults within a given horizon — a core ECL input, derived from internal ratings, external scores or market data. Model governance is the audit focus.',
+    ref: 'IFRS 9',
+  },
+  lgd: {
+    label: 'LGD (loss given default)',
+    body: 'The expected loss severity if default occurs, net of recoveries and collateral. Collateral valuation (often Level 3) makes this the most assumption-heavy ECL input.',
+    ref: 'IFRS 9',
+  },
+  ead: {
+    label: 'EAD (exposure at default)',
+    body: 'The expected outstanding amount at the time of default, including committed but undrawn facilities. For revolving facilities this is a forecast, not a balance.',
+    ref: 'IFRS 9',
+  },
+  ibnr: {
+    label: 'IBNR (incurred but not reported)',
+    body: 'Insurance claims that have happened but not yet been reported to the insurer at the reporting date. Estimated actuarially — the classic insurance completeness and valuation risk.',
+    ref: 'IFRS 17',
+  },
+  'claims reserve': {
+    label: 'Claims reserve',
+    body: 'The liability for outstanding insurance claims: reported case estimates plus IBNR. Actuarial estimates of frequency and severity drive it; small assumption changes move it materially.',
+    ref: 'IFRS 17',
+  },
+  'risk adjustment': {
+    label: 'Risk adjustment (IFRS 17)',
+    body: 'The compensation the entity requires for bearing uncertainty about future cash flows — a non-financial-risk margin in insurance contract liabilities. Highly judgemental; disclosure of the method is mandatory.',
+    ref: 'IFRS 17',
+  },
+  'discount rate (unlocking)': {
+    label: 'Discount unlocking',
+    body: 'The effect of changing a discount rate or other estimate between periods, requiring restatement of the liability build-up. Frequent target of manipulation when results need smoothing.',
+    ref: 'IFRS 17 / IAS 19',
+  },
+  'reinsurance recoverable': {
+    label: 'Reinsurance recoverable',
+    body: 'The insurer\'s asset for amounts recoverable from reinsurers. A valuation estimate dependent on reinsurer credit quality and claim development — and a classic place for optimistic provisioning.',
+    ref: 'IFRS 17',
+  },
+  lapse: {
+    label: 'Lapse rate',
+    body: 'The proportion of insurance policies that terminate early through non-payment or surrender. A core actuarial assumption in life insurance — directly affecting liability measurement and unearned premium release.',
+    ref: 'IFRS 17',
+  },
+  'unit trust': {
+    label: 'Unit-linked funds',
+    body: 'Investment products whose value tracks underlying investment units held for policyholders. Audit focus: existence and valuation of the underlying holdings and correct unit pricing.',
+    ref: 'IFRS 17 / IFRS 9',
+  },
+  'segregated client money': {
+    label: 'Segregated client money',
+    body: 'Client funds held separately from the firm\'s own assets (brokerage client money rules). Rights-and-obligations evidence: confirmation of the segregation and reconciliation to client records.',
+    ref: 'ISA 505 / regulatory frameworks',
+  },
+  'prime broker': {
+    label: 'Prime broker',
+    body: 'A bank providing bundled services (custody, financing, clearing) to institutional clients. The audit issue: confirming balances and collateral with the prime broker and understanding rehypothecation rights.',
+    ref: 'ISA 502 / IFRS 9',
+  },
+  rehypothecation: {
+    label: 'Rehypothecation',
+    body: 'A custodian\'s reuse of client collateral for its own purposes. Creates rights-and-obligations and disclosure complexity — the client\'s assets may be encumbered without appearing so.',
+    ref: 'IFRS 7 / IFRS 9',
+  },
+  'netting agreement': {
+    label: 'Netting agreement',
+    body: 'A contractual right to offset assets and liabilities on default or close-out (ISDA master agreements). Determines whether offsetting in the balance sheet is valid presentation.',
+    ref: 'IAS 32 / IFRS 7',
+  },
+  'ISDA master': {
+    label: 'ISDA Master Agreement',
+    body: 'Standard framework for OTC derivatives between two parties: netting, collateral and default terms. Documentation underpins hedge accounting and offsetting claims.',
+    ref: 'ISA 500 / IAS 32',
+  },
+  'margin call': {
+    label: 'Margin call',
+    body: 'Demand for additional collateral when exposure moves against a counterparty. Unmet margin calls crystallise counterparty risk — a subsequent-events and going-concern input.',
+    ref: 'Market practice / IFRS 7',
+  },
+  'netting and offsetting': {
+    label: 'Netting and offsetting',
+    body: 'Presentation of assets and liabilities at a single net amount. Requires a legal right of set-off and intention to settle net — otherwise gross presentation is mandatory.',
+    ref: 'IAS 32',
+  },
+  'related-party transaction': {
+    label: 'Related-party transaction',
+    body: 'Transactions between the entity and its related parties (directors, parent, affiliates). Must be disclosed; the risk is that terms differ from arm\'s length and identification is incomplete.',
+    ref: 'IAS 24 / ISA 550',
+  },
+  'events after the reporting period': {
+    label: 'Events after the reporting period',
+    body: 'See Subsequent events. Adjusting evidence for the year-end balances arrives after the period end but before the audit report — the review window.',
+    ref: 'IAS 10 / ISA 560',
+  },
+  'management representations': {
+    label: 'Management representations',
+    body: 'Written statements from management the auditor obtains near report date. Necessary audit evidence, but never a substitute for other evidence — and not sufficient on their own for material items.',
+    ref: 'ISA 580',
+  },
+  'management override': {
+    label: 'Management override of controls',
+    body: 'The ability of management to bypass controls (journal entries, estimates, unusual transactions). A presumed fraud risk on every audit — the reason journals and estimates get tested on every engagement.',
+    ref: 'ISA 240',
+  },
+  'journal entry testing': {
+    label: 'Journal entry testing',
+    body: 'Testing of manual journal entries for indicators of management override: late entries, round numbers, unusual accounts, weekends, senior involvement. Mandatory fraud-response procedure.',
+    ref: 'ISA 240',
+  },
+  'test of details': {
+    label: 'Tests of details',
+    body: 'Substantive procedures on individual items (vouching, confirmation, inspection, recalculation) as opposed to analytical procedures. Required when risk is high — analytic evidence alone is not enough.',
+    ref: 'ISA 330',
+  },
+  'test of controls': {
+    label: 'Tests of controls',
+    body: 'Procedures verifying a control operated effectively (who, when, evidence of operation). Justifies reduced substantive testing; a failing control forces substantive-only approaches.',
+    ref: 'ISA 330',
+  },
+  walkthrough: {
+    label: 'Walkthrough',
+    body: 'Tracing one transaction end-to-end through the process, interviewing staff and observing controls. Used to confirm understanding of the flow and spot control gaps.',
+    ref: 'ISA 315',
+  },
+  'substantive analytics': {
+    label: 'Substantive analytical procedures',
+    body: 'Using relationships and expectations (ratios, trends, modelling) as substantive evidence. Effective for predictable balances; must be precise enough to detect material misstatement.',
+    ref: 'ISA 520',
+  },
+  'sampling risk': {
+    label: 'Sampling risk',
+    body: 'The risk the sample conclusion differs from the population truth. Reduced by larger samples and better selection methods; never zero — which is why high-risk assertions get bigger samples.',
+    ref: 'ISA 530',
+  },
+  'stratified sampling': {
+    label: 'Stratification',
+    body: 'Splitting a population into sub-populations (e.g. by value) and sampling each separately. Big-ticket items get 100% testing; the remainder is sampled — more efficient and more precise.',
+    ref: 'ISA 530',
+  },
+  'monetary unit sampling': {
+    label: 'Monetary unit sampling',
+    body: 'A sampling method where each currency unit is a sampling unit, so larger items are more likely to be selected. Efficient for overstatement testing in positive-balance populations.',
+    ref: 'ISA 530',
+  },
+  'haphazard selection': {
+    label: 'Haphazard selection',
+    body: 'Non-structured, judgmental sample selection. Acceptable for small populations, but not a random method — statistical inference requires structured selection.',
+    ref: 'ISA 530',
+  },
+  'dual-purpose test': {
+    label: 'Dual-purpose testing',
+    body: 'One procedure serving both control testing and substantive testing. Economical, but the sample size must satisfy both purposes to be valid.',
+    ref: 'ISA 330 / ISA 530',
+  },
+  'external confirmation': {
+    label: 'External confirmation',
+    body: 'See Confirmation. Direct evidence from third parties; reliability depends on the responder\'s independence and the control the auditor has over the process.',
+    ref: 'ISA 505',
+  },
+  'negative confirmation': {
+    label: 'Negative confirmation',
+    body: 'A confirmation where no reply is treated as agreement. Weaker evidence than positive confirmation — only acceptable with low risk and strong controls.',
+    ref: 'ISA 505',
+  },
+  'exception': {
+    label: 'Exception (deviation)',
+    body: 'An instance where a control did not operate or a sampled item is misstated. Individually small exceptions matter: they recalibrate the error rate and can change the whole testing approach.',
+    ref: 'ISA 530',
+  },
+  'projected misstatement': {
+    label: 'Projected misstatement',
+    body: 'The auditor\'s best estimate of the population error, extrapolated from sample exceptions. Added to factual misstatements and evaluated against materiality.',
+    ref: 'ISA 530 / ISA 450',
+  },
+  'unadjusted differences': {
+    label: 'Unadjusted differences',
+    body: 'Misstatements the auditor accumulates but management declines to correct. Evaluated individually and in aggregate against materiality; the driver of the audit opinion if material.',
+    ref: 'ISA 450',
+  },
+  'written audit report': {
+    label: 'Audit report',
+    body: 'The auditor\'s opinion on whether the statements are materially misstated. The only part of the audit file most users ever see — the opinion paragraph, KAMs and emphasis-of-matter matter most.',
+    ref: 'ISA 700 / ISA 701',
+  },
+  'key audit matter': {
+    label: 'Key audit matters (KAM)',
+    body: 'The most significant matters discussed with those charged with governance, disclosed in the audit report. High-judgement areas (impairment, revenue recognition) — the issues this game trains you to spot.',
+    ref: 'ISA 701',
+  },
+  'emphasis of matter': {
+    label: 'Emphasis of matter',
+    body: 'A paragraph highlighting a matter already appropriately disclosed (e.g. going-concern support). Draws the reader\'s attention without qualifying the opinion.',
+    ref: 'ISA 706',
+  },
+  'going concern support': {
+    label: 'Going concern support letter',
+    body: 'A written commitment (from parent or lender) to provide financial support if needed. Strong evidence of going concern, but only reliable if the provider can and will fulfil it.',
+    ref: 'ISA 570',
+  },
+  'sensitivity analysis': {
+    label: 'Sensitivity analysis',
+    body: 'Testing how outcomes change when key assumptions move. The primary way to audit estimates: if a small change flips the conclusion, the estimate\'s reliability is fragile.',
+    ref: 'ISA 540',
+  },
+  'management expert': {
+    label: 'Management\'s expert',
+    body: 'A specialist (actuary, valuer, engineer) whose work the entity uses in preparing the statements. The auditor must evaluate their competence, objectivity and assumptions — not just accept the output.',
+    ref: 'ISA 500 / ISA 540',
+  },
+  'auditor expert': {
+    label: 'Auditor\'s expert',
+    body: 'A specialist engaged by the auditor to provide evidence (valuations, models). Extends the auditor\'s capability but responsibility for the opinion is never transferred.',
+    ref: 'ISA 620',
+  },
+  backlog: {
+    label: 'Order backlog',
+    body: 'Contracted but unfulfilled customer orders. A demand indicator used in impairment forecasts and revenue cut-off — and a place where optimistic backlog inflates forecasts.',
+    ref: 'ISA 540 context',
+  },
+  'breakage': {
+    label: 'Breakage',
+    body: 'The expected portion of deferred income (gift cards, loyalty points) that will never be redeemed. Recognising breakage as revenue requires a reliable historical pattern — otherwise it stays a liability.',
+    ref: 'IFRS 15',
+  },
+  'variable consideration': {
+    label: 'Variable consideration',
+    body: 'Parts of the transaction price that vary (rebates, penalties, bonuses, refunds). Constrained to amounts highly probable not to reverse — estimate-heavy and a favourite place for revenue misstatement.',
+    ref: 'IFRS 15',
+  },
+  'performance obligation': {
+    label: 'Performance obligation',
+    body: 'A promise in a contract to transfer a distinct good or service. Identifying and sequencing them (point in time vs over time) determines when revenue is recognised.',
+    ref: 'IFRS 15',
+  },
+  'transaction price': {
+    label: 'Transaction price',
+    body: 'The consideration the entity expects to be entitled to, adjusted for variable consideration, financing, consideration payable to the customer — the "how much" of the five-step model.',
+    ref: 'IFRS 15',
+  },
+  'contract asset': {
+    label: 'Contract asset',
+    body: 'Revenue recognised before the right to payment is unconditional. Distinguished from receivables; the audit risk is the transfer-of-control judgement behind the recognition.',
+    ref: 'IFRS 15',
+  },
+  'contract liability': {
+    label: 'Contract liability',
+    body: 'Obligation to transfer goods for consideration already received (deferred income). Completeness of the unfulfilled-obligation balance and cut-off of its release are the audit issues.',
+    ref: 'IFRS 15',
+  },
+  'modified opinion': {
+    label: 'Modified opinion',
+    body: 'An audit opinion other than unmodified: qualified, adverse or disclaimer. Triggered by material misstatements or inability to obtain evidence.',
+    ref: 'ISA 705',
   },
 };
 
