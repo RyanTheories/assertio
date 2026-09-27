@@ -87,7 +87,7 @@ fixing.
   scores zero and reveals the trap explanation.
 
 A scenario is **mastered** when every phase scores ≥ 80%. Progress and career stats persist in
-`localStorage` (keyed `assertion-arena.v1`, per browser).
+`localStorage` (keyed `assertio.v1`, per browser).
 
 ## Keyboard
 
