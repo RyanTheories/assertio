@@ -2,26 +2,35 @@ import { type ReactNode } from 'react';
 import { GLOSSARY, GLOSSARY_KEYS } from '../data/glossary';
 
 const BOUNDARY_CHARS = /[a-z0-9]/i;
+const normalize = (s: string) => s.toLowerCase().replace(/-/g, ' ');
 
 function findMatches(text: string): Array<{ start: number; end: number; key: string }> {
-  const lower = text.toLowerCase();
+  const lower = normalize(text);
   const matches: Array<{ start: number; end: number; key: string }> = [];
   const taken: Array<[number, number]> = [];
   const overlaps = (s: number, e: number) => taken.some(([ts, te]) => s < te && e > ts);
 
   for (const key of GLOSSARY_KEYS) {
-    let idx = 0;
-    for (;;) {
-      const at = lower.indexOf(key, idx);
-      if (at === -1) break;
-      const end = at + key.length;
-      const beforeOk = at === 0 || !BOUNDARY_CHARS.test(lower[at - 1]);
-      const afterOk = end === lower.length || !BOUNDARY_CHARS.test(lower[end]);
-      if (beforeOk && afterOk && !overlaps(at, end)) {
-        matches.push({ start: at, end, key });
-        taken.push([at, end]);
+    const base = normalize(key);
+    const needles = new Set<string>([base]);
+    if (/[^s]s$/.test(base)) needles.add(base + 'es');
+    else if (/[^s]y$/.test(base)) needles.add(base.slice(0, -1) + 'ies');
+    else needles.add(base + 's');
+    for (const needle of needles) {
+      let idx = 0;
+      for (;;) {
+        const at = lower.indexOf(needle, idx);
+        if (at === -1) break;
+        const end = at + needle.length;
+        const beforeOk = at === 0 || !BOUNDARY_CHARS.test(lower[at - 1]);
+        const afterOk = end === lower.length || !BOUNDARY_CHARS.test(lower[end]);
+        if (beforeOk && afterOk && !overlaps(at, end)) {
+          matches.push({ start: at, end, key });
+          taken.push([at, end]);
+          break;
+        }
+        idx = at + 1;
       }
-      idx = end;
     }
   }
   return matches.sort((a, b) => a.start - b.start);
