@@ -4,6 +4,7 @@ import type { AssertionId, Scenario } from './types';
 import type { ProcedureAnswer, RoundScore } from './scoring';
 import { scoreRound } from './scoring';
 import { sectorFor } from './sectors';
+import { toggleAmbience } from './audio';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
 import { Round } from './screens/Round';
@@ -58,6 +59,7 @@ export function pickSessionScenarios(all: Scenario[], cfg: SessionConfig): Scena
 export default function App() {
   const validation = useMemo(() => loadGameData(), []);
   const [screen, setScreen] = useState<Screen>({ kind: 'home' });
+  const [musicOn, setMusicOn] = useState(false);
   const [sessionScenarios, setSessionScenarios] = useState<Scenario[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [rounds, setRounds] = useState<RoundRecord[]>([]);
@@ -124,6 +126,14 @@ export default function App() {
 
   return (
     <>
+      <button
+        className={`btn btn-small music-toggle ${musicOn ? 'btn-primary' : 'btn-ghost'}`}
+        onClick={() => setMusicOn(toggleAmbience())}
+        aria-pressed={musicOn}
+        title={musicOn ? 'Mute Roman ambience' : 'Play Roman ambience'}
+      >
+        {musicOn ? '♫ Playing — mute' : '♫ Roman Ambience'}
+      </button>
       {screen.kind === 'home' && (
         <Home
           scenarios={data.scenarios}
