@@ -1,0 +1,3311 @@
+{
+  "meta": {
+    "name": "Assertion Radar — line-item scenarios",
+    "description": "Assertion-based audit training scenarios: identify relevant and risky assertions per line item, then match procedures. For the 'Audit Trail' training game suite.",
+    "version": "1.0",
+    "assertion_taxonomy": {
+      "transactions": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "balances": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"]
+    },
+    "gameplay": "Each round: (1) player flags relevant assertions for the line item, (2) flags which are HIGH RISK given the client context, (3) matches procedures to the assertions they test. Trap procedures look correct but address the wrong assertion for the flagged risk.",
+    "fields": {
+      "id": "stable scenario id",
+      "line_item": "financial statement line item",
+      "statement": "SoPL | SoFP | disclosures",
+      "industry": "client industry for variety",
+      "client_context": "the facts that drive assertion risk",
+      "assertions_relevant": "assertions that are relevant for this line item",
+      "assertions_high_risk": "map of assertion -> why the context makes it risky",
+      "procedures": "list of {procedure, tests[], trap, trap_explanation, isa_ref}",
+      "isa_refs": "ISA references for the overall scenario",
+      "difficulty": "beginner | intermediate | advanced"
+    }
+  },
+  "scenarios": [
+    {
+      "id": "rev-001",
+      "line_item": "Revenue",
+      "statement": "SoPL",
+      "industry": "retail (online)",
+      "client_context": "New online sales channel launched in March. Sales managers' bonuses are tied to monthly sales targets. Year-end falls in the peak holiday season.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "assertions_high_risk": {
+        "occurrence": "Bonus pressure plus a new channel creates incentive to book fictitious or prematurely recognized sales.",
+        "cut_off": "Holiday peak season concentrates transactions around the period boundary.",
+        "accuracy": "New channel may have untested pricing, discount and returns logic."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch a sample of online sales invoices to shipping documents and customer payment receipts",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Trace a sample of December shipping documents to the sales ledger in January and vice versa",
+          "tests": ["cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Perform analytical review comparing gross margin percentage by channel month-on-month",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Confirm year-end receivable balances with customers directly",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": true,
+          "trap_explanation": "Confirmation tests balance-sheet assertions on receivables, not the revenue occurrence or cut-off risk flagged by the context.",
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Review the returns provision calculation after year-end and compare to historical return rates",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 240"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "rev-002",
+      "line_item": "Revenue (long-term contracts)",
+      "statement": "SoPL",
+      "industry": "construction",
+      "client_context": "Revenue on construction contracts is recognized over time using percentage of completion based on costs incurred to date. Several large projects span multiple years.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "assertions_high_risk": {
+        "accuracy": "Percentage-of-completion depends on reliable cost estimates and total project cost forecasts — a high-judgment estimate.",
+        "occurrence": "Recognizing revenue ahead of actual progress inflates current-year results.",
+        "completeness": "Costs incurred but not yet invoiced or recorded must be captured in the stage-of-completion measure."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the percentage of completion using independently verified cost-to-date figures and compare with management's",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Compare recorded costs-to-date with the project engineer's site progress reports and photos",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the change-order log for approved variations not yet reflected in total contract value",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Physically inspect completed buildings at the client's head office",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Physical inspection of finished buildings tests existence of assets, not the revenue recognition estimate at risk here.",
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Enquire of the project manager about expected losses on loss-making contracts and review the calculation",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "IAS 37 / ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "rev-003",
+      "line_item": "Revenue (subscriptions)",
+      "statement": "SoPL",
+      "industry": "SaaS",
+      "client_context": "Annual subscription software contracts billed upfront, revenue recognized ratably over the subscription term. Customer base grew 60% this year; churn is rising.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "assertions_high_risk": {
+        "accuracy": "Ratable recognition requires a reliable contract-start and term data pipeline — fast growth may outpace the billing system's controls.",
+        "occurrence": "Upfront billing creates incentive to book renewals or extensions early.",
+        "classification": "Upfront billing must sit in contract liabilities, not revenue — misclassification risk is high."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the deferred revenue release schedule for a sample of contracts and agree opening balances to prior year",
+          "tests": ["accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Match the contract liability roll-forward to the billing system's subscription records",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch a sample of recognized revenue amounts to the underlying signed contracts and start dates",
+          "tests": ["occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Send positive confirmations to a sample of customers requesting their view of service periods",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": true,
+          "trap_explanation": "Customer confirmation of balances tests receivables assertions; it does not test the ratable recognition accuracy risk.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "IFRS 15"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "rev-004",
+      "line_item": "Other operating income",
+      "statement": "SoPL",
+      "industry": "manufacturing",
+      "client_context": "Other income includes government grants for energy-saving equipment, scrap sales, and a one-off gain on disposal of a machine. The line tripled versus prior year.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "classification"],
+      "assertions_high_risk": {
+        "classification": "A tripling suggests items may be misclassified — operating items could be hidden here or gains parked outside core revenue.",
+        "occurrence": "One-off disposal gains can be overstated or fictitious.",
+        "accuracy": "Grant recognition timing depends on conditions attached."
+      },
+      "procedures": [
+        {
+          "procedure": "Agree grant receipts to the grant agreements and test whether recognition conditions were met in the period",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch the disposal gain to the sales invoice, de-registration documents and asset register removal",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Analytically compare scrap sales volume to production output",
+          "tests": ["occurrence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Inspect the machine physically at the buyer's premises",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "The machine is sold — physical inspection is impossible and irrelevant; the disposal documentation is the evidence.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 520"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "cogs-001",
+      "line_item": "Cost of sales",
+      "statement": "SoPL",
+      "industry": "electronics manufacturing",
+      "client_context": "Component prices fell sharply mid-year. Inventory is measured using weighted average cost. Gross margin improved more than management expected.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Falling input prices make the costing method's application critical — weighted average must be computed on the correct layers.",
+        "cut_off": "Goods received near year-end must hit both inventory and cost of sales in the correct period."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the weighted average cost for sample product lines and compare to the ledger",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Test the purchase cut-off around year-end using goods-received notes and supplier invoices",
+          "tests": ["cut_off", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Perform analytical review of margin by product line, comparing standard cost to actual",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Inspect supplier contracts for volume rebates recorded as income instead of cost reduction",
+          "tests": ["classification", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "pay-001",
+      "line_item": "Payroll expense",
+      "statement": "SoPL",
+      "industry": "healthcare",
+      "client_context": "The client employs agency staff through a staffing platform. Payroll is processed in-house. Several new shift managers can approve timesheets.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "assertions_high_risk": {
+        "occurrence": "New shift managers approving timesheets increases risk of fictitious or ghost employees.",
+        "accuracy": "Agency staff costs may be misallocated between payroll and agency fees.",
+        "completeness": "Year-end hours worked but paid in January must accrue in the correct period."
+      },
+      "procedures": [
+        {
+          "procedure": "Match the payroll headcount to HR files and inspect contracts for a sample of employees",
+          "tests": ["occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Recalculate gross pay for a sample including overtime and shift premiums",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Agree accrued year-end hours to the January payroll run",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Obtain a bank confirmation for the payroll account",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Bank confirmation verifies cash existence, not whether recorded payroll expense is genuine and complete.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 240"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "dep-001",
+      "line_item": "Depreciation expense",
+      "statement": "SoPL",
+      "industry": "logistics",
+      "client_context": "Fleet of trucks depreciated over 5 years straight-line. This year, 20 new electric trucks were added, and the useful life of diesel trucks was extended from 5 to 8 years due to slower replacement cycle.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "The change in useful life is a change in estimate applied prospectively — prospective application and arithmetic must be verified.",
+        "completeness": "New trucks must be depreciated from the in-service date, not the purchase order date."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate depreciation for a sample of assets, re-performing the revised life calculation",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Agree new truck additions to registration documents and in-service dates",
+          "tests": ["occurrence", "accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the basis for the life extension: maintenance records, technical assessments, replacement plans",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Physically inspect a sample of trucks at the depot",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Truck existence is a balance-sheet concern; the expense risk here is the estimate change, which inspection cannot verify.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "fin-001",
+      "line_item": "Interest expense",
+      "statement": "SoPL",
+      "industry": "manufacturing",
+      "client_context": "The client refinanced all borrowings mid-year to a variable-rate facility. Interest is accrued monthly; loan arrangement fees were paid and capitalized.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Variable-rate interest requires correct rate and day-count application across two different facilities in one year.",
+        "completeness": "Accrued interest at year-end on the new facility must be captured; arrangement fee amortization must be complete."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate interest using the facility agreements, rate confirmations and outstanding balances",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Agree interest payments per the bank statements to the loan schedule and test the year-end accrual",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Reperform the amortization of capitalized arrangement fees over the facility term",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Obtain bank confirmation of loan balances at year-end",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": true,
+          "trap_explanation": "Confirmation of the loan principal addresses balance assertions; it does not test whether the expense is accurately and completely recorded.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "cash-001",
+      "line_item": "Cash and cash equivalents",
+      "statement": "SoFP",
+      "industry": "hospitality",
+      "client_context": "High cash turnover from daily restaurant receipts. Three bank accounts, one recently opened for a new location. Cash is physically counted weekly by shift leads.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "existence": "Cash is the most deferrable asset — weekly counts by shift leads (not independent) increase misappropriation risk.",
+        "completeness": "A recently opened account could be omitted from the general ledger mapping or the reconciliation process."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain bank confirmations for all accounts, including those with nil or closed during the year, from the bank directly",
+          "tests": ["existence", "completeness", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Test the bank reconciliations for each account for the final three months, tracing outstanding items to subsequent clearing",
+          "tests": ["existence", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Count physical cash on hand at year-end surprise and compare with the ledger",
+          "tests": ["existence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the bank resolution for authorized signatories and pledge/collateral disclosures",
+          "tests": ["rights_and_obligations", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Analytically review weekly cash counts vs daily POS reports",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 240", "ISA 505"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "ar-001",
+      "line_item": "Trade receivables",
+      "statement": "SoFP",
+      "industry": "wholesale",
+      "client_context": "Two large customers account for 45% of receivables. The allowance is a single pooled percentage based on age. One large customer was 120 days overdue at year-end.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A pooled age-based allowance may not reflect the specific 120-day overdue customer — ECL must reflect individual evidence.",
+        "existence": "Concentration plus possible fictitious balances to mask misappropriation."
+      },
+      "procedures": [
+        {
+          "procedure": "Send direct positive confirmations to a spread of customers including the two largest and the overdue one",
+          "tests": ["existence", "rights_and_obligations", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Test subsequent cash receipt of the overdue balance after year-end",
+          "tests": ["valuation_and_allocation", "existence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Recalculate the ECL provision using the matrix and assess whether individual impairments are required for the overdue customer",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Trace credit notes issued after year-end to the year-end balance",
+          "tests": ["valuation_and_allocation", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Physically count the receivables ledger printout at the client's office",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Receivables are not physical assets — a ledger printout is a document, not the balance itself; existence is tested via confirmation and subsequent receipt.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 505", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inv-001",
+      "line_item": "Inventory",
+      "statement": "SoFP",
+      "industry": "consumer electronics",
+      "client_context": "Fast-moving electronics inventory at three warehouses. The year-end count instructions were issued late; two warehouses use third-party logistics providers who perform their own counts.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "existence": "3PL warehouses mean the client's staff did not perform the count — auditor attendance or alternative evidence is needed.",
+        "valuation_and_allocation": "Electronics obsolesce fast — NRV testing and slow-moving analysis is critical.",
+        "completeness": "Late count instructions raise the risk of uncounted goods in transit and consignment stock."
+      },
+      "procedures": [
+        {
+          "procedure": "Attend the physical count at one own warehouse and obtain 3PL count reports plus direct confirmation of 3PL-held stock",
+          "tests": ["existence", "completeness", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Perform NRV testing on slow-moving lines comparing selling price to cost, using post-year-end sales data",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Test cut-off: last dispatch/receipt documents before and after count date traced to ledger",
+          "tests": ["cut_off", "existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Review consignment agreements to ensure consigned-in goods are excluded and consigned-out goods included",
+          "tests": ["rights_and_obligations", "existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm receivable balances with customers to verify inventory sales",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Receivables confirmation tests receivables, not inventory existence; the correct evidence is count attendance and 3PL confirmation.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 501", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inv-002",
+      "line_item": "Inventory (biological assets)",
+      "statement": "SoFP",
+      "industry": "agriculture",
+      "client_context": "Livestock (dairy cattle) measured at fair value less costs to sell per IAS 41. Herd sizes are tracked in an animal register; a disease outbreak occurred in the region mid-year.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "existence": "Disease outbreak creates risk that animals recorded have died or been culled without the register being updated.",
+        "valuation_and_allocation": "Fair value of livestock is volatile and outbreak-affected — expert evidence needed."
+      },
+      "procedures": [
+        {
+          "procedure": "Observe the herd count using ear tags and reconcile to the animal register",
+          "tests": ["existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Evaluate the work of an agricultural valuation expert and test key inputs to market price data",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 620 / ISA 540"
+        },
+        {
+          "procedure": "Inspect veterinary and insurance records for deaths and culls around year-end",
+          "tests": ["existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch the cost-to-sell deduction to transporter and market fee invoices",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "IAS 41"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "ppe-001",
+      "line_item": "Property, plant and equipment",
+      "statement": "SoFP",
+      "industry": "manufacturing",
+      "client_context": "A major plant extension was completed mid-year, constructed partly by the client's own staff. Several older machines were idle at year-end and held for sale discussions started.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Own-construction costs must be correctly capitalized (materials, labor, overhead) without internally generated profit; idle machines trigger impairment and held-for-sale classification review.",
+        "completeness": "Self-built asset costs may be expensed rather than capitalized."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch capitalized own-construction costs to timesheets, material invoices and overhead allocation calculations",
+          "tests": ["valuation_and_allocation", "completeness", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Physically inspect the plant extension and trace selected machines to the fixed asset register",
+          "tests": ["existence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Assess the idle machines for impairment indicators and review management's recoverable amount calculations",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Inspect title deeds and check for encumbrances/mortgages on the plant",
+          "tests": ["rights_and_obligations", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review repair and maintenance expense for items wrongly expensed that should be capital replacements",
+          "tests": ["completeness", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "ip-001",
+      "line_item": "Investment property",
+      "statement": "SoFP",
+      "industry": "real estate",
+      "client_context": "Office portfolio at fair value using external valuers. The market softened this year; one building was reclassified to owner-occupied after the tenant (a group company) expanded into it.",
+      "assertions_relevant": ["existence", "rights_and_obligations", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Soft market makes fair value estimates more judgmental; reclassification date and measurement basis switch must be correct.",
+        "presentation_and_disclosure": "Reclassification must be disclosed; owner-occupied means IAS 16 measurement, not IAS 40."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the external valuers' competence, objectivity and methodology; test key assumptions (yields, rents) to market data",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 620 / IFRS 13"
+        },
+        {
+          "procedure": "Physically inspect a sample of properties and confirm occupancy",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Inspect title documents and land registry extracts for ownership and encumbrances",
+          "tests": ["rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the reclassification documentation and verify measurement at transition and disclosure",
+          "tests": ["presentation_and_disclosure", "classification", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "IAS 40"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "gw-001",
+      "line_item": "Goodwill",
+      "statement": "SoFP",
+      "industry": "retail group",
+      "client_context": "Goodwill arose from a takeover two years ago. The acquired chain's like-for-like sales have declined for six consecutive quarters. Management tests goodwill at the group level, not per cash-generating unit.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Sustained decline is a clear impairment indicator; testing at group level rather than CGU level can mask impairment of the acquired chain.",
+        "existence": "Goodwill must only remain if the acquisition actually occurred and generated it."
+      },
+      "procedures": [
+        {
+          "procedure": "Review management's CGU identification against how the business is managed and the acquisition's synergies",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Reperform the impairment test for the acquired chain CGU, challenging cash flow forecasts against the six-quarter decline",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Vouch the original purchase price allocation and headroom recorded at acquisition",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm the goodwill balance with the previous auditors",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Goodwill is not confirmable with a third party; existence is tested via the acquisition documentation and PPA.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "IAS 36"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "intang-001",
+      "line_item": "Development costs (intangible asset)",
+      "statement": "SoFP",
+      "industry": "pharmaceutical",
+      "client_context": "Development costs on a new drug capitalized after reaching technical feasibility. Costs include clinical trial spend. A competitor launched an equivalent drug this year.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Competitor launch is an impairment indicator; amortization period assumptions need revisiting.",
+        "existence": "Capitalized trial costs must relate to actual, traceable trial activity."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch capitalized clinical trial costs to trial contracts, invoices and progress reports",
+          "tests": ["existence", "accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the technical feasibility documentation and timing of capitalization start",
+          "tests": ["occurrence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Assess impairment indicators from the competitor launch and reperform the recoverable amount test",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Discuss the development pipeline with the R&D director and document the drug's approval status",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "IAS 38"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "tp-001",
+      "line_item": "Trade payables",
+      "statement": "balance_sheet",
+      "industry": "Manufacturing",
+      "client_context": "The client runs a JIT purchasing operation with over 200 suppliers. Purchasing, goods receipt and invoice matching are handled in three different systems that are not fully integrated. Several suppliers accept payment 90 days after invoice, and the finance team records payables only when the invoice is entered, not when goods are received.",
+      "assertions_relevant": ["completeness", "occurrence", "accuracy", "classification", "cut_off"],
+      "assertions_high_risk": {
+        "completeness": "Unrecorded liabilities for goods received but not yet invoiced (GRNI) are the classic payables risk; the unintegrated systems make it worse.",
+        "occurrence": "Duplicate or fictitious supplier accounts could cause payables to be overstated or used to route fraudulent payments.",
+        "cut_off": "Year-end goods receipts straddling the reporting date may be recorded in the wrong period."
+      },
+      "procedures": [
+        {
+          "procedure": "Search the unmatched goods-received report after year-end and trace receipts to the payables ledger and subsequent payments",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Examine a sample of post-year-end supplier invoices and identify any that relate to goods or services received before year-end",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch a sample of recorded payables balances to supplier invoices and goods-received notes",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review supplier statements received after year-end and reconcile any unrecorded items",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Confirm year-end balances directly with the three largest customers",
+          "tests": ["completeness"],
+          "trap": true,
+          "trap_explanation": "This tests receivables, not payables. The direction of the test is wrong: confirming customers verifies recorded sales/receivables (occurrence for receivables), while payables completeness requires looking at suppliers.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "tp-002",
+      "line_item": "Trade payables",
+      "statement": "balance_sheet",
+      "industry": "Retail",
+      "client_context": "A grocery retailer receives daily deliveries from hundreds of local producers. Many producers send consolidated invoices monthly. At year-end the warehouse log shows significant goods received in the last week of December for which no invoices were received until February.",
+      "assertions_relevant": ["completeness", "accuracy", "cut_off", "classification", "occurrence"],
+      "assertions_high_risk": {
+        "completeness": "Monthly consolidated invoicing means large liabilities can sit unrecorded for weeks after delivery.",
+        "cut_off": "High-volume daily deliveries make period-end cut-off errors easy to make and hard to spot."
+      },
+      "procedures": [
+        {
+          "procedure": "Reconcile the December warehouse receiving log to recorded goods-received-not-invoiced balances",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Perform a completeness check by comparing December purchase volumes to the same month of the prior year and investigating outliers",
+          "tests": ["completeness"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Trace a sample of warehouse receipts in the last week of December to the general ledger to confirm the correct period",
+          "tests": ["cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Verify that amounts owed to the group's logistics subsidiary are presented separately from trade payables",
+          "tests": ["classification"],
+          "trap": false,
+          "isa_ref": "ISA 550"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 520", "ISA 550"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "accr-001",
+      "line_item": "Accrued expenses (marketing & cloud services)",
+      "statement": "balance_sheet",
+      "industry": "SaaS",
+      "client_context": "The client accrues monthly for cloud hosting and digital advertising based on a standard monthly estimate. In December it ran an unusually large year-end campaign through an agency that only invoices in arrears, and the accrual was not updated for the campaign.",
+      "assertions_relevant": ["completeness", "accuracy", "valuation_and_allocation", "cut_off", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "completeness": "Estimates-based accruals are easy to understate when actual activity spikes outside the normal pattern.",
+        "accuracy": "Standard monthly accrual rates may no longer reflect contracted prices after vendor renegotiation."
+      },
+      "procedures": [
+        {
+          "procedure": "Compare the December accrual to the invoices actually received in January and February and assess the accuracy of the estimate",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / ISA 500"
+        },
+        {
+          "procedure": "Recalculate the cloud accrual using the revised contract rates in the current vendor agreements",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Review the accrual roll-back reconciliation and investigate significant differences",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Observe the year-end physical count of advertising materials in the warehouse",
+          "tests": ["accuracy"],
+          "trap": true,
+          "trap_explanation": "Observing a physical inventory count tests the existence of physical assets, not whether service accruals are complete and accurate. The procedure doesn't touch the assertion at risk.",
+          "isa_ref": "ISA 501"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "prov-001",
+      "line_item": "Provision for litigation (product liability claim)",
+      "statement": "balance_sheet",
+      "industry": "Medical devices",
+      "client_context": "A group of patients has filed a class action claiming a defect in a hip implant. Legal counsel estimates a probable outflow between EUR 8m and EUR 15m. Management recognised EUR 8m, the bottom of the range, arguing the low end is 'more likely'. The claim is not disclosed in the notes.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "presentation_and_disclosure", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Management chose the bottom of counsel's range without support; provisions require the best estimate of the outflow.",
+        "presentation_and_disclosure": "Non-disclosure of the nature and expected timing of the claim breaches IAS 37 disclosure requirements.",
+        "completeness": "There may be other smaller claims not yet routed through legal."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain and evaluate the written response of external legal counsel on the probability and estimated range of the outflow",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 501 / ISA 540"
+        },
+        {
+          "procedure": "Review management's basis for selecting EUR 8m and challenge it against counsel's analysis of the most likely outcome",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 37"
+        },
+        {
+          "procedure": "Inspect board minutes and correspondence with regulators to identify any further product claims not recorded",
+          "tests": ["completeness", "existence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the draft financial statements to confirm the claim's nature, expected timing and uncertainty are disclosed",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 37"
+        },
+        {
+          "procedure": "Vouch the recorded provision to the invoice received from the law firm for legal fees",
+          "tests": ["valuation_and_allocation"],
+          "trap": true,
+          "trap_explanation": "The law firm's fee invoice relates to legal costs expense, not the amount of the product liability. Vouching it does not evaluate whether EUR 8m is the best estimate of the claim's outflow.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 501", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "prov-002",
+      "line_item": "Warranty provision",
+      "statement": "balance_sheet",
+      "industry": "Consumer electronics",
+      "client_context": "The client sells extended two-year warranties on its devices. The provision is calculated by applying a warranty-claim rate derived from three years of historical data. This year the client launched a new product line with an unproven battery supplier, and early consumer reports mention overheating. The historical claim rate was not adjusted.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "accuracy"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A historical claim rate may not predict claims for a new product with a known defect signal; the estimate is likely understated.",
+        "completeness": "Claims arising in the last weeks of the year may not yet be logged in the claims database."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the provision by re-deriving the expected claim rate per product line from current claims data",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Compare the claims rate of the new battery-powered line with the rest of the portfolio and challenge management's assumption",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 37"
+        },
+        {
+          "procedure": "Review post-year-end customer returns and warranty claims for items affecting the current year provision",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Confirm the provision balance with the external warranty service provider",
+          "tests": ["valuation_and_allocation"],
+          "trap": true,
+          "trap_explanation": "The provision is an internally generated estimate, not a balance owed to the service provider. Confirmation gives no evidence about whether the claim-rate estimate is reasonable; an auditor must test the estimate itself.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "rou-001",
+      "line_item": "Right-of-use assets (store portfolio)",
+      "statement": "balance_sheet",
+      "industry": "Fashion retail",
+      "client_context": "The client leases 120 stores under IFRS 16. During the year it renegotiated 20 leases, some with variable payments linked to sales. Several leases contain renewal options that management has not assessed, and two stores are scheduled to close early next year.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "rights_and_obligations", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "completeness": "Renegotiated leases and short-term handshake agreements may not all be captured in the IFRS 16 sub-ledger.",
+        "valuation_and_allocation": "Variable payments and lease-term reassessments for the two closing stores directly affect depreciation and impairment.",
+        "rights_and_obligations": "The client must have the contractual right to use the assets for the recognized lease term."
+      },
+      "procedures": [
+        {
+          "procedure": "Select a sample of signed lease contracts and agree the right-of-use amount to the lease liability schedule and discount rate used",
+          "tests": ["existence", "accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Inspect a sample of lease agreements to confirm renewal options were evaluated and the lease term is supportable",
+          "tests": ["rights_and_obligations", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 16"
+        },
+        {
+          "procedure": "Perform a completeness sweep of rent payments in the cash book and trace them to recognized lease contracts",
+          "tests": ["completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Assess the impairment of right-of-use assets for the two stores identified for closure",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "leaseliab-001",
+      "line_item": "Lease liabilities",
+      "statement": "balance_sheet",
+      "industry": "Logistics",
+      "client_context": "The client operates a leased fleet of trucks and warehouses. For a group of new leases, management used the incremental borrowing rate from a five-year-old policy document. Two leases have rent indexed to inflation and one contains a purchase option the client expects to exercise, but neither is reflected in the liability.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "presentation_and_disclosure", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "The discount rate and lease-term assumptions (indexation, purchase option) drive the liability measurement; outdated assumptions understate it.",
+        "completeness": "Short-term warehouse rentals arranged by local depot managers may never reach head office."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the liability for a sample of leases and evaluate the source and currency-term of the discount rate used",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 16"
+        },
+        {
+          "procedure": "Inspect lease agreements for indexation clauses and purchase options and verify these are included in the measurement",
+          "tests": ["valuation_and_allocation", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 16"
+        },
+        {
+          "procedure": "Review the interest expense and current/non-current split of lease liabilities for accuracy and disclosure",
+          "tests": ["accuracy", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Inspect the titles deeds of the trucks to verify the client's legal ownership",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Leased trucks are not owned by the client, so title deeds won't exist; and even if they did, this tests ownership of PPE, not the measurement of lease liabilities. It misses the actual risk.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "borrow-001",
+      "line_item": "Bank borrowings (development facility)",
+      "statement": "balance_sheet",
+      "industry": "Property development",
+      "client_context": "The client funds a large residential project with a syndicated development facility that includes a covenant requiring pre-sold units to exceed 60%. Halfway through the year the covenant was breached and the bank granted a waiver valid only until next June. The facility is classified entirely as non-current.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "rights_and_obligations", "presentation_and_disclosure", "classification"],
+      "assertions_high_risk": {
+        "presentation_and_disclosure": "The covenant breach and waiver must be disclosed; it may also trigger going-concern considerations.",
+        "classification": "Without the waiver the facility may be repayable on demand, requiring current classification.",
+        "completeness": "Interest and arrangement fees on drawdowns may not all be accrued."
+      },
+      "procedures": [
+        {
+          "procedure": "Inspect the loan agreement and the bank's waiver letter and confirm the breach and waiver are disclosed in the notes",
+          "tests": ["presentation_and_disclosure", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 570"
+        },
+        {
+          "procedure": "Confirm the year-end balance, terms and covenant status directly with the syndicate's agent bank",
+          "tests": ["existence", "valuation_and_allocation", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Assess whether the classification as non-current remains appropriate given the waiver's expiry before the next reporting date",
+          "tests": ["classification"],
+          "trap": false,
+          "isa_ref": "ISA 570 / IAS 1"
+        },
+        {
+          "procedure": "Recalculate accrued interest on each drawdown and vouch arrangement fees to invoices",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 570"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "dtax-001",
+      "line_item": "Deferred tax asset (unused tax losses)",
+      "statement": "balance_sheet",
+      "industry": "Biotech",
+      "client_context": "The client has accumulated losses of EUR 40m and recognised a deferred tax asset on all of them, relying on a five-year forecast that shows profitability from year three. The forecast assumes a licensing deal that has not yet been signed, and the tax asset was not discounted. Losses for part of the group expire within two years.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "presentation_and_disclosure", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Recognition depends entirely on whether future taxable profit is probable; an unsigned deal is weak evidence.",
+        "presentation_and_disclosure": "The nature and expiry of losses, and the amount of DTA not recognised, must be disclosed."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the reliability of the profit forecast, including the status of the licensing deal and its support in board minutes",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 12"
+        },
+        {
+          "procedure": "Agree the loss carryforwards to filed tax returns and confirm expiry dates with the tax advisor",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the disclosure of unused losses, expiry dates and the deferred tax asset recognised in the notes",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "IAS 12"
+        },
+        {
+          "procedure": "Recalculate the deferred tax asset using the statutory tax rate and verify the effects of indexation are excluded",
+          "tests": ["accuracy"],
+          "trap": true,
+          "trap_explanation": "'Indexation' is not a deferred tax concept — deferred tax is calculated on temporary differences at the enacted tax rate. The procedure is pseudo-technical and tests nothing real.",
+          "isa_ref": "IAS 12"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "eq-001",
+      "line_item": "Share capital and share premium",
+      "statement": "balance_sheet",
+      "industry": "Listed fintech",
+      "client_context": "During the year the client completed a follow-on equity offering, issued new shares to the founders under an employee incentive plan, and bought back a small block of treasury shares. All movements are posted to a single 'equity' account, and issue costs of EUR 2m were expensed.",
+      "assertions_relevant": ["existence", "occurrence", "valuation_and_allocation", "classification", "presentation_and_disclosure", "completeness"],
+      "assertions_high_risk": {
+        "classification": "Posting all equity movements to a single account obscures the required split between share capital, premium, treasury and incentive-plan reserves.",
+        "presentation_and_disclosure": "Each class of share movement and the reserve for the incentive plan requires separate disclosure in the statement of changes in equity.",
+        "valuation_and_allocation": "Issue costs should reduce share premium, not run through profit or loss."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch share issuances to the prospectus, subscription agreements, cash receipts and the share register maintained by the transfer agent",
+          "tests": ["existence", "occurrence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Trace the movement in each equity component through the statement of changes in equity and agree to the general ledger",
+          "tests": ["accuracy", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 1"
+        },
+        {
+          "procedure": "Inspect the board and shareholder approvals for the buyback and the incentive plan grant",
+          "tests": ["occurrence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Reclassify the EUR 2m issue costs from operating expenses to share premium and check treatment against IAS 32",
+          "tests": ["valuation_and_allocation", "classification"],
+          "trap": false,
+          "isa_ref": "IAS 32"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 550"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "div-001",
+      "line_item": "Dividends paid and proposed",
+      "statement": "income_statement",
+      "industry": "Family-owned manufacturing",
+      "client_context": "The two shareholder-directors declared and paid themselves quarterly dividends throughout the year, including one large payment just before year-end that emptied the distributable reserve. A further dividend was proposed after year-end and recorded as a liability in the current year accounts.",
+      "assertions_relevant": ["occurrence", "accuracy", "cut_off", "classification", "completeness"],
+      "assertions_high_risk": {
+        "occurrence": "Payments to shareholder-directors may be remuneration or loans disguised as dividends.",
+        "classification": "A proposed (not yet declared) dividend is not a liability of the reporting period under IFRS.",
+        "accuracy": "Distributing more than distributable reserves can be legally invalid under Dutch law."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch each dividend payment to shareholders' resolutions, dividend declarations and bank statements",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Agree proposed dividends to the post year-end board minutes and confirm they are disclosed as a subsequent event rather than recognized as a liability",
+          "tests": ["cut_off", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 560 / IAS 10"
+        },
+        {
+          "procedure": "Recalculate distributable reserves from the prior-year audited accounts and cumulative results",
+          "tests": ["accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm dividend income received from the client's own subsidiary in the group accounts",
+          "tests": ["occurrence"],
+          "trap": true,
+          "trap_explanation": "Dividends received from a subsidiary are group income, not relevant to dividends paid by the parent — and in any case it tests income recognition, not the classification/cut-off risk in the item under audit.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 560"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "fininstr-001",
+      "line_item": "Investment fund holdings at fair value (Level 3)",
+      "statement": "balance_sheet",
+      "industry": "Pension fund",
+      "client_context": "The fund holds private equity and infrastructure stakes valued using the investee managers' unaudited NAV statements. This year, 30% of the portfolio moved from Level 2 to Level 3 after a fund suspended redemptions, and the valuation report from the external expert is dated two months after the reporting date.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "rights_and_obligations", "presentation_and_disclosure", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Level 3 valuations are highly subjective, especially with stale NAVs and a suspended fund.",
+        "presentation_and_disclosure": "The fair value hierarchy transfers and valuation techniques require disclosure under IFRS 13."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the competence, capabilities and objectivity of management's valuation expert",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 620"
+        },
+        {
+          "procedure": "Confirm holdings with the custodian and fund administrators for existence and title",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Test the Level 3 model inputs (discount rates, comparables) and challenge the stale NAVs against redemption-suspension evidence",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 13"
+        },
+        {
+          "procedure": "Review the fair value hierarchy disclosure, including the reasons for transfers between levels",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 13"
+        },
+        {
+          "procedure": "Agree purchase prices of the stakes to historical invoices and payment records",
+          "tests": ["accuracy"],
+          "trap": true,
+          "trap_explanation": "Historical cost provides no evidence about the year-end fair value of Level 3 instruments. The assertion at risk is valuation, and this procedure tests the wrong measurement basis.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 540", "ISA 620"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "ecl-001",
+      "line_item": "Loans and advances to customers (ECL provision)",
+      "statement": "balance_sheet",
+      "industry": "Banking",
+      "client_context": "A mid-size bank calculates expected credit losses with a model that blends internal ratings and forward-looking macro scenarios. This year the model's overnight reruns became slow, so the risk team manually patched PD values for two segments in a spreadsheet outside the controlled environment. The consumer segment shows rising 30+ days-past-due rates.",
+      "assertions_relevant": ["existence", "completeness", "valuation_and_allocation", "accuracy", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Manual spreadsheet patches to a controlled model create both error and override risk in a highly judgemental estimate.",
+        "completeness": "Segments omitted or added late to the model would be missing from the ECL provision."
+      },
+      "procedures": [
+        {
+          "procedure": "Test the design and operation of controls over the ECL model, including change management and access to the spreadsheet",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 315 / ISA 330"
+        },
+        {
+          "procedure": "Reperform the ECL calculation for the two manually patched segments and compare to the model output",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Compare the actual 30+ DPD roll rates against the model's assumed transition matrices and assess the impact of emerging deterioration",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Confirm the loan balances for a sample of corporate borrowers directly with the borrowers",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "rp-001",
+      "line_item": "Receivable from a related party (majority shareholder)",
+      "statement": "balance_sheet",
+      "industry": "Wholesale distribution",
+      "client_context": "The balance includes EUR 3m due from a holding company owned by the CEO's family. There is no written agreement, no interest, and no repayment schedule. The amount has been outstanding for 18 months and is presented within trade receivables.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "rights_and_obligations", "presentation_and_disclosure", "classification"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "An unsecured, interest-free, long-overdue family receivable may be irrecoverable — impairment assessment is required.",
+        "presentation_and_disclosure": "Related party balances and terms require disclosure under IAS 24; hiding it inside trade receivables is misleading.",
+        "classification": "This is not a trade receivable arising from operations."
+      },
+      "procedures": [
+        {
+          "procedure": "Identify the related party through ownership records and confirm the terms of the arrangement with management and the counterparty",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 550"
+        },
+        {
+          "procedure": "Assess the recoverability of the receivable, including the counterparty's cash flows and any agreed repayment plan",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 550 / IFRS 9"
+        },
+        {
+          "procedure": "Review the draft notes for disclosure of the related party relationship, amount, terms and any allowances",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 550 / IAS 24"
+        },
+        {
+          "procedure": "Reclassify the balance from trade receivables to other receivables and verify the ageing analysis excludes it from the trade debtor provision calculation",
+          "tests": ["classification", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 550"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 550"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "contliab-001",
+      "line_item": "Contingent liabilities (disclosure of a pending regulatory fine)",
+      "statement": "balance_sheet",
+      "industry": "Waste management",
+      "client_context": "The environmental regulator has notified the client of a probable fine for a landfill permit breach, but the amount is not yet determinable. Management recorded no provision and made no disclosure, noting that 'the amount is unknown'. Separately, a competitor's claim against the client was dismissed and management still discloses it.",
+      "assertions_relevant": ["completeness", "presentation_and_disclosure", "valuation_and_allocation", "occurrence"],
+      "assertions_high_risk": {
+        "completeness": "A probable but unmeasurable outflow is still a contingent liability requiring disclosure — omission leaves the accounts incomplete.",
+        "presentation_and_disclosure": "Disclosing a dismissed claim is a false disclosure; contingencies must reflect the current legal position."
+      },
+      "procedures": [
+        {
+          "procedure": "Inspect the regulator's notification and correspondence with legal counsel to assess probability and estimability of the fine",
+          "tests": ["completeness", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 501 / IAS 37"
+        },
+        {
+          "procedure": "Review the draft notes to confirm the contingent liability is disclosed with its nature and estimate range where possible",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "IAS 37"
+        },
+        {
+          "procedure": "Obtain the court's dismissal order for the competitor claim and confirm the outdated disclosure is removed",
+          "tests": ["occurrence", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Accrue the maximum possible fine amount as a provision in the current year",
+          "tests": [],
+          "trap": true,
+          "trap_explanation": "This is not even a valid audit procedure — it is preparing the client's books. It also applies the wrong accounting: a remote or unmeasurable amount is disclosed, not provisioned at a made-up maximum.",
+          "isa_ref": "IAS 37"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 501", "ISA 560"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "cash-002",
+      "line_item": "Cash and cash equivalents (money market funds and crypto holdings)",
+      "statement": "balance_sheet",
+      "industry": "Corporate treasury (tech scale-up)",
+      "client_context": "The client parks surplus cash in a money market fund and a small amount in a crypto exchange account. The fund suspended redemptions in December due to market stress, and the crypto exchange is unregulated and unaudited. Management classifies everything as 'cash and cash equivalents'.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "presentation_and_disclosure", "classification", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "existence": "Balances at an unregulated exchange may not exist at all — the client may only have an unsecured claim.",
+        "classification": "A suspended MMF no longer meets the definition of cash equivalents and must be reclassified.",
+        "presentation_and_disclosure": "Concentration and restriction on access require disclosure."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain direct confirmation of balances from the MMF and the crypto exchange at the reporting date",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Agree MMF units to fund statements and evaluate the redemption suspension's effect on the cash-equivalent classification",
+          "tests": ["existence", "classification", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 7"
+        },
+        {
+          "procedure": "Review the bank reconciliations for all accounts and investigate long-outstanding items",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Assess whether restricted balances and the crypto concentration are disclosed in the notes",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "IAS 7"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "ppe-002",
+      "line_item": "Construction work in progress ( harbour project assets)",
+      "statement": "balance_sheet",
+      "industry": "Construction",
+      "client_context": "The client builds port infrastructure under long-term contracts. Its CWIP includes direct costs and an allocation of overhead, but the site accountants in three countries report monthly via emailed spreadsheets with no standard template. Two projects have stalled because the client's subcontractor is insolvent, and interest on the related project loan continues to be capitalized.",
+      "assertions_relevant": ["existence", "completeness", "accuracy", "valuation_and_allocation", "classification", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Overhead allocation via emailed non-standard spreadsheets is prone to computational and cut-off errors.",
+        "valuation_and_allocation": "Stalled projects may need impairment testing; capitalizing interest may no longer be appropriate.",
+        "completeness": "Subcontractor invoices arriving late from foreign sites may be missing from CWIP."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch a sample of CWIP additions to supplier invoices, subcontractor applications and internal labour records",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the overhead allocation model and reperform the allocation for one project",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Perform site visits and physical inspection of the assets under construction for the stalled projects, and inspect the insolvency notice of the subcontractor",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 501 / IAS 36"
+        },
+        {
+          "procedure": "Review post-year-end subcontractor invoices for December work and test the capitalization cut-off",
+          "tests": ["cut_off", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Review whether interest capitalization on the stalled project loans complies with IAS 23's 'interruptions' guidance",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "IAS 23"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 501", "ISA 540", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "rev-005",
+      "line_item": "Subscription revenue",
+      "statement": "income_statement",
+      "industry": "SaaS",
+      "client_context": "The client recognizes subscription revenue ratably over 12-month contracts. This quarter it introduced an annual 'success fee' add-on and started recognizing it upfront at contract signature. Sales staff can create contracts in the CRM with custom start dates, and several deals signed in late December have January start dates backdated to December.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "cut_off", "classification"],
+      "assertions_high_risk": {
+        "occurrence": "Fictitious or modified CRM contracts could create revenue with no genuine customer.",
+        "cut_off": "Backdated start dates pull future-period revenue into the current year.",
+        "accuracy": "Upfront recognition of the success fee violates the single performance obligation principle of IFRS 15."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch a sample of December contracts to signed agreements and independently verify start dates against CRM audit logs and first billing dates",
+          "tests": ["occurrence", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Evaluate the accounting policy for the success fee against the five-step IFRS 15 model and reperform revenue allocation for a sample",
+          "tests": ["accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 15"
+        },
+        {
+          "procedure": "Review the IT general controls over contract creation and modification rights in the CRM",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 315 / ISA 330"
+        },
+        {
+          "procedure": "Analytically compare December daily revenue with surrounding months and investigate spikes near month-end",
+          "tests": ["cut_off", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Confirm outstanding subscription balances with a sample of customers at year-end",
+          "tests": ["completeness"],
+          "trap": true,
+          "trap_explanation": "Confirming balances receivable from customers tests receivables existence and sales occurrence, not completeness of revenue. Revenue completeness is better tested with the CRM-to-ledger completeness walk.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 500", "ISA 520", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "rev-006",
+      "line_item": "Contract revenue (long-term construction contracts)",
+      "statement": "income_statement",
+      "industry": "Civil engineering",
+      "client_context": "The client recognizes revenue using percentage of completion based on costs incurred to date. In December, to hit the annual bonus target, management accelerated recognition on a bridge project using forecast total costs that were revised down without evidence. The contract also includes an unpriced variation being negotiated with the customer.",
+      "assertions_relevant": ["occurrence", "accuracy", "valuation_and_allocation", "completeness", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "The estimate of progress and forecast costs directly drives the recognized amount — a management bias hotspot.",
+        "valuation_and_allocation": "Unpriced variations recognized at management's preferred value may overstate the contract asset."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch costs incurred on the bridge project to invoices, payroll and subcontractor certifications to verify the input to the progress measure",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Evaluate the revision of forecast total costs, including corroboration from the project engineer and quantity surveyor",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 15"
+        },
+        {
+          "procedure": "Inspect correspondence with the customer on the variation and assess whether any value is recognized appropriately",
+          "tests": ["occurrence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 15"
+        },
+        {
+          "procedure": "Perform a retrospective review of prior-period estimates for signs of management bias",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "cogs-002",
+      "line_item": "Cost of sales (agricultural produce)",
+      "statement": "income_statement",
+      "industry": "Agriculture",
+      "client_context": "The client grows and packs fresh produce. Harvest costs are capitalized into inventory until sold. This year an early frost destroyed part of the standing crop, and management expensed all replanting costs to cost of sales in one month, mixing them with normal operating costs. The picking subcontractor's invoices are received in bulk with a two-month lag.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "classification", "cut_off"],
+      "assertions_high_risk": {
+        "classification": "Replanting costs of the next cycle may belong in new biological assets or future harvest inventory, not current cost of sales.",
+        "completeness": "The two-month invoicing lag means December harvest costs are likely unrecorded at year-end.",
+        "occurrence": "The frost loss may include a one-off write-off that requires separate presentation or disclosure."
+      },
+      "procedures": [
+        {
+          "procedure": "Accrue and test harvest costs by reconciling pick records and worker timesheets to cost of sales and the accrual balance",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Inspect the frost damage assessment and replanting plan and evaluate the classification of the related costs",
+          "tests": ["classification", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 2 / IAS 41"
+        },
+        {
+          "procedure": "Review post-year-end subcontractor invoices and allocate costs between harvest periods based on pick dates",
+          "tests": ["cut_off", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Perform analytical procedures comparing cost per kg by farm and month and investigate anomalies around the frost event",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 520", "ISA 560"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "pay-002",
+      "line_item": "Payroll expense",
+      "statement": "income_statement",
+      "industry": "Healthcare staffing",
+      "client_context": "The client pays 4,000 agency nurses through a payroll bureau. Turnover is high and the payroll masterfile is maintained by a single HR officer who also has payment approval rights. A few terminated employees remained on the masterfile during the year, and December shift premiums were calculated using an outdated collective agreement.",
+      "assertions_relevant": ["occurrence", "accuracy", "completeness", "classification", "cut_off"],
+      "assertions_high_risk": {
+        "occurrence": "Ghost employees or payments after termination are likely given the segregation-of-duties failure.",
+        "accuracy": "Applying an outdated collective agreement systematically misstates shift premiums."
+      },
+      "procedures": [
+        {
+          "procedure": "Test the segregation of duties and access rights over the payroll masterfile and payment approval",
+          "tests": ["occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 315 / ISA 330"
+        },
+        {
+          "procedure": "Match the payroll masterfile to current active staff lists and HR termination records and investigate leavers still paid",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Recalculate December shift premiums using the current collective agreement and quantify the difference",
+          "tests": ["accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the pension contribution accrual for December and its allocation between the pension expense and payable",
+          "tests": ["completeness", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 500"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "inv-003",
+      "line_item": "Consignment inventory at third-party warehouses",
+      "statement": "balance_sheet",
+      "industry": "Consumer goods",
+      "client_context": "The client stores slow-moving stock at 12 third-party warehouses across Europe and records it based on monthly emailed stock statements from the warehouse operators. One operator is in financial difficulty and has stopped responding to emails; the client's last physical count of that site was two years ago.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "valuation_and_allocation"],
+      "assertions_high_risk": {
+        "existence": "Stock recorded from operator emails may no longer be physically present — especially with a distressed operator.",
+        "rights_and_obligations": "Operators may have pledged or sold the consigned goods; title may be contested.",
+        "valuation_and_allocation": "Slow-moving stock at a distressed site likely needs write-down."
+      },
+      "procedures": [
+        {
+          "procedure": "Attend or arrange a physical count at the distressed operator's site, or use another auditor's count attendance",
+          "tests": ["existence"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Obtain confirmations directly from the warehouse operators of quantities held on the client's behalf",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Inspect consignment agreements for title clauses and pledges, and review legal correspondence regarding the distressed operator",
+          "tests": ["rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Perform ageing analysis and assess NRV write-downs for slow-moving lines, with extra scrutiny on the unresponsive site",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 2"
+        },
+        {
+          "procedure": "Review the client's purchase ledger to confirm no inventory was recorded twice",
+          "tests": ["completeness"],
+          "trap": true,
+          "trap_explanation": "Checking for double-counted purchases tests the accuracy/occurrence of recorded inventory, not completeness. The risk direction here is existence (recorded stock that isn't there), so this procedure misses the point entirely.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 501", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "events-001",
+      "line_item": "Adjusting and non-adjusting events after the reporting period",
+      "statement": "balance_sheet",
+      "industry": "Travel",
+      "client_context": "After year-end but before the accounts were authorized, a volcanic eruption shut down the client's main route for six weeks, and a major customer went bankrupt owing EUR 2m at year-end. Management argues both events arose after the reporting date and made no adjustments or disclosures. The auditor's fieldwork ended a week before the eruption.",
+      "assertions_relevant": ["completeness", "valuation_and_allocation", "presentation_and_disclosure", "occurrence"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "The customer's bankruptcy provides evidence about the year-end recoverability of the receivable — an adjusting event requiring an allowance.",
+        "presentation_and_disclosure": "The eruption is a non-adjusting event, but its financial effect must still be disclosed."
+      },
+      "procedures": [
+        {
+          "procedure": "Inspect the customer's insolvency filing and assess whether the year-end receivable required an impairment allowance",
+          "tests": ["valuation_and_allocation", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 560 / IAS 10"
+        },
+        {
+          "procedure": "Review the subsequent-events procedures performed by management up to the authorization date, including board minutes and cash flow forecasts",
+          "tests": ["completeness", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Evaluate the impact of the route closure on forecasts and assess whether disclosure of the non-adjusting event is made",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 560 / IAS 10"
+        },
+        {
+          "procedure": "Confirm the customer's year-end balance directly with the customer",
+          "tests": ["valuation_and_allocation"],
+          "trap": true,
+          "trap_explanation": "Confirmation at year-end provides no evidence about the customer's post-year-end insolvency. The bankruptcy filing is the relevant evidence — the adjusting-event issue is about conditions arising after year-end, which confirmation cannot address.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 560", "ISA 570"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "gc-001",
+      "line_item": "Going concern basis of preparation",
+      "statement": "balance_sheet",
+      "industry": "Renewable energy start-up",
+      "client_context": "The client has negative operating cash flow and depends on closing a Series C funding round two months after year-end. The round is not yet signed; term sheets exist from two investors. Management prepares the accounts on a going-concern basis with only a brief note. Monthly net cash outflow has doubled since mid-year.",
+      "assertions_relevant": ["presentation_and_disclosure", "valuation_and_allocation", "completeness"],
+      "assertions_high_risk": {
+        "presentation_and_disclosure": "Material uncertainty related to going concern must be disclosed in a prominent note; a brief mention is insufficient.",
+        "valuation_and_allocation": "If the going-concern basis is inappropriate, asset values and classifications (current/non-current) change fundamentally."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate management's cash-flow forecast covering at least 12 months from authorization, testing key assumptions on burn rate and funding timing",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 570"
+        },
+        {
+          "procedure": "Inspect the term sheets and correspondence with investors and assess the likelihood and timing of the funding round",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 570"
+        },
+        {
+          "procedure": "Review the draft disclosure for a material-uncertainty-related-to-going-concern statement and its prominence",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 570 / IAS 1"
+        },
+        {
+          "procedure": "Written statement from management that the round will close",
+          "tests": ["valuation_and_allocation"],
+          "trap": true,
+          "trap_explanation": "A bare management representation is not sufficient appropriate evidence for a matter as significant as going concern. It must be corroborated with external evidence (term sheets, investor correspondence) and forecast testing.",
+          "isa_ref": "ISA 580 / ISA 570"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 570", "ISA 580"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "tax-001",
+      "line_item": "Current tax expense and tax payable",
+      "statement": "income_statement",
+      "industry": "Retail (multi-country)",
+      "client_context": "The client operates stores in five countries, each with a local finance lead preparing tax computations on local templates. Transfer prices between the stores' procurement entity and national entities were set late in the year. One country's tax return was filed under protest after a dispute over permanent establishment status. The group tax provision is a single consolidated number.",
+      "assertions_relevant": ["completeness", "accuracy", "existence", "valuation_and_allocation", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "completeness": "Late-set transfer prices mean some current tax liabilities were only estimated per country.",
+        "valuation_and_allocation": "The PE dispute could create additional tax and penalties in the disputed country.",
+        "accuracy": "A single consolidated provision obscures per-country errors."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate the tax computation for each country and agree the provision components to the local templates and returns",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Discuss the PE dispute with the group tax counsel and inspect correspondence with the tax authority to assess additional exposure",
+          "tests": ["valuation_and_allocation", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 501 / IAS 12"
+        },
+        {
+          "procedure": "Agree amounts paid after year-end to the tax authorities' assessments and final settlement letters",
+          "tests": ["existence", "accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        },
+        {
+          "procedure": "Review the effective tax rate reconciliation and disclosure of uncertain tax positions",
+          "tests": ["presentation_and_disclosure", "accuracy"],
+          "trap": false,
+          "isa_ref": "IAS 12"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "dep-002",
+      "line_item": "Depreciation and amortization expense",
+      "statement": "income_statement",
+      "industry": "Hospitality",
+      "client_context": "The client owns and leases out 40 hotels. During the year it changed the useful life of building improvements from 25 to 40 years, citing 'better build quality', reducing annual depreciation by 30%. Several lease-out contracts were renegotiated to shorter terms, and the change was applied retrospectively without restating comparatives.",
+      "assertions_relevant": ["accuracy", "valuation_and_allocation", "classification", "presentation_and_disclosure", "occurrence"],
+      "assertions_high_risk": {
+        "accuracy": "The change in useful life is an accounting estimate change that must be applied prospectively; retrospective application misstates comparatives.",
+        "valuation_and_allocation": "The estimate change requires evidence about actual asset condition; 'better build quality' needs support."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate depreciation under the new useful life for a sample of assets and verify prospective application",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 16"
+        },
+        {
+          "procedure": "Inspect engineering reports or expert assessments supporting the revised useful life and challenge management's rationale",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 16"
+        },
+        {
+          "procedure": "Review the disclosure of the nature and effect of the estimate change in the notes",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "IAS 8 / IAS 16"
+        },
+        {
+          "procedure": "For the buildings, verify ownership through title deeds held by the bank",
+          "tests": ["rights_and_obligations"],
+          "trap": true,
+          "trap_explanation": "Rights-and-obligations for buildings is a balance-sheet assertion about PPE, not the depreciation expense line under audit. It may be valid PPE work, but it provides no evidence about whether depreciation is accurate.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "fin-002",
+      "line_item": "Interest expense on borrowings and leases",
+      "statement": "income_statement",
+      "industry": "Renewable energy",
+      "client_context": "The client capitalizes interest on construction projects and expenses the rest. During the year it hedged variable-rate borrowings with interest rate swaps, and hedge documentation was completed three months after the swap was entered. The finance team also expensed arrangement fees for the new facility in full rather than amortizing.",
+      "assertions_relevant": ["accuracy", "occurrence", "completeness", "classification", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Late hedge documentation means hedge accounting cannot be applied from inception — swap movements may be misclassified as interest.",
+        "classification": "Expensing arrangement fees immediately misclassifies them as interest instead of amortizing over the facility term.",
+        "cut_off": "Interest capitalization stop dates depend on project completion milestones."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate interest expense and capitalized interest, including verifying capitalization stop dates against project completion records",
+          "tests": ["accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 23"
+        },
+        {
+          "procedure": "Inspect the hedge documentation dating and evaluate whether hedge accounting complies with IFRS 9 from inception",
+          "tests": ["accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 9"
+        },
+        {
+          "procedure": "Vouch arrangement fees to invoices and recalculate amortization over the facility term",
+          "tests": ["accuracy", "occurrence", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 9"
+        },
+        {
+          "procedure": "Perform analytical procedures comparing interest expense to average borrowings at effective rates and investigate variances",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 520"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "disc-001",
+      "line_item": "Segment reporting and impairment disclosures",
+      "statement": "balance_sheet",
+      "industry": "Conglomerate (industrial and media)",
+      "client_context": "The group reports two segments, but the media division (which lost money all year) is aggregated into 'industrial' using a new aggregation rationale introduced this year. Goodwill allocated to the media cash-generating unit was not impairment-tested because 'the recoverable amount is obviously above carrying value', per the CFO's memo.",
+      "assertions_relevant": ["presentation_and_disclosure", "valuation_and_allocation", "completeness", "occurrence"],
+      "assertions_high_risk": {
+        "presentation_and_disclosure": "Aggregating a loss-making segment may hide material information required by IFRS 8.",
+        "valuation_and_allocation": "Untested goodwill on a loss-making CGU is a classic impairment risk; the CFO memo is not evidence."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the aggregation rationale against IFRS 8 criteria (similar economic characteristics) and challenge the change",
+          "tests": ["presentation_and_disclosure", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 8"
+        },
+        {
+          "procedure": "Perform or reperform the impairment test for the media CGU, evaluating cash-flow projections and discount rates",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Evaluate segment information in the notes against the internal reports used by the chief operating decision maker",
+          "tests": ["presentation_and_disclosure", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 8"
+        },
+        {
+          "procedure": "Inspect the CFO's memo and file it as audit evidence that no impairment exists",
+          "tests": [],
+          "trap": true,
+          "trap_explanation": "Management's memo is a representation, not evidence — accepting it as audit evidence forgoes testing and creates self-review and bias risk. The impairment test must be independently evaluated.",
+          "isa_ref": "ISA 580 / ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 540", "ISA 580"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "cash-003",
+      "line_item": "Cash at bank (single-account SME)",
+      "statement": "balance_sheet",
+      "industry": "Bakery chain",
+      "client_context": "A small chain with three branches. All sales are cash or card. The bookkeeper reconciles the bank account monthly, but the owner regularly takes cash from the till without recording it.",
+      "assertions_relevant": ["existence", "completeness", "accuracy", "cut_off"],
+      "assertions_high_risk": {
+        "completeness": "Unrecorded cash takings and owner withdrawals mean recorded cash and revenue can both be understated.",
+        "accuracy": "Reconciling the account monthly still leaves errors possible in the weeks since the last reconciliation."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain a bank confirmation of the closing balance directly from the bank",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Perform a proof of cash: reconcile recorded sales and cash bankings per branch for the last month",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        },
+        {
+          "procedure": "Review the year-end bank reconciliation and trace outstanding items to the January bank statement",
+          "tests": ["accuracy", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "rev-007",
+      "line_item": "Retail sales revenue",
+      "statement": "income_statement",
+      "industry": "Bookstore",
+      "client_context": "The client records sales directly from its electronic point-of-sale (EPOS) system, which is generally reliable. However, in December the tills were set to 'training mode' for two days during staff onboarding, and those sales never flowed to the accounting system. Refunds are recorded as negative sales.",
+      "assertions_relevant": ["completeness", "occurrence", "accuracy", "cut_off"],
+      "assertions_high_risk": {
+        "completeness": "The training-mode gap means two days of genuine sales are missing from the ledger.",
+        "occurrence": "Refunds recorded as negative sales could conceal fictitious original sales if the original was never real."
+      },
+      "procedures": [
+        {
+          "procedure": "Reconcile daily EPOS Z-reports to the general ledger for the full year and investigate gaps in December",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "For a sample of refunds, inspect the refund receipts and original sale records",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Compare December sales per square metre with the prior year and with neighbouring months",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 520"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "inv-004",
+      "line_item": "Inventory (small warehouse)",
+      "statement": "balance_sheet",
+      "industry": "Bicycle shop",
+      "client_context": "The client holds bikes and parts in one warehouse behind the shop. A year-end count was performed by the owner and one mechanic. The count sheets were not pre-numbered, and damaged returned bikes awaiting supplier credit were included in the count at full price.",
+      "assertions_relevant": ["existence", "completeness", "accuracy", "valuation_and_allocation"],
+      "assertions_high_risk": {
+        "existence": "Count sheets without control numbers can be lost or altered — recorded inventory may not exist.",
+        "valuation_and_allocation": "Damaged goods counted at full price overstate inventory; they need NRV write-down."
+      },
+      "procedures": [
+        {
+          "procedure": "Attend the count, independently test-count a sample of items in both directions, and control the count sheets",
+          "tests": ["existence", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Identify the damaged returns area, inspect the goods and evaluate NRV using expected credit notes from suppliers",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 2"
+        },
+        {
+          "procedure": "Trace the final count sheets to the inventory listing and investigate adjustments",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 501", "ISA 500"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "ar-002",
+      "line_item": "Trade receivables with an ageing ledger",
+      "statement": "balance_sheet",
+      "industry": "Printing services",
+      "client_context": "The client sells to businesses on 30-day terms. The debtors' ledger is maintained by one clerk, and a single customer (a marketing agency) owes 40% of the balance and is 90 days overdue. The allowance is a flat 2% of total receivables, unchanged for three years.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A flat 2% allowance ignores a concentrated, long-overdue balance; expected credit losses are likely understated.",
+        "existence": "A single clerk maintaining the ledger without review invites fictitious or misposted balances."
+      },
+      "procedures": [
+        {
+          "procedure": "Send positive confirmations to the largest customers, including the marketing agency",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Test the allowance by comparing expected credit losses per ageing bucket with the flat 2% and recalculating the shortfall",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Review cash received after year-end from the agency and trace it to the pre-year-end balance",
+          "tests": ["existence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 505", "ISA 540"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "ppe-003",
+      "line_item": "Motor vehicles and office equipment",
+      "statement": "balance_sheet",
+      "industry": "Recruitment agency",
+      "client_context": "The client leases cars for consultants and buys laptops and furniture. The fixed asset register was last reconciled to the general ledger 18 months ago, and several fully depreciated assets remain in use. One consultant's lease car was returned mid-year but is still on the register.",
+      "assertions_relevant": ["existence", "accuracy", "valuation_and_allocation", "completeness", "classification"],
+      "assertions_high_risk": {
+        "existence": "The register includes a car that no longer exists; other disposals may be unrecorded too.",
+        "accuracy": "An 18-month unreconciled register likely disagrees with the ledger."
+      },
+      "procedures": [
+        {
+          "procedure": "Physically inspect a sample of registered assets and trace assets seen in the office back to the register",
+          "tests": ["existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Reconcile the fixed asset register to the general ledger and investigate differences",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch disposals in the year to lease-return confirmations and sales invoices, and check derecognition and gain/loss",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 16"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 501"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "prepay-001",
+      "line_item": "Prepayments (insurance, rent, software licences)",
+      "statement": "balance_sheet",
+      "industry": "Dental practice group",
+      "client_context": "The client prepays its insurance, clinic rent and practice-management software annually. Prepayments are calculated by dividing the invoice by 12 regardless of the period covered. A three-year software licence paid in one invoice in November was treated as fully prepaid at year-end.",
+      "assertions_relevant": ["existence", "accuracy", "valuation_and_allocation", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Mechanically dividing by 12 misallocates multi-period items; the three-year licence includes two years that are not prepayments of the current period.",
+        "cut_off": "Invoices straddling year-end need apportionment to the correct period."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch each prepayment to the underlying invoice, contract and proof of payment",
+          "tests": ["existence", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Recalculate the amortization schedule per invoice based on the actual service period covered",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review payments made after year-end for charges relating to the current period and verify they are not double-counted as prepayments",
+          "tests": ["cut_off", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 560"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500"],
+      "difficulty": "beginner"
+    },
+    {
+      "id": "grant-001",
+      "line_item": "Deferred income from a government grant",
+      "statement": "balance_sheet",
+      "industry": "Solar panel installer",
+      "client_context": "The client received a government grant for hiring and training 50 new technicians, conditioned on keeping them employed for two years. The full grant was recognized in income on receipt in January. Two fired technicians in December may breach the grant conditions, and the grant agreement was never shown to the auditor.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "occurrence", "completeness", "presentation_and_disclosure", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Recognition should follow the pattern of the related costs, not receipt; the condition breach may trigger repayment.",
+        "rights_and_obligations": "Conditions attached to the grant determine whether the client can keep the money.",
+        "presentation_and_disclosure": "Government grants and their conditions require disclosure under IAS 20."
+      },
+      "procedures": [
+        {
+          "procedure": "Inspect the grant agreement and correspondence with the awarding body, and confirm terms and repayment triggers",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 20"
+        },
+        {
+          "procedure": "Compare the grant income recognition pattern with the qualifying staff costs incurred and recompute deferred income",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 20"
+        },
+        {
+          "procedure": "Review HR records for the two terminated technicians and correspond with the awarding body on the breach",
+          "tests": ["rights_and_obligations", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm the grant receipt with the government's bank account",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Cash receipt is already evidenced by the bank statement — the risky assertions are recognition timing (deferred income) and the attached conditions, which a bank confirmation cannot address.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "bio-001",
+      "line_item": "Biological assets (dairy herd)",
+      "statement": "balance_sheet",
+      "industry": "Dairy farming",
+      "client_context": "The client values its 800-head dairy herd at fair value less costs to sell using a herd-model spreadsheet maintained by the farm manager. Milk prices dropped 20% during the year, feed costs rose sharply, and the spreadsheet has not been updated for either. A herd register is kept by ear-tag numbers maintained by the vet.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "completeness", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Fair value under IAS 41 is driven by milk and feed prices; outdated inputs make the valuation stale.",
+        "existence": "Animals may have been sold or died without the register being updated."
+      },
+      "procedures": [
+        {
+          "procedure": "Attend a physical headcount and agree to the ear-tag herd register and the valuation schedule",
+          "tests": ["existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        },
+        {
+          "procedure": "Test the fair value model's inputs (milk price curves, feed costs, cull rates) to current market data and reperform the valuation",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 41"
+        },
+        {
+          "procedure": "Vouch sales of cull cows and calves to livestock market statements",
+          "tests": ["existence", "occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 501", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "invprop-001",
+      "line_item": "Investment property",
+      "statement": "balance_sheet",
+      "industry": "Real estate holding",
+      "client_context": "The client owns an office tower measured under the fair value model. The valuation is performed by the client's head of asset management — a qualified surveyor — using a capitalization of net rental income. A major anchor tenant announced departure after year-end (known at authorization date), and the service charge income includes a one-off retro-billing.",
+      "assertions_relevant": ["valuation_and_allocation", "existence", "rights_and_obligations", "presentation_and_disclosure", "accuracy"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A management-prepared fair value, plus a post-year-end tenant departure that changes rental cash flows, creates a high risk the value is overstated.",
+        "presentation_and_disclosure": "Whether the valuer is independent, and the valuation technique and inputs, must be disclosed."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the objectivity and competence of the internal valuer and consider obtaining an independent valuer's report for comparison",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 620"
+        },
+        {
+          "procedure": "Test the valuation model inputs: contractual rents, vacancy assumptions, cap rates against market evidence",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 40"
+        },
+        {
+          "procedure": "Inspect the tenant's lease and the departure notice and assess the effect on cash-flow projections and disclosure as a subsequent event",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 560 / IAS 10"
+        },
+        {
+          "procedure": "Vouch rental income in the valuation to signed leases and rent statements, excluding the one-off retro-billing",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "pension-001",
+      "line_item": "Defined benefit pension liability (net)",
+      "statement": "balance_sheet",
+      "industry": "Chemicals",
+      "client_context": "The client's pension scheme actuary produced the year-end valuation using a discount rate set at the beginning of the year. Interest rates rose materially during the year. The client plans a group-wide early retirement programme announced in November, and the triennial actuarial valuation will not be available until three months after the audit report is due.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "presentation_and_disclosure", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A stale discount rate plus an announced curtailment (early retirement programme) make the net liability measurement highly sensitive.",
+        "presentation_and_disclosure": "Curtailments, scheme characteristics and actuarial assumptions must be disclosed under IAS 19."
+      },
+      "procedures": [
+        {
+          "procedure": "Engage the auditor's actuarial expert to evaluate the discount rate, mortality and salary assumptions against current market data",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 620"
+        },
+        {
+          "procedure": "Assess the effect of the announced early retirement programme as a curtailment and verify the remeasurement treatment",
+          "tests": ["valuation_and_allocation", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 19"
+        },
+        {
+          "procedure": "Agree participant data to the scheme administrator's records",
+          "tests": ["existence", "accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the disclosure of assumptions, scheme assets and the sensitivity analysis in the notes",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "IAS 19"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540", "ISA 620"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "fx-001",
+      "line_item": "Foreign currency balances and translation",
+      "statement": "balance_sheet",
+      "industry": "Import / distribution (consumer electronics)",
+      "client_context": "The client imports from Asia in USD and holds USD-denominated payables and bank accounts. The FX rate used at year-end is the rate on the last day the bookkeeper was in the office (three days before year-end). Some USD supplier invoices were recorded at the order-date rate and never retranslated, and a USD loan was inadvertently translated at the wrong functional-currency rate.",
+      "assertions_relevant": ["accuracy", "valuation_and_allocation", "completeness", "cut_off", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "accuracy": "Using a non-year-end rate and leaving order-date rates in place are systematic translation errors.",
+        "valuation_and_allocation": "FX gains/losses on the USD loan may be misstated."
+      },
+      "procedures": [
+        {
+          "procedure": "Agree the year-end USD/EUR rate used to a reliable published source for the exact reporting date and quantify misstatements",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 21"
+        },
+        {
+          "procedure": "Retranslate a sample of USD payables, bank balances and the loan at the closing rate and reconcile differences",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 21"
+        },
+        {
+          "procedure": "Verify FX gains and losses are presented consistently and disclosed, including the loan's classification",
+          "tests": ["presentation_and_disclosure", "classification"],
+          "trap": false,
+          "isa_ref": "IAS 21 / IAS 1"
+        },
+        {
+          "procedure": "Confirm the USD bank balance with the bank and check it is retranslated at the correct rate",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "soft-001",
+      "line_item": "Capitalized software (internally developed ERP)",
+      "statement": "balance_sheet",
+      "industry": "Insurance brokerage",
+      "client_context": "The client is building a custom policy-administration ERP. Costs are capitalized from the start of coding, including routine bug-fixing of the legacy system and general IT staff time booked to the project code. The project manager estimates 70% completion based on 'feel', and go-live is planned next autumn.",
+      "assertions_relevant": ["existence", "occurrence", "valuation_and_allocation", "accuracy", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "occurrence": "Legacy bug fixes and general IT time are expenses, not qualifying development costs — capitalization includes non-eligible items.",
+        "valuation_and_allocation": "Impairment indicators (delays, rising costs) and the completion assessment are judgemental."
+      },
+      "procedures": [
+        {
+          "procedure": "Review the capitalization policy against IAS 38's six criteria and test a sample of capitalized costs to timesheets and invoices",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IAS 38"
+        },
+        {
+          "procedure": "Assess the measure of completion using objective milestones (module sign-offs, test results) rather than the project manager's estimate",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 38"
+        },
+        {
+          "procedure": "Assess impairment indicators, including budget overruns and timeline slippage",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 36"
+        },
+        {
+          "procedure": "Inspect the board's approval of the ERP project budget",
+          "tests": ["occurrence"],
+          "trap": true,
+          "trap_explanation": "Budget approval shows the project was authorized, but provides no evidence about whether individual capitalized costs qualify for capitalization under IAS 38 — the assertion actually at risk.",
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "intr-001",
+      "line_item": "Interest income (savings and structured deposits)",
+      "statement": "income_statement",
+      "industry": "Municipal water utility",
+      "client_context": "The utility places surplus funds in savings and two structured deposits whose return depends on an equity index. Interest income is booked from the bank's annual statement received after year-end, and the structured deposit returns were simply estimated at the maximum contingent rate.",
+      "assertions_relevant": ["occurrence", "accuracy", "completeness", "classification"],
+      "assertions_high_risk": {
+        "accuracy": "Estimated structured-deposit returns at the maximum rate overstate income unless the index condition is actually met.",
+        "classification": "The contingent return may be a derivative or embedded feature rather than interest income."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate savings interest from deposit certificates and rates, and reconcile to the bank statement",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Inspect the structured deposit terms and independently verify the index performance to determine the actual contingent return",
+          "tests": ["accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 9"
+        },
+        {
+          "procedure": "Review treasury's deal confirmations and compare booked income to year-end accrued interest schedules for completeness",
+          "tests": ["completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "oc-001",
+      "line_item": "Other income (disposal gain and scrap sales)",
+      "statement": "income_statement",
+      "industry": "Metal fabrication",
+      "client_context": "This year other income jumped 300%. It includes a gain on selling a redundant plot of land and steadily growing 'scrap sales' recorded from delivery notes kept in a box in the workshop. The land sale was to the owner's brother-in-law at above-market price.",
+      "assertions_relevant": ["occurrence", "valuation_and_allocation", "accuracy", "classification", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A related-party land sale at above-market price needs evidence of fair value; the gain may be misstated.",
+        "completeness": "Scrap sales recorded from paper notes may be incomplete.",
+        "classification": "Amounts may belong in revenue or be one-offs requiring separate presentation."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain an independent valuation of the land plot and compare to the sale price, and review related-party disclosure",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 550 / IAS 16"
+        },
+        {
+          "procedure": "Perform a completeness check of scrap sales: weighbridge tickets and waste-carrier invoices to recorded income",
+          "tests": ["completeness", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Vouch the land transfer to the notarial deed, payment and removal from the asset register",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Analytically compare scrap income per tonne of input metal purchased",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 520", "ISA 550"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "gexp-001",
+      "line_item": "General and administrative expenses",
+      "statement": "income_statement",
+      "industry": "Law firm",
+      "client_context": "The client's G&A includes travel, IT subscriptions and 'consultancy'. The managing partner's personal travel and his son's 'marketing consultancy' (no deliverables on file) are included in G&A. Expense claims are approved by the claimant themselves in the workflow tool.",
+      "assertions_relevant": ["occurrence", "accuracy", "classification", "completeness"],
+      "assertions_high_risk": {
+        "occurrence": "Self-approval means fictitious or personal expenses can pass into the accounts.",
+        "classification": "Non-business expenses may be disguised within G&A rather than treated as drawings or related-party transactions."
+      },
+      "procedures": [
+        {
+          "procedure": "Test a sample of expenses to invoices and business purpose evidence, focusing on travel and consultancy around the partner",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 240"
+        },
+        {
+          "procedure": "Inspect the workflow tool's approval settings and test overrides and self-approvals",
+          "tests": ["occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 315 / ISA 330"
+        },
+        {
+          "procedure": "Obtain evidence of services actually rendered by the marketing consultancy and assess disclosure as a related-party transaction",
+          "tests": ["occurrence", "classification", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 550 / IAS 24"
+        },
+        {
+          "procedure": "Review the completeness of unprocessed invoices by scanning the accounts payable email inbox",
+          "tests": ["completeness", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 240", "ISA 315", "ISA 330", "ISA 550"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "funds-001",
+      "line_item": "Restricted client money accounts (escrow)",
+      "statement": "balance_sheet",
+      "industry": "Estate agency (property rentals)",
+      "client_context": "The agency holds tenant deposits and landlord rent in segregated client accounts under a regulator's client-money rules. Staff moved EUR 500k from the client account to the office account 'temporarily' during a cash squeeze in December and repaid it in February. The client-account reconciliation is prepared by the accountant who made the transfer.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "classification", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "rights_and_obligations": "Client money is not the agency's own asset; temporary use of client funds is a regulatory breach and fraud indicator.",
+        "completeness": "Balances due to individual landlords and tenants must be fully recorded.",
+        "classification": "Client money must be presented separately from the agency's own cash."
+      },
+      "procedures": [
+        {
+          "procedure": "Test the client-account reconciliation: agree recorded liabilities per landlord and tenant to the client bank balance",
+          "tests": ["completeness", "existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the client-to-office account transfer, the repayment, and assess disclosure, regulatory reporting and fraud risk",
+          "tests": ["rights_and_obligations", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 240 / ISA 250"
+        },
+        {
+          "procedure": "Confirm balances held for a sample of landlords directly with the landlords",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Review the segregation of duties over the reconciliation and the transfer authorizations",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Segregation of duties testing is a controls matter — it doesn't, by itself, verify that the recorded escrow balances exist and are complete. The trap is mistaking control testing for substantive evidence on the balance.",
+          "isa_ref": "ISA 330"
+        }
+      ],
+      "isa_refs": ["ISA 240", "ISA 250", "ISA 315", "ISA 505"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "bank-002",
+      "line_item": "Trading book positions and trading income",
+      "statement": "income_statement",
+      "industry": "Banking (proprietary trading desk)",
+      "client_context": "The trading desk marks daily positions to fair value using internal models. This year the front-office team overrode model valuations for illiquid credit positions in 40 instances, with approvals recorded in a chat channel instead of the valuation governance log. Desk bonuses are linked to trading P&L.",
+      "assertions_relevant": ["occurrence", "valuation_and_allocation", "accuracy", "completeness", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Front-office overrides on illiquid positions with bonus-linked P&L is a textbook management-bias and fraud risk (ISA 240).",
+        "occurrence": "Fictitious trades or late-recorded cancelled trades could inflate income.",
+        "presentation_and_disclosure": "Valuation techniques, model changes and overrides require disclosure."
+      },
+      "procedures": [
+        {
+          "procedure": "Test the completeness of the valuation override log against chat channels and trade tickets, and evaluate each override's support",
+          "tests": ["valuation_and_allocation", "occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 240 / ISA 540"
+        },
+        {
+          "procedure": "Independently price a sample of illiquid positions using broker quotes or alternative models",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 13"
+        },
+        {
+          "procedure": "Confirm open positions and trades with counterparties and the exchange/clearing house",
+          "tests": ["existence", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Test cut-off of trades around year-end using settlement data and trade timestamps",
+          "tests": ["cut_off", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 240", "ISA 315", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "npo-001",
+      "line_item": "Restricted grant income (not-for-profit)",
+      "statement": "income_statement",
+      "industry": "Charity (development aid)",
+      "client_context": "The charity receives restricted grants for specific field projects. Grant income is recognized when cash is received, not as project expenditure is incurred. One funder's grant was spent partly on overheads, breaching the agreement, and a new large donation pledged at the year-end gala was recognized in full as income.",
+      "assertions_relevant": ["occurrence", "completeness", "accuracy", "classification", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "accuracy": "Recognizing restricted grants on receipt rather than matching to eligible expenditure misstates both income and the deferred balance.",
+        "occurrence": "A pledge is not yet income; recognition requires a binding unconditional promise.",
+        "presentation_and_disclosure": "Restricted vs unrestricted funds must be shown separately in the accounts."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate grant recognition against eligible project expenditure per funding agreements and verify the unspent balance is carried forward as deferred income",
+          "tests": ["accuracy", "classification", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review the gala pledge documentation: is it a binding unconditional promise with collectability assessed?",
+          "tests": ["occurrence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Trace a sample of project expenditure to funding restrictions and identify breaches, corresponding with the funder where needed",
+          "tests": ["occurrence", "completeness", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 250"
+        }
+      ],
+      "isa_refs": ["ISA 250", "ISA 315", "ISA 500"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "ins-001",
+      "line_item": "Insurance claims liability (outstanding claims reserve)",
+      "statement": "balance_sheet",
+      "industry": "Insurance (motor)",
+      "client_context": "The insurer's outstanding claims reserve relies on case estimates set by claims handlers plus an actuarial IBNR calculation. A new AI claims triage tool was implemented mid-year without parallel running, and average case estimates dropped 15% immediately after go-live. Development factors are based on a five-year history that excludes a period with major hailstorms.",
+      "assertions_relevant": ["valuation_and_allocation", "completeness", "accuracy", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "The 15% drop coinciding with the AI tool suggests systematic underestimation rather than genuine efficiency.",
+        "completeness": "Claims occurred but not yet reported (IBNR) may be understated if history excludes catastrophe patterns."
+      },
+      "procedures": [
+        {
+          "procedure": "Compare case estimates pre- and post-AI implementation, and re-perform a sample of triage outputs against handler judgement",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Use the auditor's actuarial expert to test IBNR development factors including catastrophe-adjusted history",
+          "tests": ["valuation_and_allocation", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 620 / ISA 540"
+        },
+        {
+          "procedure": "Test claims completeness using the industry claims database and reinsurance bordereaux",
+          "tests": ["completeness"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Review reserve adequacy and estimation-uncertainty disclosures in the notes",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 17"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540", "ISA 620"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "stockcomp-001",
+      "line_item": "Share-based payment expense (equity-settled options)",
+      "statement": "income_statement",
+      "industry": "Listed software company",
+      "client_context": "The client grants options to employees with a four-year vesting period and one service condition. This year it modified a struggling division's grants by reducing the vesting period from four years to two 'to retain staff'. The grant-date fair values were computed by the CFO using a Black-Scholes model with a volatility taken from a competitor with a very different profile.",
+      "assertions_relevant": ["occurrence", "accuracy", "valuation_and_allocation", "completeness", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "accuracy": "The vesting-period modification accelerates expense recognition — the incremental fair value must be recognized.",
+        "valuation_and_allocation": "A poorly chosen volatility input makes grant-date fair values unreliable."
+      },
+      "procedures": [
+        {
+          "procedure": "Vouch grants and the modification to board resolutions, option agreements and the cap table",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 2"
+        },
+        {
+          "procedure": "Reperform the Black-Scholes valuation, benchmarking volatility against the client's own traded options history and peer group",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 2"
+        },
+        {
+          "procedure": "Recalculate the expense for the accelerated vesting cohort including the incremental fair value of the modification",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 2"
+        },
+        {
+          "procedure": "Confirm the number of options held per employee directly with the staff",
+          "tests": ["existence"],
+          "trap": true,
+          "trap_explanation": "Employees' awareness of their option count says nothing about whether the expense is measured correctly under IFRS 2. The audit issue is the model and modification accounting, not confirming holdings with staff.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "mort-001",
+      "line_item": "Residential mortgage portfolio",
+      "statement": "balance_sheet",
+      "industry": "Mortgage lender",
+      "client_context": "The lender grew its mortgage book 40% in one year by relaxing income verification for self-employed borrowers — stated income instead of tax returns. Property revaluations for loan-to-value ratios are desktop valuations by an internal team, and early-payment defaults on last year's vintage are already running above tolerance.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "completeness", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Stated-income lending plus internal desktop valuations is a classic combination that understates ECL; the rising default rate confirms it.",
+        "existence": "Rapid growth can mask fraudulent applications; recorded loans may not represent genuine creditworthy borrowers.",
+        "rights_and_obligations": "Mortgage security must be registered — some registrations may be pending or defective."
+      },
+      "procedures": [
+        {
+          "procedure": "Test a sample of the new vintage for borrower existence, income evidence and underwriting approval",
+          "tests": ["existence", "occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 240"
+        },
+        {
+          "procedure": "Independently revalue a sample of collateral using external data and recompute LTVs and ECL staging",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Inspect the mortgage security register and confirm registrations for a sample of new loans",
+          "tests": ["rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Compare early-payment default rates per vintage against management's ECL assumptions and challenge the staging",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 240", "ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "sec-001",
+      "line_item": "Securitization vehicles and consolidated SPVs",
+      "statement": "balance_sheet",
+      "industry": "Bank (securitization desk)",
+      "client_context": "The bank transfers credit card receivables to securitization vehicles. Management concludes the vehicles are not consolidated because 'the transfer is a true sale'. However, the bank provides a liquidity facility of 40% of the portfolio and a first-loss profit share, and reinvests in the junior tranche. Two new vehicles were set up by the head of the desk using a template from an external law firm, with no legal opinion obtained.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "presentation_and_disclosure", "completeness", "rights_and_obligations"],
+      "assertions_high_risk": {
+        "presentation_and_disclosure": "The liquidity facility, profit share and retained junior tranche indicate the bank retains substantially all the risks — consolidation (IFRS 10) or at least extensive derecognition and disclosure analysis (IFRS 9/IFRS 7) is required.",
+        "completeness": "Template-based vehicles may never have been through the bank's structured products approval process."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate the consolidation assessment against IFRS 10's power-exposure-to-variable-returns model, including the liquidity facility and retained interests",
+          "tests": ["presentation_and_disclosure", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 10"
+        },
+        {
+          "procedure": "Test derecognition of the transferred receivables against IFRS 9's pass-of-risk test, and challenge the 'true sale' conclusion without a legal opinion",
+          "tests": ["existence", "rights_and_obligations", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Review the register of structured entities for completeness and trace the two new vehicles to board approval",
+          "tests": ["completeness", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 12"
+        },
+        {
+          "procedure": "Verify the market value of the junior tranche held to trading data",
+          "tests": ["valuation_and_allocation"],
+          "trap": true,
+          "trap_explanation": "Pricing the retained tranche is secondary — the primary question is whether the vehicles should be consolidated at all. A precise valuation of one tranche is meaningless if the whole structure is off-balance-sheet when it shouldn't be.",
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "repo-001",
+      "line_item": "Repo and reverse repo transactions",
+      "statement": "balance_sheet",
+      "industry": "Bank (treasury)",
+      "client_context": "The treasury desk uses repos for short-term funding. Around quarter-ends, several repos are recorded as outright sales of the bonds with a forward to repurchase — removing them from the balance sheet for a few days. Some counterparties are affiliated funds, and the collateral haircut schedules were not updated after market volatility spiked.",
+      "assertions_relevant": ["existence", "occurrence", "valuation_and_allocation", "cut_off", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "presentation_and_disclosure": "Quarter-end 'sales' with repurchase agreements are balance-sheet window dressing — repos must stay on balance sheet under IFRS 9 unless risks genuinely transfer.",
+        "valuation_and_allocation": "Stale haircut schedules understate collateral calls in a volatile market.",
+        "occurrence": "Affiliated counterparties raise questions about whether transactions have commercial substance."
+      },
+      "procedures": [
+        {
+          "procedure": "Review all transactions in the five days around quarter-ends and test whether genuine derecognition criteria are met",
+          "tests": ["presentation_and_disclosure", "cut_off", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Confirm repo balances and terms with counterparties, including any affiliated funds",
+          "tests": ["existence", "rights_and_obligations", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 505 / ISA 550"
+        },
+        {
+          "procedure": "Test collateral valuation and haircut calculations against current market prices and the desk's risk policy",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        },
+        {
+          "procedure": "Review the disclosures of secured financing under IFRS 7 including the nature of collateral",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 7"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 505", "ISA 540", "ISA 550"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "fund-001",
+      "line_item": "Fund NAV and unit capital (mutual fund)",
+      "statement": "balance_sheet",
+      "industry": "Asset management",
+      "client_context": "The fund administrator (an outsourced service provider) calculates the daily NAV. This quarter the administrator migrated to a new accounting platform and several corporate-action batches (a stock split and two dividends) failed to process, leaving prices in the NAV wrong for a week before detection. The management company charges the fund a performance fee calculated on the quarter's NAV growth.",
+      "assertions_relevant": ["valuation_and_allocation", "accuracy", "occurrence", "completeness", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "accuracy": "Failed corporate-action batches make NAVs wrong — investors traded at incorrect prices.",
+        "valuation_and_allocation": "The performance fee is computed from possibly erroneous NAVs, directly transferring value to the manager.",
+        "completeness": "Migration-period transactions may be lost between old and new platforms."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain a service organization report (SOC 1 / ISAE 3402) on the administrator, read it, and evaluate the migration-period control exceptions",
+          "tests": ["accuracy", "completeness", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 402"
+        },
+        {
+          "procedure": "Reperform the NAV for one day: independently price holdings, rebook the stock split and dividends, and compare to the published NAV",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 402 / ISA 500"
+        },
+        {
+          "procedure": "Recalculate the performance fee from corrected NAVs and assess whether the fee and compensating payments to investors are correctly recorded",
+          "tests": ["accuracy", "occurrence", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm holdings with the fund's custodian and reconcile to the administrator's positions",
+          "tests": ["existence", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 402", "ISA 500", "ISA 505"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "mgmtfee-001",
+      "line_item": "Asset management fee income",
+      "statement": "income_statement",
+      "industry": "Asset management",
+      "client_context": "Management fees are calculated monthly on average assets under management pulled from the transfer agent. One institutional client negotiated a fee holiday for the first quarter, but the billing system kept charging full fees until May before the credit notes were raised in bulk. A new fund launched in December is being charged fees based on committed capital, not the contract's 'invested capital' definition.",
+      "assertions_relevant": ["occurrence", "accuracy", "completeness", "cut_off"],
+      "assertions_high_risk": {
+        "accuracy": "Fee basis (committed vs invested capital) and the unprocessed fee holiday drive systematic overbilling.",
+        "cut_off": "Bulk credit notes raised in May against Q1 charges create a cut-off problem in the income statement."
+      },
+      "procedures": [
+        {
+          "procedure": "Recalculate a sample of monthly fees against each fund's fee schedule and AUM data, including the holiday period and the new fund",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Trace the credit notes to the client's fee agreement and the rebilling approval, and assess period allocation",
+          "tests": ["cut_off", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 560"
+        },
+        {
+          "procedure": "Reconcile AUM used for billing to the transfer agent's register and the custody records",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Compare fee income per fund to budget and investigate significant variances",
+          "tests": ["accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 520"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 520"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "ifrs17-001",
+      "line_item": "Insurance revenue under IFRS 17 (motor policies)",
+      "statement": "income_statement",
+      "industry": "Insurance",
+      "client_context": "The insurer implemented IFRS 17 this year. Premium revenue is still recognized at policy inception (the old IFRS 4 habit) for the large annual motor portfolio, while the service expense is spread over the coverage period. Commissions to aggregators and comparison sites are capitalized... some of them, inconsistently. The actuarial team's coverage-unit pattern in the model differs from the policy term data.",
+      "assertions_relevant": ["occurrence", "accuracy", "valuation_and_allocation", "completeness", "cut_off", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "accuracy": "Revenue at inception with expenses over time front-loads profit — a direct breach of IFRS 17's coverage-units model.",
+        "completeness": "Inconsistent commission capitalization is a transition trap; the standard requires a consistent approach.",
+        "cut_off": "Annual policies spanning the year-end need allocation of premiums over coverage periods."
+      },
+      "procedures": [
+        {
+          "procedure": "Reperform the IFRS 17 revenue recognition for a sample of policies: coverage units, allocation and the earned pattern versus the old IFRS 4 outcome",
+          "tests": ["accuracy", "valuation_and_allocation", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 17"
+        },
+        {
+          "procedure": "Review the policy for acquisition costs and test a sample of aggregator commissions for consistent capitalization and amortization",
+          "tests": ["completeness", "accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 17"
+        },
+        {
+          "procedure": "Reconcile policy counts and premium data from the policy admin system to the IFRS 17 model",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Confirm annual premium income with a sample of policyholders",
+          "tests": ["existence", "occurrence"],
+          "trap": true,
+          "trap_explanation": "Confirming premiums received tests that the policy exists and was paid — but the actual risk here is the timing and pattern of recognition under IFRS 17, not whether the cash arrived. The procedure looks substantive but misses the real assertion.",
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "reins-001",
+      "line_item": "Reinsurance recoverables and retro premiums",
+      "statement": "balance_sheet",
+      "industry": "Insurance",
+      "client_context": "The ceding insurer recovers part of its claims from reinsurers. Recoverables are booked gross at claim amounts without any loss allowance, even though one major reinsurer was downgraded to junk during the year. Retrocession commissions (commissions received from reinsurers) were netted against claims expense rather than deferred and amortized over the reinsurance coverage.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "rights_and_obligations", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A junk-rated reinsurer's recoverable needs an ECL-style impairment assessment; booking gross is indefensible.",
+        "accuracy": "Netting retro commissions against claims distorts both line items and the presentation of the reinsurance result."
+      },
+      "procedures": [
+        {
+          "procedure": "Confirm recoverables with reinsurers and obtain their financial strength ratings after year-end",
+          "tests": ["existence", "valuation_and_allocation", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Assess the loss allowance on the downgraded reinsurer's recoverable against IFRS 9",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Recalculate the deferred retro commission amortization and verify claims expense is presented gross",
+          "tests": ["accuracy", "presentation_and_disclosure", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 17"
+        },
+        {
+          "procedure": "Review the risk-transfer test documentation for the main quota-share treaty",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500 / IFRS 17"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "ltp-001",
+      "line_item": "Liquidity position and regulatory disclosures (LCR/NSFR)",
+      "statement": "balance_sheet",
+      "industry": "Bank (ALM committee)",
+      "client_context": "The bank reports its Liquidity Coverage Ratio to the regulator monthly. The treasury system classifies all retail deposits above 250k as 'stable' funding, and a large single corporate deposit known to be withdrawn after year-end is included in available liquidity at 100%. The LCR fell below 100% in two internal months, which are not reflected in the year-end regulatory submission.",
+      "assertions_relevant": ["accuracy", "completeness", "presentation_and_disclosure", "valuation_and_allocation", "existence"],
+      "assertions_high_risk": {
+        "accuracy": "Misclassifying deposit stability and applying no outflow assumption to a known withdrawal overstates the LCR.",
+        "presentation_and_disclosure": "Regulatory returns that do not reconcile to the accounting records create ISA 250 regulatory-frame exposure.",
+        "completeness": "Months below 100% must be part of the regulatory dialogue and the accounts' risk disclosures."
+      },
+      "procedures": [
+        {
+          "procedure": "Reconcile the regulatory LCR submission to the accounting records and the treasury system, category by category",
+          "tests": ["accuracy", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 250 / ISA 500"
+        },
+        {
+          "procedure": "Test the deposit stability classifications against the regulator's criteria, focusing on large retail deposits",
+          "tests": ["accuracy", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 250"
+        },
+        {
+          "procedure": "Review the outflow assumptions for the corporate deposit with the ALM committee minutes and the client's notice of withdrawal",
+          "tests": ["accuracy", "existence", "cut_off"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 560"
+        },
+        {
+          "procedure": "Assess whether the below-100% months were reported to the regulator and reflected in the liquidity risk disclosure in the notes",
+          "tests": ["presentation_and_disclosure", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 250"
+        }
+      ],
+      "isa_refs": ["ISA 250", "ISA 315", "ISA 500", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "fintech-001",
+      "line_item": "Payment float and customer balances (payment institution)",
+      "statement": "balance_sheet",
+      "industry": "Fintech (payment services)",
+      "client_context": "The payment institution holds customer funds in safeguarded accounts. Customer balances are tracked in a separate ledger reconciled to the safeguarding account quarterly. Between reconciliations, incoming payments are matched to customers by reference, but 5% of inflows have no reference and sit in a suspense account — some for over a year. The institution is close to breaching its safeguarding balance requirement.",
+      "assertions_relevant": ["completeness", "existence", "accuracy", "rights_and_obligations", "cut_off"],
+      "assertions_high_risk": {
+        "completeness": "Unmatched inflows in suspense may include customer balances that never reach the customers' ledger.",
+        "rights_and_obligations": "Safeguarding balances must at least equal customer payables at all times; a shortfall is a regulatory breach.",
+        "accuracy": "A quarterly reconciliation means the monthly positions in between are unverified."
+      },
+      "procedures": [
+        {
+          "procedure": "Perform an independent reconciliation of the safeguarding accounts to the aggregate customer ledger at year-end, and reperform the suspense account matching",
+          "tests": ["existence", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 250"
+        },
+        {
+          "procedure": "Review aged suspense items, trace a sample back to originating payers, and assess whether they belong to customers",
+          "tests": ["completeness", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Obtain confirmations of safeguarding balances from the banks holding the accounts",
+          "tests": ["existence", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Review the monthly safeguarding calculations and the correspondence with the regulator on any breaches",
+          "tests": ["presentation_and_disclosure", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 250"
+        }
+      ],
+      "isa_refs": ["ISA 250", "ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "fintech-002",
+      "line_item": "Merchant lending book (buy-now-pay-later)",
+      "statement": "balance_sheet",
+      "industry": "Fintech (BNPL)",
+      "client_context": "The BNPL provider records installment receivables and an ECL provision using default curves from its first two years of data. It launched in a new country mid-year with a different consumer profile, but the same curves are applied. Receivables are often repaid early, and the revenue model records merchant fees and late fees — the late fee income has tripled while complaints about misleading checkout disclosure pile up.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "occurrence", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Default curves from a different market and early repayments make ECL and interest income projections unreliable.",
+        "occurrence": "Tripled late fee income amid complaints raises the question of whether fees are valid and enforceable — and ISA 250 regulatory risk."
+      },
+      "procedures": [
+        {
+          "procedure": "Compare default curves for the new country against local early experience data and recompute ECL",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Test a sample of late fee charges to the consumer agreement in force at checkout and review regulator correspondence",
+          "tests": ["occurrence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 250"
+        },
+        {
+          "procedure": "Confirm a sample of installment balances with consumers via the app provider's records",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Perform a completeness check of merchant fee revenue by reconciling transaction volumes from the merchant portal to the billing engine",
+          "tests": ["completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        }
+      ],
+      "isa_refs": ["ISA 250", "ISA 315", "ISA 500", "ISA 505", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "broker-001",
+      "line_item": "Client assets held by a broker (custody)",
+      "statement": "balance_sheet",
+      "industry": "Securities brokerage",
+      "client_context": "The broker holds client shares and cash in omnibus accounts at a custodian bank. Client records are maintained in-house. During the year a system glitch duplicated 200 client holdings, and stock lending of client securities to the broker's own market-making desk was authorized by a clause in the fine print of the client agreement that legal counsel has never reviewed.",
+      "assertions_relevant": ["existence", "completeness", "rights_and_obligations", "accuracy", "presentation_and_disclosure"],
+      "assertions_high_risk": {
+        "existence": "Duplicated holdings mean records exceed what actually exists — the opposite of the usual direction.",
+        "rights_and_obligations": "Lending client securities to an affiliated desk may breach custody rules; clients may not have validly consented.",
+        "completeness": "Omnibus accounts can conceal that client assets are insufficient to cover client entitlements."
+      },
+      "procedures": [
+        {
+          "procedure": "Reconcile the in-house client records to the omnibus custodian statements at the individual security level",
+          "tests": ["existence", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Trace the duplication incident to change logs, verify correction, and confirm no client was overcharged fees on phantom holdings",
+          "tests": ["accuracy", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Obtain legal counsel's opinion on the stock-lending clause and the client consent, and evaluate the broker's compliance with client asset rules",
+          "tests": ["rights_and_obligations", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 250 / ISA 501"
+        },
+        {
+          "procedure": "Confirm holdings with a sample of clients directly",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 250", "ISA 315", "ISA 500", "ISA 505"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "deriv-001",
+      "line_item": "Derivative positions (commodity hedges by an airline)",
+      "statement": "balance_sheet",
+      "industry": "Airline treasury",
+      "client_context": "The airline hedges jet fuel with oil swaps and options, designating them as cash flow hedges. The hedge documentation for a new tranche references 'fuel cost exposure' but the derivatives are written on crude oil — with no documented assessment of the crude-to-jet fuel correlation. During the year the airline stopped hedging for six months while keeping the derivatives open, and the deferred hedge reserve is large.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "presentation_and_disclosure", "completeness"],
+      "assertions_high_risk": {
+        "existence": "Basis risk between crude oil derivatives and jet fuel exposure means hedge accounting may not qualify — the reserve should flow to P&L.",
+        "valuation_and_allocation": "The large deferred reserve parked in equity may conceal losses that belong in income.",
+        "completeness": "All open derivatives including the de-designated period must be captured in the hedge records."
+      },
+      "procedures": [
+        {
+          "procedure": "Evaluate hedge effectiveness qualification, including the documented crude-to-jet-fuel relationship and the six-month non-hedged period",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Independently value a sample of derivatives using market curves and verify the split between the hedge reserve and P&L",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 13"
+        },
+        {
+          "procedure": "Confirm derivative positions and terms with the counterparties",
+          "tests": ["existence", "completeness", "rights_and_obligations"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Review the disclosure of hedge risk and the amounts in the cash flow hedge reserve including the six-month de-designation",
+          "tests": ["presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 7"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "credit-001",
+      "line_item": "Loan restructuring and forbearance (SME portfolio)",
+      "statement": "balance_sheet",
+      "industry": "Bank (SME lending)",
+      "client_context": "Due to an economic downturn the bank restructured a fifth of its SME portfolio: payment holidays, extended terms, interest-only periods. Half of the restructurings were processed by branch staff with a spreadsheet override of the core system's staging rules, keeping the loans in Stage 1 instead of moving to Stage 2 (significant increase in credit risk). The restructuring policy requires 'evidence of viability' that branches documented with one-page self-assessments.",
+      "assertions_relevant": ["valuation_and_allocation", "accuracy", "classification", "completeness", "occurrence"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "Forbearance without a genuine viability assessment masks credit deterioration — Stage 1 staging understates ECL.",
+        "accuracy": "Spreadsheet overrides bypassing the system's staging engine create both error and override risk."
+      },
+      "procedures": [
+        {
+          "procedure": "Test a sample of restructured loans against IFRS 9's restructuring guidance: viability assessment quality, revised terms and the 12-month vs lifetime ECL staging",
+          "tests": ["valuation_and_allocation", "classification"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 9"
+        },
+        {
+          "procedure": "Review all staging overrides, reperform the system's own stage calculation, and quantify the ECL impact of differences",
+          "tests": ["accuracy", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / ISA 330"
+        },
+        {
+          "procedure": "Compare post-restructuring payment performance with the viability assumptions",
+          "tests": ["valuation_and_allocation", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 560 / ISA 540"
+        },
+        {
+          "procedure": "Assess whether modified terms and forbearance disclosures are made in the notes",
+          "tests": ["presentation_and_disclosure", "completeness"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 7"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 330", "ISA 540", "ISA 560"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "pension-002",
+      "line_item": "Pension scheme assets held in pooled vehicles (level 2/3 mix)",
+      "statement": "balance_sheet",
+      "industry": "Pension fund administration",
+      "client_context": "The scheme's assets are held via pooled investment vehicles priced by external administrators. A property fund within the pool suspended dealing after a wave of redemption requests, and its administrator continues to publish the pre-suspension price. The scheme's own records still show the suspended fund as a Level 2 asset with the stale price. Contributions received in the final week of December were allocated to units in January.",
+      "assertions_relevant": ["existence", "valuation_and_allocation", "accuracy", "cut_off", "completeness"],
+      "assertions_high_risk": {
+        "valuation_and_allocation": "A stale price on a suspended fund no longer reflects an exit-price fair value and the level classification is wrong.",
+        "cut_off": "Late-December contributions must be recognized as scheme assets and liabilities in the right period.",
+        "existence": "Units in a suspended vehicle may not be realizable — the 'asset' is effectively a claim in a queue."
+      },
+      "procedures": [
+        {
+          "procedure": "Obtain confirmation of unit holdings from the pool's administrator and the dealing status of the suspended property fund",
+          "tests": ["existence", "rights_and_obligations", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        },
+        {
+          "procedure": "Independently assess the fair value of the suspended fund units, including manager commentary and redemption queue position, and challenge the Level 2 classification",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 13"
+        },
+        {
+          "procedure": "Trace December contribution schedules to unit allocations and bank records, testing the cut-off",
+          "tests": ["cut_off", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Recalculate the scheme's funding position disclosures using corrected asset values",
+          "tests": ["presentation_and_disclosure", "valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 505", "ISA 540"],
+      "difficulty": "advanced"
+    },
+    {
+      "id": "ins-002",
+      "line_item": "Premium receivables and unearned premium (life insurer)",
+      "statement": "balance_sheet",
+      "industry": "Life insurance",
+      "client_context": "The life insurer's agents collect monthly premiums in cash in some regions. Premium income is recorded when the agent remits to head office, not when collected. The unearned premium reserve is calculated on written premiums with a 1/12 pattern even though several flagship products are single-premium with multi-year coverage. One agent has remittances outstanding for three months.",
+      "assertions_relevant": ["completeness", "cut_off", "accuracy", "occurrence", "valuation_and_allocation"],
+      "assertions_high_risk": {
+        "cut_off": "Cash-collected premiums recorded on remittance lag the collection date — income is recorded too late.",
+        "valuation_and_allocation": "A 1/12 unearned pattern is wrong for single-premium multi-year products; the reserve is understated.",
+        "completeness": "Unremitted agent cash may never reach head office — a classic misappropriation window."
+      },
+      "procedures": [
+        {
+          "procedure": "Test remittance cut-off: compare collection dates on agents' receipts books with recorded premium income around year-end",
+          "tests": ["cut_off", "completeness", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 500"
+        },
+        {
+          "procedure": "Investigate the agent with three months of unremitted cash: confirm outstanding amounts and verify physical cash and receipts",
+          "tests": ["existence", "occurrence"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 240"
+        },
+        {
+          "procedure": "Recalculate the unearned premium reserve for single-premium products using actual coverage periods",
+          "tests": ["valuation_and_allocation", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IFRS 17"
+        },
+        {
+          "procedure": "Confirm premium payment records for a sample of policyholders directly",
+          "tests": ["existence", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 505"
+        }
+      ],
+      "isa_refs": ["ISA 240", "ISA 315", "ISA 500", "ISA 505", "ISA 540"],
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "opsrisk-001",
+      "line_item": "Provision for regulatory fines and remediation (conduct costs)",
+      "statement": "balance_sheet",
+      "industry": "Bank (retail)",
+      "client_context": "The regulator is investigating the bank's sales practices for a fee-charging packaged account. The bank's own review, completed in November, found systematic mis-selling to 40,000 customers. No provision has been recognized — the CFO argues the regulator has not yet set the fine amount. Remediation project costs are capitalized as 'intangible - customer relationship restoration'. Prior-year comparatives show similar conduct issues that were resolved at 5x the initial estimate.",
+      "assertions_relevant": ["completeness", "valuation_and_allocation", "presentation_and_disclosure", "classification"],
+      "assertions_high_risk": {
+        "completeness": "A constructive obligation to remediate 40,000 customers exists regardless of the regulator's decision — no provision is a completeness failure.",
+        "valuation_and_allocation": "Prior conduct history at 5x initial estimates is strong evidence the outflow estimate needs careful challenge.",
+        "classification": "Capitalizing remediation costs as intangibles is wrong — they are expenses."
+      },
+      "procedures": [
+        {
+          "procedure": "Inspect the internal mis-selling review, customer complaint data and the board's response to assess whether a constructive obligation exists under IAS 37",
+          "tests": ["completeness", "existence"],
+          "trap": false,
+          "isa_ref": "ISA 500 / ISA 540"
+        },
+        {
+          "procedure": "Benchmark the remediation estimate against the bank's own prior conduct cases and external industry outcomes",
+          "tests": ["valuation_and_allocation"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 37"
+        },
+        {
+          "procedure": "Review the accounting policy for remediation costs and reverse the inappropriate capitalization",
+          "tests": ["classification", "accuracy"],
+          "trap": false,
+          "isa_ref": "ISA 540 / IAS 38"
+        },
+        {
+          "procedure": "Correspond with the regulator via the client, and review legal counsel's assessment of the likely range of outcomes",
+          "tests": ["valuation_and_allocation", "presentation_and_disclosure"],
+          "trap": false,
+          "isa_ref": "ISA 501"
+        }
+      ],
+      "isa_refs": ["ISA 315", "ISA 500", "ISA 501", "ISA 540"],
+      "difficulty": "advanced"
+    }
+  ]
+}
