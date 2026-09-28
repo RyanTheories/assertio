@@ -1,32 +1,31 @@
 :root {
-  --bg: #3e8948;
-  --surface: #f7e5c0;
-  --surface-dark: #e8cf9e;
-  --ink: #4a3222;
-  --muted: #8a6d4f;
-  --line: #6e4b2a;
-  --line-strong: #6e4b2a;
-  --accent: #3e8948;
-  --accent-ink: #ffffff;
-  --accent-soft: #cfe8c5;
-  --gold: #d4a017;
-  --gold-soft: #f8ecc8;
+  --bg: #d8c9a6;
+  --surface: #f4ecd8;
+  --surface-dark: #e8dcbf;
+  --ink: #2f2113;
+  --muted: #7a6748;
+  --line: rgba(47, 33, 19, 0.28);
+  --line-strong: rgba(47, 33, 19, 0.5);
+  --accent: #8b1e1e;
+  --accent-ink: #f4ecd8;
+  --accent-soft: #eed6be;
+  --gold: #b8860b;
+  --gold-soft: #f0e2b6;
   --purple: #4b2e63;
   --purple-soft: #e5d8ec;
-  --green: #3e8948;
-  --green-soft: #cfe8c5;
-  --amber: #d4a017;
-  --amber-soft: #f8ecc8;
-  --red: #c0392b;
-  --red-soft: #f6d5c8;
-  --trap: #7d3cc9;
-  --trap-soft: #e4d5f7;
-  --radius: 0px;
-  --radius-pill: 0px;
-  --shadow-soft: 4px 4px 0 rgba(74, 50, 34, 0.35);
-  --shadow-soft-lg: 4px 4px 0 var(--line);
-  --font-pixel: 'Pixelify Sans', system-ui, sans-serif;
-  --font-mono: 'VT323', ui-monospace, monospace;
+  --green: #5d7a3a;
+  --green-soft: #eaf0da;
+  --amber: #8a6100;
+  --amber-soft: #ffefc4;
+  --red: #bf3b0a;
+  --red-soft: #f9e3d7;
+  --trap: #6f2c91;
+  --trap-soft: #efe3f5;
+  --radius: 6px;
+  --radius-pill: 999px;
+  --shadow-soft: 0 1px 2px rgba(94, 58, 46, 0.10), 0 4px 12px rgba(94, 58, 46, 0.10);
+  --shadow-soft-lg: 0 2px 4px rgba(94, 58, 46, 0.10), 0 10px 28px rgba(94, 58, 46, 0.14);
+  --font-serif: 'Roboto Serif', Georgia, 'Times New Roman', serif;
 }
 
 * { box-sizing: border-box; }
@@ -39,7 +38,7 @@ body {
     radial-gradient(1200px 600px at 50% -200px, rgba(255, 248, 224, 0.35), transparent 70%),
     repeating-linear-gradient(45deg, rgba(47, 33, 19, 0.03) 0 6px, transparent 6px 12px);
   color: var(--ink);
-  font-family: var(--font-pixel);
+  font-family: var(--font-serif);
   font-size: 15px;
   line-height: 1.55;
 }
@@ -54,7 +53,7 @@ kbd {
   border-radius: 4px;
   padding: 0 6px;
   font-size: 12px;
-  font-family: var(--font-pixel);
+  font-family: var(--font-serif);
   color: var(--ink);
 }
 
@@ -727,174 +726,3 @@ body::after {
   border-bottom-color: var(--gold);
   background: var(--gold-soft);
 }
-
-/* ============================================================
-   8-BIT SKIN (override layer) — pixel aesthetic over the
-   component styles above. Palette from the Stardew-inspired
-   restyle; hard shadows, sharp corners, pixel fonts.
-   ============================================================ */
-body {
-  background: var(--bg);
-  background-image:
-    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(255, 255, 255, 0.04) 15px, rgba(255, 255, 255, 0.04) 16px),
-    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(0, 0, 0, 0.05) 15px, rgba(0, 0, 0, 0.05) 16px);
-  color: var(--ink);
-  font-family: var(--font-pixel);
-  font-size: 16px;
-  line-height: 1.4;
-  image-rendering: pixelated;
-}
-/* remove parchment grain/vignette from the old skin */
-body::before, body::after { display: none; }
-
-h1, h2, h3 { font-family: var(--font-pixel); letter-spacing: 0.02em; }
-kbd { font-family: var(--font-mono); border: 2px solid var(--line); border-bottom-width: 4px; border-radius: 0; font-size: 14px; }
-
-.card {
-  border: 2px solid var(--line);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 rgba(74, 50, 34, 0.35);
-}
-.card > h2:first-child, .card > h3:first-child { text-shadow: 2px 2px 0 rgba(74, 50, 34, 0.18); }
-
-.btn {
-  border: 2px solid var(--line);
-  border-bottom-width: 4px;
-  border-radius: 0;
-  font-family: var(--font-pixel);
-}
-.btn-primary { background: var(--accent); color: var(--accent-ink); border-color: #2c6b35; }
-.btn-primary:hover { background: #4a9a55; }
-.btn-primary:not(:disabled):hover { box-shadow: 0 4px 12px rgba(62, 137, 72, 0.4); }
-.btn-primary:active { transform: translateY(2px); border-bottom-width: 2px; }
-.btn-ghost { background: var(--surface); border-color: var(--line); }
-.btn-ghost:hover { background: var(--surface-dark); }
-
-.chip {
-  border: 2px solid var(--line);
-  border-radius: 0;
-  background: var(--surface);
-  font-family: var(--font-pixel);
-}
-.chip-active { background: var(--accent); border-color: #2c6b35; }
-
-select {
-  border: 2px solid var(--line);
-  border-radius: 0;
-  font-family: var(--font-pixel);
-  background: var(--surface);
-}
-
-.box-link {
-  border: 2px solid var(--line);
-  border-left: 4px solid var(--gold);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 rgba(74, 50, 34, 0.25);
-}
-.box-link:hover { transform: translate(-1px, -1px); box-shadow: 5px 5px 0 rgba(74, 50, 34, 0.3); }
-.box-link:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 rgba(74, 50, 34, 0.3); }
-
-/* HUD as a game status bar */
-.hud {
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 rgba(74, 50, 34, 0.35);
-  padding: 10px 14px;
-}
-.score-meter {
-  font-family: var(--font-mono);
-  font-size: 20px;
-  background: var(--ink);
-  color: var(--gold-soft);
-  padding: 2px 10px;
-  border: 2px solid var(--line);
-}
-.streak { font-family: var(--font-mono); font-size: 20px; }
-
-/* hero title: chunky pixel logotype */
-.hero h1 {
-  font-family: var(--font-pixel);
-  font-weight: 700;
-  color: var(--gold-soft);
-  text-shadow:
-    3px 3px 0 var(--line),
-    6px 6px 0 rgba(0, 0, 0, 0.25);
-  border-bottom: none;
-}
-.hero .eyebrow, .tagline { color: var(--gold-soft); opacity: 0.95; }
-.hero .tagline { color: #f0f7e8; }
-
-.laurel { stroke: var(--gold); stroke-width: 3; }
-
-/* assertion tiles */
-.assertion {
-  border: 2px solid var(--line);
-  border-radius: 0;
-  box-shadow: 3px 3px 0 rgba(74, 50, 34, 0.25);
-}
-.assertion:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 rgba(74, 50, 34, 0.25); }
-
-/* procedure cards */
-.proc {
-  border: 2px solid var(--line);
-  border-radius: 0;
-  box-shadow: 3px 3px 0 rgba(74, 50, 34, 0.25);
-}
-.proc-focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 2px var(--gold), 3px 3px 0 rgba(74, 50, 34, 0.25);
-}
-.btn-trap { border: 2px solid var(--trap); border-radius: 0; font-family: var(--font-pixel); }
-.btn-trap-active { background: var(--trap); color: #fff; }
-.trap-callout { border-radius: 0; border-width: 2px; }
-.trap-callout.trap-caught { box-shadow: 0 0 0 2px var(--gold), 4px 4px 0 rgba(74, 50, 34, 0.4); }
-
-/* bars: chunky segmented */
-.bar { border: 2px solid var(--line); border-radius: 0; height: 18px; background: var(--surface-dark); }
-.bar-fill { border-radius: 0; }
-.bar-num { font-family: var(--font-mono); font-size: 18px; }
-
-/* phase stepper: game HUD steps */
-.phase-steps { border: 2px solid var(--line); background: var(--surface); }
-.phase-step { border-bottom: 4px solid var(--line); padding: 6px 2px 8px; font-family: var(--font-pixel); }
-.phase-step.step-current { color: var(--ink); text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.4); }
-
-/* summary hero as victory screen */
-.summary-hero {
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 rgba(74, 50, 34, 0.35);
-}
-.summary-hero.mastered { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold), 4px 4px 0 rgba(74, 50, 34, 0.35); }
-.summary-total { font-family: var(--font-mono); font-size: 42px; }
-.streak-bonus { font-family: var(--font-mono); font-size: 22px; }
-
-/* feedback banners */
-.feedback { border-radius: 0; border: 2px solid var(--line); }
-.flash-green { background: var(--green-soft); border-color: var(--green); }
-.flash-amber { background: var(--amber-soft); border-color: var(--amber); }
-
-/* title tooltip: pixel dialog box */
-.title-tip-card {
-  border: 2px solid var(--line);
-  border-top: 4px solid var(--gold);
-  border-radius: 0;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
-}
-
-/* badges & romans */
-.badge { border-radius: 0; border: 2px solid var(--line); font-family: var(--font-mono); font-size: 16px; }
-.mastery-list .bar { height: 16px; }
-.career-title { font-family: var(--font-pixel); font-weight: 700; }
-
-/* entrance animation: pixel-appropriate (smaller rise, snappier) */
-@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-.screen > * { animation-duration: 0.28s; }
-
-/* music toggle floats over the field fine as-is */
-
-/* 8-bit: readable light text on the green field */
-.disclaimer p { color: #f0f7e8; }
-.mission { background: var(--surface); box-shadow: 4px 4px 0 rgba(74, 50, 34, 0.35); }
