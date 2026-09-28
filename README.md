@@ -89,6 +89,15 @@ fixing.
 A scenario is **mastered** when every phase scores ≥ 80%. Progress and career stats persist in
 `localStorage` (keyed `quaestor.v1`, per browser).
 
+## Progression
+
+- **Career ladder.** Mastering scenarios promotes you from Trainee up to Quaestor. Rank thresholds are a
+  fraction of the scenario library, so the ladder scales as content grows.
+- **Mastery map.** Per-sector mastery bars (mastered / total) so you can pick your next target sector.
+- **Daily challenge.** A deterministic, date-seeded draw of five scenarios. Everyone playing on the same
+  day faces the same five, so scores are comparable without any backend. Your best result of the day is
+  kept.
+
 ## Keyboard
 
 - `1`–`9`, `0`, toggle assertions / match assertions
@@ -105,6 +114,8 @@ src/
   types.ts                # JSON schema types
   scoring.ts              # all tunable point values + scoring functions
   storage.ts              # versioned localStorage persistence
+  career.ts              # career ladder ranks (from mastered scenarios)
+  daily.ts                # date-seeded deterministic daily challenge
   ui.ts                   # assertion labels / definitions (UI text)
   utils.ts                # shuffle helpers
   data/

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { renderToString } from 'react-dom/server';
 import App from '../App';
 import { Home } from '../screens/Home';
+import { MasteryMap } from '../screens/MasteryMap';
 import { FinancialStatements } from '../screens/FinancialStatements';
 import { IsasReference } from '../screens/IsasReference';
 import { PhaseBrief } from '../screens/PhaseBrief';
@@ -35,9 +36,21 @@ describe('render smoke', () => {
 
   it('renders Home with derived industries and stats', () => {
     const data = getGameData();
-    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} />);
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onStartDaily={() => undefined} />);
     expect(html).toContain('New session');
     expect(html).toContain('How to play');
+  });
+
+it('renders the MasteryMap with sector bars', () => {
+    const data = getGameData();
+    const html = renderIgnoringConsole(<MasteryMap scenarios={data.scenarios} onHome={() => undefined} />);
+    expect(html).toContain('Mastery by sector');
+  });
+  it('renders Home with career ladder and daily challenge', () => {
+    const data = getGameData();
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onStartDaily={() => undefined} />);
+    expect(html).toContain('Career ladder');
+    expect(html).toContain('Daily challenge');
   });
 
   it('renders the financial statements reference', () => {

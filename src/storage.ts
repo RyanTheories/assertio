@@ -19,10 +19,18 @@ export interface SessionRecord {
   total: number;
 }
 
+export interface DailyResult {
+  dateKey: string;
+  score: number;
+  mastered: number;
+  total: number;
+}
+
 export interface StoredState {
   career: CareerStats;
   masteredScenarioIds: string[];
   bestSessionScore: number;
+  daily: Partial<Record<string, DailyResult>>;
 }
 
 const EMPTY_STATE: StoredState = {
@@ -36,6 +44,7 @@ const EMPTY_STATE: StoredState = {
   },
   masteredScenarioIds: [],
   bestSessionScore: 0,
+  daily: {},
 };
 
 function safeParse(raw: string | null): StoredState | null {
@@ -43,7 +52,7 @@ function safeParse(raw: string | null): StoredState | null {
   try {
     const parsed = JSON.parse(raw) as StoredState;
     if (typeof parsed !== 'object' || parsed === null || typeof parsed.career !== 'object') return null;
-    return { ...EMPTY_STATE, ...parsed, career: { ...EMPTY_STATE.career, ...parsed.career } };
+    return { ...EMPTY_STATE, ...parsed, career: { ...EMPTY_STATE.career, ...parsed.career }, daily: parsed.daily ?? {} };
   } catch {
     return null;
   }
@@ -95,6 +104,19 @@ export function recordSession(rounds: Array<{ scenarioId: string; lineItem: stri
   state.bestSessionScore = Math.max(state.bestSessionScore, sessionScore);
   saveState(state);
   return state.career;
+}
+
+/** Store today's daily challenge result (best of the day is kept). */
+export function recordDailyResult(result: DailyResult): void {
+  const state = loadState();
+  const prev = state.daily[result.dateKey];
+  if (prev && prev.score >= result.score) return;
+  state.daily[result.dateKey] = result;
+  saveState(state);
+}
+
+export function getDailyResult(dateKey: string): DailyResult | null {
+  return loadState().daily[dateKey] ?? null;
 }
 
 export function resetProgress(): void {

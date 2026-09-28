@@ -1,9 +1,11 @@
 import { useMemo, useState } from 'react';
 import type { Scenario } from '../types';
 import type { SessionConfig } from '../App';
-import { loadState } from '../storage';
+import { loadState, getDailyResult } from '../storage';
 import { statementGroup } from '../data/validate';
 import { sectorFor, SECTOR_ORDER } from '../sectors';
+import { rankFor, nextRank } from '../career';
+import { todayKey } from '../daily';
 
 interface Props {
   scenarios: Scenario[];
@@ -11,11 +13,13 @@ interface Props {
   onOpenGuide: () => void;
   onOpenStatements: () => void;
   onOpenIsas: () => void;
+  onOpenMastery: () => void;
+  onStartDaily: () => void;
 }
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
 
-export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas }: Props) {
+export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas, onOpenMastery, onStartDaily }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
@@ -31,6 +35,10 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
   }, [scenarios]);
 
   const stats = useMemo(() => loadState(), []);
+  const dailyDone = useMemo(() => getDailyResult(todayKey()), []);
+  const mastered = stats.career.scenariosMastered;
+  const rank = rankFor(mastered, scenarios.length);
+  const upcoming = nextRank(mastered, scenarios.length);
   const availableCount = useMemo(() => {
     let pool = scenarios;
     if (difficulty !== 'mixed') pool = pool.filter((s) => s.difficulty === difficulty);
@@ -147,6 +155,10 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
             <span className="box-title">The ISAs, explained</span>
             <span className="box-sub">What each standard is for</span>
           </button>
+          <button className="box-link" onClick={onOpenMastery}>
+            <span className="box-title">Mastery map</span>
+            <span className="box-sub">Progress per sector</span>
+          </button>
           <button className="box-link" onClick={() => setShowHowTo((v) => !v)} aria-expanded={showHowTo}>
             <span className="box-title">How to play</span>
             <span className="box-sub">{showHowTo ? 'Hide the rules' : 'The rules of the game'}</span>
@@ -183,8 +195,41 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         )}
       </section>
 
+      <section className="card daily">
+        <h2>Daily challenge</h2>
+        <p className="muted">
+          The same five scenarios for everyone, {todayKey()}. Come back tomorrow for a fresh draw.
+        </p>
+        {dailyDone ? (
+          <p className="muted small">
+            Played today · best {dailyDone.score} pts, {dailyDone.mastered}/{dailyDone.total} mastered. Play
+            again to improve your best.
+          </p>
+        ) : (
+          <p className="muted small">Not attempted yet today.</p>
+        )}
+        <button className="btn btn-primary" onClick={onStartDaily}>
+          Play today’s challenge
+        </button>
+      </section>
       <section className="card stats">
-        <h2>Career stats</h2>
+        <div className="career-head">
+          <h2>Career ladder</h2>
+          <button className="btn btn-ghost btn-small" onClick={onOpenMastery}>
+            Mastery map →
+          </button>
+        </div>
+        <div className="career-rank">
+          <span className="career-title">{rank.title} <span className="career-latin">· {rank.latin}</span></span>
+          <span className="muted small">{rank.blurb}</span>
+          {upcoming ? (
+            <span className="muted small">
+              Next rank: <strong>{upcoming.title}</strong> at {upcoming.threshold} mastered ({mastered} so far)
+            </span>
+          ) : (
+            <span className="muted small">Top rank achieved. The treasury is yours.</span>
+          )}
+        </div>
         {stats.career.gamesPlayed === 0 ? (
           <p className="muted">No sessions played yet, your progress is saved in this browser.</p>
         ) : (
