@@ -6,11 +6,11 @@
   --muted: #8a6f5c;
   --line: rgba(31, 23, 18, 0.14);
   --line-strong: rgba(31, 23, 18, 0.32);
-  --accent: #ff5c00;
+  --accent: #6d28d9;
   --accent-ink: #ffffff;
-  --accent-soft: #ffe3d1;
-  --gold: #e8930c;
-  --gold-soft: #ffefc9;
+  --accent-soft: #ede4fb;
+  --gold: #7c3aed;
+  --gold-soft: #e6d9f9;
   --purple: #4b2e63;
   --purple-soft: #efe4f7;
   --green: #2f7d32;
@@ -19,8 +19,8 @@
   --amber-soft: #ffeccb;
   --red: #c92a0a;
   --red-soft: #ffdcd2;
-  --trap: #7a2ecc;
-  --trap-soft: #f0e2fb;
+  --trap: #c026d3;
+  --trap-soft: #fbe3f8;
   --radius: 16px;
   --radius-pill: 999px;
   --shadow-soft: 0 2px 6px rgba(31, 23, 18, 0.08);
@@ -446,7 +446,7 @@ select {
 
 /* ---------- round summary ---------- */
 .summary-hero {
-  background: linear-gradient(180deg, #fff3e4, var(--surface));
+  background: linear-gradient(180deg, #f7f2ff, var(--surface));
   border: 1px solid var(--line); border-radius: var(--radius);
   box-shadow: var(--shadow-soft-lg);
   padding: 28px 32px; text-align: center;
@@ -500,7 +500,7 @@ select {
   transform: translateX(-50%);
   width: 320px;
   max-width: 80vw;
-  background: #fff7ed;
+  background: #f7f2ff;
   border: 1px solid var(--line-strong);
   border-left: 3px solid var(--gold);
   border-radius: 6px;
@@ -771,25 +771,25 @@ h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em
   transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s ease, background-color 0.15s ease;
 }
 .btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 2px 0 rgba(31, 23, 18, 0.12); }
-.btn-primary:hover { background: #ff742e; box-shadow: 0 4px 14px rgba(255, 92, 0, 0.35); }
+.btn-primary:hover { background: #7c3aed; box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35); }
 .btn-ghost { background: var(--surface); border: 2px solid var(--line-strong); color: var(--ink); }
 .btn-ghost:hover { background: var(--surface-dark); }
 
 /* chips: pill toggles with orange active state */
 .chip { border-radius: var(--radius-pill); border: 2px solid var(--line-strong); background: var(--surface); font-weight: 600; }
-.chip-active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(255, 92, 0, 0.3); }
+.chip-active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(109, 40, 217, 0.3); }
 
 /* assertion tiles: white cards with soft shadow, orange selection */
 .assertion { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
-.a-sel { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 2px 10px rgba(255, 92, 0, 0.2); }
+.a-sel { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 2px 10px rgba(109, 40, 217, 0.2); }
 .a-sel .a-key { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 /* procedure cards */
 .proc { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; }
-.proc-focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 4px 14px rgba(255, 92, 0, 0.15); }
+.proc-focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 4px 14px rgba(109, 40, 217, 0.15); }
 .btn-trap { border-radius: 12px; }
 .trap-callout { border-radius: 12px; }
-.trap-callout.trap-caught { box-shadow: 0 0 0 3px var(--accent), 0 8px 24px rgba(255, 92, 0, 0.3); }
+.trap-callout.trap-caught { box-shadow: 0 0 0 3px var(--accent), 0 8px 24px rgba(109, 40, 217, 0.3); }
 
 /* HUD: white bar, orange score */
 .hud { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; }
@@ -824,7 +824,7 @@ h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em
 
 /* box links: white cards, orange left edge on hover */
 .box-link { background: var(--surface); border: 2px solid var(--line); border-left: 5px solid var(--gold); border-radius: 12px; }
-.box-link:hover { border-color: var(--accent); border-left-color: var(--accent); background: #fff8f2; box-shadow: 0 6px 20px rgba(255, 92, 0, 0.15); }
+.box-link:hover { border-color: var(--accent); border-left-color: var(--accent); background: #f6f0ff; box-shadow: 0 6px 20px rgba(109, 40, 217, 0.15); }
 
 /* stats grid numbers: display font */
 .stats-grid dd { font-family: var(--font-display); font-weight: 800; color: var(--accent); }
