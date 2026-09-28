@@ -6,6 +6,8 @@ a procedure that looks perfectly reasonable but tests the wrong assertion for th
 
 Static, front-end only. No backend, no database, no API keys. Works fully offline once loaded.
 
+**Play it live:** https://ryantheories.github.io/quaestor/
+
 ## Run locally
 
 ```bash
@@ -47,7 +49,8 @@ The build is a plain static site, no server config needed.
 1. `npm run build`
 2. Push the contents of `dist/` to a `gh-pages` branch (or upload via your preferred action), or use the
    official Vite deploy guide with `base` set to your repo name in `vite.config.ts` if the site is served
-   from `https://<user>.github.io/<repo>/`.
+   from `https://<user>.github.io/<repo>/`. With the repo named `quaestor`, the site serves at
+   `https://ryantheories.github.io/quaestor/`.
    - This project ships with `base: './'`, which works for a *project page served from any subpath*. If you
      deploy at the domain root, you can leave `base` as is.
 3. In the repo settings, set Pages to serve from the branch/folder containing `dist/`.
@@ -127,3 +130,13 @@ src/
   styles/global.css
   __tests__/              # Vitest: scoring + validator
 ```
+
+## Disclaimer
+
+Quaestor is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
+produced by any employer, professional services firm, accounting body, or standard setter. All views
+and content are the author's own.
+
+This game is a training aid, not an authoritative source. Errors might exist, and double verification
+against the actual standards and your firm's methodology is important. Always consult the primary
+literature and applicable professional requirements before relying on anything here.
