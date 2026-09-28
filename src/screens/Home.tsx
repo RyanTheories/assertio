@@ -7,7 +7,7 @@ import { sectorFor, SECTOR_ORDER } from '../sectors';
 import { rankFor, nextRank } from '../career';
 import { todayKey } from '../daily';
 import { Icon } from '../components/Icon';
-import { JanusCoin } from '../components/JanusCoin';
+import janusEngraving from '../components/janus_engraving.svg';
 
 interface Props {
   scenarios: Scenario[];
@@ -21,12 +21,6 @@ interface Props {
 }
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
-
-const HOW_STEPS = [
-  'Judge which assertions apply to each line item.',
-  'Flag which ones are high-risk given the client\u2019s context.',
-  'Match procedures to assertions, and spot the trap: the procedure that looks right but tests the wrong thing.',
-];
 
 export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas, onOpenMastery, onOpenMistakes, onStartDaily }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
@@ -54,7 +48,6 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
     if (statement !== 'all') pool = pool.filter((s) => statementGroup(s.statement) === statement);
     return pool.length;
   }, [scenarios, difficulty, sector, statement]);
-  const flip = () => onStart({ difficulty, industry: sector, statement });
   return (
     <div className="screen home">
       <header className="hero">
@@ -64,57 +57,35 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         </svg>
         <h1 className="hero-title">DUBITO</h1>
         <p className="hero-subtitle">Skepticism, practiced.</p>
-        <div className="hero-coin">
-          <JanusCoin size={140} />
-        </div>
+        <img className="hero-coin" src={janusEngraving} alt="Janus engraving" width={140} height={122} />
         <p className="tagline">
           Judge which assertions matter for each line item, which are high risk in context, and spot the
           procedure that looks right but tests the wrong thing.
         </p>
-        <div className="hero-cta">
-          <button className="btn btn-flip" onClick={flip}>
-            <span className="btn-flip-label">Flip a scenario.</span>
-            <JanusCoin className="btn-flip-coin" size={28} />
-          </button>
-        </div>
       </header>
       <section className="card mission">
         <h2>Why this game exists</h2>
         <p>
-          Every goal has two faces. The organization sets a target and on the flip side of that same coin sits
-          the risk that defeats it: the revenue recognized too early, the control that quietly stops operating,
-          the process that only works when nobody&rsquo;s watching. Goals and risks are not two lists. They are one
-          coin.
+          Every organization sets goals, and every goal has a flip side: the risk that defeats it. Revenue
+          recognized too early. A control that quietly stops operating. A process that only works when
+          nobody&rsquo;s watching. Goals and risks are two sides of the same coin.
         </p>
         <p>
-          Internal controls are how an organization manages its own coin; designing processes so the
-          goal-facing side and the risk-facing side stay in view at once. The audit is how anyone learns the
-          coin is real: an independent, expert check that the controls operate, that the evidence supports the
-          claims, and that the goals leaders pursue are built on processes that actually work. This is why
-          auditing matters not as a compliance ritual, but as the assurance that ambition rests on something
-          solid.
+          Internal controls are how an organization manages that coin, designing processes so the goal and the
+          risk stay in view at once. An audit tests which side is winning, and what to do about it. Seen this
+          way, treating audit as a mere compliance ritual misses the point. Audits are how organizations learn
+          from their own failures and get better at reaching their goals.
         </p>
         <p>
           That is why this game is named for Janus, the two-faced god. Every scenario asks you to do what he
-          does: look at both faces at once, the assertion claimed, and the risk hidden behind it, and decide
-          whether the evidence truly holds.
+          does: look both ways at once, at the assertion being claimed and the risk hidden behind it, and
+          decide whether the evidence truly holds.
         </p>
         <p>
-          AI will only sharpen this work. As automation absorbs the mechanics, what remains is the judgment;
-          which face of the coin matters here, and whether a procedure examines the right one. This game trains
-          that judgment, one flip at a time.
+          AI will only sharpen this work. As automation absorbs the rote mechanics, what remains is the real
+          value of an audit: knowing which face of the coin matters, and whether a procedure examines the
+          right one. This game trains that judgment, one flip at a time.
         </p>
-      </section>
-      <section className="card how-steps">
-        <h2>How it works</h2>
-        <ol className="steps-list">
-          {HOW_STEPS.map((step, i) => (
-            <li key={i}>
-              <span className="step-num">{String(i + 1).padStart(2, '0')}</span>
-              <span>{step}</span>
-            </li>
-          ))}
-        </ol>
       </section>
       <section className="card setup">
         <h2><Icon name="play" /> New session</h2>
@@ -162,10 +133,11 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         <button
           className="btn btn-primary btn-start"
           disabled={availableCount === 0}
-          onClick={flip}
+          onClick={() => onStart({ difficulty, industry: sector, statement })}
         >
           {availableCount === 0 ? 'No scenarios match' : `Start session (${availableCount} scenarios)`}
         </button>
+        <p className="setup-flip-note">Ready to flip the coin?</p>
       </section>
       <section className="card howto">
         <div className="box-grid">
@@ -276,13 +248,6 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
             <div><dt>Scenarios mastered</dt><dd>{stats.career.scenariosMastered}</dd></div>
           </dl>
         )}
-      </section>
-      <section className="final-cta">
-        <JanusCoin face="skeptical" size={140} />
-        <button className="btn btn-flip" onClick={flip}>
-          <span className="btn-flip-label">Flip a scenario.</span>
-        </button>
-        <p className="final-cta-caption">Dubito has doubted every number it has ever seen.</p>
       </section>
       <footer className="disclaimer">
         <p>
