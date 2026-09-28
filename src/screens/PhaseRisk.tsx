@@ -6,6 +6,7 @@ import { ASSERTION_LABELS } from '../ui';
 import { statementLabel } from '../data/validate';
 import { ConceptText } from '../components/ConceptText';
 import { HintButton } from '../components/HintButton';
+import { whyNotHighRisk } from '../teach';
 
 interface Props {
   scenario: Scenario;
@@ -129,9 +130,16 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit, hint, onHint
           <div className="risk-reasons">
             {(Object.entries(scenario.assertions_high_risk) as [AssertionId, string][]).map(([id, reason]) => (
               <p key={id} className={`risk-reason ${selected.has(id) ? 'rr-caught' : 'rr-missed'}`}>
-                <strong>{ASSERTION_LABELS[id]}:</strong> <ConceptText>{reason}</ConceptText>
+                <strong>{ASSERTION_LABELS[id]} — why high risk:</strong> <ConceptText>{reason}</ConceptText>
               </p>
             ))}
+            {scenario.assertions_relevant
+              .filter((a) => !(a in scenario.assertions_high_risk))
+              .map((a) => (
+                <p key={a} className="risk-reason rr-notrisk">
+                  <strong>{ASSERTION_LABELS[a]} — why not high risk:</strong> {whyNotHighRisk(a)}
+                </p>
+              ))}
           </div>
           <button className="btn btn-primary" autoFocus onClick={onSubmit}>Continue (Enter)</button>
         </div>
