@@ -43,6 +43,8 @@ export interface Scenario {
   industry: string;
   client_context: string;
   assertions_relevant: AssertionId[];
+  /** assertion -> why it is relevant to this line item (scenario-specific). Optional; UI falls back to generic reasoning. */
+  why_relevant?: Partial<Record<AssertionId, string>>;
   /** assertion -> reason the client context makes it risky */
   assertions_high_risk: Partial<Record<AssertionId, string>>;
   procedures: Procedure[];
