@@ -970,3 +970,20 @@ body::before, body::after { display: none; }
 }
 .a-why { order: 3; }
 .a-mark { order: 2; }
+
+/* === Icon pass === */
+.icon { flex: none; vertical-align: -3px; }
+.btn .icon { margin-right: 7px; }
+.btn-ghost .icon { color: var(--accent); }
+.btn-primary .icon { color: var(--accent-ink); }
+.btn-primary:disabled .icon { color: var(--muted); }
+.box-link { display: flex; flex-direction: column; gap: 2px; }
+.box-link .icon { color: var(--accent); margin-bottom: 6px; }
+.card h2 { display: flex; align-items: center; gap: 10px; }
+.card h2 .icon { color: var(--accent); }
+.career-head .icon { color: var(--gold, var(--accent)); }
+.hint-title { display: flex; align-items: center; gap: 6px; }
+.hint-title .icon { color: var(--gold, var(--accent)); }
+.phase-head h2 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.phase-head h2 .icon { color: var(--accent); flex: none; }
+.brief-dialog .btn .icon, .brief-card .btn .icon { margin-right: 7px; }

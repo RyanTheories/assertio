@@ -7,6 +7,7 @@ import { statementLabel } from '../data/validate';
 import { ConceptText } from '../components/ConceptText';
 import { HintButton } from '../components/HintButton';
 import { whyNotHighRisk } from '../teach';
+import { Icon } from '../components/Icon';
 
 interface Props {
   scenario: Scenario;
@@ -65,7 +66,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit, hint, onHint
     <div className="phase phase-risk">
       <div className="phase-head">
         <p className="eyebrow">Phase 2 of 3</p>
-        <h2>Which relevant assertions are high risk for this client?</h2>
+        <h2><Icon name="alert" /> Which relevant assertions are high risk for this client?</h2>
         <p className="muted">
           {scenario.line_item} · {statementLabel(scenario.statement)}, judge from the engagement brief. Partial credit.
         </p>

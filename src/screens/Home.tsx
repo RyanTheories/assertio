@@ -6,6 +6,7 @@ import { statementGroup } from '../data/validate';
 import { sectorFor, SECTOR_ORDER } from '../sectors';
 import { rankFor, nextRank } from '../career';
 import { todayKey } from '../daily';
+import { Icon } from '../components/Icon';
 
 interface Props {
   scenarios: Scenario[];
@@ -73,7 +74,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         </p>
       </header>
       <section className="card mission">
-        <h2>Why this game was created</h2>
+        <h2><Icon name="info" /> Why this game was created</h2>
         {showWhy ? (
           <div className="howto-body">
             <p>
@@ -99,7 +100,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
       </section>
 
       <section className="card setup">
-        <h2>New session</h2>
+        <h2><Icon name="play" /> New session</h2>
         <div className="field">
           <label>Difficulty</label>
           <div className="chip-row">
@@ -153,22 +154,27 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
       <section className="card howto">
         <div className="box-grid">
           <button className="box-link" onClick={onOpenGuide}>
+            <Icon name="book" size={22} />
             <span className="box-title">What are assertions?</span>
             <span className="box-sub">Learn the vocabulary and standards</span>
           </button>
           <button className="box-link" onClick={onOpenStatements}>
+            <Icon name="doc" size={22} />
             <span className="box-title">What are financial statements?</span>
             <span className="box-sub">The documents behind the numbers</span>
           </button>
           <button className="box-link" onClick={onOpenIsas}>
+            <Icon name="scale" size={22} />
             <span className="box-title">The ISAs, explained</span>
             <span className="box-sub">What each standard is for</span>
           </button>
           <button className="box-link" onClick={onOpenMastery}>
+            <Icon name="map" size={22} />
             <span className="box-title">Mastery map</span>
             <span className="box-sub">Progress per sector</span>
           </button>
           <button className="box-link" onClick={() => setShowHowTo((v) => !v)} aria-expanded={showHowTo}>
+            <Icon name="dice" size={22} />
             <span className="box-title">How to play</span>
             <span className="box-sub">{showHowTo ? 'Hide the rules' : 'The rules of the game'}</span>
           </button>
@@ -205,7 +211,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
       </section>
 
       <section className="card daily">
-        <h2>Daily challenge</h2>
+        <h2><Icon name="calendar" /> Daily challenge</h2>
         <p className="muted">
           The same five scenarios for everyone, {todayKey()}. Come back tomorrow for a fresh draw.
         </p>
@@ -218,14 +224,14 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
           <p className="muted small">Not attempted yet today.</p>
         )}
         <button className="btn btn-primary" onClick={onStartDaily}>
-          Play today’s challenge
+          <Icon name="play" size={15} /> Play today’s challenge
         </button>
       </section>
       <section className="card stats">
         <div className="career-head">
-          <h2>Career ladder</h2>
+          <h2><Icon name="trophy" /> Career ladder</h2>
           <button className="btn btn-ghost btn-small" onClick={onOpenMastery}>
-            Mastery map →
+            <Icon name="map" size={15} /> Mastery map →
           </button>
         </div>
         <div className="career-rank">
