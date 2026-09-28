@@ -8,6 +8,7 @@ import { PhaseRisk } from './PhaseRisk';
 import { PhaseProcedures } from './PhaseProcedures';
 
 export type Phase = 'brief' | 'relevant' | 'risk' | 'procedures';
+const PHASE_ORDER: Phase[] = ['brief', 'relevant', 'risk', 'procedures'];
 
 interface Props {
   scenario: Scenario;
@@ -54,6 +55,16 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
           <div className="progress-fill" style={{ width: `${(index / Math.max(total, 1)) * 100}%` }} />
           <div className="progress-tick current" style={{ left: `${(index / Math.max(total, 1)) * 100}%` }} />
         </div>
+        <ol className="phase-steps" aria-label="Phase progress">
+          {(['brief', 'relevant', 'risk', 'procedures'] as const).map((ph, i) => (
+            <li
+              key={ph}
+              className={`phase-step ${phase === ph ? 'step-current' : ''} ${i < PHASE_ORDER.indexOf(phase) ? 'step-done' : ''}`}
+            >
+              {ph === 'brief' ? 'Brief' : ph === 'relevant' ? 'Assertions' : ph === 'risk' ? 'Risk' : 'Procedures'}
+            </li>
+          ))}
+        </ol>
       </header>
 
       {phase === 'brief' && <PhaseBrief scenario={scenario} onContinue={() => setPhase('relevant')} />}

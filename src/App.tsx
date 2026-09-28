@@ -6,6 +6,7 @@ import { scoreRound } from './scoring';
 import { sectorFor } from './sectors';
 import { pickDailyScenarios, todayKey } from './daily';
 import { startAmbience, toggleAmbience } from './audio';
+import { armSfx, setSfxMuted } from './sfx';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
 import { FinancialStatements } from './screens/FinancialStatements';
@@ -74,6 +75,7 @@ export default function App() {
 
   useEffect(() => {
     const startOnGesture = (e: Event) => {
+      armSfx();
       if (userMuted.current) return;
       if (e.target instanceof Element && e.target.closest('.music-toggle')) return;
       setMusicOn(startAmbience());
@@ -168,6 +170,7 @@ export default function App() {
         onClick={() => {
           const next = toggleAmbience();
           userMuted.current = !next;
+          setSfxMuted(!next);
           setMusicOn(next);
         }}
         aria-pressed={musicOn}

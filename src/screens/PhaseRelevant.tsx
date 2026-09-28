@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { AssertionId, Scenario } from '../types';
 import { scoreRelevant } from '../scoring';
+import { sfxBlip, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS, ASSERTION_SHORT, TAXONOMY_ORDER } from '../ui';
 import { statementLabel } from '../data/validate';
 import { useMemoOnce } from '../utils';
@@ -42,7 +43,10 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props)
 
   const submit = () => {
     if (feedback) return;
-    setFeedback(scoreRelevant(selected, scenario));
+    const fb = scoreRelevant(selected, scenario);
+    setFeedback(fb);
+    if (fb.ratio >= 0.8) sfxChime();
+    else sfxBuzz();
   };
 
   const expected = new Set(scenario.assertions_relevant);
@@ -96,6 +100,7 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props)
                       if (next.has(id)) next.delete(id);
                       else next.add(id);
                       onChange(next);
+                      sfxBlip();
                     }}
                   >
                     <span className="a-key">{key}</span>

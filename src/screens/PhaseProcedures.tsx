@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { AssertionId, Procedure, Scenario } from '../types';
 import { scoreProcedures, type Phase3Score, type ProcedureAnswer } from '../scoring';
+import { sfxBlip, sfxTrapToggle, sfxTrapCaught, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS, TAXONOMY_ORDER } from '../ui';
 import { ConceptText } from '../components/ConceptText';
 
@@ -44,8 +45,10 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
     const cur = getAnswer(i);
     if (cur.flaggedTrap) {
       setAnswer(i, { matched: [], flaggedTrap: false });
+      sfxTrapToggle(false);
     } else {
       setAnswer(i, { matched: [], flaggedTrap: true });
+      sfxTrapToggle(true);
     }
   };
 
@@ -84,7 +87,11 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
     shuffledProcedures.forEach((sp, shuffledIdx) => {
       ordered[sp.origIndex] = getAnswer(shuffledIdx);
     });
-    setFeedback(scoreProcedures(scenario, ordered));
+    const fb = scoreProcedures(scenario, ordered);
+    setFeedback(fb);
+    if (fb.trapsCaught > 0) sfxTrapCaught();
+    if (fb.ratio >= 0.8) sfxChime();
+    else if (fb.trapsCaught === 0) sfxBuzz();
   };
 
   const relevantSet = new Set(scenario.assertions_relevant);
@@ -128,7 +135,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
                           className={`chip chip-sm ${on ? 'chip-active' : ''} ${rel ? 'chip-rel' : ''}`}
                           disabled={ans.flaggedTrap}
                           title={rel ? 'in the relevant set' : undefined}
-                          onClick={() => toggleMatch(i, id)}
+                          onClick={() => { toggleMatch(i, id); sfxBlip(); }}
                         >
                           <span className="chip-idx">{ai === 9 ? '0' : String(ai + 1)}</span> {ASSERTION_LABELS[id]}
                         </button>
