@@ -47,7 +47,16 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
           <path d="M70 4 Q90 10 94 30 Q82 22 74 26 Q82 16 78 6 Q74 14 68 20 Z" />
         </svg>
         <p className="eyebrow">Audit training</p>
-        <h1>Assertio</h1>
+        <h1 className="title-tip" tabIndex={0}>
+          Quaestor
+          <span className="title-tip-card" role="tooltip">
+            <span className="title-tip-card-title">The Quaestor</span>
+            In ancient Rome, the quaestors were elected officials in charge of the treasury: they kept the
+            accounts, guarded the public funds and audited the books of generals and provincial governors.
+            Every army and province had one, because no amount of power was trusted without one. This game
+            trains the same discipline.
+          </span>
+        </h1>
         <p className="tagline">
           Judge which assertions matter for each line item, which are high risk in context, and spot the
           procedure that looks right but tests the wrong thing.
@@ -56,11 +65,19 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
       <section className="card mission">
         <h2>Why this game exists</h2>
         <p>
-          The future of audit is often framed as a contest between humans and automation. In practice, the
-          value of the auditor lies in what automation cannot do: professional skepticism. Automated tools
-          can reconcile ledgers in seconds, but they cannot judge where the numbers may be misleading, why
-          incentives might encourage that, or which question, asked of which evidence, settles the matter.
-          Every scenario in this game is that judgment, distilled.
+          An organization's goals are only as reliable as its processes. Ambitious plans built on broken
+          controls fail quietly; the audit exists to make sure they don't.
+        </p>
+        <p>
+          This is not a gotcha exercise. It is the discipline of verifying that processes operate as
+          designed, that evidence proves what it claims, and that the numbers leaders steer by can actually
+          be steered with. Done well, the audit is where insight comes from: findings feed back into better
+          controls, better controls into trust, and trust into the freedom to pursue bigger goals.
+        </p>
+        <p>
+          AI will only sharpen this. As automation absorbs the mechanical work, the auditor's core
+          contribution such as judgment about process, risk, and evidence becomes the profession's entire
+          value. This game exists to train it.
         </p>
       </section>
 
@@ -117,18 +134,24 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
       </section>
 
       <section className="card howto">
-        <button className="howto-toggle" onClick={onOpenGuide}>
-          <span>▸ What are assertions? Learn the vocabulary and standards</span>
-        </button>
-        <button className="howto-toggle" onClick={onOpenStatements}>
-          <span>▸ What are financial statements? The documents behind the numbers</span>
-        </button>
-        <button className="howto-toggle" onClick={onOpenIsas}>
-          <span>▸ The ISAs, explained: what each standard is for</span>
-        </button>
-        <button className="howto-toggle" onClick={() => setShowHowTo((v) => !v)}>
-          <span>{showHowTo ? '▾' : '▸'} How to play</span>
-        </button>
+        <div className="box-grid">
+          <button className="box-link" onClick={onOpenGuide}>
+            <span className="box-title">What are assertions?</span>
+            <span className="box-sub">Learn the vocabulary and standards</span>
+          </button>
+          <button className="box-link" onClick={onOpenStatements}>
+            <span className="box-title">What are financial statements?</span>
+            <span className="box-sub">The documents behind the numbers</span>
+          </button>
+          <button className="box-link" onClick={onOpenIsas}>
+            <span className="box-title">The ISAs, explained</span>
+            <span className="box-sub">What each standard is for</span>
+          </button>
+          <button className="box-link" onClick={() => setShowHowTo((v) => !v)} aria-expanded={showHowTo}>
+            <span className="box-title">How to play</span>
+            <span className="box-sub">{showHowTo ? 'Hide the rules' : 'The rules of the game'}</span>
+          </button>
+        </div>
         {showHowTo && (
           <div className="howto-body">
             <p>

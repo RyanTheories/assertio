@@ -38,7 +38,7 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
     <div className="screen round">
       <header className="hud">
         <div className="hud-left">
-          <span className="hud-title">Assertio</span>
+          <span className="hud-title">Quaestor</span>
           <span className="muted">Scenario {toRoman(index + 1)} / {toRoman(total)}</span>
         </div>
         <div className="hud-right">

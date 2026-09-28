@@ -1,6 +1,6 @@
 import type { RoundScore } from './scoring';
 
-const STORAGE_KEY = 'assertio.v1';
+const STORAGE_KEY = 'quaestor.v1';
 
 export interface CareerStats {
   gamesPlayed: number;
