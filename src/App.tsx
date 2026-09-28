@@ -78,6 +78,10 @@ export default function App() {
   const userMuted = useRef(false);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [screen]);
+
+  useEffect(() => {
     const startOnGesture = (e: Event) => {
       armSfx();
       if (userMuted.current) return;
