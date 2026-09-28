@@ -1,4 +1,5 @@
 import type { RoundScore } from './scoring';
+import type { Mistake } from './mistakes';
 
 const STORAGE_KEY = 'quaestor.v1';
 
@@ -27,6 +28,7 @@ export interface DailyResult {
 }
 
 export interface StoredState {
+  mistakes: Mistake[];
   career: CareerStats;
   masteredScenarioIds: string[];
   bestSessionScore: number;
@@ -45,6 +47,7 @@ const EMPTY_STATE: StoredState = {
   masteredScenarioIds: [],
   bestSessionScore: 0,
   daily: {},
+  mistakes: [],
 };
 
 function safeParse(raw: string | null): StoredState | null {
@@ -52,18 +55,18 @@ function safeParse(raw: string | null): StoredState | null {
   try {
     const parsed = JSON.parse(raw) as StoredState;
     if (typeof parsed !== 'object' || parsed === null || typeof parsed.career !== 'object') return null;
-    return { ...EMPTY_STATE, ...parsed, career: { ...EMPTY_STATE.career, ...parsed.career }, daily: parsed.daily ?? {} };
+    return { ...EMPTY_STATE, ...parsed, career: { ...EMPTY_STATE.career, ...parsed.career }, daily: parsed.daily ?? {}, mistakes: parsed.mistakes ?? [] };
   } catch {
     return null;
   }
 }
 
 export function loadState(): StoredState {
-  if (typeof localStorage === 'undefined') return { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [] };
+  if (typeof localStorage === 'undefined') return { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [], mistakes: [] };
   try {
-    return safeParse(localStorage.getItem(STORAGE_KEY)) ?? { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [] };
+    return safeParse(localStorage.getItem(STORAGE_KEY)) ?? { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [], mistakes: [] };
   } catch {
-    return { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [] };
+    return { ...EMPTY_STATE, career: { ...EMPTY_STATE.career }, masteredScenarioIds: [], mistakes: [] };
   }
 }
 
@@ -104,6 +107,24 @@ export function recordSession(rounds: Array<{ scenarioId: string; lineItem: stri
   state.bestSessionScore = Math.max(state.bestSessionScore, sessionScore);
   saveState(state);
   return state.career;
+}
+
+/** Append round mistakes, capped so storage stays bounded; duplicates by scenario+assertion+kind refresh their timestamp. */
+export function recordMistakes(mistakes: Mistake[]): void {
+  if (mistakes.length === 0) return;
+  const state = loadState();
+  const key = (m: Mistake) => `${m.scenarioId}|${m.assertion}|${m.kind}`;
+  const existing = new Map(state.mistakes.map((m) => [key(m), m]));
+  for (const m of mistakes) existing.set(key(m), { ...(existing.get(key(m)) ?? m), timestamp: m.timestamp });
+  const merged = [...existing.values()].sort((a, b) => b.timestamp - a.timestamp);
+  state.mistakes = merged.slice(0, 200);
+  saveState(state);
+}
+
+export function clearMistakes(): void {
+  const state = loadState();
+  state.mistakes = [];
+  saveState(state);
 }
 
 /** Store today's daily challenge result (best of the day is kept). */

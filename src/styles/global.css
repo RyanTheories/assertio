@@ -987,3 +987,11 @@ body::before, body::after { display: none; }
 .phase-head h2 { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 .phase-head h2 .icon { color: var(--accent); flex: none; }
 .brief-dialog .btn .icon, .brief-card .btn .icon { margin-right: 7px; }
+
+/* === Mistake review === */
+.mistake-review .card { margin-bottom: 14px; }
+.drill-card .brief-line-item { margin: 6px 0 4px; }
+.drill-nav { display: flex; gap: 8px; margin-top: 12px; }
+.mistake-list { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.mistake-list li { padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.mistake-list .muted.small { flex-basis: 100%; margin: 0; }

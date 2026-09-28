@@ -36,7 +36,7 @@ describe('render smoke', () => {
 
   it('renders Home with derived industries and stats', () => {
     const data = getGameData();
-    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onStartDaily={() => undefined} />);
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onOpenMistakes={() => undefined} onStartDaily={() => undefined} />);
     expect(html).toContain('New session');
     expect(html).toContain('How to play');
   });
@@ -48,7 +48,7 @@ it('renders the MasteryMap with sector bars', () => {
   });
   it('renders Home with career ladder and daily challenge', () => {
     const data = getGameData();
-    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onStartDaily={() => undefined} />);
+    const html = renderIgnoringConsole(<Home scenarios={data.scenarios} onStart={() => undefined} onOpenGuide={() => undefined} onOpenStatements={() => undefined} onOpenIsas={() => undefined} onOpenMastery={() => undefined} onOpenMistakes={() => undefined} onStartDaily={() => undefined} />);
     expect(html).toContain('Career ladder');
     expect(html).toContain('Daily challenge');
   });

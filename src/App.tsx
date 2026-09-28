@@ -15,7 +15,9 @@ import { MasteryMap } from './screens/MasteryMap';
 import { Round } from './screens/Round';
 import { RoundSummary } from './screens/RoundSummary';
 import { SessionSummary } from './screens/SessionSummary';
-import { recordDailyResult, recordSession, type SessionRecord } from './storage';
+import { recordDailyResult, recordSession, recordMistakes, clearMistakes, loadState, type SessionRecord } from './storage';
+import { collectMistakes } from './mistakes';
+import { MistakeReview } from './screens/MistakeReview';
 
 type Screen =
   | { kind: 'home' }
@@ -23,6 +25,7 @@ type Screen =
   | { kind: 'financialStatements' }
   | { kind: 'isas' }
   | { kind: 'mastery' }
+  | { kind: 'mistakes' }
   | { kind: 'round' }
   | { kind: 'roundSummary' }
   | { kind: 'sessionSummary' };
@@ -70,6 +73,7 @@ export function pickSessionScenarios(all: Scenario[], cfg: SessionConfig): Scena
 export default function App() {
   const validation = useMemo(() => loadGameData(), []);
   const [screen, setScreen] = useState<Screen>({ kind: 'home' });
+  const [mistakes, setMistakes] = useState(() => loadState().mistakes);
   const [musicOn, setMusicOn] = useState(false);
   const userMuted = useRef(false);
 
@@ -119,6 +123,7 @@ export default function App() {
   const finishRound = (scenario: Scenario, p1: Set<AssertionId>, p2: Set<AssertionId>, p3: ProcedureAnswer[], hintsUsed = 0) => {
     const score = scoreRound(scenario, p1, p2, p3, streak, hintsUsed);
     const record: RoundRecord = { scenario, score, phase1Selected: p1, phase2Selected: p2, phase3Answers: p3 };
+    recordMistakes(collectMistakes(scenario, p1, p2, p3));
     setCurrentRound(record);
     setRounds((prev) => [...prev, record]);
     setStreak((s) => (score.mastered ? s + 1 : 0));
@@ -155,6 +160,7 @@ export default function App() {
         streak
       );
     }
+    setMistakes(loadState().mistakes);
     setScreen({ kind: 'home' });
     setRounds([]);
     setSessionScenarios([]);
@@ -186,6 +192,7 @@ export default function App() {
           onOpenStatements={() => setScreen({ kind: 'financialStatements' })}
           onOpenIsas={() => setScreen({ kind: 'isas' })}
           onOpenMastery={() => setScreen({ kind: 'mastery' })}
+          onOpenMistakes={() => setScreen({ kind: 'mistakes' })}
           onStartDaily={() => startSession({ difficulty: 'mixed', industry: null, statement: 'all', daily: todayKey() })}
         />
       )}
@@ -200,6 +207,9 @@ export default function App() {
       )}
       {screen.kind === 'mastery' && (
         <MasteryMap scenarios={data.scenarios} onHome={() => setScreen({ kind: 'home' })} />
+      )}
+      {screen.kind === 'mistakes' && (
+        <MistakeReview mistakes={mistakes} onHome={() => setScreen({ kind: 'home' })} onClear={() => { clearMistakes(); setMistakes([]); }} />
       )}
       {screen.kind === 'round' && sessionScenarios.length > 0 && (
         <Round
