@@ -3,34 +3,36 @@ let master: GainNode | null = null;
 let timer: number | null = null;
 let playing = false;
 
-const BASE = 146.83;
-
-const SCALE = [0, 2, 3, 5, 7, 8, 10, 12, 14, 15, 17, 19];
-
+/**
+ * Soothing ambience in the spirit of C418's Minecraft Volume One:
+ * sparse, slow, soft sine tones in a gentle C-major pentatonic,
+ * long decays, occasional warm fifths, a low drone underneath,
+ * and breathing space between phrases.
+ */
+const BASE = 130.81; // C3
+const SCALE = [0, 2, 4, 7, 9]; // C major pentatonic
+const PHRASE_LEN = 5;
 let step = 0;
 
-function pluck(freq: number, when: number, dur: number, gain: number) {
+function tone(freq: number, when: number, dur: number, gain: number, type: OscillatorType = 'sine') {
   const c = ctx!;
   const osc = c.createOscillator();
-  const osc2 = c.createOscillator();
   const g = c.createGain();
-  osc.type = 'triangle';
-  osc2.type = 'sine';
+  osc.type = type;
   osc.frequency.value = freq;
-  osc2.frequency.value = freq * 2.002;
-  const g2 = c.createGain();
-  g2.gain.value = 0.28;
-  osc2.connect(g2);
-  g2.connect(g);
+  g.gain.setValueAtTime(0, when);
+  g.gain.linearRampToValueAtTime(gain, when + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.0001, when + dur);
   osc.connect(g);
   g.connect(master!);
-  g.gain.setValueAtTime(0, when);
-  g.gain.linearRampToValueAtTime(gain, when + 0.012);
-  g.gain.exponentialRampToValueAtTime(0.0001, when + dur);
   osc.start(when);
-  osc2.start(when);
   osc.stop(when + dur + 0.1);
-  osc2.stop(when + dur + 0.1);
+}
+
+/** Warm fifth dyad for slower harmonic movement. */
+function dyad(freq: number, when: number, dur: number, gain: number) {
+  tone(freq, when, dur, gain, 'sine');
+  tone(freq * 1.5, when, dur, gain * 0.45, 'sine');
 }
 
 function drone(when: number) {
@@ -39,7 +41,8 @@ function drone(when: number) {
   const g = c.createGain();
   osc.type = 'sine';
   osc.frequency.value = BASE / 2;
-  g.gain.setValueAtTime(0.05, when);
+  g.gain.setValueAtTime(0, when);
+  g.gain.linearRampToValueAtTime(0.04, when + 2);
   osc.connect(g);
   g.connect(master!);
   osc.start(when);
@@ -49,14 +52,19 @@ function schedule() {
   if (!ctx || !master) return;
   const now = ctx.currentTime + 0.05;
   if (step === 0) drone(now);
-  const octave = Math.floor(step / 12) % 3;
-  const degree = SCALE[step % 12];
-  const freq = BASE * Math.pow(2, degree / 12) * (octave === 0 ? 1 : octave === 1 ? 2 : 0.5);
-  pluck(freq, now, 2.8, 0.12);
-  if (step % 4 === 0) {
-    pluck(BASE * Math.pow(2, SCALE[(step + 7) % 12] / 12) * 2, now + 0.4, 2.2, 0.07);
+
+  // sparse melody: one soft note every other step, long decay
+  const degree = SCALE[Math.floor(Math.random() * SCALE.length)];
+  const octave = Math.random() < 0.35 ? 2 : 1;
+  const freq = BASE * Math.pow(2, degree / 12) * octave;
+  if (step % 2 === 0) {
+    tone(freq, now, 4.5, 0.09);
+    // warm harmony on phrase boundaries
+    if (step % PHRASE_LEN === 0 && Math.random() < 0.6) {
+      dyad(freq / 2, now + 0.4, 5, 0.05);
+    }
   }
-  step = (step + 1) % 36;
+  step = (step + 1) % 24;
 }
 
 export function isAmbiencePlaying() {
@@ -71,15 +79,15 @@ function startInternal(): boolean {
     master.gain.value = 0;
     const filter = ctx.createBiquadFilter();
     filter.type = 'lowpass';
-    filter.frequency.value = 2400;
+    filter.frequency.value = 1800;
     master.connect(filter);
     filter.connect(ctx.destination);
   }
   void ctx.resume();
-  master!.gain.setTargetAtTime(0.55, ctx.currentTime, 0.4);
+  master!.gain.setTargetAtTime(0.5, ctx.currentTime, 0.6);
   step = 0;
   schedule();
-  timer = window.setInterval(schedule, 1400);
+  timer = window.setInterval(schedule, 2600);
   playing = true;
   return true;
 }
@@ -93,7 +101,7 @@ export function stopAmbience(): boolean {
   if (timer !== null) window.clearInterval(timer);
   timer = null;
   if (master && ctx) {
-    master.gain.setTargetAtTime(0, ctx.currentTime, 0.2);
+    master.gain.setTargetAtTime(0, ctx.currentTime, 0.3);
   }
   playing = false;
   return false;
