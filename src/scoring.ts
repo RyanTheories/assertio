@@ -20,6 +20,8 @@ export const POINTS = {
   TRAP_MISS: 0,
   /** Streak multiplier applied per consecutive scenario mastered in a session. */
   STREAK_BONUS: 15,
+  /** Points deducted per hint revealed during a round. */
+  HINT_COST: 15,
 } as const;
 
 export interface SelectionScore {
@@ -165,12 +167,14 @@ export function scoreRound(
   phase1Selection: Set<AssertionId>,
   phase2Selection: Set<AssertionId>,
   phase3Answers: ProcedureAnswer[],
-  streakSoFar = 0
+  streakSoFar = 0,
+  hintsUsed = 0
 ): RoundScore {
   const phase1 = scoreRelevant(phase1Selection, scenario);
   const phase2 = scoreHighRisk(phase2Selection, scenario);
   const phase3 = scoreProcedures(scenario, phase3Answers);
-  const base = Math.max(0, phase1.points) + Math.max(0, phase2.points) + phase3.points;
+  const hintPenalty = hintsUsed * POINTS.HINT_COST;
+  const base = Math.max(0, Math.max(0, phase1.points) + Math.max(0, phase2.points) + phase3.points - hintPenalty);
   const ratios = [phase1.ratio, phase2.ratio, phase3.ratio];
   const mastered = ratios.every((r) => r >= 0.8);
   const streakBonus = mastered ? streakSoFar * POINTS.STREAK_BONUS : 0;

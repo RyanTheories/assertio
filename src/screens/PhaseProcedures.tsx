@@ -4,6 +4,7 @@ import { scoreProcedures, type Phase3Score, type ProcedureAnswer } from '../scor
 import { sfxBlip, sfxTrapToggle, sfxTrapCaught, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS, TAXONOMY_ORDER } from '../ui';
 import { ConceptText } from '../components/ConceptText';
+import { HintButton } from '../components/HintButton';
 
 interface ShuffledProc {
   proc: Procedure;
@@ -15,12 +16,14 @@ interface Props {
   shuffledProcedures: ShuffledProc[];
   answers: ProcedureAnswer[];
   onAnswersChange: (next: ProcedureAnswer[]) => void;
+  hint: string;
+  onHintUsed: () => void;
   onSubmit: () => void;
 }
 
 const ALL_IDS: AssertionId[] = [...TAXONOMY_ORDER.transactions, ...TAXONOMY_ORDER.balances] as AssertionId[];
 
-export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswersChange, onSubmit }: Props) {
+export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswersChange, hint, onHintUsed, onSubmit }: Props) {
   const [feedback, setFeedback] = useState<Phase3Score | null>(null);
   const [focus, setFocus] = useState(0);
 
@@ -189,6 +192,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
 
       {!feedback ? (
         <div className="phase-actions">
+          <HintButton onReveal={onHintUsed} disabled={!!feedback}>{hint}</HintButton>
           <button className="btn btn-primary" onClick={submit}>Submit all (Enter)</button>
           <span className="kbd-hint"><kbd>↑</kbd>/<kbd>↓</kbd> select · number keys match · <kbd>T</kbd> trap · <kbd>Enter</kbd> submit</span>
         </div>

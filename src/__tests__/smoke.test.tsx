@@ -71,13 +71,13 @@ it('renders the MasteryMap with sector bars', () => {
     const shuffled = sc.procedures.map((proc, origIndex) => ({ proc, origIndex }));
     expect(renderIgnoringConsole(<PhaseBrief scenario={sc} onContinue={() => undefined} />)).toContain('Engagement brief');
     expect(renderIgnoringConsole(
-      <PhaseRelevant scenario={sc} selected={new Set()} onChange={() => undefined} onSubmit={() => undefined} />
+      <PhaseRelevant scenario={sc} selected={new Set()} onChange={() => undefined} hint="h" onHintUsed={() => undefined} onSubmit={() => undefined} />
     )).toContain('Phase 1 of 3');
     expect(renderIgnoringConsole(
-      <PhaseRisk scenario={sc} selected={new Set()} onChange={() => undefined} onSubmit={() => undefined} />
+      <PhaseRisk scenario={sc} selected={new Set()} onChange={() => undefined} hint="h" onHintUsed={() => undefined} onSubmit={() => undefined} />
     )).toContain('Phase 2 of 3');
     expect(renderIgnoringConsole(
-      <PhaseProcedures scenario={sc} shuffledProcedures={shuffled} answers={[]} onAnswersChange={() => undefined} onSubmit={() => undefined} />
+      <PhaseProcedures scenario={sc} shuffledProcedures={shuffled} answers={[]} onAnswersChange={() => undefined} hint="h" onHintUsed={() => undefined} onSubmit={() => undefined} />
     )).toContain('Phase 3 of 3');
   });
 
