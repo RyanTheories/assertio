@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { CountUp } from '../components/CountUp';
 import type { SessionRecord } from '../storage';
 import type { RoundRecord } from '../App';
 import { RoundSummary } from './RoundSummary';
@@ -63,7 +64,7 @@ export function SessionSummary({ rounds, onHome, roundRecords }: Props) {
 
       <div className="summary-hero">
         <h2>Session complete</h2>
-        <p className="summary-total">{totalScore} <span className="muted">pts total</span></p>
+        <p className="summary-total"><CountUp value={totalScore} /> <span className="muted">pts total</span></p>
         <p className="muted">
           {rounds.length} scenarios · {masteredCount} mastered
         </p>
