@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { toRoman } from '../sectors';
+import { CountUp } from '../components/CountUp';
 import type { RoundRecord } from '../App';
 import { ASSERTION_LABELS } from '../ui';
 
@@ -39,7 +40,7 @@ export function RoundSummary({ round, index, total, isLast, onNext, onEnd }: Pro
           {score.mastered ? '★ Scenario mastered' : 'Round complete'}
         </h2>
         <p className="summary-total">
-          {score.total} <span className="muted">/ {score.maxTotal} pts</span>
+          <CountUp value={score.total} /> <span className="muted">/ {score.maxTotal} pts</span>
         </p>
         {score.streakBonus > 0 && (
           <p className="streak-bonus">🔥 Streak bonus +{score.streakBonus}</p>

@@ -42,7 +42,11 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
           <span className="muted">Scenario {toRoman(index + 1)} / {toRoman(total)}</span>
         </div>
         <div className="hud-right">
-          {streak > 0 && <span className="streak" title="Consecutive mastered scenarios">🔥 {streak}</span>}
+          {streak > 0 && (
+            <span className="streak streak-pulse" key={streak} title="Consecutive mastered scenarios">
+              🔥 {streak}
+            </span>
+          )}
           <span className="score-meter">Score {sessionScore}</span>
           <button className="btn btn-ghost btn-small" onClick={onEndSession}>End session</button>
         </div>
