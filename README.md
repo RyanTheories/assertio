@@ -1,6 +1,6 @@
-# Quaestor
+# Dubito
 
-An audit training game for professional auditors. For each financial statement line item, judge which
+An assertion-risk audit training game for professional auditors. For each financial statement line item, judge which
 assertions are relevant, which are high risk given the client's context, and spot the **trap procedure**:
 a procedure that looks perfectly reasonable but tests the wrong assertion for the risk at hand.
 
@@ -94,7 +94,7 @@ A scenario is **mastered** when every phase scores ≥ 80%. Progress and career 
 
 ## Progression
 
-- **Career ladder.** Mastering scenarios promotes you from Trainee up to Quaestor. Rank thresholds are a
+- **Career ladder.** Mastering scenarios promotes you from Trainee up to Quaestor (a nod to the Roman treasury officers). Rank thresholds are a
   fraction of the scenario library, so the ladder scales as content grows.
 - **Mastery map.** Per-sector mastery bars (mastered / total) so you can pick your next target sector.
 - **Daily challenge.** A deterministic, date-seeded draw of five scenarios. Everyone playing on the same
@@ -133,7 +133,7 @@ src/
 
 ## Disclaimer
 
-Quaestor is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
+Dubito is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
 produced by any employer, professional services firm, accounting body, or standard setter. All views
 and content are the author's own.
 

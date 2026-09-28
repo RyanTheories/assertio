@@ -42,7 +42,7 @@ const HOW: { title: string; body: string }[] = [
   },
   {
     title: 'Why the game asks which statement a line item belongs to',
-    body: 'Each scenario in Quaestor names one line item from a real statement, and its statement shapes the risk. Income statement items raise transaction-level questions, like whether a sale really happened. Balance sheet items raise balance-level questions, like whether an asset still exists or is fairly valued. Knowing which lens applies is the first step in identifying relevant assertions.',
+    body: 'Each scenario in Dubito names one line item from a real statement, and its statement shapes the risk. Income statement items raise transaction-level questions, like whether a sale really happened. Balance sheet items raise balance-level questions, like whether an asset still exists or is fairly valued. Knowing which lens applies is the first step in identifying relevant assertions.',
   },
 ];
 

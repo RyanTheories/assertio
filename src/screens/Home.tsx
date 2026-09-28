@@ -7,6 +7,7 @@ import { sectorFor, SECTOR_ORDER } from '../sectors';
 import { rankFor, nextRank } from '../career';
 import { todayKey } from '../daily';
 import { Icon } from '../components/Icon';
+import { JanusCoin } from '../components/JanusCoin';
 
 interface Props {
   scenarios: Scenario[];
@@ -21,13 +22,17 @@ interface Props {
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
 
+const HOW_STEPS = [
+  'Judge which assertions apply to each line item.',
+  'Flag which ones are high-risk given the client\u2019s context.',
+  'Match procedures to assertions, and spot the trap: the procedure that looks right but tests the wrong thing.',
+];
+
 export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas, onOpenMastery, onOpenMistakes, onStartDaily }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
-  const [showWhy, setShowWhy] = useState(false);
   const [showHowTo, setShowHowTo] = useState(false);
-
   const sectors = useMemo(() => {
     const counts = new Map<string, number>();
     for (const s of scenarios) {
@@ -36,7 +41,6 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
     }
     return SECTOR_ORDER.filter((sec) => counts.has(sec)).map((sec) => ({ sector: sec, count: counts.get(sec)! }));
   }, [scenarios]);
-
   const stats = useMemo(() => loadState(), []);
   const mistakeCount = stats.mistakes.length;
   const dailyDone = useMemo(() => getDailyResult(todayKey()), []);
@@ -50,57 +54,68 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
     if (statement !== 'all') pool = pool.filter((s) => statementGroup(s.statement) === statement);
     return pool.length;
   }, [scenarios, difficulty, sector, statement]);
-
+  const flip = () => onStart({ difficulty, industry: sector, statement });
   return (
     <div className="screen home">
       <header className="hero">
-        <p className="eyebrow">Audit training</p>
-        <div className="hero-lockup">
-        <svg className="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
-          <circle cx="50" cy="50" r="42" fill="var(--accent)" />
+        <svg className="logo-mark" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M6 6 L22 24 L6 42 Z" fill="var(--ink)" />
+          <path d="M42 6 L26 24 L42 42 Z" fill="none" stroke="var(--ink)" strokeWidth="3" />
         </svg>
-        <h1 className="title-tip" tabIndex={0}>
-          Quaestor
-          <span className="title-tip-card" role="tooltip">
-            <span className="title-tip-card-title">The Quaestor</span>
-            In ancient Rome, the quaestors were elected officials in charge of the treasury: they kept the
-            accounts, guarded the public funds and audited the books of generals and provincial governors.
-            Every army and province had one, because no amount of power was trusted without one. This game
-            trains the same discipline.
-          </span>
-        </h1>
+        <h1 className="hero-title">DUBITO</h1>
+        <p className="hero-subtitle">Skepticism, practiced.</p>
+        <div className="hero-coin">
+          <JanusCoin size={140} />
         </div>
         <p className="tagline">
           Judge which assertions matter for each line item, which are high risk in context, and spot the
           procedure that looks right but tests the wrong thing.
         </p>
+        <div className="hero-cta">
+          <button className="btn btn-flip" onClick={flip}>
+            <span className="btn-flip-label">Flip a scenario.</span>
+            <JanusCoin className="btn-flip-coin" size={28} />
+          </button>
+        </div>
       </header>
       <section className="card mission">
-        <h2><Icon name="info" /> Why this game was created</h2>
-        {showWhy ? (
-          <div className="howto-body">
-            <p>
-              An organization's goals are only as reliable as its processes. Ambitious plans built on broken
-              controls fail quietly; the audit exists to make sure they don't.
-            </p>
-            <p>
-              This is not a gotcha exercise. It is the discipline of verifying that processes operate as
-              designed, that evidence proves what it claims, and that the numbers leaders steer by can actually
-              be steered with. Done well, the audit is where insight comes from: findings feed back into better
-              controls, better controls into trust, and trust into the freedom to pursue bigger goals.
-            </p>
-            <p>
-              AI will only sharpen this. As automation absorbs the mechanical work, the auditor's core
-              contribution such as judgment about process, risk, and evidence becomes the profession's entire
-              value. This game exists to train it.
-            </p>
-          </div>
-        ) : null}
-        <button className="btn btn-ghost btn-small" onClick={() => setShowWhy((v) => !v)} aria-expanded={showWhy}>
-          {showWhy ? 'Show less' : 'Read more'}
-        </button>
+        <h2>Why this game exists</h2>
+        <p>
+          Every goal has two faces. The organization sets a target and on the flip side of that same coin sits
+          the risk that defeats it: the revenue recognized too early, the control that quietly stops operating,
+          the process that only works when nobody&rsquo;s watching. Goals and risks are not two lists. They are one
+          coin.
+        </p>
+        <p>
+          Internal controls are how an organization manages its own coin; designing processes so the
+          goal-facing side and the risk-facing side stay in view at once. The audit is how anyone learns the
+          coin is real: an independent, expert check that the controls operate, that the evidence supports the
+          claims, and that the goals leaders pursue are built on processes that actually work. This is why
+          auditing matters not as a compliance ritual, but as the assurance that ambition rests on something
+          solid.
+        </p>
+        <p>
+          That is why this game is named for Janus, the two-faced god. Every scenario asks you to do what he
+          does: look at both faces at once, the assertion claimed, and the risk hidden behind it, and decide
+          whether the evidence truly holds.
+        </p>
+        <p>
+          AI will only sharpen this work. As automation absorbs the mechanics, what remains is the judgment;
+          which face of the coin matters here, and whether a procedure examines the right one. This game trains
+          that judgment, one flip at a time.
+        </p>
       </section>
-
+      <section className="card how-steps">
+        <h2>How it works</h2>
+        <ol className="steps-list">
+          {HOW_STEPS.map((step, i) => (
+            <li key={i}>
+              <span className="step-num">{String(i + 1).padStart(2, '0')}</span>
+              <span>{step}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
       <section className="card setup">
         <h2><Icon name="play" /> New session</h2>
         <div className="field">
@@ -147,12 +162,11 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         <button
           className="btn btn-primary btn-start"
           disabled={availableCount === 0}
-          onClick={() => onStart({ difficulty, industry: sector, statement })}
+          onClick={flip}
         >
           {availableCount === 0 ? 'No scenarios match' : `Start session (${availableCount} scenarios)`}
         </button>
       </section>
-
       <section className="card howto">
         <div className="box-grid">
           <button className="box-link" onClick={onOpenGuide}>
@@ -189,7 +203,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         {showHowTo && (
           <div className="howto-body">
             <p>
-              Each scenario is one line item on a client's financial statements. A round has three phases:
+              Each scenario is one line item on a client&rsquo;s financial statements. A round has three phases:
             </p>
             <ol>
               <li>
@@ -198,7 +212,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
               </li>
               <li>
                 <strong>High-risk assertions</strong>, from the relevant set, check the ones the client context
-                makes risky. Feedback shows the data's risk reasons.
+                makes risky. Feedback shows the data&rsquo;s risk reasons.
               </li>
               <li>
                 <strong>Procedures</strong>, for each procedure, match the assertion(s) it tests, or flag it as
@@ -207,16 +221,15 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
               </li>
             </ol>
             <p>
-              <strong>Keyboard:</strong> number keys <kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> toggle assertions ·{' '}
-              <kbd>T</kbd> flags a trap · <kbd>Enter</kbd> submits.
+              <strong>Keyboard:</strong> number keys <kbd>1</kbd>&ndash;<kbd>9</kbd>, <kbd>0</kbd> toggle assertions &middot;{' '}
+              <kbd>T</kbd> flags a trap &middot; <kbd>Enter</kbd> submits.
             </p>
             <p>
-              A scenario is <strong>mastered</strong> when every phase scores ≥ 80%.
+              A scenario is <strong>mastered</strong> when every phase scores &ge; 80%.
             </p>
           </div>
         )}
       </section>
-
       <section className="card daily">
         <h2><Icon name="calendar" /> Daily challenge</h2>
         <p className="muted">
@@ -224,25 +237,25 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         </p>
         {dailyDone ? (
           <p className="muted small">
-            Played today · best {dailyDone.score} pts, {dailyDone.mastered}/{dailyDone.total} mastered. Play
+            Played today &middot; best {dailyDone.score} pts, {dailyDone.mastered}/{dailyDone.total} mastered. Play
             again to improve your best.
           </p>
         ) : (
           <p className="muted small">Not attempted yet today.</p>
         )}
         <button className="btn btn-primary" onClick={onStartDaily}>
-          <Icon name="play" size={15} /> Play today’s challenge
+          <Icon name="play" size={15} /> Play today&rsquo;s challenge
         </button>
       </section>
       <section className="card stats">
         <div className="career-head">
           <h2><Icon name="trophy" /> Career ladder</h2>
           <button className="btn btn-ghost btn-small" onClick={onOpenMastery}>
-            <Icon name="map" size={15} /> Mastery map →
+            <Icon name="map" size={15} /> Mastery map &rarr;
           </button>
         </div>
         <div className="career-rank">
-          <span className="career-title">{rank.title} <span className="career-latin">· {rank.latin}</span></span>
+          <span className="career-title">{rank.title} <span className="career-latin">&middot; {rank.latin}</span></span>
           <span className="muted small">{rank.blurb}</span>
           {upcoming ? (
             <span className="muted small">
@@ -264,15 +277,22 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
           </dl>
         )}
       </section>
+      <section className="final-cta">
+        <JanusCoin face="skeptical" size={140} />
+        <button className="btn btn-flip" onClick={flip}>
+          <span className="btn-flip-label">Flip a scenario.</span>
+        </button>
+        <p className="final-cta-caption">Dubito has doubted every number it has ever seen.</p>
+      </section>
       <footer className="disclaimer">
         <p>
-          Quaestor is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
+          Dubito is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
           produced by any employer, professional services firm, accounting body, or standard setter. All
-          views and content are the author's own.
+          views and content are the author&rsquo;s own.
         </p>
         <p>
           This game is a training aid, not an authoritative source. Errors might exist, and double
-          verification against the actual standards and your firm's methodology is important. Always
+          verification against the actual standards and your firm&rsquo;s methodology is important. Always
           consult the primary literature and applicable professional requirements before relying on
           anything here.
         </p>

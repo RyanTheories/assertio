@@ -177,7 +177,7 @@ export function AssertionsGuide({ onHome }: { onHome: () => void }) {
           Assertions are the implicit claims a set of financial statements makes about each line item:
           that it happened, that nothing is missing, that the amount is right. Auditors use them as a
           checklist of ways a line item can be wrong, and target their procedures at the assertions
-          where the risk of error is highest. Quaestor trains exactly this skill.
+          where the risk of error is highest. Dubito trains exactly this skill.
         </p>
       </header>
 
@@ -241,7 +241,7 @@ export function AssertionsGuide({ onHome }: { onHome: () => void }) {
           ))}
         </ul>
         <p className="guide-std-note">
-          Quaestor follows the assertion vocabulary of ISA 315 (Revised 2019). Terminology in practice
+          Dubito follows the assertion vocabulary of ISA 315 (Revised 2019). Terminology in practice
           materials may vary slightly between jurisdictions and firms.
         </p>
       </section>

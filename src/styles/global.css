@@ -76,70 +76,70 @@ kbd {
 .small { font-size: 13px; }
 
 /* ---------- hero / home ---------- */
-.hero { text-align: center; padding: 16px 0 8px; }
+.hero { text-align: center; padding: 24px 0 8px; }
 .logo-mark {
-  width: 88px; height: 88px;
-  margin: 0 auto 10px;
+  width: 40px; height: 40px;
+  margin: 0 auto 14px;
   display: block;
 }
-.hero-lockup { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
-.hero-lockup .logo-mark { width: 64px; height: 64px; margin: 0; }
-.hero h1 {
-  font-size: 52px;
-  font-weight: 400;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.hero-title {
+  font-size: clamp(56px, 12vw, 104px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
   color: var(--ink);
-  margin: 0 0 12px;
+  margin: 0 0 6px;
+  line-height: 1;
 }
-.hero h1 {
-  display: inline-block;
-  position: relative;
-  cursor: help;
-  padding: 2px 10px;
-  border-bottom: 2px solid var(--gold);
+.hero-subtitle {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--muted);
+  margin: 0 0 18px;
 }
-.title-tip-card {
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 12px);
-  transform: translateX(-50%);
-  width: 360px;
-  max-width: 80vw;
-  background: var(--surface);
-  border: 1px solid var(--line-strong);
-  border-top: 3px solid var(--gold);
-  border-radius: var(--radius);
-  box-shadow: 0 6px 24px rgba(47, 33, 19, 0.3);
-  padding: 12px 14px;
-  display: none;
-  flex-direction: column;
-  gap: 6px;
-  z-index: 60;
-  text-align: left;
-  font-size: 13px;
-  line-height: 1.5;
-  text-transform: none;
-  letter-spacing: normal;
-  color: var(--ink);
-  pointer-events: none;
+.hero-coin { margin: 0 auto 18px; }
+.tagline { max-width: 640px; color: var(--ink); opacity: 0.8; margin: 0 auto 20px; }
+.hero-cta { display: flex; justify-content: center; }
+.janus-coin .janus-coin-inner { transform-origin: 100px 100px; }
+.btn-flip {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--ink);
+  color: #ffffff;
+  border: 1px solid var(--ink);
+  border-radius: 10px;
+  padding: 14px 26px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-soft);
+  transition: background 140ms, box-shadow 140ms, transform 80ms;
 }
-.title-tip:hover .title-tip-card, .title-tip:focus .title-tip-card { display: flex; }
-.title-tip-card-title {
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-size: 11px;
-  color: var(--accent);
-}
-.hero .eyebrow { margin-bottom: 10px; }
-.tagline { max-width: 640px; color: var(--ink); opacity: 0.8; margin: 0 auto; }
+.btn-flip:hover { background: #000000; box-shadow: var(--shadow-soft-lg); }
+.btn-flip:active { transform: scale(0.985); }
+.btn-flip-coin { transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1); }
+.btn-flip:hover .btn-flip-coin .janus-coin-inner { transform: rotate(180deg); }
 
 .mission { max-width: 640px; margin: -6px auto 18px; border-left: 3px solid var(--gold); }
 .mission h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted); margin: 0 0 10px; }
 .mission p { font-size: 14px; margin: 0 0 10px; }
 .mission p:last-child { margin-bottom: 0; }
 .mission em { font-style: italic; }
+.how-steps { max-width: 640px; margin: 0 auto 18px; }
+.how-steps h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted); margin: 0 0 12px; }
+.steps-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.steps-list li { display: flex; align-items: baseline; gap: 14px; font-size: 14px; }
+.step-num { font-weight: 700; letter-spacing: 0.08em; color: var(--muted); }
+.final-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 26px 0 10px;
+}
+.final-cta-caption { color: var(--muted); font-size: 13px; font-style: italic; margin: 4px 0 0; }
 
 .field { margin-bottom: 14px; }
 .field label {
