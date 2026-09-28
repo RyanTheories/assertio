@@ -573,3 +573,17 @@ select {
 .daily .btn { margin-top: 6px; }
 .mastery-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .mastery-name { flex: 0 0 240px; }
+
+/* ---------- disclaimer footer ---------- */
+.disclaimer {
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+  padding-top: 14px;
+  text-align: center;
+}
+.disclaimer p {
+  color: var(--muted);
+  font-size: 12px;
+  max-width: 640px;
+  margin: 0 auto 6px;
+}
