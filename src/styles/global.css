@@ -1,31 +1,32 @@
 :root {
-  --bg: #c4a878;
-  --surface: #faf3e0;
-  --surface-dark: #ead9b8;
-  --ink: #241505;
-  --muted: #6d5330;
-  --line: rgba(36, 21, 5, 0.32);
-  --line-strong: rgba(36, 21, 5, 0.55);
-  --accent: #7a1518;
-  --accent-ink: #faf3e0;
-  --accent-soft: #f0dcc0;
-  --gold: #a8790a;
-  --gold-soft: #f5e6b8;
+  --bg: #fff4e5;
+  --surface: #ffffff;
+  --surface-dark: #ffe8cc;
+  --ink: #1f1712;
+  --muted: #8a6f5c;
+  --line: rgba(31, 23, 18, 0.14);
+  --line-strong: rgba(31, 23, 18, 0.32);
+  --accent: #ff5c00;
+  --accent-ink: #ffffff;
+  --accent-soft: #ffe3d1;
+  --gold: #e8930c;
+  --gold-soft: #ffefc9;
   --purple: #4b2e63;
-  --purple-soft: #e5d8ec;
-  --green: #4c7030;
-  --green-soft: #e6efd4;
-  --amber: #9c6a00;
-  --amber-soft: #ffedbe;
-  --red: #b33508;
-  --red-soft: #fbe2d4;
-  --trap: #6d2191;
-  --trap-soft: #f0e0fa;
-  --radius: 6px;
+  --purple-soft: #efe4f7;
+  --green: #2f7d32;
+  --green-soft: #e0f0dc;
+  --amber: #b26a00;
+  --amber-soft: #ffeccb;
+  --red: #c92a0a;
+  --red-soft: #ffdcd2;
+  --trap: #7a2ecc;
+  --trap-soft: #f0e2fb;
+  --radius: 16px;
   --radius-pill: 999px;
-  --shadow-soft: 0 1px 2px rgba(94, 58, 46, 0.10), 0 4px 12px rgba(94, 58, 46, 0.10);
-  --shadow-soft-lg: 0 2px 4px rgba(94, 58, 46, 0.10), 0 10px 28px rgba(94, 58, 46, 0.14);
-  --font-serif: 'Roboto Serif', Georgia, 'Times New Roman', serif;
+  --shadow-soft: 0 2px 6px rgba(31, 23, 18, 0.08);
+  --shadow-soft-lg: 0 4px 10px rgba(31, 23, 18, 0.08), 0 12px 32px rgba(31, 23, 18, 0.10);
+  --font-serif: 'Fraunces', Georgia, serif;
+  --font-display: 'Fraunces', Georgia, serif;
 }
 
 * { box-sizing: border-box; }
@@ -34,10 +35,6 @@ html, body { margin: 0; padding: 0; }
 
 body {
   background: var(--bg);
-  background-image:
-    radial-gradient(1200px 600px at 50% -200px, rgba(255, 246, 214, 0.45), transparent 70%),
-    radial-gradient(900px 500px at 50% 115%, rgba(74, 42, 8, 0.22), transparent 60%),
-    repeating-linear-gradient(45deg, rgba(36, 21, 5, 0.035) 0 6px, transparent 6px 12px);
   color: var(--ink);
   font-family: var(--font-serif);
   font-size: 15px;
@@ -726,4 +723,120 @@ body::after {
   font-weight: 700;
   border-bottom-color: var(--gold);
   background: var(--gold-soft);
+}
+
+/* ============================================================
+   OYG-STYLE SKIN (override layer) — blaze orange, cream field,
+   white cards, chunky rounded shapes, big characterful display
+   type. Fun, crafted, still fully legible serif body text.
+   ============================================================ */
+
+/* display type: big, soft, slightly quirky */
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9vw, 96px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: none;
+  color: var(--accent);
+  border-bottom: none;
+  padding: 0;
+  cursor: default;
+}
+.hero h1::after {
+  content: '.';
+  color: var(--ink);
+}
+.hero .eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.32em;
+  color: var(--ink);
+  font-weight: 700;
+}
+.tagline { font-size: 17px; color: var(--ink); opacity: 0.85; }
+h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em; }
+
+/* cards: white panels on cream, soft and chunky */
+.card {
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft-lg);
+}
+.card:hover { border-color: var(--line); }
+
+/* buttons: confident orange, pill or chunky radius */
+.btn {
+  border-radius: 12px;
+  font-weight: 600;
+  transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.btn-primary { background: var(--accent); color: var(--accent-ink); box-shadow: 0 2px 0 rgba(31, 23, 18, 0.12); }
+.btn-primary:hover { background: #ff742e; box-shadow: 0 4px 14px rgba(255, 92, 0, 0.35); }
+.btn-ghost { background: var(--surface); border: 2px solid var(--line-strong); color: var(--ink); }
+.btn-ghost:hover { background: var(--surface-dark); }
+
+/* chips: pill toggles with orange active state */
+.chip { border-radius: var(--radius-pill); border: 2px solid var(--line-strong); background: var(--surface); font-weight: 600; }
+.chip-active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 2px 8px rgba(255, 92, 0, 0.3); }
+
+/* assertion tiles: white cards with soft shadow, orange selection */
+.assertion { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease; }
+.a-sel { border-color: var(--accent); background: var(--accent-soft); box-shadow: 0 2px 10px rgba(255, 92, 0, 0.2); }
+.a-sel .a-key { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+/* procedure cards */
+.proc { background: var(--surface); border: 2px solid var(--line); border-radius: 12px; }
+.proc-focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft), 0 4px 14px rgba(255, 92, 0, 0.15); }
+.btn-trap { border-radius: 12px; }
+.trap-callout { border-radius: 12px; }
+.trap-callout.trap-caught { box-shadow: 0 0 0 3px var(--accent), 0 8px 24px rgba(255, 92, 0, 0.3); }
+
+/* HUD: white bar, orange score */
+.hud { background: var(--surface); border: 2px solid var(--line); border-radius: 14px; }
+.score-meter { font-weight: 800; color: var(--accent); }
+
+/* bars: rounded, orange-tinted fills keep semantic colors */
+.bar { border-radius: var(--radius-pill); background: var(--surface-dark); overflow: hidden; }
+.bar-fill { border-radius: var(--radius-pill); }
+
+/* laurel: orange */
+.laurel { stroke: var(--accent); }
+
+/* stepper: pill segments */
+.phase-steps { border-radius: 12px; overflow: hidden; }
+.phase-step { border-bottom: 4px solid transparent; }
+.phase-step.step-current { background: var(--accent-soft); border-bottom-color: var(--accent); color: var(--accent); }
+.phase-step.step-done { color: var(--green); border-bottom-color: var(--green); }
+
+/* summary hero: white panel, orange mastered ring */
+.summary-hero { background: var(--surface); border: 2px solid var(--line); border-radius: 16px; }
+.summary-hero.mastered { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.summary-hero h2 { font-family: var(--font-display); font-size: 32px; }
+
+/* title tooltip: cream dialog */
+.title-tip-card { border-radius: 12px; border-top: 4px solid var(--accent); box-shadow: 0 12px 40px rgba(31, 23, 18, 0.18); }
+.title-tip-card-title { color: var(--accent); }
+
+/* feedback banners: rounded */
+.feedback { border-radius: 12px; }
+.flash-green { background: var(--green-soft); }
+.flash-amber { background: var(--amber-soft); }
+
+/* box links: white cards, orange left edge on hover */
+.box-link { background: var(--surface); border: 2px solid var(--line); border-left: 5px solid var(--gold); border-radius: 12px; }
+.box-link:hover { border-color: var(--accent); border-left-color: var(--accent); background: #fff8f2; box-shadow: 0 6px 20px rgba(255, 92, 0, 0.15); }
+
+/* stats grid numbers: display font */
+.stats-grid dd { font-family: var(--font-display); font-weight: 800; color: var(--accent); }
+
+/* mission card: accent stripe */
+.mission { border-left: 5px solid var(--accent); }
+
+/* hide parchment grain overlays from the juice pass */
+body::before, body::after { display: none; }
+
+/* entrance animation stays, slightly bouncier */
+@keyframes rise {
+  0% { opacity: 0; transform: translateY(16px) scale(0.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
