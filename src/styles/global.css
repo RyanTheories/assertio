@@ -682,3 +682,16 @@ body::after {
   50% { transform: scale(1.12); }
 }
 .streak-pulse { animation: pulse 0.5s ease-in-out 2; display: inline-block; }
+/* ---------- disclaimer footer ---------- */
+.disclaimer {
+  border-top: 1px solid var(--line);
+  margin-top: 12px;
+  padding-top: 14px;
+  text-align: center;
+}
+.disclaimer p {
+  color: var(--muted);
+  font-size: 12px;
+  max-width: 640px;
+  margin: 0 auto 6px;
+}
