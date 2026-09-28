@@ -4,21 +4,24 @@ import type { AssertionId, Scenario } from './types';
 import type { ProcedureAnswer, RoundScore } from './scoring';
 import { scoreRound } from './scoring';
 import { sectorFor } from './sectors';
+import { pickDailyScenarios, todayKey } from './daily';
 import { startAmbience, toggleAmbience } from './audio';
 import { Home } from './screens/Home';
 import { AssertionsGuide } from './screens/AssertionsGuide';
 import { FinancialStatements } from './screens/FinancialStatements';
 import { IsasReference } from './screens/IsasReference';
+import { MasteryMap } from './screens/MasteryMap';
 import { Round } from './screens/Round';
 import { RoundSummary } from './screens/RoundSummary';
 import { SessionSummary } from './screens/SessionSummary';
-import { recordSession, type SessionRecord } from './storage';
+import { recordDailyResult, recordSession, type SessionRecord } from './storage';
 
 type Screen =
   | { kind: 'home' }
   | { kind: 'guide' }
   | { kind: 'financialStatements' }
   | { kind: 'isas' }
+  | { kind: 'mastery' }
   | { kind: 'round' }
   | { kind: 'roundSummary' }
   | { kind: 'sessionSummary' };
@@ -27,6 +30,8 @@ export interface SessionConfig {
   difficulty: 'beginner' | 'intermediate' | 'advanced' | 'mixed';
   industry: string | null;
   statement: 'income_statement' | 'balance_sheet' | 'all';
+  /** dateKey of the daily challenge this session is a run of, if any */
+  daily?: string;
 }
 
 export interface RoundRecord {
@@ -47,6 +52,7 @@ function shuffle<T>(arr: T[]): T[] {
 }
 
 export function pickSessionScenarios(all: Scenario[], cfg: SessionConfig): Scenario[] {
+  if (cfg.daily) return pickDailyScenarios(all, cfg.daily);
   let pool = all;
   if (cfg.difficulty !== 'mixed') pool = pool.filter((s) => s.difficulty === cfg.difficulty);
   if (cfg.industry) {
@@ -86,6 +92,7 @@ export default function App() {
   const [rounds, setRounds] = useState<RoundRecord[]>([]);
   const [streak, setStreak] = useState(0);
   const [currentRound, setCurrentRound] = useState<RoundRecord | null>(null);
+  const [sessionConfig, setSessionConfig] = useState<SessionConfig | null>(null);
 
   if (!validation.data) {
     return <ErrorScreen issues={validation.issues} />;
@@ -94,6 +101,7 @@ export default function App() {
 
   const startSession = (cfg: SessionConfig) => {
     const picked = pickSessionScenarios(data.scenarios, cfg);
+    setSessionConfig(cfg);
     setSessionScenarios(picked);
     setRounds([]);
     setCurrentIndex(0);
@@ -132,6 +140,14 @@ export default function App() {
 
   const backHome = () => {
     if (rounds.length > 0) {
+      if (sessionConfig?.daily) {
+        recordDailyResult({
+          dateKey: sessionConfig.daily,
+          score: rounds.reduce((s, r) => s + r.score.total, 0),
+          mastered: rounds.filter((r) => r.score.mastered).length,
+          total: rounds.length,
+        });
+      }
       recordSession(
         rounds.map((r) => ({ scenarioId: r.scenario.id, lineItem: r.scenario.line_item, score: r.score })),
         streak
@@ -166,6 +182,8 @@ export default function App() {
           onOpenGuide={() => setScreen({ kind: 'guide' })}
           onOpenStatements={() => setScreen({ kind: 'financialStatements' })}
           onOpenIsas={() => setScreen({ kind: 'isas' })}
+          onOpenMastery={() => setScreen({ kind: 'mastery' })}
+          onStartDaily={() => startSession({ difficulty: 'mixed', industry: null, statement: 'all', daily: todayKey() })}
         />
       )}
       {screen.kind === 'guide' && (
@@ -176,6 +194,9 @@ export default function App() {
       )}
       {screen.kind === 'isas' && (
         <IsasReference onHome={() => setScreen({ kind: 'home' })} />
+      )}
+      {screen.kind === 'mastery' && (
+        <MasteryMap scenarios={data.scenarios} onHome={() => setScreen({ kind: 'home' })} />
       )}
       {screen.kind === 'round' && sessionScenarios.length > 0 && (
         <Round

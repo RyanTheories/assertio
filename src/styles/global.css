@@ -564,3 +564,12 @@ select {
   .scenario-row { grid-template-columns: 24px 1fr auto; }
   .row-pct { display: none; }
 }
+
+/* ---------- career ladder / daily / mastery map ---------- */
+.career-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+.career-rank { display: flex; flex-direction: column; gap: 2px; margin: 8px 0 14px; }
+.career-title { font-size: 20px; font-weight: 500; }
+.career-latin { color: var(--muted); font-style: italic; font-size: 15px; }
+.daily .btn { margin-top: 6px; }
+.mastery-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.mastery-name { flex: 0 0 240px; }
