@@ -6,6 +6,7 @@ import { ASSERTION_LABELS, ASSERTION_SHORT, TAXONOMY_ORDER } from '../ui';
 import { statementLabel } from '../data/validate';
 import { useMemoOnce } from '../utils';
 import { HintButton } from '../components/HintButton';
+import { whyRelevant, whyNotRelevant } from '../teach';
 
 interface Props {
   scenario: Scenario;
@@ -114,6 +115,13 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit, hint, on
                     )}
                     {feedback && !expected.has(id) && isSel && (
                       <span className="a-mark a-extra">✗ not relevant</span>
+                    )}
+                    {feedback && (
+                      <span className="a-why">
+                        {expected.has(id)
+                          ? whyRelevant(id, scenario.line_item)
+                          : whyNotRelevant(id, scenario.line_item)}
+                      </span>
                     )}
                   </button>
                 );

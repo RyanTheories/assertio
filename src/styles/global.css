@@ -918,3 +918,13 @@ body::before, body::after { display: none; }
   /* music toggle away from content edge */
   .music-toggle { right: 10px; bottom: 10px; }
 }
+
+/* ---------- teaching explanations ---------- */
+.a-why {
+  flex-basis: 100%;
+  margin-left: 34px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.rr-notrisk { color: var(--muted); font-size: 13px; }

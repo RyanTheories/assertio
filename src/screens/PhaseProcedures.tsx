@@ -5,6 +5,7 @@ import { sfxBlip, sfxTrapToggle, sfxTrapCaught, sfxChime, sfxBuzz } from '../sfx
 import { ASSERTION_LABELS, TAXONOMY_ORDER } from '../ui';
 import { ConceptText } from '../components/ConceptText';
 import { HintButton } from '../components/HintButton';
+import { whyProcedureTests } from '../teach';
 
 interface ShuffledProc {
   proc: Procedure;
@@ -178,6 +179,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
                       </p>
                       <p className="muted small">
                         Tests: {(fb?.expected ?? []).map((a) => ASSERTION_LABELS[a]).join(', ') || '·'}
+                        — why: {(fb?.expected ?? []).map((a) => whyProcedureTests(a, scenario.line_item)).join(' ') || '·'}
                         {fb?.missed ? ` · missed: ${fb.expected.filter((a) => !ans.matched.includes(a)).map((a) => ASSERTION_LABELS[a]).join(', ')}` : ''}
                         {ans.flaggedTrap ? ' · you flagged this as a trap, but it is a valid procedure' : ''}
                       </p>
