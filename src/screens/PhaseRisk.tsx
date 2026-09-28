@@ -5,15 +5,18 @@ import { sfxBlip, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS } from '../ui';
 import { statementLabel } from '../data/validate';
 import { ConceptText } from '../components/ConceptText';
+import { HintButton } from '../components/HintButton';
 
 interface Props {
   scenario: Scenario;
   selected: Set<AssertionId>;
   onChange: (next: Set<AssertionId>) => void;
   onSubmit: () => void;
+  hint: string;
+  onHintUsed: () => void;
 }
 
-export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
+export function PhaseRisk({ scenario, selected, onChange, onSubmit, hint, onHintUsed }: Props) {
   const [feedback, setFeedback] = useState<ReturnType<typeof scoreHighRisk> | null>(null);
 
   const relevant = scenario.assertions_relevant;
@@ -111,6 +114,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
 
       {!feedback ? (
         <div className="phase-actions">
+          <HintButton onReveal={onHintUsed} disabled={!!feedback}>{hint}</HintButton>
           <button className="btn btn-primary" onClick={submit}>Submit (Enter)</button>
           <span className="kbd-hint"><kbd>1</kbd>–<kbd>{Math.min(relevant.length, 9)}</kbd> toggle · <kbd>Enter</kbd> submit</span>
         </div>

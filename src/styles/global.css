@@ -77,16 +77,13 @@ kbd {
 
 /* ---------- hero / home ---------- */
 .hero { text-align: center; padding: 16px 0 8px; }
-.laurel {
-  width: 120px; height: 48px;
-  margin: 0 auto 4px;
+.logo-mark {
+  width: 88px; height: 88px;
+  margin: 0 auto 10px;
   display: block;
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  opacity: 0.9;
 }
+.hero-lockup { display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap; }
+.hero-lockup .logo-mark { width: 64px; height: 64px; margin: 0; }
 .hero h1 {
   font-size: 52px;
   font-weight: 400;
@@ -800,7 +797,7 @@ h2 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.01em
 .bar-fill { border-radius: var(--radius-pill); }
 
 /* laurel: orange */
-.laurel { stroke: var(--accent); }
+.logo-mark circle:first-of-type { fill: var(--accent); }
 
 /* stepper: pill segments */
 .phase-steps { border-radius: 12px; overflow: hidden; }
@@ -839,4 +836,85 @@ body::before, body::after { display: none; }
 @keyframes rise {
   0% { opacity: 0; transform: translateY(16px) scale(0.99); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ---------- hint box ---------- */
+.hint-box {
+  background: var(--accent-soft);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: 10px 14px;
+  max-width: 560px;
+}
+.hint-box p { margin: 0; font-size: 13px; }
+.hint-title { font-weight: 700; font-size: 11px !important; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 3px !important; }
+
+/* ---------- mobile pass ---------- */
+@media (max-width: 640px) {
+  #root { padding: 14px 12px 48px; }
+  body { font-size: 15px; }
+
+  /* hero: stack lockup vertically, shrink type */
+  .hero h1 { font-size: clamp(40px, 13vw, 56px) !important; }
+  .hero-lockup { flex-direction: column; gap: 8px; }
+
+  /* tooltips: keep inside the viewport */
+  .title-tip-card {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: min(92vw, 400px);
+    max-width: 92vw;
+    z-index: 90;
+  }
+  .concept-tip {
+    width: min(84vw, 300px);
+    left: 50%;
+  }
+
+  /* cards breathe less on small screens */
+  .card { padding: 14px 16px; }
+  .brief-card { padding: 18px 16px; }
+  .brief-line-item { font-size: 26px; }
+
+  /* phase actions: full-width buttons, thumb-friendly */
+  .phase-actions { gap: 10px; }
+  .phase-actions .btn { padding: 12px 18px; }
+  .kbd-hint, .kbd-hint-inline { display: none; }
+
+  /* assertion tiles: wrap name and description */
+  .assertion { padding: 10px 12px; gap: 8px; flex-wrap: wrap; }
+  .a-desc { flex-basis: 100%; margin-left: 34px; }
+
+  /* procedure rows stack; trap button joins the flow */
+  .proc-top { flex-wrap: wrap; }
+  .proc-controls { gap: 8px; }
+  .match-chips { gap: 5px; }
+  .chip-sm { padding: 3px 10px; font-size: 11px; }
+
+  /* HUD: allow wrapping instead of overflowing */
+  .hud { flex-wrap: wrap; }
+  .hud-left, .hud-right { flex-wrap: wrap; gap: 8px; font-size: 12px; }
+  .phase-steps { flex-wrap: wrap; }
+  .phase-step { min-width: 40%; }
+
+  /* bars and breakdown stack */
+  .breakdown-row { grid-template-columns: 1fr; gap: 4px; }
+  .mastery-list li.breakdown-row { grid-template-columns: 1fr auto; }
+  .mastery-name { flex-basis: 100%; }
+
+  /* session summary rows */
+  .scenario-row { grid-template-columns: 24px 1fr auto; }
+  .row-pct { display: none; }
+
+  /* summary hero type down */
+  .summary-total { font-size: 32px; }
+  .summary-hero h2 { font-size: 24px; }
+
+  /* disclaimers and mission fit */
+  .disclaimer p { font-size: 11px; }
+
+  /* music toggle away from content edge */
+  .music-toggle { right: 10px; bottom: 10px; }
 }

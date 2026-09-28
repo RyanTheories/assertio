@@ -51,11 +51,14 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
   return (
     <div className="screen home">
       <header className="hero">
-        <svg className="laurel" viewBox="0 0 100 40" aria-hidden="true">
-          <path d="M30 4 Q10 10 6 30 Q18 22 26 26 Q18 16 22 6 Q26 14 32 20 Z" />
-          <path d="M70 4 Q90 10 94 30 Q82 22 74 26 Q82 16 78 6 Q74 14 68 20 Z" />
-        </svg>
         <p className="eyebrow">Audit training</p>
+        <div className="hero-lockup">
+        <svg className="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="42" fill="var(--accent)" />
+          <path d="M30 58 Q50 76 70 58" stroke="var(--accent-ink)" strokeWidth="7" strokeLinecap="round" fill="none" />
+          <circle cx="36" cy="40" r="6" fill="var(--accent-ink)" />
+          <circle cx="64" cy="40" r="6" fill="var(--accent-ink)" />
+        </svg>
         <h1 className="title-tip" tabIndex={0}>
           Quaestor
           <span className="title-tip-card" role="tooltip">
@@ -66,6 +69,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
             trains the same discipline.
           </span>
         </h1>
+        </div>
         <p className="tagline">
           Judge which assertions matter for each line item, which are high risk in context, and spot the
           procedure that looks right but tests the wrong thing.

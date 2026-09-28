@@ -5,15 +5,18 @@ import { sfxBlip, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS, ASSERTION_SHORT, TAXONOMY_ORDER } from '../ui';
 import { statementLabel } from '../data/validate';
 import { useMemoOnce } from '../utils';
+import { HintButton } from '../components/HintButton';
 
 interface Props {
   scenario: Scenario;
   selected: Set<AssertionId>;
   onChange: (next: Set<AssertionId>) => void;
   onSubmit: () => void;
+  hint: string;
+  onHintUsed: () => void;
 }
 
-export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props) {
+export function PhaseRelevant({ scenario, selected, onChange, onSubmit, hint, onHintUsed }: Props) {
   const [feedback, setFeedback] = useState<ReturnType<typeof scoreRelevant> | null>(null);
 
   const allIds = useMemoOnce<{ id: AssertionId; group: 'transactions' | 'balances' }[]>(() => [
@@ -121,6 +124,7 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit }: Props)
 
       {!feedback ? (
         <div className="phase-actions">
+          <HintButton onReveal={onHintUsed} disabled={!!feedback}>{hint}</HintButton>
           <button className="btn btn-primary" onClick={submit}>Submit (Enter)</button>
           <span className="kbd-hint"><kbd>1</kbd>–<kbd>9</kbd>, <kbd>0</kbd> toggle · <kbd>Enter</kbd> submit</span>
         </div>

@@ -6,6 +6,7 @@ import { PhaseBrief } from './PhaseBrief';
 import { PhaseRelevant } from './PhaseRelevant';
 import { PhaseRisk } from './PhaseRisk';
 import { PhaseProcedures } from './PhaseProcedures';
+import { hintFor } from '../hints';
 
 export type Phase = 'brief' | 'relevant' | 'risk' | 'procedures';
 const PHASE_ORDER: Phase[] = ['brief', 'relevant', 'risk', 'procedures'];
@@ -16,7 +17,7 @@ interface Props {
   total: number;
   sessionScore: number;
   streak: number;
-  onFinish: (scenario: Scenario, p1: Set<AssertionId>, p2: Set<AssertionId>, p3: ProcedureAnswer[]) => void;
+  onFinish: (scenario: Scenario, p1: Set<AssertionId>, p2: Set<AssertionId>, p3: ProcedureAnswer[], hintsUsed: number) => void;
   onEndSession: () => void;
 }
 
@@ -25,6 +26,8 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
   const [p1, setP1] = useState<Set<AssertionId>>(new Set());
   const [p2, setP2] = useState<Set<AssertionId>>(new Set());
   const [p3, setP3] = useState<ProcedureAnswer[]>([]);
+  const [hintsUsed, setHintsUsed] = useState(0);
+  const useHint = () => setHintsUsed((h) => h + 1);
 
   const shuffledProcedures = useMemo(() => {
     const arr = scenario.procedures.map((p, i) => ({ proc: p, origIndex: i }));
@@ -74,6 +77,8 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
           selected={p1}
           onChange={setP1}
           onSubmit={() => setPhase('risk')}
+          hint={hintFor('relevant', scenario)}
+          onHintUsed={useHint}
         />
       )}
       {phase === 'risk' && (
@@ -82,6 +87,8 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
           selected={p2}
           onChange={setP2}
           onSubmit={() => setPhase('procedures')}
+          hint={hintFor('risk', scenario)}
+          onHintUsed={useHint}
         />
       )}
       {phase === 'procedures' && (
@@ -90,7 +97,9 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
           shuffledProcedures={shuffledProcedures}
           answers={p3}
           onAnswersChange={setP3}
-          onSubmit={() => onFinish(scenario, p1, p2, p3)}
+          hint={hintFor('procedures', scenario)}
+          onHintUsed={useHint}
+          onSubmit={() => onFinish(scenario, p1, p2, p3, hintsUsed)}
         />
       )}
     </div>

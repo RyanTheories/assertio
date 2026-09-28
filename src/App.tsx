@@ -116,8 +116,8 @@ export default function App() {
     }
   };
 
-  const finishRound = (scenario: Scenario, p1: Set<AssertionId>, p2: Set<AssertionId>, p3: ProcedureAnswer[]) => {
-    const score = scoreRound(scenario, p1, p2, p3, streak);
+  const finishRound = (scenario: Scenario, p1: Set<AssertionId>, p2: Set<AssertionId>, p3: ProcedureAnswer[], hintsUsed = 0) => {
+    const score = scoreRound(scenario, p1, p2, p3, streak, hintsUsed);
     const record: RoundRecord = { scenario, score, phase1Selected: p1, phase2Selected: p2, phase3Answers: p3 };
     setCurrentRound(record);
     setRounds((prev) => [...prev, record]);
