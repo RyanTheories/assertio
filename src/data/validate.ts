@@ -66,6 +66,17 @@ function validateScenario(sc: unknown, taxonomy: Set<string>, seenIds: Set<strin
     }
   }
   const relevantSet = new Set((Array.isArray(s.assertions_relevant) ? s.assertions_relevant : []) as string[]);
+  if (typeof s.why_relevant === 'object' && s.why_relevant !== null) {
+    for (const key of Object.keys(s.why_relevant as Record<string, unknown>)) {
+      if (!relevantSet.has(key)) {
+        issues.push({ scenarioId: sid, check: 'subset', message: `${sid}: why_relevant key "${key}" is not in assertions_relevant` });
+      }
+      const text = (s.why_relevant as Record<string, unknown>)[key];
+      if (typeof text !== 'string' || text.trim() === '') {
+        issues.push({ scenarioId: sid, check: 'missing_field', message: `${sid}: why_relevant["${key}"] must be non-empty text` });
+      }
+    }
+  }
   if (typeof s.assertions_high_risk === 'object' && s.assertions_high_risk !== null) {
     for (const key of Object.keys(s.assertions_high_risk as Record<string, unknown>)) {
       if (!taxonomy.has(key)) {

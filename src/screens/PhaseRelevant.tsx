@@ -119,7 +119,7 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit, hint, on
                     {feedback && (
                       <span className="a-why">
                         {expected.has(id)
-                          ? whyRelevant(id, scenario.line_item)
+                          ? scenario.why_relevant?.[id] ?? whyRelevant(id, scenario.line_item)
                           : whyNotRelevant(id, scenario.line_item)}
                       </span>
                     )}
