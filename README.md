@@ -1,4 +1,4 @@
-# Assertio
+# Quaestor
 
 An audit training game for professional auditors. For each financial statement line item, judge which
 assertions are relevant, which are high risk given the client's context, and spot the **trap procedure**:
@@ -87,7 +87,7 @@ fixing.
   scores zero and reveals the trap explanation.
 
 A scenario is **mastered** when every phase scores ≥ 80%. Progress and career stats persist in
-`localStorage` (keyed `assertio.v1`, per browser).
+`localStorage` (keyed `quaestor.v1`, per browser).
 
 ## Keyboard
 

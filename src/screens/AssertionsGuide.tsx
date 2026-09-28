@@ -156,34 +156,14 @@ const CONFUSABLES: { pair: string; body: string }[] = [
 
 const STANDARDS: { label: string; href: string; note: string }[] = [
   {
-    label: 'ISA 315 (Revised 2019), Identifying and Assessing Risks of Material Misstatement',
-    href: 'https://www.iaasb.org/standards-practice-notes/isa-315-revised-2019-identifying-and-assessing-risks-material-misstatement',
-    note: 'The standard that defines these assertions and requires auditors to assess risk at the assertion level.',
+    label: 'IAASB, International Auditing and Assurance Standards Board',
+    href: 'https://www.iaasb.org/',
+    note: 'The body that issues the ISAs, including the standards referenced throughout this guide.',
   },
   {
-    label: 'ISA 330, The Auditor\'s Responses to Assessed Risks',
-    href: 'https://www.iaasb.org/standards-practice-notes/isa-330-auditors-responses-assessed-risks',
-    note: 'How the auditor designs procedures that target the assertions where risk is highest.',
-  },
-  {
-    label: 'ISA 240, The Auditor\'s Responsibilities Relating to Fraud',
-    href: 'https://www.iaasb.org/standards-practice-notes/isa-240-auditors-responsibilities-relating-fraud',
-    note: 'Why revenue occurrence carries a presumed fraud risk, and how fraudulent financial reporting usually happens.',
-  },
-  {
-    label: 'ISA 540 (Revised), Auditing Accounting Estimates',
-    href: 'https://www.iaasb.org/standards-practice-notes/isa-540-revised-auditing-accounting-estimates',
-    note: 'How to audit the judgement-heavy balances where valuation risk lives.',
-  },
-  {
-    label: 'IFAC, International Standards on Auditing overview',
-    href: 'https://www.ifac.org/about-ifac/role-ifac/international-standards-setting',
-    note: 'Free downloads of all ISAs from the IAASB, hosted by IFAC.',
-  },
-  {
-    label: 'IAS 1, Presentation of Financial Statements',
-    href: 'https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/',
-    note: 'The IFRS standard governing how line items are presented, classified and disclosed in the statements themselves.',
+    label: 'IFRS Foundation',
+    href: 'https://www.ifrs.org/',
+    note: 'The body that issues IFRS Standards, which govern how line items are presented, classified and disclosed.',
   },
 ];
 
@@ -197,7 +177,7 @@ export function AssertionsGuide({ onHome }: { onHome: () => void }) {
           Assertions are the implicit claims a set of financial statements makes about each line item:
           that it happened, that nothing is missing, that the amount is right. Auditors use them as a
           checklist of ways a line item can be wrong, and target their procedures at the assertions
-          where the risk of error is highest. Assertio trains exactly this skill.
+          where the risk of error is highest. Quaestor trains exactly this skill.
         </p>
       </header>
 
@@ -261,7 +241,7 @@ export function AssertionsGuide({ onHome }: { onHome: () => void }) {
           ))}
         </ul>
         <p className="guide-std-note">
-          Assertio follows the assertion vocabulary of ISA 315 (Revised 2019). Terminology in practice
+          Quaestor follows the assertion vocabulary of ISA 315 (Revised 2019). Terminology in practice
           materials may vary slightly between jurisdictions and firms.
         </p>
       </section>

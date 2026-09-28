@@ -29,7 +29,7 @@ function renderIgnoringConsole(el: React.ReactElement): string {
 describe('render smoke', () => {
   it('renders the whole App (validation passes on bundled data)', () => {
     const html = renderIgnoringConsole(<App />);
-    expect(html).toContain('Assertio');
+    expect(html).toContain('Quaestor');
     expect(html).not.toContain('Data validation failed');
   });
 
