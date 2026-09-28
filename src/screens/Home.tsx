@@ -55,9 +55,6 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         <div className="hero-lockup">
         <svg className="logo-mark" viewBox="0 0 100 100" aria-hidden="true">
           <circle cx="50" cy="50" r="42" fill="var(--accent)" />
-          <path d="M30 58 Q50 76 70 58" stroke="var(--accent-ink)" strokeWidth="7" strokeLinecap="round" fill="none" />
-          <circle cx="36" cy="40" r="6" fill="var(--accent-ink)" />
-          <circle cx="64" cy="40" r="6" fill="var(--accent-ink)" />
         </svg>
         <h1 className="title-tip" tabIndex={0}>
           Quaestor
