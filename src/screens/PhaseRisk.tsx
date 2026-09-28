@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { AssertionId, Scenario } from '../types';
 import { scoreHighRisk } from '../scoring';
+import { sfxBlip, sfxChime, sfxBuzz } from '../sfx';
 import { ASSERTION_LABELS } from '../ui';
 import { statementLabel } from '../data/validate';
 import { ConceptText } from '../components/ConceptText';
@@ -39,7 +40,10 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
 
   const submit = () => {
     if (feedback) return;
-    setFeedback(scoreHighRisk(selected, scenario));
+    const fb = scoreHighRisk(selected, scenario);
+    setFeedback(fb);
+    if (fb.ratio >= 0.8) sfxChime();
+    else sfxBuzz();
   };
 
   useEffect(() => {
@@ -88,6 +92,7 @@ export function PhaseRisk({ scenario, selected, onChange, onSubmit }: Props) {
                   if (next.has(id)) next.delete(id);
                   else next.add(id);
                   onChange(next);
+                  sfxBlip();
                 }}
               >
                 <span className="a-key">{key}</span>

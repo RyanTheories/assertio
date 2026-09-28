@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { toRoman } from '../sectors';
 import { CountUp } from '../components/CountUp';
+import { sfxMastered } from '../sfx';
 import type { RoundRecord } from '../App';
 import { ASSERTION_LABELS } from '../ui';
 
@@ -25,6 +26,9 @@ export function RoundSummary({ round, index, total, isLast, onNext, onEnd }: Pro
   }, [onNext]);
 
   const pct = (r: number) => Math.round(r * 100);
+  useEffect(() => {
+    if (score.mastered) sfxMastered();
+  }, [score.mastered]);
 
   return (
     <div className="screen round-summary">

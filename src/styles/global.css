@@ -695,3 +695,34 @@ body::after {
   max-width: 640px;
   margin: 0 auto 6px;
 }
+
+/* ---------- phase stepper ---------- */
+.phase-steps {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  margin: 8px 0 0;
+  padding: 0;
+  grid-column: 1 / -1;
+}
+.phase-step {
+  flex: 1;
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 3px solid var(--line);
+  padding: 4px 2px 6px;
+  transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+.phase-step.step-done {
+  color: var(--green);
+  border-bottom-color: var(--green);
+}
+.phase-step.step-current {
+  color: var(--ink);
+  font-weight: 700;
+  border-bottom-color: var(--gold);
+  background: var(--gold-soft);
+}
