@@ -6,6 +6,7 @@ import { ASSERTION_LABELS, TAXONOMY_ORDER } from '../ui';
 import { ConceptText } from '../components/ConceptText';
 import { HintButton } from '../components/HintButton';
 import { whyProcedureTests } from '../teach';
+import { Icon } from '../components/Icon';
 
 interface ShuffledProc {
   proc: Procedure;
@@ -104,7 +105,7 @@ export function PhaseProcedures({ scenario, shuffledProcedures, answers, onAnswe
     <div className="phase phase-procedures">
       <div className="phase-head">
         <p className="eyebrow">Phase 3 of 3</p>
-        <h2>Match each procedure to the assertion(s) it tests, or flag the trap</h2>
+        <h2><Icon name="clipboard" /> Match each procedure to the assertion(s) it tests, or flag the trap</h2>
         <p className="muted">
           Some procedures look perfectly reasonable but don't validly test the risk at hand. Flag those as traps.
           Correctly flagging a trap is the highest-value action in the game.

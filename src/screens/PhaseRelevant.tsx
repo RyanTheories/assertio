@@ -6,6 +6,7 @@ import { ASSERTION_LABELS, ASSERTION_SHORT, TAXONOMY_ORDER } from '../ui';
 import { statementLabel } from '../data/validate';
 import { useMemoOnce } from '../utils';
 import { HintButton } from '../components/HintButton';
+import { Icon } from '../components/Icon';
 import { whyRelevant, whyNotRelevant } from '../teach';
 
 interface Props {
@@ -71,7 +72,7 @@ export function PhaseRelevant({ scenario, selected, onChange, onSubmit, hint, on
     <div className="phase phase-relevant">
       <div className="phase-head">
         <p className="eyebrow">Phase 1 of 3</p>
-        <h2>Which assertions are relevant to this line item?</h2>
+        <h2><Icon name="filter" /> Which assertions are relevant to this line item?</h2>
         <p className="muted">
           {scenario.line_item} · {statementLabel(scenario.statement)}. Check every relevant assertion. Extras lose points.
         </p>

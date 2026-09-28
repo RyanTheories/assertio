@@ -7,7 +7,7 @@ import { PhaseRelevant } from './PhaseRelevant';
 import { PhaseRisk } from './PhaseRisk';
 import { PhaseProcedures } from './PhaseProcedures';
 import { hintFor } from '../hints';
-import { BriefDialog } from '../components/BriefDialog';
+import { BriefDialog } from '../components/BriefDialog';import { Icon } from '../components/Icon';
 
 export type Phase = 'brief' | 'relevant' | 'risk' | 'procedures';
 const PHASE_ORDER: Phase[] = ['brief', 'relevant', 'risk', 'procedures'];
@@ -54,7 +54,7 @@ export function Round({ scenario, index, total, sessionScore, streak, onFinish, 
             </span>
           )}
           <span className="score-meter">Score {sessionScore}</span>
-          <button className="btn btn-ghost btn-small" onClick={() => setShowBrief(true)}>Brief</button>
+          <button className="btn btn-ghost btn-small" onClick={() => setShowBrief(true)}><Icon name="brief" size={15} />Brief</button>
           <button className="btn btn-ghost btn-small" onClick={onEndSession}>End session</button>
         </div>
         <div className="progress-track" role="progressbar" aria-valuenow={index} aria-valuemin={0} aria-valuemax={total}>
