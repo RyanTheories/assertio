@@ -23,6 +23,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
+  const [showWhy, setShowWhy] = useState(false);
   const [showHowTo, setShowHowTo] = useState(false);
 
   const sectors = useMemo(() => {
@@ -71,22 +72,29 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
         </p>
       </header>
       <section className="card mission">
-        <h2>Why this game exists</h2>
-        <p>
-          An organization's goals are only as reliable as its processes. Ambitious plans built on broken
-          controls fail quietly; the audit exists to make sure they don't.
-        </p>
-        <p>
-          This is not a gotcha exercise. It is the discipline of verifying that processes operate as
-          designed, that evidence proves what it claims, and that the numbers leaders steer by can actually
-          be steered with. Done well, the audit is where insight comes from: findings feed back into better
-          controls, better controls into trust, and trust into the freedom to pursue bigger goals.
-        </p>
-        <p>
-          AI will only sharpen this. As automation absorbs the mechanical work, the auditor's core
-          contribution such as judgment about process, risk, and evidence becomes the profession's entire
-          value. This game exists to train it.
-        </p>
+        <h2>Why this game was created</h2>
+        {showWhy ? (
+          <div className="howto-body">
+            <p>
+              An organization's goals are only as reliable as its processes. Ambitious plans built on broken
+              controls fail quietly; the audit exists to make sure they don't.
+            </p>
+            <p>
+              This is not a gotcha exercise. It is the discipline of verifying that processes operate as
+              designed, that evidence proves what it claims, and that the numbers leaders steer by can actually
+              be steered with. Done well, the audit is where insight comes from: findings feed back into better
+              controls, better controls into trust, and trust into the freedom to pursue bigger goals.
+            </p>
+            <p>
+              AI will only sharpen this. As automation absorbs the mechanical work, the auditor's core
+              contribution such as judgment about process, risk, and evidence becomes the profession's entire
+              value. This game exists to train it.
+            </p>
+          </div>
+        ) : null}
+        <button className="btn btn-ghost btn-small" onClick={() => setShowWhy((v) => !v)} aria-expanded={showWhy}>
+          {showWhy ? 'Show less' : 'Read more'}
+        </button>
       </section>
 
       <section className="card setup">
@@ -242,6 +250,19 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
           </dl>
         )}
       </section>
+      <footer className="disclaimer">
+        <p>
+          Quaestor is a personal hobby project by Ryan Lolachi. It is not affiliated with, endorsed by, or
+          produced by any employer, professional services firm, accounting body, or standard setter. All
+          views and content are the author's own.
+        </p>
+        <p>
+          This game is a training aid, not an authoritative source. Errors might exist, and double
+          verification against the actual standards and your firm's methodology is important. Always
+          consult the primary literature and applicable professional requirements before relying on
+          anything here.
+        </p>
+      </footer>
     </div>
   );
 }
