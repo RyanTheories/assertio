@@ -15,12 +15,13 @@ interface Props {
   onOpenStatements: () => void;
   onOpenIsas: () => void;
   onOpenMastery: () => void;
+  onOpenMistakes: () => void;
   onStartDaily: () => void;
 }
 
 const DIFFICULTIES: SessionConfig['difficulty'][] = ['beginner', 'intermediate', 'advanced', 'mixed'];
 
-export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas, onOpenMastery, onStartDaily }: Props) {
+export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpenIsas, onOpenMastery, onOpenMistakes, onStartDaily }: Props) {
   const [difficulty, setDifficulty] = useState<SessionConfig['difficulty']>('mixed');
   const [sector, setSector] = useState<string | null>(null);
   const [statement, setStatement] = useState<SessionConfig['statement']>('all');
@@ -37,6 +38,7 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
   }, [scenarios]);
 
   const stats = useMemo(() => loadState(), []);
+  const mistakeCount = stats.mistakes.length;
   const dailyDone = useMemo(() => getDailyResult(todayKey()), []);
   const mastered = stats.career.scenariosMastered;
   const rank = rankFor(mastered, scenarios.length);
@@ -172,6 +174,11 @@ export function Home({ scenarios, onStart, onOpenGuide, onOpenStatements, onOpen
             <Icon name="map" size={22} />
             <span className="box-title">Mastery map</span>
             <span className="box-sub">Progress per sector</span>
+          </button>
+          <button className="box-link" onClick={onOpenMistakes}>
+            <Icon name="flag" size={22} />
+            <span className="box-title">Mistake review{mistakeCount > 0 ? ` (${mistakeCount})` : ''}</span>
+            <span className="box-sub">Drill the assertions you misjudged</span>
           </button>
           <button className="box-link" onClick={() => setShowHowTo((v) => !v)} aria-expanded={showHowTo}>
             <Icon name="dice" size={22} />
